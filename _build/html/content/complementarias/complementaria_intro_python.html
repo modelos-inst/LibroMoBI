@@ -16,34 +16,31 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=003d74d7" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -54,7 +51,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -68,7 +65,6 @@
     <link rel="prev" title="Ambientes virtuales en Python" href="ambientes_virtuales.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -84,8 +80,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -93,6 +100,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -100,8 +108,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -117,8 +125,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -148,17 +155,21 @@
     
     
     <img src="../../_static/uniandes.png" class="logo__image only-light" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>
-    <img src="../../_static/uniandes.png" class="logo__image only-dark pst-js-only" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>
+    <script>document.write(`<img src="../../_static/uniandes.png" class="logo__image only-dark" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -185,14 +196,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -289,16 +295,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -331,7 +345,6 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficas-en-python">Graficas en Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manejo-de-matrices">Manejo de matrices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operaciones-matriciales">Operaciones matriciales</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cadenas-de-markov">Cadenas de Markov</a></li>
 </ul>
             </nav>
         </div>
@@ -345,7 +358,7 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="complementaria-1-introduccion-a-python">
 <h1>Complementaria 1: Introducción a Python<a class="headerlink" href="#complementaria-1-introduccion-a-python" title="Link to this heading">#</a></h1>
-<p>Esta complementaria está diseñada para hacer una introducción a Python y aprender a definir y manejar matrices en Python. El uso de matrices aplicado a la construcción de Cadenas de Markov también será tratado a lo largo de la complementaria. Python es un lenguaje de programación de alto nivel, ampliamente utilizado por su simplicidad y legibilidad. En esta complementaria, cubriremos los fundamentos del lenguaje, incluyendo la sintaxis básica, la estructura de control de flujo, y las principales bibliotecas que hacen de Python una herramienta poderosa para una amplia gama de aplicaciones.</p>
+<p>Esta complementaria está diseñada para hacer una introducción a Python y aprender a definir y manejar matrices en Python. Python es un lenguaje de programación de alto nivel, ampliamente utilizado por su simplicidad y legibilidad. En esta complementaria, cubriremos los fundamentos del lenguaje, incluyendo la sintaxis básica, la estructura de control de flujo, y las principales bibliotecas que hacen de Python una herramienta poderosa para una amplia gama de aplicaciones.</p>
 <p>Para ejecutar Python utilizaremos Visual Studio Code (VSC), un editor de código fuente gratuito y multiplataforma desarrollado por Microsoft.</p>
 <section id="asignacion-de-variables">
 <h2>Asignación de variables<a class="headerlink" href="#asignacion-de-variables" title="Link to this heading">#</a></h2>
@@ -509,28 +522,47 @@
 </section>
 <section id="paquetes-o-librerias-en-python">
 <h2>Paquetes o librerias en Python<a class="headerlink" href="#paquetes-o-librerias-en-python" title="Link to this heading">#</a></h2>
-<p>En Python los paquetes deben ser instalados cuando estos no están presentes en el computador, y también se deben cargar en cada sesión. Para instalar la librería jmarkov en la terminal puede emitir el comando</p>
-<p>pip install jmarkov</p>
+<p>En Python los paquetes deben ser instalados cuando estos no están presentes en el computador, y también se deben importar en cada sesión. Por ejemplo, vamos a instalar la librería matplotlib, que sirve para generar gráficas. Para instalar la librería en la terminal puede emitir el comando:</p>
+<p>pip install matplotlib</p>
 <p>O desde una celda de un cuaderno puede hacer con el siguiente comando, para eso se debe utilizar el siguiente comando:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>jmarkov<span class="w"> </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jmarkov in c:\users\maria\appdata\local\programs\python\python311\lib\site-packages (0.3.2)
-Requirement already satisfied: numpy in c:\users\maria\appdata\roaming\python\python311\site-packages (from jmarkov) (1.26.4)
-Requirement already satisfied: scipy in c:\users\maria\appdata\roaming\python\python311\site-packages (from jmarkov) (1.15.2)
-Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\python\python311\lib\site-packages (from jmarkov) (3.7.4.3)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matplotlib in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (3.10.8)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (1.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (4.61.1)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (1.4.9)
+Requirement already satisfied: numpy&gt;=1.23 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (2.4.1)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (25.0)
+Requirement already satisfied: pillow&gt;=8 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (12.1.0)
+Requirement already satisfied: pyparsing&gt;=3 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (3.3.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 24.0 -&gt; 25.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
 </pre></div>
 </div>
 </div>
 </div>
-<p>Una vez se ha instalado la librería, se puede importar toda su funcionalidad con el siguiente comando</p>
+<p>Una vez se ha instalado la librería, se puede importar toda su funcionalidad con el siguiente comando:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">jmarkov</span> <span class="c1">#Importar la libreria</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>     <span class="c1"># Importar la libreria</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sin embargo, para generar gráficos vamos a usar específicamente el paquete pyplot que hace parte de la librería matplotlib, y para que sea más cómodo su uso vamos importar el paquete de la siguiente manera:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>    <span class="c1"># plt es un alias para matplotlib.pyplot</span>
 </pre></div>
 </div>
 </div>
@@ -541,7 +573,7 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 <p>Para definir una función en Python, se utiliza la palabra clave <strong>def</strong>, seguida del nombre de la función y paréntesis que pueden contener parámetros opcionales. El bloque de código de la función está indentado. A continuación se presenta la sintaxis basica:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nombre_de_la_funcion</span><span class="p">(</span><span class="n">parametros</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">nombre_de_la_funcion</span><span class="p">(</span><span class="n">parametros</span><span class="p">):</span>
     <span class="c1"># Código de la función</span>
     <span class="k">return</span>   <span class="c1"># Palabra clave para indicar qué debe retornar la función.</span>
 </pre></div>
@@ -551,7 +583,7 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 <p>Ahora un ejemplo: Se quiere crear una función cuyo argumento es un número cualquiera y que devuelva la raíz cúbica del número que se ingresó por parámetro más 10. El código de la función tendrá la siguiente estructura:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">funcion2</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">funcion1</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">valor</span> <span class="o">=</span> <span class="p">((</span><span class="n">n</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="mi">10</span>
     <span class="k">return</span> <span class="n">valor</span>
 </pre></div>
@@ -561,7 +593,7 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 <p>Una vez que se haya definido la función, se puede llamar utilizando su nombre seguido de paréntesis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">funcion2</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">funcion1</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -574,9 +606,7 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 <p>Las funciones no necesariamente deben retornar valores numéricos. Por ejemplo, en la siguiente función no se retornará nada y al llamarla se creará una gráfica.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                 <span class="c1"># Libreria para crear el grafico</span>
-
-<span class="k">def</span> <span class="nf">funcion3</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">funcion2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">y</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>              <span class="c1"># Crear la secuencia de 1 a la longitud de x</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>               <span class="c1"># Graficar con líneas de color rojo</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Índice&#39;</span><span class="p">)</span>                        <span class="c1"># Etiqueta del eje x</span>
@@ -588,12 +618,12 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 <span class="n">vector1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
 
 <span class="c1"># Llamar a la función con el vector</span>
-<span class="n">funcion3</span><span class="p">(</span><span class="n">vector1</span><span class="p">)</span>
+<span class="n">funcion2</span><span class="p">(</span><span class="n">vector1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2e756a4148179d01caa4c2a6646617f0594d2f3935201419628706e3c01af5cf.png" src="../../_images/2e756a4148179d01caa4c2a6646617f0594d2f3935201419628706e3c01af5cf.png" />
+<img alt="../../_images/a47a937eb1e2534a6b3185193266d8eb0004a3153a3265d2980a2ae65a8bc5a8.png" src="../../_images/a47a937eb1e2534a6b3185193266d8eb0004a3153a3265d2980a2ae65a8bc5a8.png" />
 </div>
 </div>
 </section>
@@ -609,10 +639,10 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 </div>
 </div>
 </div>
-<p>Ejemplo: Se quiere crear una función cuyos parámetros sean dos listas (de cualquier tamaño) y esta función retorne una lista, donde cada posición de la lista resultante debe ser el máximo de las mismas posiciones entre las listas parámetro. La función <code class="docutils literal notranslate"><span class="pre">funcion4</span></code> acepta <strong>exclusivamente</strong> dos listas de igual tamaño como argumentos. En el caso de que una lista sea mas corta que otra se producirá un <code class="docutils literal notranslate"><span class="pre">IndexError</span></code>.</p>
+<p>Ejemplo: Se quiere crear una función cuyos parámetros sean dos listas (de cualquier tamaño) y esta función retorne una lista, donde cada posición de la lista resultante debe ser el máximo de las mismas posiciones entre las listas parámetro. La función <code class="docutils literal notranslate"><span class="pre">funcion3</span></code> acepta <strong>exclusivamente</strong> dos listas de igual tamaño como argumentos. En el caso de que una lista sea mas corta que otra se producirá un <code class="docutils literal notranslate"><span class="pre">IndexError</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">funcion4</span><span class="p">(</span><span class="n">va</span><span class="p">,</span> <span class="n">vb</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">funcion3</span><span class="p">(</span><span class="n">va</span><span class="p">,</span> <span class="n">vb</span><span class="p">):</span>
     <span class="c1"># Crear una lista de ceros con la misma longitud que &#39;va&#39;</span>
     <span class="n">lista_final</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">va</span><span class="p">)</span>
 
@@ -628,7 +658,7 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 <span class="n">v2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># Llamar a la función</span>
-<span class="n">resultado</span> <span class="o">=</span> <span class="n">funcion4</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">funcion3</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -701,7 +731,7 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definir la funcion</span>
-<span class="k">def</span> <span class="nf">esta_en_lista</span><span class="p">(</span><span class="n">numero</span><span class="p">,</span> <span class="n">lista2</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">esta_en_lista</span><span class="p">(</span><span class="n">numero</span><span class="p">,</span> <span class="n">lista2</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">numero</span> <span class="ow">in</span> <span class="n">lista2</span>
 
 <span class="c1"># Definir los parametros</span>
@@ -725,9 +755,7 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 <p>En Python, crear gráficos y visualizaciones es bastante sencillo gracias a varias bibliotecas. En este caso se utilizará la libreria <strong>Matplotlib</strong>, una de las bibliotecas de visualización más comunes en Python. Es muy versátil y permite crear una amplia variedad de gráficos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># type: ignore</span>
-
-<span class="c1"># Datos de ejemplo</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Datos de ejemplo</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
 
@@ -745,7 +773,7 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0add69891a9260cdf0d64879e05172141542194634ad10f8edb79b3350c69808.png" src="../../_images/0add69891a9260cdf0d64879e05172141542194634ad10f8edb79b3350c69808.png" />
+<img alt="../../_images/6bda6e036696396f38da324886776df8f00ad741f3f7414b7be0cc7af85db2b4.png" src="../../_images/6bda6e036696396f38da324886776df8f00ad741f3f7414b7be0cc7af85db2b4.png" />
 </div>
 </div>
 <p>En este link puedes encontrar mas explicaciones y ejemplos de cómo construir todo tipo de graficas con la libreria <strong>Matplotlib</strong>: <a class="reference external" href="https://matplotlib.org/stable/tutorials/pyplot.html">Tutorial Pyplot</a></p>
@@ -753,9 +781,27 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 <section id="manejo-de-matrices">
 <h2>Manejo de matrices<a class="headerlink" href="#manejo-de-matrices" title="Link to this heading">#</a></h2>
 <p>Para crear y realizar operaciones sobre matrices en Python utilzaremos la libreria <code class="docutils literal notranslate"><span class="pre">numpy</span></code> que se abrevia como <code class="docutils literal notranslate"><span class="pre">np</span></code>.</p>
+<p>Si no la tienen instalada en su computador, deben usar el mismo comando que utilizamos anteriormente:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>numpy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (2.4.1)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 24.0 -&gt; 25.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+</pre></div>
+</div>
+</div>
+</div>
+<p>Posteriormente, la importaremos de esta manera:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -826,7 +872,7 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(2)
 </pre></div>
 </div>
 </div>
@@ -912,12 +958,12 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[17.28924001 23.23570214 18.45587203 26.63059433 26.73718425 26.17441559]
- [21.29568997 19.55368402 28.14371324 19.41547316 40.16355523 16.60500501]
- [14.69678232 10.7492327  12.15396384 17.52904826 17.30193242 11.51730409]
- [16.99628352 18.95630926 21.0739154  19.35383531 14.79261905  2.26564607]
- [ 7.72130828 14.12495398 14.260051   22.06163517 19.80097738 26.83271032]
- [15.85679213 23.60946611 18.15057836 27.54983101 10.16341653 22.91927855]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[14.39643016  7.21805593 12.03233477  6.84998257 29.5976033   5.87182025]
+ [21.38821803 12.3604423  11.74496365 16.36714314 19.51909234 23.94169747]
+ [11.28824117 11.58406539 21.19182429 18.68909574 24.09152576 16.31468877]
+ [ 4.72570363  6.10568668 13.39954878 14.34985836 34.99440561 25.32039158]
+ [27.31914023 20.52628858 25.88451557 17.47129004 18.7552814  16.38893286]
+ [31.65599055 21.39778582 16.69565304 12.85381641 19.15209886 32.31352835]]
 </pre></div>
 </div>
 </div>
@@ -930,12 +976,12 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[12.93103737  9.5349657   8.22944515 13.64443688 13.05910583  7.20959984]
- [ 9.23807025  9.98840057 17.82589193  9.39816639  5.1006005  10.7421814 ]
- [10.44620803 15.53972253 10.73191843 10.12716054 10.02620518  8.93989675]
- [10.26416724  7.16520462 11.23332542 12.72138812 13.92977075 10.61015218]
- [ 8.7574148   6.2898579   4.85296129 14.11932607 12.51025827 10.93849612]
- [ 9.55729242  8.62918115 12.03897033  5.71883579  7.05033969  6.91083263]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[13.60266097 12.0567238  19.00571558  6.80898571  9.83938245 10.63769677]
+ [10.46199088 10.59340594  8.72201785  8.93720538  7.46828319 15.21691021]
+ [16.85750229  9.48729498  8.31946145 12.86836679  7.10769988  9.50803763]
+ [ 8.02074526 11.02465875 12.28331593 11.09786804  7.79484488  3.72001225]
+ [ 4.51177797 11.20297825  9.08198135 12.49262923 10.00530569  3.72174544]
+ [12.65737185 12.63716533  6.76454825  5.76276374 10.18410669  9.13660982]]
 </pre></div>
 </div>
 </div>
@@ -984,10 +1030,73 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 </tbody>
 </table>
 </div>
-</section>
-<section id="cadenas-de-markov">
-<h2>Cadenas de Markov<a class="headerlink" href="#cadenas-de-markov" title="Link to this heading">#</a></h2>
-<p>El uso de matrices sirve para definir la representación de una cadena de Markov en Python. Por ejemplo, en las cadenas continuas es posible definir la matriz generadora (o de tasas de transición) <strong>Q</strong>, y en las discretas se define la matriz de probabilidades de transición a un paso <strong>P</strong>. En Python se utilizará la libreria <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>.</p>
+<p>A continuación se muestran los resultados de algunos de estos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="o">+</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[27.99909113 19.27477973 31.03805035 13.65896828 39.43698575 16.50951702]
+ [31.85020892 22.95384824 20.46698149 25.30434852 26.98737553 39.15860767]
+ [28.14574346 21.07136037 29.51128574 31.55746252 31.19922564 25.82272641]
+ [12.74644889 17.13034543 25.68286471 25.4477264  42.78925049 29.04040383]
+ [31.8309182  31.72926683 34.96649692 29.96391927 28.76058709 20.11067831]
+ [44.3133624  34.03495114 23.46020129 18.61658015 29.33620555 41.45013817]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 736.98169705  845.49507775  829.33860747  796.9808324   690.40755651
+   566.67055429]
+ [1140.62372893 1201.90827896 1152.28774941  970.69390695  952.93644607
+   879.55768903]
+ [1097.08090418 1141.97616266 1050.60644552 1055.48812638  901.07974273
+   806.09436937]
+ [ 947.51586531 1119.00382408  919.9097102  1001.51573641  907.18718857
+   685.54815925]
+ [1454.90037678 1402.23634485 1409.39991199 1225.19712889 1096.82393321
+  1133.60544928]
+ [1534.42770548 1531.36043817 1477.58837833 1189.75263901 1210.84834194
+  1235.42960303]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># suma por filas</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 75.96622698, 105.32155692, 103.15944111,  98.89559465,
+       126.34544868, 134.06887302])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># suma por columnas</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([110.77372378,  79.19232469, 100.9488401 ,  86.58118625,
+       146.11000727, 120.15105928])
+</pre></div>
+</div>
+</div>
+</div>
 <p>Universidad de los Andes | Vigilada Mineducación. Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia. Departamento de Ingeniería Industrial Carrera 1 Este No. 19 A 40 Bogotá, Colombia Tel. (57.1) 3324320 | (57.1) 3394949 Ext. 2880 /2881 <a class="reference external" href="http://industrial.uniandes.edu.co">http://industrial.uniandes.edu.co</a></p>
 </section>
 </section>
@@ -1047,8 +1156,7 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1066,7 +1174,6 @@ Requirement already satisfied: typing in c:\users\maria\appdata\local\programs\p
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficas-en-python">Graficas en Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manejo-de-matrices">Manejo de matrices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operaciones-matriciales">Operaciones matriciales</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cadenas-de-markov">Cadenas de Markov</a></li>
 </ul>
   </nav></div>
 
@@ -1115,8 +1222,8 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

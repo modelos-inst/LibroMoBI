@@ -1,0 +1,1147 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Complementaria 3 — Teorema del Límite Central y validación empírica &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=003d74d7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_tlc';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Complementaria 5: Cálculo de filas" href="complementaria_filas.html" />
+    <link rel="prev" title="Complementaria Semana 2: Introducción a la simulación de Montecarlo" href="complementaria_intro_montecarlo.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uniandes.png" class="logo__image only-light" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>
+    <script>document.write(`<img src="../../_static/uniandes.png" class="logo__image only-dark" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Bienvenidos al libro del curso Modelado de Sistemas Bajo Incertidumbre
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial. Instalación Python y Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ambientes_virtuales.html">Ambientes virtuales en Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_python.html">Complementaria 1: Introducción a Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria 2: Introducción a la simulación de Montecarlo</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria 3: Teorema del Límite Central y validación empírica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_filas.html">Complementaria 5: Cálculo de filas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_cmtc.html">Complementaria 7: Cadenas de Markov en Python I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/complementarias/complementaria_tlc.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Complementaria 3 — Teorema del Límite Central y validación empírica</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-d-extension-teorema-de-limite-central-tlc">1. Parte D — Extensión: Teorema de límite central (TLC)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulacion-de-la-variable-aleatoria-base">Simulación de la variable aleatoria base</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-promedios-muestrales">Construcción de promedios muestrales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros-teoricos-de-la-variable-aleatoria">Parámetros teóricos de la variable aleatoria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-del-teorema-del-limite-central">Aplicación del Teorema del Límite Central</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intervalo-de-confianza-para-la-esperanza-de-m">Intervalo de confianza para la esperanza de ( M )</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formalizacion-del-tlc">2. Formalización del TLC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tlc">2.1 TLC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-empirica-del-tlc-mediante-simulacion">2.2 Validación empírica del TLC mediante simulación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generacion-de-distribuciones-y-validacion-empirica-del-tlc">2.3 Generación de Distribuciones y Validación empírica del TLC</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-uniforme">2.3.1 Distribución Uniforme</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-exponencial">2.3.2 Distribución Exponencial</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-del-teorema-del-limite-central-mediante-simulacion-monte-carlo">2.4 Extensión del Teorema del Límite Central mediante Simulación Monte Carlo</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="complementaria-3-teorema-del-limite-central-y-validacion-empirica">
+<h1>Complementaria 3 — Teorema del Límite Central y validación empírica<a class="headerlink" href="#complementaria-3-teorema-del-limite-central-y-validacion-empirica" title="Link to this heading">#</a></h1>
+<p>En la complementaria anterior se estudió una variable aleatoria definida como el
+máximo de dos dados mediante simulación de Monte Carlo, a partir de la cual se estimaron
+empíricamente su función de probabilidad, su media y su varianza.</p>
+<p>En este contexto, la simulación de Monte Carlo permite aproximar cantidades de interés,
+pero dichas estimaciones están sujetas a variabilidad muestral. El Teorema del Límite
+Central (TLC) constituye el fundamento teórico que permite describir el comportamiento
+de la media muestral, aproximar su distribución y cuantificar la incertidumbre de las
+estimaciones obtenidas por simulación.</p>
+<p>A partir de este marco, surge la siguiente pregunta: ¿qué ocurre con la distribución de
+la media muestral cuando el número de observaciones aumenta? El Teorema del Límite Central
+responde a esta cuestión. A continuación se desarrolla la parte D de la Complementaria 2.</p>
+<section id="parte-d-extension-teorema-de-limite-central-tlc">
+<h2>1. Parte D — Extensión: Teorema de límite central (TLC)<a class="headerlink" href="#parte-d-extension-teorema-de-limite-central-tlc" title="Link to this heading">#</a></h2>
+<p>Tomaremos muchos promedios de <span class="math notranslate nohighlight">\(M=\max(D_1,D_2)\)</span>. Aunque <span class="math notranslate nohighlight">\(M\)</span> no es Normal, el <strong>promedio</strong> de <span class="math notranslate nohighlight">\(k\)</span> réplicas independientes se aproxima a Normal para <span class="math notranslate nohighlight">\(k\)</span> suficientemente grande (generalmente se considera 30 un valor de <span class="math notranslate nohighlight">\(k\)</span> suficientemente grande).</p>
+<p>Definimos el promedio:
+$<span class="math notranslate nohighlight">\(
+\bar M_k \;=\; \frac{1}{k}\sum_{j=1}^{k} M_j
+\)</span>$</p>
+<p>Parámetros teóricos de <span class="math notranslate nohighlight">\(M\)</span> con pmf <span class="math notranslate nohighlight">\(p(m)=\tfrac{2m-1}{36}\)</span> para <span class="math notranslate nohighlight">\(m=1,\dots,6\)</span>:
+$<span class="math notranslate nohighlight">\(
+\mu \;=\; \sum_{m=1}^{6} m\,p(m),
+\qquad
+\mathbb{E}[M^2] \;=\; \sum_{m=1}^{6} m^2\,p(m),
+\qquad
+\sigma^2 \;=\; \mathbb{E}[M^2]-\mu^2.
+\)</span>$</p>
+<p>Para el promedio de <span class="math notranslate nohighlight">\(k\)</span> observaciones i.i.d.:
+$<span class="math notranslate nohighlight">\(
+\mathbb{E}[\bar M_k] \;=\; \mu,
+\qquad
+\mathrm{Var}(\bar M_k) \;=\; \frac{\sigma^2}{k},
+\qquad
+\mathrm{SE}(\bar M_k) \;=\; \frac{\sigma}{\sqrt{k}}.
+\)</span>$</p>
+<p>Estandarización y forma límite (TLC):
+$<span class="math notranslate nohighlight">\(
+Z_k \;=\; \frac{\bar M_k - \mu}{\sigma/\sqrt{k}}
+\;\;\approx\;\; \mathcal{N}(0,1)
+\quad \text{cuando } k \text{ es grande.}
+\)</span>$</p>
+<p>Intervalo de confianza del 95 % para la media con <span class="math notranslate nohighlight">\(\sigma\)</span> desconocida (sustituyendo <span class="math notranslate nohighlight">\(s\)</span> por <span class="math notranslate nohighlight">\(\sigma\)</span>):
+$<span class="math notranslate nohighlight">\(
+\bar M_k \;\pm\; 1.96\,\frac{s}{\sqrt{k}}
+\quad\text{(para \)</span>k<span class="math notranslate nohighlight">\( grande; en muestras pequeñas usar } t_{0.975,\,k-1}\text{)}.
+\)</span>$</p>
+<p>Ideas prácticas:</p>
+<ul class="simple">
+<li><p>Aumentar <span class="math notranslate nohighlight">\(k\)</span> reduce la variabilidad del promedio: el error estándar cae como <span class="math notranslate nohighlight">\(1/\sqrt{k}\)</span>.</p></li>
+<li><p>Para visualizar el TLC, grafica el histograma de <span class="math notranslate nohighlight">\(Z_k\)</span> y un QQ-plot contra la Normal estándar; deberían verse cercanos a <span class="math notranslate nohighlight">\(\mathcal N(0,1)\)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importar librerías</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="simulacion-de-la-variable-aleatoria-base">
+<h2>Simulación de la variable aleatoria base<a class="headerlink" href="#simulacion-de-la-variable-aleatoria-base" title="Link to this heading">#</a></h2>
+<p>En esta sección se utiliza simulación de Monte Carlo para generar realizaciones
+independientes de la variable aleatoria ( M = <span class="math notranslate nohighlight">\(\max(D_1, D_2)\)</span> ), donde
+( D_1 ) y ( D_2 ) representan lanzamientos independientes de dos dados justos.
+La semilla del generador se fija para garantizar reproducibilidad.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># 0) generador con semilla (reproducible)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">200000</span>                        <span class="c1"># 1) número de simulaciones</span>
+
+<span class="c1"># 2) creación de las muestras de los dos dados y cálculo del máximo</span>
+<span class="n">d1</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>   <span class="c1"># enteros en [1,6]</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+<span class="n">M</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span>
+<span class="n">m</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="construccion-de-promedios-muestrales">
+<h2>Construcción de promedios muestrales<a class="headerlink" href="#construccion-de-promedios-muestrales" title="Link to this heading">#</a></h2>
+<p>Para analizar empíricamente el comportamiento de la media muestral, se construyen
+réplicas independientes. Cada réplica consiste en ( k ) observaciones de la variable
+( M ), a partir de las cuales se calcula un promedio.
+El número total de réplicas se denota por <code class="docutils literal notranslate"><span class="pre">reps</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">30</span>          <span class="c1"># tamaño del promedio (cuántos datos se promedian DENTRO de cada réplica)</span>
+<span class="n">reps</span> <span class="o">=</span> <span class="mi">20000</span>    <span class="c1"># número de réplicas (cuántos promedios se calculan)</span>
+
+<span class="c1"># 1) creación de las muestras de los dos dados y cálculo del máximo</span>
+<span class="n">rolls1</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">reps</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>  <span class="c1"># enteros en [1,6]</span>
+<span class="n">rolls2</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">reps</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+<span class="c1"># 2) se guardan en matrices de tamaño (reps, k)  -&gt; cada fila = 1 réplica con k observaciones</span>
+<span class="n">Mmat</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">rolls1</span><span class="p">,</span> <span class="n">rolls2</span><span class="p">)</span>
+<span class="c1"># 3) se calcula el promedio de cada fila (promedio dentro de cada réplica)</span>
+<span class="n">means</span>  <span class="o">=</span> <span class="n">Mmat</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="parametros-teoricos-de-la-variable-aleatoria">
+<h2>Parámetros teóricos de la variable aleatoria<a class="headerlink" href="#parametros-teoricos-de-la-variable-aleatoria" title="Link to this heading">#</a></h2>
+<p>Con el fin de aplicar el Teorema del Límite Central, se calculan los parámetros
+teóricos de la variable aleatoria ( M ), utilizando su función de probabilidad:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(M = m) = \frac{2m - 1}{36}, \quad m = 1, \dots, 6.
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4) parámetros teóricos de M (pmf: (2m-1)/36)</span>
+<span class="n">mu</span>   <span class="o">=</span> <span class="p">(</span><span class="n">m</span> <span class="o">*</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">36</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>          <span class="c1"># E[M]</span>
+<span class="n">Ex2</span>  <span class="o">=</span> <span class="p">((</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">36</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>     <span class="c1"># E[M^2]</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ex2</span> <span class="o">-</span> <span class="n">mu</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>               <span class="c1"># SD(M)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="aplicacion-del-teorema-del-limite-central">
+<h2>Aplicación del Teorema del Límite Central<a class="headerlink" href="#aplicacion-del-teorema-del-limite-central" title="Link to this heading">#</a></h2>
+<p>A continuación, se estandarizan los promedios muestrales utilizando la expresión
+del Teorema del Límite Central:</p>
+<div class="math notranslate nohighlight">
+\[
+Z = \frac{\bar{M} - \mu}{\sigma / \sqrt{k}}.
+\]</div>
+<p>Bajo este resultado teórico, la variable ( Z ) debería aproximarse a una
+distribución normal estándar cuando el tamaño de muestra ( k ) es suficientemente grande.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 5) estandarización de los promedios: Z = (mean - mu) / (sigma / sqrt(k))</span>
+<span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">means</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Media de z:&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">&quot;  Desv. Estándar de z:&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1"># análisis: z ~ Normal(0,1) -&gt; media ~ 0 y sd ~ 1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media de z: 0.0136380696018807   Desv. Estándar de z: 0.9973735563051509
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="intervalo-de-confianza-para-la-esperanza-de-m">
+<h2>Intervalo de confianza para la esperanza de ( M )<a class="headerlink" href="#intervalo-de-confianza-para-la-esperanza-de-m" title="Link to this heading">#</a></h2>
+<p>Finalmente, se construye un intervalo de confianza del 95% para la esperanza de
+la variable aleatoria ( M ), dado por:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{M} \pm 1.96 \, \frac{s}{\sqrt{n}}.
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># IC 95% para E[M] usando el TLC y s como estimador de sigma</span>
+<span class="n">inferior</span> <span class="o">=</span> <span class="n">means</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">means</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">reps</span><span class="p">)</span>
+<span class="n">superior</span> <span class="o">=</span> <span class="n">means</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">means</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">reps</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IC 95% para E[M]: (</span><span class="si">{</span><span class="n">inferior</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">superior</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IC 95% para E[M]: (4.4722, 4.4793)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualización TCL con un histograma de los z</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>   <span class="c1"># histograma de z</span>
+<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">()</span>                         <span class="c1"># límites del eje x para trazar la pdf</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>                <span class="c1"># malla para la curva teórica</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                           <span class="c1"># pdf de N(0,1)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>                     <span class="c1"># curva teórica sobre el histograma</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histograma de z y PDF de Normal(0,1)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;densidad&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/edd968a41cbd112e439de8884d43af4a14b2096127c70c3abce44beefc1de4bb.png" src="../../_images/edd968a41cbd112e439de8884d43af4a14b2096127c70c3abce44beefc1de4bb.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) cuantiles teóricos de N(0,1) para probs (i - 0.5)/reps</span>
+<span class="n">norm_quantiles</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">reps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">reps</span><span class="p">)</span>
+
+<span class="c1"># 2) ordenar los z muestrales</span>
+<span class="n">sorted_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+
+<span class="c1"># 3) gráfico QQ: puntos vs línea y = x</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">norm_quantiles</span><span class="p">,</span> <span class="n">sorted_z</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>      <span class="c1"># puntos QQ</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># línea de referencia</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;QQ-plot: z vs Normal(0,1)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Cuantiles teóricos N(0,1)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cuantiles muestrales de z&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/789720f5c69daed8eaaada88f9bb4d995a7301c29f634e2804eef486492de03e.png" src="../../_images/789720f5c69daed8eaaada88f9bb4d995a7301c29f634e2804eef486492de03e.png" />
+</div>
+</div>
+</section>
+<section id="formalizacion-del-tlc">
+<h2>2. Formalización del TLC<a class="headerlink" href="#formalizacion-del-tlc" title="Link to this heading">#</a></h2>
+<p>A partir de este momento se introduce formalmente el Teorema del Límite Central (TLC),
+el cual describe el comportamiento asintótico de la media muestral. A través de
+procedimientos de simulación y ejemplos con distintas distribuciones de probabilidad,
+se validará empíricamente el TLC y se ilustrarán algunas de sus aplicaciones utilizando Simulación de Montecarlo.</p>
+<section id="tlc">
+<h3>2.1 TLC<a class="headerlink" href="#tlc" title="Link to this heading">#</a></h3>
+<p>El análisis estadístico de fenómenos aleatorios se basa en el estudio de variables
+aleatorias y sus distribuciones de probabilidad. En muchos contextos prácticos,
+las distribuciones originales no siguen una forma normal, lo que dificulta el
+análisis directo.</p>
+<p>El <strong>Teorema del Límite Central (TLC)</strong> constituye uno de los resultados fundamentales
+de la probabilidad, ya que establece que, bajo condiciones generales, la distribución
+de la media muestral converge a una distribución normal cuando el tamaño de la muestra
+es suficientemente grande, independientemente de la distribución original.</p>
+<p>Sea <span class="math notranslate nohighlight">\(\{X_1, X_2, \dots, X_n\}\)</span> una sucesión de variables aleatorias independientes e
+idénticamente distribuidas, con esperanza matemática <span class="math notranslate nohighlight">\(\mu\)</span> y varianza finita <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<p>La media muestral se define como:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{X} = \frac{1}{n}\sum_{i=1}^{n} X_i
+\]</div>
+<p>El Teorema del Límite Central establece que, cuando <span class="math notranslate nohighlight">\(n \to \infty\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{X} \;\xrightarrow{d}\; \mathcal{N}\left(\mu,\frac{\sigma^2}{n}\right)
+\]</div>
+<p>Equivalentemente, la variable estandarizada:</p>
+<div class="math notranslate nohighlight">
+\[
+Z = \frac{\bar{X}-\mu}{\sigma/\sqrt{n}}
+\]</div>
+<p>converge en distribución a una normal estándar:</p>
+<div class="math notranslate nohighlight">
+\[
+Z \;\xrightarrow{d}\; \mathcal{N}(0,1)
+\]</div>
+</section>
+<section id="validacion-empirica-del-tlc-mediante-simulacion">
+<h3>2.2 Validación empírica del TLC mediante simulación<a class="headerlink" href="#validacion-empirica-del-tlc-mediante-simulacion" title="Link to this heading">#</a></h3>
+<p>Para verificar empíricamente el Teorema del Límite Central utilizaremos simulación.
+La idea consiste en:</p>
+<ol class="arabic simple">
+<li><p>Generar muchas muestras aleatorias de tamaño <span class="math notranslate nohighlight">\(n\)</span> desde una distribución dada.</p></li>
+<li><p>Calcular la media de cada muestra.</p></li>
+<li><p>Analizar la distribución empírica de esas medias.</p></li>
+</ol>
+<p>Este procedimiento ya es conocido y lo denotamos como <strong>Simulación Monte Carlo</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">pi</span>
+
+<span class="c1"># Fijamos la semilla para que los resultados sean reproducibles</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator(PCG64) at 0x153FA0F51C0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">normal_pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calcula la función de densidad de una Normal(mu, sigma^2).</span>
+<span class="sd">    Se utiliza únicamente para superponer la curva normal teórica</span>
+<span class="sd">    sobre los histogramas simulados.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">)))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">/</span><span class="n">sigma</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">simulate_sample_means</span><span class="p">(</span><span class="n">generator</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="mi">20000</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simula la distribución de la media muestral.</span>
+
+<span class="sd">    Parámetros</span>
+<span class="sd">    ----------</span>
+<span class="sd">    generator : función</span>
+<span class="sd">        Función que genera una muestra aleatoria de tamaño n.</span>
+<span class="sd">    n : int</span>
+<span class="sd">        Tamaño de cada muestra.</span>
+<span class="sd">    R : int</span>
+<span class="sd">        Número de repeticiones Monte Carlo.</span>
+
+<span class="sd">    Retorna</span>
+<span class="sd">    </span>
+<span class="sd">        Vector que contiene R medias muestrales.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>  <span class="c1"># vector para guardar las medias</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">generator</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>      <span class="c1"># genera una muestra aleatoria</span>
+        <span class="n">means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span> <span class="c1"># calcula la media de esa muestra</span>
+    
+    <span class="k">return</span> <span class="n">means</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generacion-de-distribuciones-y-validacion-empirica-del-tlc">
+<h3>2.3 Generación de Distribuciones y Validación empírica del TLC<a class="headerlink" href="#generacion-de-distribuciones-y-validacion-empirica-del-tlc" title="Link to this heading">#</a></h3>
+<section id="distribucion-uniforme">
+<h4>2.3.1 Distribución Uniforme<a class="headerlink" href="#distribucion-uniforme" title="Link to this heading">#</a></h4>
+<p>Sea <span class="math notranslate nohighlight">\(X \sim \mathcal{U}(0,1)\)</span>. Se tiene:</p>
+<div class="math notranslate nohighlight">
+\[
+\mu = \frac{1}{2}, \qquad \sigma^2 = \frac{1}{12}
+\]</div>
+<p>Se estudia la convergencia de la distribución de <span class="math notranslate nohighlight">\(\bar X\)</span> para distintos valores de <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parámetros teóricos de la Uniforme(0,1)</span>
+<span class="n">mu_u</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">sigma_u</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">uniform_rvs</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera una muestra aleatoria de tamaño n</span>
+<span class="sd">    desde una distribución Uniforme(0,1).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Valores de n que vamos a analizar</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">100</span><span class="p">]:</span>
+    
+    <span class="c1"># Simulamos muchas medias muestrales</span>
+    <span class="n">means</span> <span class="o">=</span> <span class="n">simulate_sample_means</span><span class="p">(</span><span class="n">uniform_rvs</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    
+    <span class="c1"># Eje x para la normal teórica</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">means</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">means</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">400</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    
+    <span class="c1"># Histograma de medias simuladas</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+             <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Simulación Monte Carlo&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Curva normal teórica según el TLC</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">x</span><span class="p">,</span>
+        <span class="n">normal_pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu_u</span><span class="p">,</span> <span class="n">sigma_u</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)),</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Normal teórica (TLC)&quot;</span>
+    <span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Media muestral — Uniforme(0,1), n=</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ca4af6e2eb9ae3b3925eb110a84002926a689cd94d934056e1e109d56a337a36.png" src="../../_images/ca4af6e2eb9ae3b3925eb110a84002926a689cd94d934056e1e109d56a337a36.png" />
+<img alt="../../_images/8191df867b682ccb67922be9e8016d57ca5d2c0889105893bd5623e70a8f5a26.png" src="../../_images/8191df867b682ccb67922be9e8016d57ca5d2c0889105893bd5623e70a8f5a26.png" />
+<img alt="../../_images/554e7c43061e599a4066027b47e37df28e1904580467628ee3c9a7dd4ac47fc5.png" src="../../_images/554e7c43061e599a4066027b47e37df28e1904580467628ee3c9a7dd4ac47fc5.png" />
+<img alt="../../_images/059d33a947ccbf689325bfce528a2b3b573935ace041217e59ac0c4ba39b7e57.png" src="../../_images/059d33a947ccbf689325bfce528a2b3b573935ace041217e59ac0c4ba39b7e57.png" />
+</div>
+</div>
+</section>
+<section id="distribucion-exponencial">
+<h4>2.3.2 Distribución Exponencial<a class="headerlink" href="#distribucion-exponencial" title="Link to this heading">#</a></h4>
+<p>Sea una variable aleatoria:</p>
+<div class="math notranslate nohighlight">
+\[
+X \sim \mathrm{Exp}(\lambda)
+\]</div>
+<p>La distribución exponencial se caracteriza por una marcada asimetría a la derecha.
+Sus momentos principales son:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}[X] = \frac{1}{\lambda}, \qquad
+\mathrm{Var}(X) = \frac{1}{\lambda^2}
+\]</div>
+<p>A pesar de no ser una distribución normal, la exponencial cumple las hipótesis del
+Teorema del Límite Central, ya que posee esperanza y varianza finitas.</p>
+<p>Sea una muestra independiente e idénticamente distribuida
+<span class="math notranslate nohighlight">\(\{X_1, X_2, \dots, X_n\}\)</span>, con:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{X} = \frac{1}{n}\sum_{i=1}^{n} X_i
+\]</div>
+<p>Entonces, cuando <span class="math notranslate nohighlight">\(n\)</span> es suficientemente grande:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{X}
+\;\xrightarrow{d}\;
+\mathcal{N}\left(
+\frac{1}{\lambda},
+\frac{1}{n\lambda^2}
+\right)
+\]</div>
+<p>A continuación se valida empíricamente este resultado mediante simulación Monte Carlo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">expon_rvs</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">mu_e</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sigma_e</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">100</span><span class="p">]:</span>
+    <span class="n">means</span> <span class="o">=</span> <span class="n">simulate_sample_means</span><span class="p">(</span><span class="n">expon_rvs</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">means</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">means</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">400</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">normal_pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu_e</span><span class="p">,</span> <span class="n">sigma_e</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exponencial(1) — Media muestral, n=</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/48699d035b67a38c102243cfb8497e6b586695bf7892ef8ef788f309fea2cf78.png" src="../../_images/48699d035b67a38c102243cfb8497e6b586695bf7892ef8ef788f309fea2cf78.png" />
+<img alt="../../_images/327ad19d847c185fdcd377f86a2471193902d376be48f44b642bba06fdeceea0.png" src="../../_images/327ad19d847c185fdcd377f86a2471193902d376be48f44b642bba06fdeceea0.png" />
+</div>
+</div>
+<div style="background-color:#fff4e5; border-left:4px solid #f5a623; padding:10px; margin:10px 0;">
+<p><strong>Observación importante</strong></p>
+<p>Si bien el Teorema del Límite Central garantiza la convergencia de la distribución
+de la media muestral hacia una normal, es importante notar que no existe un tamaño
+de muestra n “mágico” a partir del cual esta aproximación sea exacta.<br />
+La <strong>velocidad de convergencia</strong> depende de la distribución original de la variable
+aleatoria, en particular de su asimetría y dispersión. Este comportamiento se observa
+de manera implícita en los resultados obtenidos, donde tamaños de muestra moderados
+ya permiten una aproximación razonable.</p>
+</div>
+<p>Para verificar el TLC de forma más formal, se estandariza la media muestral:</p>
+<div class="math notranslate nohighlight">
+\[
+Z = \frac{\bar{X}-\mu}{\sigma/\sqrt{n}}
+\]</div>
+<p>Si el TLC se cumple, entonces <span class="math notranslate nohighlight">\(Z\)</span> debe aproximarse a una distribución
+normal estándar <span class="math notranslate nohighlight">\(\mathcal{N}(0,1)\)</span>.</p>
+<p>Para verificar esto, realizamos el siguiente procedimiento</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="c1"># Generamos medias muestrales desde una exponencial</span>
+<span class="n">means</span> <span class="o">=</span> <span class="n">simulate_sample_means</span><span class="p">(</span><span class="n">expon_rvs</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="mi">30000</span><span class="p">)</span>
+
+<span class="c1"># Estandarización de la media muestral</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="p">(</span><span class="n">means</span> <span class="o">-</span> <span class="n">mu_e</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma_e</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualización</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Z estandarizado (simulación)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">normal_pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Normal estándar&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Media(Z):&quot;</span><span class="p">,</span> <span class="n">Z</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Var(Z):&quot;</span><span class="p">,</span> <span class="n">Z</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e5988c6b8e2a734a79c7d2e3912233521553b9e8183b298fdfee8838bb4e447a.png" src="../../_images/e5988c6b8e2a734a79c7d2e3912233521553b9e8183b298fdfee8838bb4e447a.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media(Z): -0.01119291273972841
+Var(Z): 1.0079120400507036
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="extension-del-teorema-del-limite-central-mediante-simulacion-monte-carlo">
+<h3>2.4 Extensión del Teorema del Límite Central mediante Simulación Monte Carlo<a class="headerlink" href="#extension-del-teorema-del-limite-central-mediante-simulacion-monte-carlo" title="Link to this heading">#</a></h3>
+<p>En muchos problemas aplicados, la variable de interés no corresponde a una
+distribución de probabilidad elemental, sino al resultado de un sistema compuesto
+por varias variables aleatorias. En estos casos, la distribución analítica de la
+variable final suele ser desconocida o intratable.</p>
+<p>Sea la ganancia diaria <span class="math notranslate nohighlight">\(G\)</span> definida como:</p>
+<div class="math notranslate nohighlight">
+\[
+G = (P - C)\cdot D
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D \sim \mathrm{Poisson}(\lambda)\)</span> representa la demanda diaria,</p></li>
+<li><p><span class="math notranslate nohighlight">\(C \sim \mathrm{Lognormal}(\mu_L,\sigma_L)\)</span> representa el costo unitario,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span> es un precio unitario fijo.</p></li>
+</ul>
+<p>La variable <span class="math notranslate nohighlight">\(G\)</span> es una combinación no lineal de variables aleatorias discretas y
+continuas, por lo que su distribución no tiene una forma cerrada sencilla.</p>
+<p>El objetivo no es estudiar la distribución de <span class="math notranslate nohighlight">\(G\)</span>, sino <strong>estimar su valor esperado</strong>
+<span class="math notranslate nohighlight">\(\mathbb{E}[G]\)</span> y cuantificar la incertidumbre asociada a dicha estimación.
+.</p>
+<p>Para estimar <span class="math notranslate nohighlight">\(\mathbb{E}[G]\)</span>, se utiliza Simulación Monte Carlo. Se generan
+<span class="math notranslate nohighlight">\(R\)</span> realizaciones independientes de la variable <span class="math notranslate nohighlight">\(G\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+G_1, G_2, \dots, G_R
+\]</div>
+<p>y se calcula su promedio muestral:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{G} = \frac{1}{R}\sum_{i=1}^{R} G_i
+\]</div>
+<p>Este promedio constituye un estimador natural del valor esperado
+<span class="math notranslate nohighlight">\(\mathbb{E}[G]\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parámetros del sistema</span>
+<span class="n">lam</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">P</span> <span class="o">=</span> <span class="mf">15.0</span>
+<span class="n">mu_L</span> <span class="o">=</span> <span class="mf">2.2</span>
+<span class="n">sigma_L</span> <span class="o">=</span> <span class="mf">0.25</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_profit</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simula R realizaciones independientes de la ganancia diaria:</span>
+<span class="sd">    G = (P - C) * D</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">lam</span><span class="o">=</span><span class="n">lam</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">R</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">lognormal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mu_L</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma_L</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">R</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">P</span> <span class="o">-</span> <span class="n">C</span><span class="p">)</span> <span class="o">*</span> <span class="n">D</span>
+
+<span class="n">R</span> <span class="o">=</span> <span class="mi">50000</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">simulate_profit</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Las variables aleatorias <span class="math notranslate nohighlight">\(G_1, \dots, G_R\)</span> son independientes e idénticamente
+distribuidas y poseen varianza finita. Por lo tanto, el Teorema del Límite Central
+es aplicable al promedio muestral <span class="math notranslate nohighlight">\(\bar{G}\)</span>.</p>
+<p>Cuando <span class="math notranslate nohighlight">\(R\)</span> es suficientemente grande, se tiene:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{G}
+\;\xrightarrow{d}\;
+\mathcal{N}\left(
+\mathbb{E}[G],
+\frac{\mathrm{Var}(G)}{R}
+\right)
+\]</div>
+<p>Este resultado permite aproximar la distribución de <span class="math notranslate nohighlight">\(\bar{G}\)</span> mediante una normal
+y realizar inferencia estadística sobre <span class="math notranslate nohighlight">\(\mathbb{E}[G]\)</span>.</p>
+<p>En la práctica, <span class="math notranslate nohighlight">\(\mathrm{Var}(G)\)</span> es desconocida y se reemplaza por la varianza
+muestral <span class="math notranslate nohighlight">\(s_G^2\)</span>. El error estándar del estimador <span class="math notranslate nohighlight">\(\bar{G}\)</span> se define como:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{SE} = \frac{s_G}{\sqrt{R}}
+\]</div>
+<p>Un intervalo de confianza del <span class="math notranslate nohighlight">\(95\%\)</span> para <span class="math notranslate nohighlight">\(\mathbb{E}[G]\)</span> está dado por:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{G} \pm 1.96 \cdot \mathrm{SE}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estadísticos muestrales</span>
+<span class="n">mean_G</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">std_G</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Error estándar según el TLC</span>
+<span class="n">se</span> <span class="o">=</span> <span class="n">std_G</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+
+<span class="c1"># Intervalo de confianza del 95%</span>
+<span class="n">ci_low</span> <span class="o">=</span> <span class="n">mean_G</span> <span class="o">-</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">se</span>
+<span class="n">ci_high</span> <span class="o">=</span> <span class="n">mean_G</span> <span class="o">+</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">se</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimación Monte Carlo de E[G]:&quot;</span><span class="p">,</span> <span class="n">mean_G</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intervalo de confianza 95%:&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">ci_low</span><span class="p">,</span> <span class="n">ci_high</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimación Monte Carlo de E[G]: 113.8125909881482
+Intervalo de confianza 95%: (np.float64(113.32970486654801), np.float64(114.29547710974839))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aunque la variable <span class="math notranslate nohighlight">\(G\)</span> no sigue una distribución normal y su forma es desconocida,
+el Teorema del Límite Central garantiza que el promedio de las simulaciones Monte
+Carlo se aproxima a una distribución normal cuando el número de simulaciones es
+suficientemente grande.</p>
+<p>En consecuencia, el TLC permite realizar inferencia estadística sobre el valor
+esperado de variables aleatorias complejas mediante Simulación Monte Carlo, incluso
+en ausencia de una expresión analítica para su distribución.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content\complementarias"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="complementaria_intro_montecarlo.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Complementaria Semana 2: Introducción a la simulación de Montecarlo</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="complementaria_filas.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Complementaria 5: Cálculo de filas</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-d-extension-teorema-de-limite-central-tlc">1. Parte D — Extensión: Teorema de límite central (TLC)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulacion-de-la-variable-aleatoria-base">Simulación de la variable aleatoria base</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-promedios-muestrales">Construcción de promedios muestrales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros-teoricos-de-la-variable-aleatoria">Parámetros teóricos de la variable aleatoria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-del-teorema-del-limite-central">Aplicación del Teorema del Límite Central</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intervalo-de-confianza-para-la-esperanza-de-m">Intervalo de confianza para la esperanza de ( M )</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formalizacion-del-tlc">2. Formalización del TLC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tlc">2.1 TLC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-empirica-del-tlc-mediante-simulacion">2.2 Validación empírica del TLC mediante simulación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generacion-de-distribuciones-y-validacion-empirica-del-tlc">2.3 Generación de Distribuciones y Validación empírica del TLC</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-uniforme">2.3.1 Distribución Uniforme</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-exponencial">2.3.2 Distribución Exponencial</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-del-teorema-del-limite-central-mediante-simulacion-monte-carlo">2.4 Extensión del Teorema del Límite Central mediante Simulación Monte Carlo</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Equipo Modelado Bajo Incertidumbre | Uniandes
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

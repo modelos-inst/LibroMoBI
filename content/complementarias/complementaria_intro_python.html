@@ -61,7 +61,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_intro_python';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Complementaria 2: Introducción a la Simulación de Montecarlo" href="complementaria_intro_montecarlo.html" />
+    <link rel="next" title="Complementaria Semana 2: Introducción a la simulación de Montecarlo" href="complementaria_intro_montecarlo.html" />
     <link rel="prev" title="Ambientes virtuales en Python" href="ambientes_virtuales.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -185,9 +185,17 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial. Instalación Python y Visual Studio Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ambientes_virtuales.html">Ambientes virtuales en Python</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria 1: Introducción a Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria 2: Introducción a la Simulación de Montecarlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria 2: Introducción a la simulación de Montecarlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria 3: Teorema del Límite Central y validación empírica</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_filas.html">Complementaria 5: Cálculo de filas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_cmtc.html">Complementaria 7: Cadenas de Markov en Python I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
+
+
+
+
+
+
 </ul>
 
     </div>
@@ -950,12 +958,12 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\downloads\modelos\r
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[15.9897738  27.7239742  15.63075397 31.93557469 13.28770752 26.37448486]
- [30.74681881 17.04242711  5.74809705 13.26477029 11.47863579 21.71480048]
- [22.94949057 27.21020262 19.63957922 10.03737165 27.10746975 18.38328219]
- [ 7.84739156 19.7722119  33.66404265 26.58071906  7.75819396 24.321912  ]
- [19.0879223  22.60914242 17.87614488 24.71864267 22.80832026 19.14923305]
- [33.97599077 29.89523229 16.64649463 13.67336477 23.61665977 13.44159206]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[15.00644543 25.63590026 25.51565084 11.63835642 20.7254294   7.38647382]
+ [29.37026226 31.0251971  23.2969769  14.07737038 33.39435175 14.74923222]
+ [25.53416347  7.7549488  20.76517288 30.14704435 26.86445119 22.99524697]
+ [17.33295549 20.99300549 13.94676239 14.16379868 15.69815248 10.39617266]
+ [19.95601243  8.8015651  28.78950977  8.00753359 14.46948442 34.28799463]
+ [30.74939763 21.41806282 22.00323832 30.58359803 22.68296779 27.58380025]]
 </pre></div>
 </div>
 </div>
@@ -968,12 +976,12 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\downloads\modelos\r
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 9.41989024 15.92643526 13.25814346 12.61292795 14.48716449  9.20742602]
- [ 9.2120265  10.3939479  12.55107357 13.59297822 12.0262906  11.0243116 ]
- [12.58799158 13.53801825 10.90535447 11.02132964 11.77940987  5.64198584]
- [10.72556568  7.37018877 10.45716124 10.93173511  9.92204315 14.39497827]
- [ 9.0263778  12.5557059   6.27703746 12.27886893 11.95861618  6.56549283]
- [11.05527509 10.4660453  13.55750129 10.93617702 14.22592996  7.93860998]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 9.42851897  9.08480282 13.62338725 15.03561797 12.08782197 10.92671914]
+ [10.80819799  9.1358075   8.94598538  7.65753392 11.21522003 10.0662613 ]
+ [10.6483648  16.63033909 13.48059896  8.84844684  7.68398368 10.2571712 ]
+ [12.89825693  5.71075533 10.39137087  6.95318596  9.58579043  5.52571527]
+ [12.49966136  9.49811208 14.85082884  8.29407708 10.58882954  3.75373017]
+ [ 9.65695852  2.01824417  8.5271073  12.01146198  4.9313633   8.70566682]]
 </pre></div>
 </div>
 </div>
@@ -1030,12 +1038,12 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\downloads\modelos\r
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[25.40966404 43.65040946 28.88889743 44.54850264 27.77487201 35.58191088]
- [39.95884531 27.43637501 18.29917061 26.85774851 23.50492639 32.73911207]
- [35.53748215 40.74822087 30.54493369 21.05870129 38.88687961 24.02526803]
- [18.57295724 27.14240066 44.12120389 37.51245418 17.68023711 38.71689027]
- [28.1143001  35.16484832 24.15318234 36.9975116  34.76693643 25.71472588]
- [45.03126586 40.36127758 30.20399592 24.60954179 37.84258973 21.38020204]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[24.43496441 34.72070308 39.13903809 26.67397439 32.81325138 18.31319296]
+ [40.17846025 40.1610046  32.24296228 21.7349043  44.60957178 24.81549352]
+ [36.18252827 24.38528789 34.24577183 38.9954912  34.54843487 33.25241817]
+ [30.23121242 26.70376082 24.33813327 21.11698464 25.28394292 15.92188793]
+ [32.4556738  18.29967718 43.64033861 16.30161067 25.05831396 38.04172479]
+ [40.40635615 23.43630699 30.53034562 42.59506001 27.61433109 36.28946708]]
 </pre></div>
 </div>
 </div>
@@ -1047,18 +1055,18 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\downloads\modelos\r
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1356.81985566 1432.67538768 1505.35427118 1551.50623184 1600.15442944
-  1297.37988294]
- [1004.92970665 1213.79748279 1189.3936307  1206.24494483 1295.89604714
-   942.10508141]
- [1269.63664115 1520.93699183 1384.30985488 1519.40002377 1576.33184793
-  1090.48506943]
- [1303.833458   1334.10548913 1375.72433962 1390.58830302 1450.52949656
-  1106.80876744]
- [1295.80489331 1449.98074699 1393.05638273 1504.79648613 1549.43545945
-  1183.44829959]
- [1313.41967317 1615.18587753 1480.67338379 1604.82757172 1657.13983324
-  1194.91542061]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1170.77263131 1073.09313841 1269.45680002  989.25715169 1032.41561833
+   890.15937779]
+ [1601.7436088  1365.04316111 1759.71588299 1437.33634763 1443.27414697
+  1203.732256  ]
+ [1492.38651508 1121.8864118  1605.47584696 1335.68560819 1242.02938974
+  1037.67474982]
+ [1018.13618585  832.1647432  1080.90853613  898.33197993  905.38912153
+   771.46510751]
+ [1205.1105251   992.84854719 1329.17749049 1209.72954221  960.21433927
+   999.01327575]
+ [1700.09058692 1286.71648752 1797.00986651 1553.14971845 1450.35383679
+  1271.55820083]]
 </pre></div>
 </div>
 </div>
@@ -1070,8 +1078,8 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\downloads\modelos\r
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([130.94226903,  99.99554952, 125.327396  , 119.94447113,
-       126.24940558, 131.24933429])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([105.90825619, 145.91339062, 134.06102767,  92.5308472 ,
+       114.31209993, 155.02106484])
 </pre></div>
 </div>
 </div>
@@ -1083,8 +1091,8 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\downloads\modelos\r
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([130.59738782, 144.25319052, 109.20511241, 120.21044313,
-       106.05698704, 123.38530464])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([137.94923673, 115.62867958, 134.3173111 , 108.61770146,
+       133.83483704, 117.39892055])
 </pre></div>
 </div>
 </div>
@@ -1137,7 +1145,7 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\downloads\modelos\r
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Complementaria 2: Introducción a la Simulación de Montecarlo</p>
+        <p class="prev-next-title">Complementaria Semana 2: Introducción a la simulación de Montecarlo</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

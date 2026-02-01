@@ -9,6 +9,7 @@ logo: uniandes.png
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: force
+  kernel_name: libromobi
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -32,7 +33,40 @@ html:
     - _static/custom.css
 
 
+parse:
+  myst_enable_extensions:
+    - dollarmath
+    - amsmath
+    - colon_fence
+
 sphinx:
   config:
-    templates_path: ["_templates"]
+    # Desactivar que myst sobrescriba la config de MathJax
+    myst_update_mathjax: false
+    # Forzar que myst-nb use el parser MyST para markdown en notebooks
+    nb_render_markdown_format: myst
+    # Usar MathJax LOCAL - evita bloqueo de CDN por tracking prevention
+    mathjax_path: mathjax/tex-svg.js
+    mathjax3_config:
+      loader:
+        load: ['[tex]/ams']
+      tex:
+        packages:
+          '[+]': ['ams']
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        processEscapes: true
+        processEnvironments: true
+      svg:
+        fontCache: 'global'
+      options:
+        ignoreHtmlClass: "ignore-this-class-that-does-not-exist"
+        processHtmlClass: "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"
+
+
+
+launch_buttons:
+  thebe: false
+
+
 

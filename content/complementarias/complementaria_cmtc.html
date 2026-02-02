@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Complementaria 7: Cadenas de Markov en Python I &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
@@ -28,38 +29,43 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=003d74d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/mathjax/tex-svg.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/ams"]}, "tex": {"packages": {"[+]": ["ams"]}, "inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "svg": {"fontCache": "global"}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
+    <script defer="defer" src="../../_static/mathjax/tex-svg.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_cmtc';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -161,18 +167,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -192,6 +187,8 @@
 <li class="toctree-l1"><a class="reference internal" href="complementaria_filas.html">Complementaria 5: Cálculo de filas</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria 7: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
+
+
 
 
 
@@ -227,9 +224,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -323,9 +320,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -362,12 +359,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="complementaria-7-cadenas-de-markov-en-python-i">
-<h1>Complementaria 7: Cadenas de Markov en Python I<a class="headerlink" href="#complementaria-7-cadenas-de-markov-en-python-i" title="Link to this heading">#</a></h1>
+  <section id="complementaria-7-cadenas-de-markov-en-python-i">
+<h1>Complementaria 7: Cadenas de Markov en Python I<a class="headerlink" href="#complementaria-7-cadenas-de-markov-en-python-i" title="Permalink to this heading">#</a></h1>
 <p>Una cadena de Márkov es un proceso estocástico que describe el estado de un sistema a través de una variable de estado que, a partir de un estado inicial, realiza transiciones entre distintos estados, siempre dentro de un espacio de estados definido. Su característica fundamental es la <strong>propiedad de no memoria</strong>, según la cual la probabilidad con la cual se visita el siguiente estado depende únicamente del estado actual, y no de la secuencia de eventos o estados anteriores.</p>
 <p>Este tipo de modelos permite representar y analizar sistemas complejos bajo dichos supuestos, facilitando la comprensión de su comportamiento tanto a corto como a largo plazo. Gracias a ello, es posible anticipar escenarios futuros, optimizar decisiones y prevenir situaciones indeseadas.</p>
 <section id="parte-1-ejercicio-guiado">
-<h2>Parte 1: Ejercicio Guiado<a class="headerlink" href="#parte-1-ejercicio-guiado" title="Link to this heading">#</a></h2>
+<h2>Parte 1: Ejercicio Guiado<a class="headerlink" href="#parte-1-ejercicio-guiado" title="Permalink to this heading">#</a></h2>
 <p>RentBike es un servicio de alquiler de bicicletas el cual funciona en el área cercana a la zona universitaria del centro de la ciudad, con <span class="math notranslate nohighlight">\(30\)</span> bicicletas disponibles para alquiler. Las personas se acercan a este lugar y rentan bicicletas para su uso en lugares cercanos. Después de esto, los clientes las devuelven en el mismo lugar. La llegada de clientes al local de RentBike sigue un Proceso de Poisson con media de <span class="math notranslate nohighlight">\(5\)</span> personas por hora. Por otro lado, los clientes hacen uso de las bicicletas durante un tiempo que se distribuye exponencial con tasa de <span class="math notranslate nohighlight">\(9\)</span> personas por hora.</p>
 <p>Para modelar cadenas de Markov en Python utilizaremos la librería <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>. Especificamente, ya que queremos modelar una cadena en tiempo <strong>continuo</strong>, usaremos el módulo <code class="docutils literal notranslate"><span class="pre">ctmc</span></code>. También usaremos <code class="docutils literal notranslate"><span class="pre">numpy</span></code> para el manejo general de matrices y vectores. Accedemos a ellas a continuación.</p>
 <div class="cell docutils container">
@@ -515,7 +512,7 @@ document.write(`
 </div>
 </section>
 <section id="parte-2-ejercicio-aplicado">
-<h2>Parte 2: Ejercicio Aplicado<a class="headerlink" href="#parte-2-ejercicio-aplicado" title="Link to this heading">#</a></h2>
+<h2>Parte 2: Ejercicio Aplicado<a class="headerlink" href="#parte-2-ejercicio-aplicado" title="Permalink to this heading">#</a></h2>
 <p>En una estación de control fronterizo se realiza la <span class="math notranslate nohighlight">\(\textbf{inspección y registro de viajeros}\)</span> que ingresan al país. Los viajeros llegan al punto de control, con una tasa promedio de <span class="math notranslate nohighlight">\(\lambda = 10\)</span> personas por hora, y deben pasar por <span class="math notranslate nohighlight">\(\textbf{dos etapas sucesivas}\)</span>:</p>
 <p>Todos los pasajeros que llegan pasan por una verificación automática de documentos, en la que cada viajero escanea su pasaporte y formulario digital en una máquina de autogestión o por medio de su teléfono móvil. El tiempo de servicio en esta estación tiene una media de <span class="math notranslate nohighlight">\(5\)</span> minutos.</p>
 <p>Luego de la verificación de documentos, se realiza una inspección por parte de un oficial migratorio. El tiempo promedio de atención es de <span class="math notranslate nohighlight">\(4\)</span> minutos  y hay tres oficiales disponibles.
@@ -629,14 +626,14 @@ Una vez atendidos, el <span class="math notranslate nohighlight">\(80\%\)</span>
 </div>
 </div>
 <section id="preguntas-de-profundizacion">
-<h3>Preguntas de Profundización<a class="headerlink" href="#preguntas-de-profundizacion" title="Link to this heading">#</a></h3>
+<h3>Preguntas de Profundización<a class="headerlink" href="#preguntas-de-profundizacion" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>¿Qué tipo de sistemas se puede modelar como una cadena de Markov en tiempo continuo?</p></li>
 <li><p>¿Por qué es útil crear cadenas como objetos cadenas de Markov? ¿Por qué no basta con solo tener la matriz de transición?</p></li>
 <li><p>¿Cómo cambia el sistema si se cambia su capacidad?</p></li>
 <li><p>¿Cómo cambia se se modifican sus tasas de entrada y servicio? ¿Qué tal si se cambian el número de servidores?</p></li>
 </ul>
-<p>Universidad de los Andes | Vigilada Mineducación. Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia. Departamento de Ingeniería Industrial Carrera 1 Este No. 19 A 40 Bogotá, Colombia Tel. (57.1) 3324320 | (57.1) 3394949 Ext. 2880 /2881 <a class="reference external" href="http://industrial.uniandes.edu.co">http://industrial.uniandes.edu.co</a></p>
+<p>Universidad de los Andes | Vigilada Mineducación. Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia. Departamento de Ingeniería Industrial Carrera 1 Este No. 19 A 40 Bogotá, Colombia Tel. (57.1) 3324320 | (57.1) 3394949 Ext. 2880 /2881 http://industrial.uniandes.edu.co</p>
 </section>
 </section>
 </section>
@@ -650,16 +647,16 @@ Una vez atendidos, el <span class="math notranslate nohighlight">\(80\%\)</span>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "entorno"
+            mode: "libromobi"
         },
         kernelOptions: {
-            name: "entorno",
+            name: "libromobi",
             path: "./content\complementarias"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'entorno'</script>
+    <script>kernelName = 'libromobi'</script>
 
                 </article>
               
@@ -734,7 +731,7 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

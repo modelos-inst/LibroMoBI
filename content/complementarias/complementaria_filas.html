@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Complementaria 5: Cálculo de filas &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
@@ -28,38 +29,43 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=003d74d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/mathjax/tex-svg.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/ams"]}, "tex": {"packages": {"[+]": ["ams"]}, "inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "svg": {"fontCache": "global"}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
+    <script defer="defer" src="../../_static/mathjax/tex-svg.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_filas';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -161,18 +167,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -192,6 +187,8 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria 5: Cálculo de filas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_cmtc.html">Complementaria 7: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
+
+
 
 
 
@@ -227,9 +224,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -323,9 +320,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -369,8 +366,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="complementaria-5-calculo-de-filas">
-<h1>Complementaria 5: Cálculo de filas<a class="headerlink" href="#complementaria-5-calculo-de-filas" title="Link to this heading">#</a></h1>
+  <section id="complementaria-5-calculo-de-filas">
+<h1>Complementaria 5: Cálculo de filas<a class="headerlink" href="#complementaria-5-calculo-de-filas" title="Permalink to this heading">#</a></h1>
 <p>En este tutorial se utilizará la libreria <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> en Python para analizar modelos Markovianos de nacimiento y muerte mediante teoría de colas.</p>
 <p>Para analizar cada tipo de cola, es necesario identificar su naturaleza. Para familiarizarnos con la librería, realicemos un ejemplo para una cola <span class="math notranslate nohighlight">\(M/M/1\)</span> con tasa de llegada <span class="math notranslate nohighlight">\(3h^{-1}\)</span> y tasa de servicio <span class="math notranslate nohighlight">\(1h^{-1}\)</span>. Dado que es una cola con capacidad infinita, utilizaremos el módulo <code class="docutils literal notranslate"><span class="pre">mmk</span></code>.</p>
 <div class="cell docutils container">
@@ -475,7 +472,7 @@ document.write(`
 </div>
 <p>A continuación, resolveremos los ejercicios propuestos en el archivo <code class="docutils literal notranslate"><span class="pre">Complementaria</span> <span class="pre">8</span> <span class="pre">(Q).pdf</span></code> que se encuentra en Bloque Neón.</p>
 <section id="problema-1-foodtruck">
-<h2>Problema 1: FoodTruck<a class="headerlink" href="#problema-1-foodtruck" title="Link to this heading">#</a></h2>
+<h2>Problema 1: FoodTruck<a class="headerlink" href="#problema-1-foodtruck" title="Permalink to this heading">#</a></h2>
 <p>A un Food Truck en la ciudad de Bogotá llegan en promedio 80 clientes por hora, de acuerdo con un
 Proceso de Poisson.
 El Food Truck cuenta con dos empleadas: Daniela y Isabella, y cada una tarda
@@ -500,7 +497,7 @@ del tiempo que Daniela permanece ociosa.</p></li>
 </div>
 </div>
 <section id="literal-a">
-<h3>Literal a<a class="headerlink" href="#literal-a" title="Link to this heading">#</a></h3>
+<h3>Literal a<a class="headerlink" href="#literal-a" title="Permalink to this heading">#</a></h3>
 <p>En el literal a, se debe hallar el número esperado de clientes en estado estable. Para esto, verificamos que el sistema alcance estado estable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -603,7 +600,7 @@ del tiempo que Daniela permanece ociosa.</p></li>
 </div>
 </section>
 <section id="literal-b">
-<h3>Literal b<a class="headerlink" href="#literal-b" title="Link to this heading">#</a></h3>
+<h3>Literal b<a class="headerlink" href="#literal-b" title="Permalink to this heading">#</a></h3>
 <p>Para el literal b, se debe hallar el tiempo en horas que un cliente debe esperar en fila para ser atendido.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -659,7 +656,7 @@ del tiempo que Daniela permanece ociosa.</p></li>
 </div>
 </section>
 <section id="literal-c">
-<h3>Literal c<a class="headerlink" href="#literal-c" title="Link to this heading">#</a></h3>
+<h3>Literal c<a class="headerlink" href="#literal-c" title="Permalink to this heading">#</a></h3>
 <p>Para el literal c, se debe hallar la fracción del tiempo que Daniela se encuentra ociosa.</p>
 <p>Daniela estará ociosa cuando no haya personas en el sistema y la mitad del tiempo cuando haya una persona en el sistema. Esta fracción del tiempo corresponde a: <span class="math notranslate nohighlight">\(\pi_0 + 0.5 \cdot \pi_1\)</span></p>
 <p>Para hallar las probabilidades en estado estable utilizamos el atributo <code class="docutils literal notranslate"><span class="pre">probs</span></code>, el cual nos devuelve un vector que guarda la probabilidad de estar en cada uno de los estados del sistema, en el largo plazo.</p>
@@ -687,7 +684,7 @@ del tiempo que Daniela permanece ociosa.</p></li>
 <p>Esto quiere decir que, el 20% del tiempo, Daniela estará ociosa.</p>
 </section>
 <section id="literal-d">
-<h3>Literal d<a class="headerlink" href="#literal-d" title="Link to this heading">#</a></h3>
+<h3>Literal d<a class="headerlink" href="#literal-d" title="Permalink to this heading">#</a></h3>
 <p>Finalmente, para el literal d, se debe hallar la fracción del tiempo que Daniela se encuentra ociosa dado que se contrató un tercer empleado.</p>
 <p>Este problema corresponde a una cola <span class="math notranslate nohighlight">\(M/M/3\)</span>, manteniendo las mismas tasas de llegada y de servicio. Así, debemos crear un nuevo objeto tipo cola.</p>
 <div class="cell docutils container">
@@ -772,7 +769,7 @@ del tiempo que Daniela permanece ociosa.</p></li>
 </div></section>
 </section>
 <section id="problema-2-peluqueria">
-<h2>Problema 2: Peluquería<a class="headerlink" href="#problema-2-peluqueria" title="Link to this heading">#</a></h2>
+<h2>Problema 2: Peluquería<a class="headerlink" href="#problema-2-peluqueria" title="Permalink to this heading">#</a></h2>
 <p>A una recién inaugurada peluquería llega en promedio 20 clientes por hora para realizarse un corte
 de pelo. El establecimiento únicamente tiene 10 asientos por lo que, si todos se encuentran ocupados,
 los clientes que llegan deciden dirigirse a otra peluquería. María es la única empleada del
@@ -801,7 +798,7 @@ distribuye exponencial y responda los siguientes literales:</p>
 </div>
 </div>
 <section id="id1">
-<h3>Literal a<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>Literal a<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Se debe hallar el número de cortes de pelo que se realizan en una hora. Esto corresponde a la tasa efectiva de entrada al sistema. En Python, podemos llamar el método <code class="docutils literal notranslate"><span class="pre">_solve_db_process()</span></code> para resolver el proceso de nacimiento y muerte, encontrando las probabilidades en estado estable y luego llamando el atributo <code class="docutils literal notranslate"><span class="pre">eff_arr_rate</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -822,7 +819,7 @@ distribuye exponencial y responda los siguientes literales:</p>
 <p>Esto quiere decir que, en promedio en la peluquería se atienden 4.99 personas en una hora.</p>
 </section>
 <section id="id2">
-<h3>Literal b<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3>Literal b<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>Ahora, se debe hallar el tiempo promedio en horas que un cliente permanece en la peluquería.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -837,7 +834,7 @@ distribuye exponencial y responda los siguientes literales:</p>
 </div>
 </div>
 </div>
-<p>Universidad de los Andes | Vigilada Mineducación. Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia. Departamento de Ingeniería Industrial Carrera 1 Este No. 19 A 40 Bogotá, Colombia Tel. (57.1) 3324320 | (57.1) 3394949 Ext. 2880 /2881 <a class="reference external" href="http://industrial.uniandes.edu.co">http://industrial.uniandes.edu.co</a></p>
+<p>Universidad de los Andes | Vigilada Mineducación. Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia. Departamento de Ingeniería Industrial Carrera 1 Este No. 19 A 40 Bogotá, Colombia Tel. (57.1) 3324320 | (57.1) 3394949 Ext. 2880 /2881 http://industrial.uniandes.edu.co</p>
 </section>
 </section>
 </section>
@@ -851,16 +848,16 @@ distribuye exponencial y responda los siguientes literales:</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "entorno"
+            mode: "libromobi"
         },
         kernelOptions: {
-            name: "entorno",
+            name: "libromobi",
             path: "./content\complementarias"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'entorno'</script>
+    <script>kernelName = 'libromobi'</script>
 
                 </article>
               
@@ -942,7 +939,7 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

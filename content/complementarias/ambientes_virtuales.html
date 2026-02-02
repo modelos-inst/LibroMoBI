@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Ambientes virtuales en Python &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
@@ -28,36 +29,41 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=003d74d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/mathjax/tex-svg.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/ambientes_virtuales';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -159,18 +165,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -190,6 +185,8 @@
 <li class="toctree-l1"><a class="reference internal" href="complementaria_filas.html">Complementaria 5: Cálculo de filas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_cmtc.html">Complementaria 7: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
+
+
 
 
 
@@ -225,9 +222,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -321,9 +318,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -348,7 +345,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-activar-el-ambiente-virtual">2. Cómo activar el ambiente virtual</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalar-paquetes-en-el-ambiente-virtual">3. Instalar paquetes en el ambiente virtual</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guardar-las-dependencias-en-un-archivo">4. Guardar las dependencias en un archivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalar-las-dependencias-desde-un-archivo-requirements-txt">5. Instalar las dependencias desde un archivo <code>requirements.txt</code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalar-las-dependencias-desde-un-archivo-code-requirements-txt-code">5. Instalar las dependencias desde un archivo <code>requirements.txt</code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desactivar-el-ambiente-virtual">6. Desactivar el ambiente virtual</a></li>
 </ul>
             </nav>
@@ -361,8 +358,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="ambientes-virtuales-en-python">
-<h1>Ambientes virtuales en Python<a class="headerlink" href="#ambientes-virtuales-en-python" title="Link to this heading">#</a></h1>
+  <section id="ambientes-virtuales-en-python">
+<h1>Ambientes virtuales en Python<a class="headerlink" href="#ambientes-virtuales-en-python" title="Permalink to this heading">#</a></h1>
 <p>En este tutorial veremos cómo se crean ambientes virtuales en Python empleando la librería <em>venv</em>. Las aplicaciones en Python suelen utilizar paquetes y módulos que no forman parte de la biblioteca estándar. En ocasiones, las aplicaciones necesitan una versión específica de una biblioteca porque requieren que se haya corregido un error particular o porque fueron desarrolladas usando una versión anterior de la biblioteca.</p>
 <p>Esto significa que una única instalación de Python puede no ser capaz de satisfacer los requisitos de todas las aplicaciones. Por ejemplo, si la aplicación A necesita la versión 1.0 de un módulo en particular, pero la aplicación B requiere la versión 2.0, los requisitos entran en conflicto. Instalar la versión 1.0 o la 2.0 dejará a una de las aplicaciones sin poder ejecutarse.</p>
 <p>La solución a este problema es crear un entorno o ambiente virtual, que es un árbol de directorios independiente que contiene una instalación de Python para una versión específica, junto con un conjunto de paquetes adicionales.</p>
@@ -371,7 +368,7 @@ document.write(`
 <div><p><strong>💡 Importante:</strong> En resumen un ambiente virtual en Python es una carpeta aislada donde puede instalar las dependencias de su proyecto sin afectar el entorno global de Python en su computadora. Esto es útil cuando trabaja en múltiples proyectos con diferentes requisitos de paquetes o versiones.</p>
 </div></blockquote>
 <section id="como-crear-ambientes-virtuales">
-<h2>1. Cómo crear ambientes virtuales<a class="headerlink" href="#como-crear-ambientes-virtuales" title="Link to this heading">#</a></h2>
+<h2>1. Cómo crear ambientes virtuales<a class="headerlink" href="#como-crear-ambientes-virtuales" title="Permalink to this heading">#</a></h2>
 <p>Ahora que sabemos qué es un ambiente virtual, veremos cómo se crean y se activan estos ambientes, para lo cual crearemos una nueva carpeta llamada <code class="docutils literal notranslate"><span class="pre">proyecto_101</span></code> y la abrimos en Visual Studio Code.</p>
 <p align="center">
     <img src="../../_static/ambientes_imagenes/Imagen1.png" alt="Imagen1" width="600" height="200"/>
@@ -407,7 +404,7 @@ document.write(`
 <p>A modo de ejemplo, en este caso el nombre del entorno sera <code class="docutils literal notranslate"><span class="pre">env</span></code>, así al momento de utilizar el comando correspondiente podra ver que esto generará una carpeta llamada <code class="docutils literal notranslate"><span class="pre">env</span></code> que contendrá el ambiente virtual.</p>
 </section>
 <section id="como-activar-el-ambiente-virtual">
-<h2>2. Cómo activar el ambiente virtual<a class="headerlink" href="#como-activar-el-ambiente-virtual" title="Link to this heading">#</a></h2>
+<h2>2. Cómo activar el ambiente virtual<a class="headerlink" href="#como-activar-el-ambiente-virtual" title="Permalink to this heading">#</a></h2>
 <p>El siguiente paso es activar el ambiente virtual. Al igual que al momento de crearlo, utilizaremos un comando específico según el sistema operativo que esté utilizando para activarlo.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -433,7 +430,7 @@ document.write(`
     <img src="../../_static/ambientes_imagenes/Imagen4.png" alt="Imagen1" width="800" height="250"/>
 </p></section>
 <section id="instalar-paquetes-en-el-ambiente-virtual">
-<h2>3. Instalar paquetes en el ambiente virtual<a class="headerlink" href="#instalar-paquetes-en-el-ambiente-virtual" title="Link to this heading">#</a></h2>
+<h2>3. Instalar paquetes en el ambiente virtual<a class="headerlink" href="#instalar-paquetes-en-el-ambiente-virtual" title="Permalink to this heading">#</a></h2>
 <p>En el caso de que queramos ver los paquetes que están instalados en el ambiente virtual utilizaremos el comando <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code>, que mostrará los paquetes junto con sus versiones</p>
 <p align="center">
     <img src="../../_static/ambientes_imagenes/Imagen5.png" alt="Imagen5" width="700" height="150"/>
@@ -442,7 +439,7 @@ document.write(`
     <img src="../../_static/ambientes_imagenes/Imagen6.png" alt="Imagen6" width="650" height="200"/>
 </p></section>
 <section id="guardar-las-dependencias-en-un-archivo">
-<h2>4. Guardar las dependencias en un archivo<a class="headerlink" href="#guardar-las-dependencias-en-un-archivo" title="Link to this heading">#</a></h2>
+<h2>4. Guardar las dependencias en un archivo<a class="headerlink" href="#guardar-las-dependencias-en-un-archivo" title="Permalink to this heading">#</a></h2>
 <p>Cuando haya terminado de trabajar en su entorno virtual y quiera compartir el proyecto con otros o moverlo a otro sistema, es útil guardar una lista de las dependencias que ha instalado. Para hacer esto, puede usar el siguiente comando:</p>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">freeze</span> <span class="pre">&gt;</span> <span class="pre">requirements.txt</span></code></p>
 <p>Este comando guarda todas las dependencias y sus versiones actuales en un archivo llamado <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>. Este archivo se puede compartir con otras personas para que puedan instalar las mismas dependencias en su entorno.</p>
@@ -450,21 +447,21 @@ document.write(`
 <p align="center">
     <img src="../../_static/ambientes_imagenes/Imagen7.png" alt="Imagen7" width="600" height="250"/>
 </p></section>
-<section id="instalar-las-dependencias-desde-un-archivo-requirements-txt">
-<h2>5. Instalar las dependencias desde un archivo <code>requirements.txt</code><a class="headerlink" href="#instalar-las-dependencias-desde-un-archivo-requirements-txt" title="Link to this heading">#</a></h2>
+<section id="instalar-las-dependencias-desde-un-archivo-code-requirements-txt-code">
+<h2>5. Instalar las dependencias desde un archivo <code>requirements.txt</code><a class="headerlink" href="#instalar-las-dependencias-desde-un-archivo-code-requirements-txt-code" title="Permalink to this heading">#</a></h2>
 <p>Si otra persona quiere trabajar en su proyecto o si desea reinstalar las dependencias en otro ambiente, simplemente necesita el archivo <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>. Para instalar las dependencias, use el siguiente comando:</p>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p>
 <p>Este comando lee el archivo <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> e instala todos los paquetes que están listados en él, asegurando que se instalen las versiones correctas para el proyecto.</p>
 <p>Es una práctica común ver este archivo en proyectos de Python o repositorios de GitHub, y siempre que descargue un proyecto de Python, generalmente tendrá que crear un entorno virtual e instalar las dependencias desde este archivo.</p>
 </section>
 <section id="desactivar-el-ambiente-virtual">
-<h2>6. Desactivar el ambiente virtual<a class="headerlink" href="#desactivar-el-ambiente-virtual" title="Link to this heading">#</a></h2>
+<h2>6. Desactivar el ambiente virtual<a class="headerlink" href="#desactivar-el-ambiente-virtual" title="Permalink to this heading">#</a></h2>
 <p>Finalmente, pero no menos importante, una vez hayamos terminado de trabajar en el proyecto es importante desactivar el ambiente virtual, que en este caso se nombró como <code class="docutils literal notranslate"><span class="pre">venv</span></code>. Esto significa salir del entorno aislado y regresar al entorno global de Python. Para desactivar un entorno virtual, simplemente ejecute el siguiente comando en su terminal: <code class="docutils literal notranslate"><span class="pre">deactivate</span></code></p>
 <p>Una vez ejecutado, verá que el prefijo que muestra el nombre del entorno virtual, en este caso <code class="docutils literal notranslate"><span class="pre">venv</span></code>, desaparece de su terminal, indicando que ha salido del entorno virtual.</p>
 <p align="center">
     <img src="../../_static/ambientes_imagenes/Imagen8.png" alt="Imagen8" width="700" height="90"/>
 </p><p>Con este tutorial ya aprendimos a crear, activar y desactivar entornos virtuales en Python, instalar dependencias, y gestionar sus proyectos de manera aislada y eficiente.</p>
-<p>Universidad de los Andes | Vigilada Mineducación. Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia. Departamento de Ingeniería Industrial Carrera 1 Este No. 19 A 40 Bogotá, Colombia Tel. (57.1) 3324320 | (57.1) 3394949 Ext. 2880 /2881 <a class="reference external" href="http://industrial.uniandes.edu.co">http://industrial.uniandes.edu.co</a></p>
+<p>Universidad de los Andes | Vigilada Mineducación. Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia. Departamento de Ingeniería Industrial Carrera 1 Este No. 19 A 40 Bogotá, Colombia Tel. (57.1) 3324320 | (57.1) 3394949 Ext. 2880 /2881 http://industrial.uniandes.edu.co</p>
 </section>
 </section>
 
@@ -477,16 +474,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "libromobi"
         },
         kernelOptions: {
-            name: "python3",
+            name: "libromobi",
             path: "./content\complementarias"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'libromobi'</script>
 
                 </article>
               
@@ -536,7 +533,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-activar-el-ambiente-virtual">2. Cómo activar el ambiente virtual</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalar-paquetes-en-el-ambiente-virtual">3. Instalar paquetes en el ambiente virtual</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guardar-las-dependencias-en-un-archivo">4. Guardar las dependencias en un archivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalar-las-dependencias-desde-un-archivo-requirements-txt">5. Instalar las dependencias desde un archivo <code>requirements.txt</code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalar-las-dependencias-desde-un-archivo-code-requirements-txt-code">5. Instalar las dependencias desde un archivo <code>requirements.txt</code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desactivar-el-ambiente-virtual">6. Desactivar el ambiente virtual</a></li>
 </ul>
   </nav></div>
@@ -562,7 +559,7 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

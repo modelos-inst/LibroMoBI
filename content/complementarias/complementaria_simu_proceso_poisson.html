@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Complementaria Semana 8: Simulación de un Proceso de Poisson &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
@@ -28,38 +29,43 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=003d74d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/mathjax/tex-svg.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/ams"]}, "tex": {"packages": {"[+]": ["ams"]}, "inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "svg": {"fontCache": "global"}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
+    <script defer="defer" src="../../_static/mathjax/tex-svg.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_simu_proceso_poisson';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -160,18 +166,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -191,6 +186,8 @@
 <li class="toctree-l1"><a class="reference internal" href="complementaria_filas.html">Complementaria 5: Cálculo de filas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_cmtc.html">Complementaria 7: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
+
+
 
 
 
@@ -226,9 +223,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -322,9 +319,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -345,11 +342,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complementaria Semana 8: Simulación de un Proceso de Poisson</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias-que-usaremos">Librerías que usaremos</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias-que-usaremos">Librerías que usaremos</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#proceso-de-poisson">Proceso de Poisson</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-lo-simulamos">¿Cómo lo simulamos?</a></li>
 </ul>
@@ -380,12 +375,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="complementaria-semana-8-simulacion-de-un-proceso-de-poisson">
-<h1>Complementaria Semana 8: Simulación de un Proceso de Poisson<a class="headerlink" href="#complementaria-semana-8-simulacion-de-un-proceso-de-poisson" title="Link to this heading">#</a></h1>
+  <section id="complementaria-semana-8-simulacion-de-un-proceso-de-poisson">
+<h1>Complementaria Semana 8: Simulación de un Proceso de Poisson<a class="headerlink" href="#complementaria-semana-8-simulacion-de-un-proceso-de-poisson" title="Permalink to this heading">#</a></h1>
 <p>En esta complementaria modelaremos la ocurrencia de eventos en el tiempo usando un <strong>Proceso de Poisson</strong>, un modelo clásico para llegadas aleatorias (clientes a una fila, llamadas, fallas, mensajes, etc.).</p>
 <p>Un proceso de Poisson con tasa <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span> se denota <span class="math notranslate nohighlight">\(N(t)\)</span> y representa el <strong>número de eventos</strong> ocurridos hasta el tiempo <span class="math notranslate nohighlight">\(t\)</span>.</p>
+</section>
 <section id="objetivos">
-<h2>Objetivos<a class="headerlink" href="#objetivos" title="Link to this heading">#</a></h2>
+<h1>Objetivos<a class="headerlink" href="#objetivos" title="Permalink to this heading">#</a></h1>
 <p>Al final de esta guía podrás:</p>
 <ol class="arabic simple">
 <li><p>Simular un Proceso de Poisson usando tiempos entre eventos.</p></li>
@@ -396,7 +392,7 @@ document.write(`
 </ol>
 </section>
 <section id="librerias-que-usaremos">
-<h2>Librerías que usaremos<a class="headerlink" href="#librerias-que-usaremos" title="Link to this heading">#</a></h2>
+<h1>Librerías que usaremos<a class="headerlink" href="#librerias-que-usaremos" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> para muestreo y cálculo numérico</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> para visualización</p></li>
@@ -410,18 +406,18 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (2.4.1)
-Requirement already satisfied: matplotlib in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (3.10.8)
-Requirement already satisfied: scipy in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (1.17.0)
-Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (1.3.3)
-Requirement already satisfied: cycler&gt;=0.10 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (4.61.1)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (1.4.9)
-Requirement already satisfied: packaging&gt;=20.0 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (25.0)
-Requirement already satisfied: pillow&gt;=8 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (12.1.0)
-Requirement already satisfied: pyparsing&gt;=3 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (3.3.1)
-Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from matplotlib) (2.9.0.post0)
-Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\downloads\modelos\repositorio\libromobi\entorno\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (2.4.1)
+Requirement already satisfied: matplotlib in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (3.10.8)
+Requirement already satisfied: scipy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (1.17.0)
+Requirement already satisfied: contourpy&gt;=1.0.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (4.61.1)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.4.9)
+Requirement already satisfied: packaging&gt;=20.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (25.0)
+Requirement already satisfied: pillow&gt;=8 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (12.1.0)
+Requirement already satisfied: pyparsing&gt;=3 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (3.3.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
 Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
@@ -438,9 +434,8 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="proceso-de-poisson">
-<h1>Proceso de Poisson<a class="headerlink" href="#proceso-de-poisson" title="Link to this heading">#</a></h1>
+<section id="proceso-de-poisson">
+<h1>Proceso de Poisson<a class="headerlink" href="#proceso-de-poisson" title="Permalink to this heading">#</a></h1>
 <p>Recordemos que un proceso de Poisson <span class="math notranslate nohighlight">\(N(t)\)</span> con tasa <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span> representa el <strong>número de eventos</strong> ocurridos hasta el tiempo <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <p>Si definimos los tiempos entre eventos como:</p>
 <div class="math notranslate nohighlight">
@@ -458,7 +453,7 @@ T_i \overset{iid}{\sim} \text{Exp}(\lambda)
 S_n = \sum_{i=1}^n T_i
 \]</div>
 <section id="como-lo-simulamos">
-<h2>¿Cómo lo simulamos?<a class="headerlink" href="#como-lo-simulamos" title="Link to this heading">#</a></h2>
+<h2>¿Cómo lo simulamos?<a class="headerlink" href="#como-lo-simulamos" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Generar tiempos entre eventos <span class="math notranslate nohighlight">\(T_i \sim \text{Exp}(\lambda)\)</span>.</p></li>
 <li><p>Acumularlos: <span class="math notranslate nohighlight">\(S_n = T_1 + \cdots + T_n\)</span>.</p></li>
@@ -468,8 +463,8 @@ S_n = \sum_{i=1}^n T_i
 </section>
 </section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="simulacion-de-una-trayectoria-de-un-proceso-de-poisson">
-<h1>Simulación de una trayectoria de un Proceso de Poisson<a class="headerlink" href="#simulacion-de-una-trayectoria-de-un-proceso-de-poisson" title="Link to this heading">#</a></h1>
+<section id="simulacion-de-una-trayectoria-de-un-proceso-de-poisson">
+<h1>Simulación de una trayectoria de un Proceso de Poisson<a class="headerlink" href="#simulacion-de-una-trayectoria-de-un-proceso-de-poisson" title="Permalink to this heading">#</a></h1>
 <p>Simularemos una trayectoria de <span class="math notranslate nohighlight">\(N(t)\)</span> en el intervalo <span class="math notranslate nohighlight">\([0, T)\)</span>.</p>
 <p><strong>Parámetros:</strong></p>
 <ul class="simple">
@@ -552,8 +547,8 @@ Número de eventos N(T): 13
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="ejemplo-guiado-1-verificar-que-los-tiempos-entre-eventos-son-exponenciales">
-<h1>Ejemplo guiado 1 — Verificar que los tiempos entre eventos son Exponenciales<a class="headerlink" href="#ejemplo-guiado-1-verificar-que-los-tiempos-entre-eventos-son-exponenciales" title="Link to this heading">#</a></h1>
+<section id="ejemplo-guiado-1-verificar-que-los-tiempos-entre-eventos-son-exponenciales">
+<h1>Ejemplo guiado 1 — Verificar que los tiempos entre eventos son Exponenciales<a class="headerlink" href="#ejemplo-guiado-1-verificar-que-los-tiempos-entre-eventos-son-exponenciales" title="Permalink to this heading">#</a></h1>
 <p>Si <span class="math notranslate nohighlight">\(N(t)\)</span> es un proceso de Poisson con tasa <span class="math notranslate nohighlight">\(\lambda\)</span>, entonces los tiempos entre eventos <span class="math notranslate nohighlight">\(T_i\)</span> son exponenciales iid:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -603,7 +598,9 @@ T_i \sim \text{Exp}(\lambda)
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media empírica: 0.33350822062474755 | Teórica: 0.3333333333333333
-Var  empírica: 0.11062649867596966 | Teórica: 0.1111111111111111
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Var  empírica: 0.11062649867596966 | Teórica: 0.1111111111111111
 </pre></div>
 </div>
 </div>
@@ -625,8 +622,8 @@ p-value     : 0.5124721029910152
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="ejemplo-guiado-2-verificar-que-n-t-sim-text-poisson-lambda-t">
-<h1>Ejemplo guiado 2 — Verificar que <span class="math notranslate nohighlight">\(N(T)\sim \text{Poisson}(\lambda T)\)</span><a class="headerlink" href="#ejemplo-guiado-2-verificar-que-n-t-sim-text-poisson-lambda-t" title="Link to this heading">#</a></h1>
+<section id="ejemplo-guiado-2-verificar-que-n-t-sim-text-poisson-lambda-t">
+<h1>Ejemplo guiado 2 — Verificar que <span class="math notranslate nohighlight">\(N(T)\sim \text{Poisson}(\lambda T)\)</span><a class="headerlink" href="#ejemplo-guiado-2-verificar-que-n-t-sim-text-poisson-lambda-t" title="Permalink to this heading">#</a></h1>
 <p>Teóricamente, el número de eventos en un horizonte <span class="math notranslate nohighlight">\(T\)</span> cumple:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -687,10 +684,10 @@ Var[N(T)] empírica: 14.866723613680684 | Teórica: 15.0
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="superposicion-y-division-thinning">
-<h1>Superposición y división (thinning)<a class="headerlink" href="#superposicion-y-division-thinning" title="Link to this heading">#</a></h1>
+<section id="superposicion-y-division-thinning">
+<h1>Superposición y división (thinning)<a class="headerlink" href="#superposicion-y-division-thinning" title="Permalink to this heading">#</a></h1>
 <section id="a-superposicion-suma">
-<h2>(A) Superposición (suma)<a class="headerlink" href="#a-superposicion-suma" title="Link to this heading">#</a></h2>
+<h2>(A) Superposición (suma)<a class="headerlink" href="#a-superposicion-suma" title="Permalink to this heading">#</a></h2>
 <p>Si:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(N_1(t)\)</span> es Poisson con tasa <span class="math notranslate nohighlight">\(\lambda_1\)</span></p></li>
@@ -750,7 +747,7 @@ Var emp: 28.265008410841087 | Teórica: 28.0
 </div>
 </section>
 <section id="b-division-thinning">
-<h2>(B) División / Thinning<a class="headerlink" href="#b-division-thinning" title="Link to this heading">#</a></h2>
+<h2>(B) División / Thinning<a class="headerlink" href="#b-division-thinning" title="Permalink to this heading">#</a></h2>
 <p>Si <span class="math notranslate nohighlight">\(N(t)\)</span> es un proceso de Poisson con tasa <span class="math notranslate nohighlight">\(\lambda\)</span> y cada evento se clasifica como “tipo A” con probabilidad <span class="math notranslate nohighlight">\(p\)</span>
 (independientemente de todo lo demás), entonces los eventos tipo A forman un proceso de Poisson con tasa:</p>
 <div class="math notranslate nohighlight">
@@ -803,8 +800,8 @@ Var[NB] emp: 21.145703808650723 | Teórica: 20.999999999999996
 </section>
 </section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="ejercicio-aplicado-centro-de-atencion-con-dos-tipos-de-llamadas">
-<h1>Ejercicio aplicado — Centro de atención con dos tipos de llamadas<a class="headerlink" href="#ejercicio-aplicado-centro-de-atencion-con-dos-tipos-de-llamadas" title="Link to this heading">#</a></h1>
+<section id="ejercicio-aplicado-centro-de-atencion-con-dos-tipos-de-llamadas">
+<h1>Ejercicio aplicado — Centro de atención con dos tipos de llamadas<a class="headerlink" href="#ejercicio-aplicado-centro-de-atencion-con-dos-tipos-de-llamadas" title="Permalink to this heading">#</a></h1>
 <p>Un centro de atención recibe llamadas según un Proceso de Poisson con tasa <span class="math notranslate nohighlight">\(\lambda=8\)</span> (llamadas por hora).</p>
 <p>Cada llamada se clasifica como:</p>
 <ul class="simple">
@@ -813,7 +810,7 @@ Var[NB] emp: 21.145703808650723 | Teórica: 20.999999999999996
 </ul>
 <p>Asumimos que la clasificación es independiente entre llamadas.</p>
 <section id="parte-a-conteos-en-una-hora">
-<h2>Parte A — Conteos en una hora<a class="headerlink" href="#parte-a-conteos-en-una-hora" title="Link to this heading">#</a></h2>
+<h2>Parte A — Conteos en una hora<a class="headerlink" href="#parte-a-conteos-en-una-hora" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Simula <span class="math notranslate nohighlight">\(R=50\,000\)</span> horas de operación y estima empíricamente:</p>
 <ul class="simple">
@@ -854,7 +851,7 @@ P(N(1) &gt;= 12) teo: 0.11192400101851863
 </div>
 </section>
 <section id="parte-b-division-thinning-por-tipo">
-<h2>Parte B — División (thinning) por tipo<a class="headerlink" href="#parte-b-division-thinning-por-tipo" title="Link to this heading">#</a></h2>
+<h2>Parte B — División (thinning) por tipo<a class="headerlink" href="#parte-b-division-thinning-por-tipo" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple" start="3">
 <li><p>Para cada hora simulada, clasifica llamadas en Soporte y Ventas y estima:</p>
 <ul class="simple">
@@ -901,7 +898,7 @@ P(NV&gt;=5) teo: 0.1523239430211616
 </div>
 </section>
 <section id="parte-c-tiempos-entre-llamadas-interarribos">
-<h2>Parte C — Tiempos entre llamadas (interarribos)<a class="headerlink" href="#parte-c-tiempos-entre-llamadas-interarribos" title="Link to this heading">#</a></h2>
+<h2>Parte C — Tiempos entre llamadas (interarribos)<a class="headerlink" href="#parte-c-tiempos-entre-llamadas-interarribos" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple" start="5">
 <li><p>En una simulación larga (por ejemplo <span class="math notranslate nohighlight">\(T=200\)</span> horas), recolecta interarribos y verifica:</p>
 <ul class="simple">
@@ -955,16 +952,16 @@ P(NV&gt;=5) teo: 0.1523239430211616
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "libromobi"
         },
         kernelOptions: {
-            name: "python3",
+            name: "libromobi",
             path: "./content\complementarias"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'libromobi'</script>
 
                 </article>
               
@@ -1001,11 +998,9 @@ P(NV&gt;=5) teo: 0.1523239430211616
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complementaria Semana 8: Simulación de un Proceso de Poisson</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias-que-usaremos">Librerías que usaremos</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias-que-usaremos">Librerías que usaremos</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#proceso-de-poisson">Proceso de Poisson</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-lo-simulamos">¿Cómo lo simulamos?</a></li>
 </ul>
@@ -1049,7 +1044,7 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

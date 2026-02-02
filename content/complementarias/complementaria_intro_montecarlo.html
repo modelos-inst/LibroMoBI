@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Complementaria Semana 2: Introducción a la simulación de Montecarlo &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
@@ -28,38 +29,43 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=003d74d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/mathjax/tex-svg.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/ams"]}, "tex": {"packages": {"[+]": ["ams"]}, "inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "svg": {"fontCache": "global"}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
+    <script defer="defer" src="../../_static/mathjax/tex-svg.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_intro_montecarlo';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -161,18 +167,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -192,6 +187,8 @@
 <li class="toctree-l1"><a class="reference internal" href="complementaria_filas.html">Complementaria 5: Cálculo de filas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_cmtc.html">Complementaria 7: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
+
+
 
 
 
@@ -227,9 +224,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -323,9 +320,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -371,16 +368,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="complementaria-semana-2-introduccion-a-la-simulacion-de-montecarlo">
-<h1>Complementaria Semana 2: Introducción a la simulación de Montecarlo<a class="headerlink" href="#complementaria-semana-2-introduccion-a-la-simulacion-de-montecarlo" title="Link to this heading">#</a></h1>
+  <section id="complementaria-semana-2-introduccion-a-la-simulacion-de-montecarlo">
+<h1>Complementaria Semana 2: Introducción a la simulación de Montecarlo<a class="headerlink" href="#complementaria-semana-2-introduccion-a-la-simulacion-de-montecarlo" title="Permalink to this heading">#</a></h1>
 <p>El modelado estocástico permite representar sistemas donde intervienen fenómenos aleatorios y la información disponible no es completamente determinista. En ingeniería y ciencias aplicadas esto incluye desde la variabilidad en mediciones y tiempos hasta la ocurrencia de eventos como fallas, demandas o llegadas. Para describir esa incertidumbre se utilizan distribuciones de probabilidad que asignan pesos a los posibles valores de una variable aleatoria. En contextos discretos, como el resultado de dados o el conteo de eventos, utilizamos funciones de probabilidad; mientras que en situaciones continuas, como tiempos de procesamiento, tiempos de espera en sistemas de servicio, consumo de recursos o demanda continua de productos, recurrimos a funciones de densidad. Entre las distribuciones más utilizadas se encuentran la Poisson para conteos, la Exponencial para tiempos entre eventos y la Normal, la cual tomará mayor relevancia con el Teorema Central del Límite.</p>
 <p>Cuando el análisis es complejo, la simulación de Monte Carlo se convierte en una herramienta fundamental. El procedimiento consiste en generar datos de acuerdo con las distribuciones asumidas, computar indicadores de interés como medias, probabilidades o percentiles, y aproximar sus valores mediante repetición. La precisión mejora conforme aumenta el número de simulaciones, y el Teorema del Límite Central justifica que los promedios obtenidos mediante simulación se comporten aproximadamente como una variable normal, aun si la distribución original no lo es. Esto permite cuantificar la incertidumbre de las estimaciones mediante errores estándar e intervalos de confianza, fortaleciendo la capacidad de tomar decisiones informadas en presencia de aleatoriedad.</p>
 <p>En esta complementaria nos enfocamos en modelar incertidumbre puramente aleatoria, asociada al azar inherente del fenómeno (lanzamiento de dados). Más adelante en el curso aparecerán otros tipos de incertidumbre, como la asociada a información incompleta o a decisiones humanas, que requerirán herramientas adicionales.</p>
 <section id="ejercicio-guiado-maximo-de-dos-dados-y-simulacion-monte-carlo">
-<h2>Ejercicio guiado: Máximo de dos dados y simulación Monte Carlo<a class="headerlink" href="#ejercicio-guiado-maximo-de-dos-dados-y-simulacion-monte-carlo" title="Link to this heading">#</a></h2>
+<h2>Ejercicio guiado: Máximo de dos dados y simulación Monte Carlo<a class="headerlink" href="#ejercicio-guiado-maximo-de-dos-dados-y-simulacion-monte-carlo" title="Permalink to this heading">#</a></h2>
 <p>Analizaremos el comportamiento de una variable aleatoria definida a partir del lanzamiento de dos dados justos, y luego validaremos nuestros resultados teóricos mediante simulación. Para cerrar, utilizaremos el Teorema Central de Límite para observar cómo los promedios de variables aleatorias se aproximan a una distribución Normal.</p>
 <section id="contexto">
-<h3>Contexto<a class="headerlink" href="#contexto" title="Link to this heading">#</a></h3>
+<h3>Contexto<a class="headerlink" href="#contexto" title="Permalink to this heading">#</a></h3>
 <p>Suponga que lanzamos dos dados justos e independientes. Cada dado puede tomar valores del 1 al 6 con igual probabilidad. Definimos la variable aleatoria:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -389,7 +386,7 @@ M = \max(D_1, D_2)
 <p>donde <span class="math notranslate nohighlight">\(D_1\)</span> y <span class="math notranslate nohighlight">\(D_2\)</span> son los resultados de cada dado. Nos interesa estudiar la distribución de <span class="math notranslate nohighlight">\(M\)</span>, calcular sus estadísticas y validar los resultados usando simulación Monte Carlo.</p>
 </section>
 <section id="objetivos">
-<h3>Objetivos<a class="headerlink" href="#objetivos" title="Link to this heading">#</a></h3>
+<h3>Objetivos<a class="headerlink" href="#objetivos" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Derivar la función de probabilidad (pmf) de <span class="math notranslate nohighlight">\(M\)</span> de forma teórica</p></li>
 <li><p>Simular y comparar teoría vs resultados Monte Carlo</p></li>
@@ -398,7 +395,7 @@ M = \max(D_1, D_2)
 </ul>
 </section>
 <section id="parte-a-deriva-la-pmf-teoricamente">
-<h3>Parte A — Deriva la pmf teóricamente<a class="headerlink" href="#parte-a-deriva-la-pmf-teoricamente" title="Link to this heading">#</a></h3>
+<h3>Parte A — Deriva la pmf teóricamente<a class="headerlink" href="#parte-a-deriva-la-pmf-teoricamente" title="Permalink to this heading">#</a></h3>
 <p>Existen 36 posibles resultados <span class="math notranslate nohighlight">\((D_1, D_2)\)</span>, todos igual de probables. Para <span class="math notranslate nohighlight">\(m = \{1,2,3,4,5,6\}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -435,7 +432,7 @@ P(M=m) = \left(\frac{m}{6}\right)^2 - \left(\frac{m-1}{6}\right)^2 = \frac{2m-1}
 </div>
 </section>
 <section id="parte-b-validacion-por-simulacion-monte-carlo">
-<h3>Parte B — Validación por simulación Monte Carlo<a class="headerlink" href="#parte-b-validacion-por-simulacion-monte-carlo" title="Link to this heading">#</a></h3>
+<h3>Parte B — Validación por simulación Monte Carlo<a class="headerlink" href="#parte-b-validacion-por-simulacion-monte-carlo" title="Permalink to this heading">#</a></h3>
 <p>A continuación simularemos muchos pares de lanzamientos, calcularemos el máximo en cada uno, y compararemos con la distribución teórica.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -491,7 +488,7 @@ error abs   : [0.00042 0.00165 0.00137 0.00017 0.00033 0.00064]
 </div>
 <p>Las pequeñas discrepancias observadas entre la distribución teórica y la empírica se deben al error muestral propio de trabajar con un número finito de simulaciones. A medida que el tamaño de la muestra aumenta, estas diferencias tienden a desaparecer, lo cual es consistente con la Ley de los Grandes Números, que garantiza la convergencia de las estimaciones empíricas hacia sus valores teóricos.</p>
 <section id="profundizacion-resuelva-estas-preguntas-como-cambia-el-codigo">
-<h4>Profundización: resuelva estas preguntas ¿cómo cambia el código?<a class="headerlink" href="#profundizacion-resuelva-estas-preguntas-como-cambia-el-codigo" title="Link to this heading">#</a></h4>
+<h4>Profundización: resuelva estas preguntas ¿cómo cambia el código?<a class="headerlink" href="#profundizacion-resuelva-estas-preguntas-como-cambia-el-codigo" title="Permalink to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p><strong>¿Por qué usar una semilla en simulación?</strong></p>
 <ul class="simple">
@@ -519,7 +516,7 @@ error abs   : [0.00042 0.00165 0.00137 0.00017 0.00033 0.00064]
 </section>
 </section>
 <section id="parte-c-media-y-varianza">
-<h3>Parte C — Media y varianza<a class="headerlink" href="#parte-c-media-y-varianza" title="Link to this heading">#</a></h3>
+<h3>Parte C — Media y varianza<a class="headerlink" href="#parte-c-media-y-varianza" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 E[M] = \sum_{m=1}^6 m \cdot \frac{2m-1}{36} 
@@ -549,7 +546,7 @@ Var(M) = \sum_{m=1}^6 m^2 \cdot \frac{2m-1}{36} - (E[M])^2
 </div>
 </div>
 <section id="profundizacion-pregunta-corta">
-<h4>Profundización: pregunta corta<a class="headerlink" href="#profundizacion-pregunta-corta" title="Link to this heading">#</a></h4>
+<h4>Profundización: pregunta corta<a class="headerlink" href="#profundizacion-pregunta-corta" title="Permalink to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p>¿Se obtiene el <strong>mismo</strong> (E[M]) calculando con <code class="docutils literal notranslate"><span class="pre">pmf_emp</span></code> que usando el <strong>promedio muestral</strong>? ¿Por qué?</p></li>
 </ol>
@@ -567,16 +564,16 @@ Var(M) = \sum_{m=1}^6 m^2 \cdot \frac{2m-1}{36} - (E[M])^2
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "entorno"
+            mode: "libromobi"
         },
         kernelOptions: {
-            name: "entorno",
+            name: "libromobi",
             path: "./content\complementarias"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'entorno'</script>
+    <script>kernelName = 'libromobi'</script>
 
                 </article>
               
@@ -660,7 +657,7 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

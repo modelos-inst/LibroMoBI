@@ -8,13 +8,13 @@ Despliega el contenido:
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Tutorial: Ambientes Virtuales en Python](content/complementarias/ambientes_virtuales.ipynb)
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 1: Introducción a Python y Álgebra Lineal en Python](content/complementarias/complementaria_intro_python.ipynb)
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 2: Introducción a la Simulación de Montecarlo](content/complementarias/complementaria_intro_montecarlo.ipynb)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 3: Simulación de Montecarlo II](#)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 4: Introducción a Scimpy](#)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 3: Teorema del Límite Central y validación epírica](content/complementarias/complementaria_tlc.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 4: Introducción a Scimpy](content\pronto)
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 5: Cálculo de Filas en Python](content/complementarias/complementaria_filas.ipynb)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 6: Procesos de Poisson en Python](#)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 6: Procesos de Poisson en Python](content\pronto)
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 7: Cadenas de Markov en Tiempo Continuo I](content/complementarias/complementaria_cmtc.ipynb)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 8: Cadenas de Markov en Tiempo Continuo II - Análisis Transitorio](#)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 9: Cadenas de Markov en Tiempo Continuo III - Análisis de Estado Estable](#)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 8: Simulación de un Proceso de Poisson](content/complementarias/complementaria_simu_proceso_poisson.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 9: Cadenas de Markov en Tiempo Continuo III - Análisis de Estado Estable](content\pronto)
 
 ```
 

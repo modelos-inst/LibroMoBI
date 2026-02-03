@@ -45,23 +45,18 @@ sphinx:
     myst_update_mathjax: false
     # Forzar que myst-nb use el parser MyST para markdown en notebooks
     nb_render_markdown_format: myst
-    # Usar MathJax LOCAL - evita bloqueo de CDN por tracking prevention
-    mathjax_path: mathjax/tex-svg.js
+    # Usar MathJax LOCAL - versión completa con AMS incluido
+    mathjax_path: mathjax/tex-mml-chtml.js
     mathjax3_config:
-      loader:
-        load: ['[tex]/ams']
       tex:
-        packages:
-          '[+]': ['ams']
         inlineMath: [['$', '$'], ['\\(', '\\)']]
         displayMath: [['$$', '$$'], ['\\[', '\\]']]
         processEscapes: true
         processEnvironments: true
-      svg:
-        fontCache: 'global'
       options:
         ignoreHtmlClass: "ignore-this-class-that-does-not-exist"
         processHtmlClass: "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"
+        enableMenu: false
 
 
 

@@ -1,14 +1,15 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Complementaria 2: Introducción a la Simulación de Montecarlo &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
+    <title>Complementaria Semana 2: Introducción a la simulación de Montecarlo &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
   
   
@@ -28,42 +29,48 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=003d74d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/mathjax/tex-mml-chtml.js"></script>
+    <script src="../../_static/mathjax/tex-svg.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore", "enableMenu": false}}</script>
+    <script defer="defer" src="../../_static/mathjax/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_intro_montecarlo';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Complementaria 5: Cálculo de filas" href="complementaria_filas.html" />
+    <link rel="next" title="Complementaria 3: Teorema del Límite Central y validación empírica" href="complementaria_tlc.html" />
     <link rel="prev" title="Complementaria 1: Introducción a Python" href="complementaria_intro_python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -161,18 +168,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -182,14 +178,29 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial. Instalación Python y Visual Studio Code</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Instalación Python y Visual Studio Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ambientes_virtuales.html">Ambientes virtuales en Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="complementaria_intro_python.html">Complementaria 1: Introducción a Python</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria 2: Introducción a la Simulación de Montecarlo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_filas.html">Complementaria 5: Cálculo de filas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_cmtc.html">Complementaria 7: Cadenas de Markov en Python I</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria 3: Teorema del Límite Central y validación empírica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gba.html">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
+
+
+
+
+
+
 </ul>
 
     </div>
@@ -219,9 +230,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -315,9 +326,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -328,7 +339,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Complementaria 2: Introducción a la Simulación de Montecarlo</h1>
+    <h1>Complementaria Semana 2: Introducción a la simulación de Montecarlo</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -338,33 +349,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximo-de-dos-dados-y-simulacion-de-montecarlo">Máximo de dos dados y Simulación de Montecarlo</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-guiado-maximo-de-dos-dados-y-simulacion-monte-carlo">Ejercicio guiado: Máximo de dos dados y simulación Monte Carlo</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contexto">Contexto</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-a-deriva-la-pmf-teoricamente">Parte A — Deriva la pmf teóricamente</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-b-validacion-por-simulacion-monte-carlo">Parte B — Validación por simulación Monte Carlo</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#profundizacion-resuelva-estas-preguntas-como-cambia-el-codigo">Profundización: resuelva estas preguntas ¿cómo cambia el código?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-a-deriva-la-pmf-teoricamente">Parte A — Deriva la pmf teóricamente</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-b-validacion-por-simulacion-monte-carlo">Parte B — Validación por simulación Monte Carlo</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-profundizacion">Preguntas de Profundización</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-c-media-y-varianza">Parte C — Media y varianza</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profundizacion-pregunta-corta">Profundización: pregunta corta</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-d-extension-teorema-central-del-limite-tcl">Parte D — Extensión: Teorema Central del Límite (TCL)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-profundizacion-tlc-en-accion">Preguntas de Profundización: TLC en acción</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-aplicado">Ejercicio Aplicado</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#escenario-a-planta-produccion-y-calidad">Escenario A — Planta (Producción y Calidad)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1-defectos-por-hora-poisson">A.1 Defectos por hora (Poisson)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-proporcion-de-no-conformes-por-lote-binomial">A.2 Proporción de no conformes por lote (Binomial)</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#escenario-b-servicio-atencion-al-cliente">Escenario B — Servicio (Atención al cliente)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1-tiempos-de-servicio-exponencial-lambda">B.1 Tiempos de servicio ~ Exponencial (<span class="math notranslate nohighlight">\(\lambda\)</span>)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-2-tiempos-entre-llegadas-exponencial-lambda-a">B.2 Tiempos entre llegadas ~ Exponencial (<span class="math notranslate nohighlight">\(\lambda_a\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-c-media-y-varianza">Parte C — Media y varianza</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#profundizacion-pregunta-corta">Profundización: pregunta corta</a></li>
 </ul>
 </li>
 </ul>
@@ -380,15 +374,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="complementaria-2-introduccion-a-la-simulacion-de-montecarlo">
-<h1>Complementaria 2: Introducción a la Simulación de Montecarlo<a class="headerlink" href="#complementaria-2-introduccion-a-la-simulacion-de-montecarlo" title="Link to this heading">#</a></h1>
+  <section id="complementaria-semana-2-introduccion-a-la-simulacion-de-montecarlo">
+<h1>Complementaria Semana 2: Introducción a la simulación de Montecarlo<a class="headerlink" href="#complementaria-semana-2-introduccion-a-la-simulacion-de-montecarlo" title="Permalink to this heading">#</a></h1>
 <p>El modelado estocástico permite representar sistemas donde intervienen fenómenos aleatorios y la información disponible no es completamente determinista. En ingeniería y ciencias aplicadas esto incluye desde la variabilidad en mediciones y tiempos hasta la ocurrencia de eventos como fallas, demandas o llegadas. Para describir esa incertidumbre se utilizan distribuciones de probabilidad que asignan pesos a los posibles valores de una variable aleatoria. En contextos discretos, como el resultado de dados o el conteo de eventos, utilizamos funciones de probabilidad; mientras que en situaciones continuas, como tiempos de procesamiento, tiempos de espera en sistemas de servicio, consumo de recursos o demanda continua de productos, recurrimos a funciones de densidad. Entre las distribuciones más utilizadas se encuentran la Poisson para conteos, la Exponencial para tiempos entre eventos y la Normal, la cual tomará mayor relevancia con el Teorema Central del Límite.</p>
 <p>Cuando el análisis es complejo, la simulación de Monte Carlo se convierte en una herramienta fundamental. El procedimiento consiste en generar datos de acuerdo con las distribuciones asumidas, computar indicadores de interés como medias, probabilidades o percentiles, y aproximar sus valores mediante repetición. La precisión mejora conforme aumenta el número de simulaciones, y el Teorema del Límite Central justifica que los promedios obtenidos mediante simulación se comporten aproximadamente como una variable normal, aun si la distribución original no lo es. Esto permite cuantificar la incertidumbre de las estimaciones mediante errores estándar e intervalos de confianza, fortaleciendo la capacidad de tomar decisiones informadas en presencia de aleatoriedad.</p>
-<section id="maximo-de-dos-dados-y-simulacion-de-montecarlo">
-<h2>Máximo de dos dados y Simulación de Montecarlo<a class="headerlink" href="#maximo-de-dos-dados-y-simulacion-de-montecarlo" title="Link to this heading">#</a></h2>
+<p>En esta complementaria nos enfocamos en modelar incertidumbre puramente aleatoria, asociada al azar inherente del fenómeno (lanzamiento de dados). Más adelante en el curso aparecerán otros tipos de incertidumbre, como la asociada a información incompleta o a decisiones humanas, que requerirán herramientas adicionales.</p>
+<section id="ejercicio-guiado-maximo-de-dos-dados-y-simulacion-monte-carlo">
+<h2>Ejercicio guiado: Máximo de dos dados y simulación Monte Carlo<a class="headerlink" href="#ejercicio-guiado-maximo-de-dos-dados-y-simulacion-monte-carlo" title="Permalink to this heading">#</a></h2>
 <p>Analizaremos el comportamiento de una variable aleatoria definida a partir del lanzamiento de dos dados justos, y luego validaremos nuestros resultados teóricos mediante simulación. Para cerrar, utilizaremos el Teorema Central de Límite para observar cómo los promedios de variables aleatorias se aproximan a una distribución Normal.</p>
 <section id="contexto">
-<h3>Contexto<a class="headerlink" href="#contexto" title="Link to this heading">#</a></h3>
+<h3>Contexto<a class="headerlink" href="#contexto" title="Permalink to this heading">#</a></h3>
 <p>Suponga que lanzamos dos dados justos e independientes. Cada dado puede tomar valores del 1 al 6 con igual probabilidad. Definimos la variable aleatoria:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -397,7 +392,7 @@ M = \max(D_1, D_2)
 <p>donde <span class="math notranslate nohighlight">\(D_1\)</span> y <span class="math notranslate nohighlight">\(D_2\)</span> son los resultados de cada dado. Nos interesa estudiar la distribución de <span class="math notranslate nohighlight">\(M\)</span>, calcular sus estadísticas y validar los resultados usando simulación Monte Carlo.</p>
 </section>
 <section id="objetivos">
-<h3>Objetivos<a class="headerlink" href="#objetivos" title="Link to this heading">#</a></h3>
+<h3>Objetivos<a class="headerlink" href="#objetivos" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Derivar la función de probabilidad (pmf) de <span class="math notranslate nohighlight">\(M\)</span> de forma teórica</p></li>
 <li><p>Simular y comparar teoría vs resultados Monte Carlo</p></li>
@@ -405,9 +400,8 @@ M = \max(D_1, D_2)
 <li><p>Observar el Teorema del Límite Central aplicándolo a promedios de <span class="math notranslate nohighlight">\(M\)</span></p></li>
 </ul>
 </section>
-</section>
 <section id="parte-a-deriva-la-pmf-teoricamente">
-<h2>Parte A — Deriva la pmf teóricamente<a class="headerlink" href="#parte-a-deriva-la-pmf-teoricamente" title="Link to this heading">#</a></h2>
+<h3>Parte A — Deriva la pmf teóricamente<a class="headerlink" href="#parte-a-deriva-la-pmf-teoricamente" title="Permalink to this heading">#</a></h3>
 <p>Existen 36 posibles resultados <span class="math notranslate nohighlight">\((D_1, D_2)\)</span>, todos igual de probables. Para <span class="math notranslate nohighlight">\(m = \{1,2,3,4,5,6\}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -444,21 +438,27 @@ P(M=m) = \left(\frac{m}{6}\right)^2 - \left(\frac{m-1}{6}\right)^2 = \frac{2m-1}
 </div>
 </section>
 <section id="parte-b-validacion-por-simulacion-monte-carlo">
-<h2>Parte B — Validación por simulación Monte Carlo<a class="headerlink" href="#parte-b-validacion-por-simulacion-monte-carlo" title="Link to this heading">#</a></h2>
+<h3>Parte B — Validación por simulación Monte Carlo<a class="headerlink" href="#parte-b-validacion-por-simulacion-monte-carlo" title="Permalink to this heading">#</a></h3>
 <p>A continuación simularemos muchos pares de lanzamientos, calcularemos el máximo en cada uno, y compararemos con la distribución teórica.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importar librerías</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># 0) generador con semilla (reproducible)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Se fija una semilla para garantizar reproducibilidad de los resultados.</span>
+<span class="c1"># Esto no elimina la aleatoriedad del fenómeno, sino que permite replicar</span>
+<span class="c1"># exactamente el mismo experimento computacional.</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">xml.etree.ElementPath</span><span class="w"> </span><span class="kn">import</span> <span class="n">find</span>
+
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># 0) generador con semilla (reproducible)</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">200000</span>                        <span class="c1"># 1) número de simulaciones</span>
 
 <span class="c1"># 2) creación de las muestras de los dos dados y cálculo del máximo</span>
@@ -470,6 +470,7 @@ P(M=m) = \left(\frac{m}{6}\right)^2 - \left(\frac{m-1}{6}\right)^2 = \frac{2m-1}
 <span class="c1">#    3.1 cuenta ocurrencias forzando 7 posiciones (índices 0..6)</span>
 <span class="c1">#    3.2 elimina el índice 0 (no hay resultado 0), quedan valores 1..6</span>
 <span class="n">counts</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">minlength</span><span class="o">=</span><span class="mi">7</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+
 <span class="c1">#    3.3 divide por N para obtener frecuencias (probabilidades)</span>
 <span class="n">pmf_emp</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">N</span>
 
@@ -495,8 +496,9 @@ error abs   : [0.00042 0.00165 0.00137 0.00017 0.00033 0.00064]
 </div>
 </div>
 </div>
-<section id="preguntas-de-profundizacion">
-<h3>Preguntas de Profundización<a class="headerlink" href="#preguntas-de-profundizacion" title="Link to this heading">#</a></h3>
+<p>Las pequeñas discrepancias observadas entre la distribución teórica y la empírica se deben al error muestral propio de trabajar con un número finito de simulaciones. A medida que el tamaño de la muestra aumenta, estas diferencias tienden a desaparecer, lo cual es consistente con la Ley de los Grandes Números, que garantiza la convergencia de las estimaciones empíricas hacia sus valores teóricos.</p>
+<section id="profundizacion-resuelva-estas-preguntas-como-cambia-el-codigo">
+<h4>Profundización: resuelva estas preguntas ¿cómo cambia el código?<a class="headerlink" href="#profundizacion-resuelva-estas-preguntas-como-cambia-el-codigo" title="Permalink to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p><strong>¿Por qué usar una semilla en simulación?</strong></p>
 <ul class="simple">
@@ -524,7 +526,7 @@ error abs   : [0.00042 0.00165 0.00137 0.00017 0.00033 0.00064]
 </section>
 </section>
 <section id="parte-c-media-y-varianza">
-<h2>Parte C — Media y varianza<a class="headerlink" href="#parte-c-media-y-varianza" title="Link to this heading">#</a></h2>
+<h3>Parte C — Media y varianza<a class="headerlink" href="#parte-c-media-y-varianza" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 E[M] = \sum_{m=1}^6 m \cdot \frac{2m-1}{36} 
@@ -543,7 +545,7 @@ Var(M) = \sum_{m=1}^6 m^2 \cdot \frac{2m-1}{36} - (E[M])^2
 <span class="n">Var_emp</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pmf_emp</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">E_emp</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
 
 <span class="c1"># 3) impresión</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;E[M] (emp) =&quot;</span><span class="p">,</span> <span class="n">E_emp</span><span class="p">,</span> <span class="s2">&quot;  Var(M) (emp) =&quot;</span><span class="p">,</span> <span class="n">Var_emp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;E[M] (emp) =&quot;</span><span class="p">,</span> <span class="n">E_emp</span><span class="p">,</span> <span class="s2">&quot;  Var(M) (emp) =&quot;</span><span class="p">,</span> <span class="n">Var_emp</span><span class="p">)</span>  
 </pre></div>
 </div>
 </div>
@@ -554,504 +556,10 @@ Var(M) = \sum_{m=1}^6 m^2 \cdot \frac{2m-1}{36} - (E[M])^2
 </div>
 </div>
 <section id="profundizacion-pregunta-corta">
-<h3>Profundización: pregunta corta<a class="headerlink" href="#profundizacion-pregunta-corta" title="Link to this heading">#</a></h3>
+<h4>Profundización: pregunta corta<a class="headerlink" href="#profundizacion-pregunta-corta" title="Permalink to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p>¿Se obtiene el <strong>mismo</strong> (E[M]) calculando con <code class="docutils literal notranslate"><span class="pre">pmf_emp</span></code> que usando el <strong>promedio muestral</strong>? ¿Por qué?</p></li>
 </ol>
-</section>
-</section>
-<section id="parte-d-extension-teorema-central-del-limite-tcl">
-<h2>Parte D — Extensión: Teorema Central del Límite (TCL)<a class="headerlink" href="#parte-d-extension-teorema-central-del-limite-tcl" title="Link to this heading">#</a></h2>
-<p>Tomaremos muchos promedios de <span class="math notranslate nohighlight">\(M=\max(D_1,D_2)\)</span>. Aunque <span class="math notranslate nohighlight">\(M\)</span> no es Normal, el <strong>promedio</strong> de <span class="math notranslate nohighlight">\(k\)</span> réplicas independientes se aproxima a Normal para <span class="math notranslate nohighlight">\(k\)</span> suficientemente grande (generalmente se considera 30 un valor de <span class="math notranslate nohighlight">\(k\)</span> suficientemente grande).</p>
-<p>Definimos el promedio:</p>
-<div class="math notranslate nohighlight">
-\[
-\bar M_k \;=\; \frac{1}{k}\sum_{j=1}^{k} M_j
-\]</div>
-<p>Parámetros teóricos de <span class="math notranslate nohighlight">\(M\)</span> con pmf <span class="math notranslate nohighlight">\(p(m)=\tfrac{2m-1}{36}\)</span> para <span class="math notranslate nohighlight">\(m=1,\dots,6\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-\mu \;=\; \sum_{m=1}^{6} m\,p(m),
-\qquad
-\mathbb{E}[M^2] \;=\; \sum_{m=1}^{6} m^2\,p(m),
-\qquad
-\sigma^2 \;=\; \mathbb{E}[M^2]-\mu^2.
-\]</div>
-<p>Para el promedio de <span class="math notranslate nohighlight">\(k\)</span> observaciones i.i.d.:</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbb{E}[\bar M_k] \;=\; \mu,
-\qquad
-\mathrm{Var}(\bar M_k) \;=\; \frac{\sigma^2}{k},
-\qquad
-\mathrm{SE}(\bar M_k) \;=\; \frac{\sigma}{\sqrt{k}}.
-\]</div>
-<p>Estandarización y forma límite (TLC):</p>
-<div class="math notranslate nohighlight">
-\[
-Z_k \;=\; \frac{\bar M_k - \mu}{\sigma/\sqrt{k}}
-\;\;\approx\;\; \mathcal{N}(0,1)
-\quad \text{cuando } k \text{ es grande.}
-\]</div>
-<p>Intervalo de confianza del 95 % para la media con <span class="math notranslate nohighlight">\(\sigma\)</span> desconocida (sustituyendo <span class="math notranslate nohighlight">\(s\)</span> por <span class="math notranslate nohighlight">\(\sigma\)</span>):</p>
-<div class="math notranslate nohighlight">
-\[
-\bar M_k \;\pm\; 1.96\,\frac{s}{\sqrt{k}}
-\quad\text{(para $k$ grande; en muestras pequeñas usar } t_{0.975,\,k-1}\text{)}.
-\]</div>
-<p>Ideas prácticas:</p>
-<ul class="simple">
-<li><p>Aumentar <span class="math notranslate nohighlight">\(k\)</span> reduce la variabilidad del promedio: el error estándar cae como <span class="math notranslate nohighlight">\(1/\sqrt{k}\)</span>.</p></li>
-<li><p>Para visualizar el TCL, grafica el histograma de <span class="math notranslate nohighlight">\(Z_k\)</span> y un QQ-plot contra la Normal estándar; deberían verse cercanos a <span class="math notranslate nohighlight">\(\mathcal N(0,1)\)</span>.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">30</span>          <span class="c1"># tamaño del promedio (cuántos datos se promedian DENTRO de cada réplica)</span>
-<span class="n">reps</span> <span class="o">=</span> <span class="mi">20000</span>    <span class="c1"># número de réplicas (cuántos promedios se calculan)</span>
-
-<span class="c1"># 1) creación de las muestras de los dos dados y cálculo del máximo</span>
-<span class="n">rolls1</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">reps</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>  <span class="c1"># enteros en [1,6]</span>
-<span class="n">rolls2</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">reps</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
-<span class="c1"># 2) se guardan en matrices de tamaño (reps, k)  -&gt; cada fila = 1 réplica con k observaciones</span>
-<span class="n">Mmat</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">rolls1</span><span class="p">,</span> <span class="n">rolls2</span><span class="p">)</span>
-<span class="c1"># 3) se calcula el promedio de cada fila (promedio dentro de cada réplica)</span>
-<span class="n">means</span>  <span class="o">=</span> <span class="n">Mmat</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-
-<span class="c1"># 4) parámetros teóricos de M (pmf: (2m-1)/36)</span>
-<span class="n">mu</span>   <span class="o">=</span> <span class="p">(</span><span class="n">m</span> <span class="o">*</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">36</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>          <span class="c1"># E[M]</span>
-<span class="n">Ex2</span>  <span class="o">=</span> <span class="p">((</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">36</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>     <span class="c1"># E[M^2]</span>
-<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ex2</span> <span class="o">-</span> <span class="n">mu</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>               <span class="c1"># SD(M)</span>
-
-<span class="c1"># 5) estandarización de los promedios: Z = (mean - mu) / (sigma / sqrt(k))</span>
-<span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">means</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Media de z:&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">&quot;  Desv. Estándar de z:&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="c1"># análisis: z ~ Normal(0,1) -&gt; media ~ 0 y sd ~ 1</span>
-
-<span class="c1"># IC 95% para E[M] usando el TLC y s como estimador de sigma</span>
-<span class="n">inferior</span> <span class="o">=</span> <span class="n">means</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">means</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">reps</span><span class="p">)</span>
-<span class="n">superior</span> <span class="o">=</span> <span class="n">means</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">means</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">reps</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IC 95% para E[M]: (</span><span class="si">{</span><span class="n">inferior</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">superior</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media de z: 0.0136380696018807   Desv. Estándar de z: 0.9973735563051509
-IC 95% para E[M]: (4.4722, 4.4793)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualización TCL con un histograma de los z</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>   <span class="c1"># histograma de z</span>
-<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">()</span>                         <span class="c1"># límites del eje x para trazar la pdf</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>                <span class="c1"># malla para la curva teórica</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                           <span class="c1"># pdf de N(0,1)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>                     <span class="c1"># curva teórica sobre el histograma</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histograma de z y PDF de Normal(0,1)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;densidad&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/edd968a41cbd112e439de8884d43af4a14b2096127c70c3abce44beefc1de4bb.png" src="../../_images/edd968a41cbd112e439de8884d43af4a14b2096127c70c3abce44beefc1de4bb.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) cuantiles teóricos de N(0,1) para probs (i - 0.5)/reps</span>
-<span class="n">norm_quantiles</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">reps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">reps</span><span class="p">)</span>
-
-<span class="c1"># 2) ordenar los z muestrales</span>
-<span class="n">sorted_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-
-<span class="c1"># 3) gráfico QQ: puntos vs línea y = x</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">norm_quantiles</span><span class="p">,</span> <span class="n">sorted_z</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>      <span class="c1"># puntos QQ</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># línea de referencia</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;QQ-plot: z vs Normal(0,1)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Cuantiles teóricos N(0,1)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cuantiles muestrales de z&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/789720f5c69daed8eaaada88f9bb4d995a7301c29f634e2804eef486492de03e.png" src="../../_images/789720f5c69daed8eaaada88f9bb4d995a7301c29f634e2804eef486492de03e.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualización de PP-plot</span>
-
-<span class="n">theoretical_cdf</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">sorted_z</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">theoretical_cdf</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">reps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">reps</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PP Plot&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;CDF teórica Normal(0,1)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;CDF muestral de z&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/83fe11df23ad16909d9abf58beedd95a56f045e8611b087157429452d015b16d.png" src="../../_images/83fe11df23ad16909d9abf58beedd95a56f045e8611b087157429452d015b16d.png" />
-</div>
-</div>
-<section id="preguntas-de-profundizacion-tlc-en-accion">
-<h3>Preguntas de Profundización: TLC en acción<a class="headerlink" href="#preguntas-de-profundizacion-tlc-en-accion" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p><strong>Sensibilidad a k y reps</strong><br />
-Varía <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">{5,</span> <span class="pre">30,</span> <span class="pre">100}</span></code> y <code class="docutils literal notranslate"><span class="pre">reps</span> <span class="pre">=</span> <span class="pre">{200000,</span> <span class="pre">500000</span> <span class="pre">,</span> <span class="pre">1000000}</span></code>. ¿Cómo cambian la media y desviación de <code class="docutils literal notranslate"><span class="pre">Z_k</span></code>? Explica usando <code class="docutils literal notranslate"><span class="pre">SE</span> <span class="pre">=</span> <span class="pre">σ/√k</span></code> y el error de la media <code class="docutils literal notranslate"><span class="pre">≈</span> <span class="pre">1/√reps</span></code>.</p></li>
-<li><p><strong>Cobertura de IC</strong><br />
-Construye IC 95% para μ con <code class="docutils literal notranslate"><span class="pre">\bar</span> <span class="pre">M_k</span> <span class="pre">±</span> <span class="pre">1.96·s/√k</span></code> en muchas réplicas. Estima la proporción de IC que contienen el valor teórico de μ. ¿Se acerca a 0.95?</p></li>
-<li><p><strong>σ teórico vs σ estimado</strong><br />
-Estandariza con <code class="docutils literal notranslate"><span class="pre">σ/√k</span></code> y luego con <code class="docutils literal notranslate"><span class="pre">s/√k</span></code>. Compara media y sd de <code class="docutils literal notranslate"><span class="pre">Z_k</span></code>. ¿Cuál se acerca más a 0 y 1 con <code class="docutils literal notranslate"><span class="pre">k</span></code> finito?</p></li>
-</ol>
-</section>
-</section>
-<section id="ejercicio-aplicado">
-<h2>Ejercicio Aplicado<a class="headerlink" href="#ejercicio-aplicado" title="Link to this heading">#</a></h2>
-<p>La empresa “ProdServ” integra una planta de ensamblaje y un centro de servicio al cliente. En la planta operan varias líneas que producen en turnos horarios; cada línea registra el número de defectos por hora, la proporción de piezas no conformes por lote y el consumo de tiempo de máquinas en operaciones críticas. La inspección de calidad se realiza por muestreo: de cada lote de tamaño fijo se mide la fracción de no conformes y, si supera un umbral, se activa reproceso. La dirección de operaciones busca dimensionar recursos y ajustar estándares de calidad, pero las métricas clave fluctúan por la variabilidad inherente del proceso: horas “tranquilas” alternan con picos de defectos y cambios de mezcla de producto. Para planear con rigor, el equipo necesita estimar medias, dispersión y probabilidades de excedencia con control de incertidumbre.</p>
-<p>En paralelo, el centro de servicio gestiona solicitudes de clientes asociadas a garantías y soporte técnico. Se registran los tiempos entre llegadas y los tiempos de servicio de cada caso, así como la carga simultánea por franja horaria. La gerencia requiere evaluar tiempos de respuesta, dimensionar personal y establecer acuerdos de nivel de servicio.</p>
-<p>Para ambos frentes se propone un enfoque de simulación Monte Carlo. Realice 20000 réplicas de tamaño 30.</p>
-<section id="escenario-a-planta-produccion-y-calidad">
-<h3>Escenario A — Planta (Producción y Calidad)<a class="headerlink" href="#escenario-a-planta-produccion-y-calidad" title="Link to this heading">#</a></h3>
-<p>En la planta se monitorean dos métricas clave:</p>
-<ol class="arabic simple">
-<li><p><strong>Defectos por hora</strong> en una línea de producción (conteos por intervalo de tiempo).<br />
-Utilice: Poisson con <span class="math notranslate nohighlight">\(\lambda\)</span> = 4</p></li>
-<li><p><strong>Proporción de no conformes por lote</strong> (calidad por muestreo).<br />
-Utilice: Binomial con <span class="math notranslate nohighlight">\(n\)</span> = 50 y <span class="math notranslate nohighlight">\(p\)</span> = 0.10</p></li>
-</ol>
-<p>Use <strong>simulación Monte Carlo</strong> para generar datos, construir <strong>promedios de tamaño</strong> (k) por réplica, <strong>estandarizar</strong> y verificar el <strong>TLC</strong>. Además, construya <strong>intervalos de confianza (IC)</strong> para la media.</p>
-<section id="a-1-defectos-por-hora-poisson">
-<h4>A.1 Defectos por hora (Poisson)<a class="headerlink" href="#a-1-defectos-por-hora-poisson" title="Link to this heading">#</a></h4>
-<p>Suponga <span class="math notranslate nohighlight">\(X \sim \text{Poisson}(\lambda)\)</span> como el número de defectos por hora en una línea. Para cada réplica, promediamos <span class="math notranslate nohighlight">\(k\)</span> horas: <span class="math notranslate nohighlight">\(\bar X_k = \frac{1}{k}\sum_{j=1}^k X_j\)</span>.<br />
-Parámetros teóricos: <span class="math notranslate nohighlight">\(\mathbb E[X] = \lambda\)</span>, <span class="math notranslate nohighlight">\(\mathrm{Var}(X) = \lambda\)</span>.</p>
-<p>Por TCL, la estandarización</p>
-<div class="math notranslate nohighlight">
-\[
-Z \;=\; \frac{\bar X_k - \lambda}{\sqrt{\lambda}/\sqrt{k}}
-\]</div>
-<p>debería lucir aproximadamente <span class="math notranslate nohighlight">\(\mathcal N(0,1)\)</span> cuando <span class="math notranslate nohighlight">\(k\)</span> es moderado/grande.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A.1 Poisson: defectos por hora</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
-
-<span class="c1"># 0) parámetros y configuración</span>
-<span class="n">rng</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># generador con semilla</span>
-<span class="n">lam</span>   <span class="o">=</span> <span class="mf">4.0</span>                       <span class="c1"># defectos/hora</span>
-<span class="n">k</span>     <span class="o">=</span> <span class="mi">30</span>                        <span class="c1"># tamaño del promedio POR réplica</span>
-<span class="n">reps</span>  <span class="o">=</span> <span class="mi">20000</span>                     <span class="c1"># número de réplicas</span>
-
-<span class="c1"># 1) simulación: matriz (reps, k) con conteos Poisson(λ)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">lam</span><span class="o">=</span><span class="n">lam</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">reps</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
-
-<span class="c1"># 2) promedios por réplica</span>
-<span class="n">means</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># 3) estandarización por TLC con parámetros teóricos</span>
-<span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">means</span> <span class="o">-</span> <span class="n">lam</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">lam</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A.1 Poisson TLC&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mean(z) ~&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">&quot;  sd(z) ~&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-
-<span class="c1"># 4) IC 95% para μ=λ usando σ conocida (aprox normal)</span>
-<span class="n">mu_hat</span> <span class="o">=</span> <span class="n">means</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">se_hat</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">lam</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">reps</span><span class="p">)</span>  <span class="c1"># error estándar del promedio de &#39;means&#39;</span>
-<span class="n">lo</span> <span class="o">=</span> <span class="n">mu_hat</span> <span class="o">-</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">se_hat</span>
-<span class="n">hi</span> <span class="o">=</span> <span class="n">mu_hat</span> <span class="o">+</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">se_hat</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IC 95% para E[X]: (</span><span class="si">{</span><span class="n">lo</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">hi</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)   (teórico λ=</span><span class="si">{</span><span class="n">lam</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-
-<span class="c1"># 5) visualizacione</span>
-<span class="c1"># Histograma de Z vs N(0,1)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">z</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">300</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;A.1 Poisson — Histograma de Z y PDF N(0,1)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;densidad&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># QQ-plot</span>
-<span class="n">sorted_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-<span class="n">q_the</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">reps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">reps</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">q_the</span><span class="p">,</span> <span class="n">sorted_z</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;A.1 Poisson — QQ-plot: Z vs N(0,1)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Cuantiles teóricos&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cuantiles de Z&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A.1 Poisson TLC
-mean(z) ~ 0.007535749520341884   sd(z) ~ 0.9958304138037191
-IC 95% para E[X]: (3.9977, 4.0078)   (teórico λ=4.0)
-</pre></div>
-</div>
-<img alt="../../_images/4a9ca2e6f645f614facf4f7241d8cf21beabbf23a05c23f9a7bea8ba1cc971ca.png" src="../../_images/4a9ca2e6f645f614facf4f7241d8cf21beabbf23a05c23f9a7bea8ba1cc971ca.png" />
-<img alt="../../_images/eca96e1e3a5a0fa6118ba4eb8a1907ef28b9bb6ba1b92b4127972c928be64af0.png" src="../../_images/eca96e1e3a5a0fa6118ba4eb8a1907ef28b9bb6ba1b92b4127972c928be64af0.png" />
-</div>
-</div>
-</section>
-<section id="a-2-proporcion-de-no-conformes-por-lote-binomial">
-<h4>A.2 Proporción de no conformes por lote (Binomial)<a class="headerlink" href="#a-2-proporcion-de-no-conformes-por-lote-binomial" title="Link to this heading">#</a></h4>
-<p>Cada lote tiene tamaño <span class="math notranslate nohighlight">\(n\)</span>. El número de no conformes <span class="math notranslate nohighlight">\(B \sim \text{Binomial}(n, p)\)</span>.<br />
-Proporción por lote <span class="math notranslate nohighlight">\(Y = B/n\)</span>.<br />
-Para cada réplica, promediamos <span class="math notranslate nohighlight">\(k\)</span> lotes: <span class="math notranslate nohighlight">\(\bar Y_k = \frac{1}{k}\sum_{j=1}^k Y_j\)</span>.</p>
-<p>Teoría: <span class="math notranslate nohighlight">\(\mathbb E[Y]=p\)</span>, <span class="math notranslate nohighlight">\(\mathrm{Var}(Y) = \dfrac{p(1-p)}{n}\)</span>.</p>
-<p>Por TCL, la estandarización</p>
-<div class="math notranslate nohighlight">
-\[
-Z \;=\; \frac{\bar Y_k - p}{\sqrt{p(1-p)/(n\,k)}}
-\]</div>
-<p>debería lucir aproximadamente <span class="math notranslate nohighlight">\(\mathcal N(0,1)\)</span> si <span class="math notranslate nohighlight">\(n\)</span> y <span class="math notranslate nohighlight">\(k\)</span> son razonables y <span class="math notranslate nohighlight">\(p\)</span> no es extremo.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A.2 Binomial (proporción de no conformes por lote)</span>
-
-<span class="c1"># 0) parámetros y configuración</span>
-<span class="n">rng</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">p</span>     <span class="o">=</span> <span class="mf">0.10</span>          <span class="c1"># probabilidad de no conformes</span>
-<span class="n">n</span>     <span class="o">=</span> <span class="mi">50</span>            <span class="c1"># tamaño de lote </span>
-<span class="n">k</span>     <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># tamaño del promedio POR réplica (nº de lotes promediados)</span>
-<span class="n">reps</span>  <span class="o">=</span> <span class="mi">20000</span>         <span class="c1"># número de réplicas</span>
-
-<span class="c1"># 1) simulación: B ~ Bin(n,p) por lote, y proporción Y = B/n</span>
-<span class="n">B</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">reps</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">B</span> <span class="o">/</span> <span class="n">n</span>
-
-<span class="c1"># 2) promedios por réplica</span>
-<span class="n">means</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># 3) estandarización por TLC con parámetros teóricos</span>
-<span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">means</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">k</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A.2 Proporciones TLC&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mean(z) ~&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">&quot;  sd(z) ~&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-
-<span class="c1"># 4) IC 95% para p usando aproximación normal con var teórica conocida</span>
-<span class="n">mu_hat</span> <span class="o">=</span> <span class="n">means</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">se_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">k</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">reps</span><span class="p">)</span>   <span class="c1"># error estándar del promedio de &#39;means&#39;</span>
-<span class="n">lo</span> <span class="o">=</span> <span class="n">mu_hat</span> <span class="o">-</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">se_hat</span>
-<span class="n">hi</span> <span class="o">=</span> <span class="n">mu_hat</span> <span class="o">+</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">se_hat</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IC 95% para E[Y]: (</span><span class="si">{</span><span class="n">lo</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">hi</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)   (teórico p=</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-
-<span class="c1"># 5) visualizaciones</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">z</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">300</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;A.2 Proporciones — Histograma de Z y PDF N(0,1)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;densidad&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="n">sorted_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-<span class="n">q_the</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">reps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">reps</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">q_the</span><span class="p">,</span> <span class="n">sorted_z</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;A.2 Proporciones — QQ-plot: Z vs N(0,1)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Cuantiles teóricos&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cuantiles de Z&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A.2 Proporciones TLC
-mean(z) ~ 0.0010672220776235888   sd(z) ~ 0.9970079531158527
-IC 95% para E[Y]: (0.0999, 0.1001)   (teórico p=0.1)
-</pre></div>
-</div>
-<img alt="../../_images/22db08c7a2768859456bb616d8ebb870b40b9ab219acd54b92db52e8792cbbd3.png" src="../../_images/22db08c7a2768859456bb616d8ebb870b40b9ab219acd54b92db52e8792cbbd3.png" />
-<img alt="../../_images/7f6480bece195de8f395602634a441c769162ab18e7e8dabfe92c2d7a09b3143.png" src="../../_images/7f6480bece195de8f395602634a441c769162ab18e7e8dabfe92c2d7a09b3143.png" />
-</div>
-</div>
-</section>
-</section>
-<section id="escenario-b-servicio-atencion-al-cliente">
-<h3>Escenario B — Servicio (Atención al cliente)<a class="headerlink" href="#escenario-b-servicio-atencion-al-cliente" title="Link to this heading">#</a></h3>
-<p>Analizaremos métricas de tiempo en un centro de servicio:</p>
-<ol class="arabic simple">
-<li><p><strong>Tiempos de servicio</strong> por caso, modelados con una Exponencial de tasa <span class="math notranslate nohighlight">\(\lambda\)</span>.<br />
-Utilice: Exponencial con <span class="math notranslate nohighlight">\(\lambda\)</span> = 0.6</p></li>
-<li><p><strong>Tiempos entre llegadas</strong> (interarribos), también Exponencial con tasa <span class="math notranslate nohighlight">\(\lambda_a\)</span>.<br />
-Utilice: Exponencial con <span class="math notranslate nohighlight">\(\lambda_a\)</span> = 0.7</p></li>
-</ol>
-<p>Use <strong>simulación Monte Carlo</strong> para generar datos, construir <strong>promedios de tamaño</strong> (k) por réplica, <strong>estandarizar</strong> y verificar el <strong>TLC</strong>. Además, construya <strong>intervalos de confianza (IC)</strong> para la media.</p>
-</section>
-<section id="b-1-tiempos-de-servicio-exponencial-lambda">
-<h3>B.1 Tiempos de servicio ~ Exponencial (<span class="math notranslate nohighlight">\(\lambda\)</span>)<a class="headerlink" href="#b-1-tiempos-de-servicio-exponencial-lambda" title="Link to this heading">#</a></h3>
-<p>Si <span class="math notranslate nohighlight">\(T \sim \mathrm{Exp}(\lambda)\)</span>, entonces:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\mathbb{E}[T] = 1/\lambda\)</span>, <span class="math notranslate nohighlight">\(\ \mathrm{Var}(T) = 1/\lambda^2\)</span>, <span class="math notranslate nohighlight">\(\ \sigma = 1/\lambda\)</span>.</p></li>
-<li><p>Promedio de <span class="math notranslate nohighlight">\(k\)</span> servicios por réplica: <span class="math notranslate nohighlight">\(\bar T_k = \frac{1}{k}\sum_{j=1}^{k} T_j\)</span>.</p></li>
-<li><p>Estandarización por TLC:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-Z \;=\; \frac{\bar T_k - 1/\lambda}{\,(1/\lambda)/\sqrt{k}\,} \;\approx\; \mathcal{N}(0,1).
-\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># B.1 Exponencial: tiempos de servicio</span>
-
-<span class="c1"># 0) parámetros</span>
-<span class="n">rng</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># generador con semilla</span>
-<span class="n">lam</span>  <span class="o">=</span> <span class="mf">0.6</span>                        <span class="c1"># tasa de servicio </span>
-<span class="n">k</span>    <span class="o">=</span> <span class="mi">30</span>                         <span class="c1"># tamaño del promedio POR réplica</span>
-<span class="n">reps</span> <span class="o">=</span> <span class="mi">20000</span>                      <span class="c1"># número de réplicas</span>
-
-<span class="c1"># 1) simulación: matriz (reps, k) con T ~ Exp(lam)</span>
-<span class="c1">#    Nota: en NumPy, exponencial usa &#39;scale = 1/lam&#39;</span>
-<span class="n">T</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">lam</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">reps</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
-
-<span class="c1"># 2) promedios por réplica</span>
-<span class="n">means</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># 3) estandarización por TLC con parámetros teóricos</span>
-<span class="n">mu</span>    <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">lam</span>
-<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">lam</span>
-<span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">means</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B.1 Servicio TLC&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mean(z) ~&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">&quot;  sd(z) ~&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-
-<span class="c1"># 4) IC 95% para E[T]</span>
-<span class="n">se_known</span> <span class="o">=</span> <span class="p">(</span><span class="n">sigma</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">reps</span><span class="p">)</span>
-<span class="n">lo_k</span> <span class="o">=</span> <span class="n">means</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">se_known</span>
-<span class="n">hi_k</span> <span class="o">=</span> <span class="n">means</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">se_known</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IC 95% (σ conocida): (</span><span class="si">{</span><span class="n">lo_k</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">hi_k</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)   (teórico 1/λ = </span><span class="si">{</span><span class="n">mu</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-
-
-<span class="c1"># 5) visualizaciones</span>
-<span class="c1"># Histograma de Z vs N(0,1)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">z</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">300</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;B.1 Servicio — Histograma de Z y PDF N(0,1)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;densidad&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># QQ-plot </span>
-<span class="n">sorted_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-<span class="n">q_the</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">reps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">reps</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">q_the</span><span class="p">,</span> <span class="n">sorted_z</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;B.1 Servicio — QQ-plot: Z vs N(0,1)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Cuantiles teóricos&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cuantiles de Z&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B.1 Servicio TLC
-mean(z) ~ 0.005235051487647984   sd(z) ~ 0.9995763729705177
-IC 95% (σ conocida): (1.6640, 1.6725)   (teórico 1/λ = 1.6667)
-</pre></div>
-</div>
-<img alt="../../_images/457ce63beee639493f181c8c07ece097e4c9c8c1c0b452285afe1adff66a90c9.png" src="../../_images/457ce63beee639493f181c8c07ece097e4c9c8c1c0b452285afe1adff66a90c9.png" />
-<img alt="../../_images/23cc2fe8ed8ed0a710d22693bdebe6b83c3009c2eb1deb01fad9d9f40cee9f7f.png" src="../../_images/23cc2fe8ed8ed0a710d22693bdebe6b83c3009c2eb1deb01fad9d9f40cee9f7f.png" />
-</div>
-</div>
-<section id="b-2-tiempos-entre-llegadas-exponencial-lambda-a">
-<h4>B.2 Tiempos entre llegadas ~ Exponencial (<span class="math notranslate nohighlight">\(\lambda_a\)</span>)<a class="headerlink" href="#b-2-tiempos-entre-llegadas-exponencial-lambda-a" title="Link to this heading">#</a></h4>
-<p>Si <span class="math notranslate nohighlight">\(A \sim \mathrm{Exp}(\lambda_a)\)</span> modela el tiempo entre llegadas:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\mathbb{E}[A] = 1/\lambda_a\)</span>, <span class="math notranslate nohighlight">\(\ \sigma_A = 1/\lambda_a\)</span>.</p></li>
-<li><p>Promedio de <span class="math notranslate nohighlight">\(k\)</span> interarribos por réplica y estandarización análoga:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-Z \;=\; \frac{\bar A_k - 1/\lambda_a}{(1/\lambda_a)/\sqrt{k}} \;\approx\; \mathcal{N}(0,1).
-\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># B.2 Exponencial: tiempos entre llegadas</span>
-
-<span class="c1"># 0) parámetros</span>
-<span class="n">rng</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
-<span class="n">lam_a</span>  <span class="o">=</span> <span class="mf">0.7</span>            <span class="c1"># tasa de llegadas</span>
-<span class="n">k</span>      <span class="o">=</span> <span class="mi">30</span>
-<span class="n">reps</span>   <span class="o">=</span> <span class="mi">20000</span>
-
-<span class="c1"># 1) simulación: A ~ Exp(lam_a)</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">lam_a</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">reps</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
-<span class="n">means_A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># 2) estandarización por TLC</span>
-<span class="n">mu_A</span>    <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">lam_a</span>
-<span class="n">sigma_A</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">lam_a</span>
-<span class="n">zA</span> <span class="o">=</span> <span class="p">(</span><span class="n">means_A</span> <span class="o">-</span> <span class="n">mu_A</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma_A</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B.2 Interarribos TLC&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mean(z) ~&quot;</span><span class="p">,</span> <span class="n">zA</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">&quot;  sd(z) ~&quot;</span><span class="p">,</span> <span class="n">zA</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-
-<span class="c1"># 3) IC 95% para E[A]</span>
-<span class="n">seA_known</span> <span class="o">=</span> <span class="p">(</span><span class="n">sigma_A</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">reps</span><span class="p">)</span>
-<span class="n">loA</span> <span class="o">=</span> <span class="n">means_A</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">seA_known</span>
-<span class="n">hiA</span> <span class="o">=</span> <span class="n">means_A</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">seA_known</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IC 95% para E[A]: (</span><span class="si">{</span><span class="n">loA</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">hiA</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)   (teórico 1/λ_a = </span><span class="si">{</span><span class="n">mu_A</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-
-<span class="c1"># 5) visualizaciones</span>
-<span class="c1"># Histograma de Z vs N(0,1)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">z</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">300</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;B.1 Servicio — Histograma de Z y PDF N(0,1)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;densidad&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># QQ-plot </span>
-<span class="n">sorted_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-<span class="n">q_the</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">reps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">reps</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">q_the</span><span class="p">,</span> <span class="n">sorted_z</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;B.1 Servicio — QQ-plot: Z vs N(0,1)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Cuantiles teóricos&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cuantiles de Z&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B.2 Interarribos TLC
-mean(z) ~ 0.005315242742868569   sd(z) ~ 1.0029689304219433
-IC 95% para E[A]: (1.4263, 1.4336)   (teórico 1/λ_a = 1.4286)
-</pre></div>
-</div>
-<img alt="../../_images/457ce63beee639493f181c8c07ece097e4c9c8c1c0b452285afe1adff66a90c9.png" src="../../_images/457ce63beee639493f181c8c07ece097e4c9c8c1c0b452285afe1adff66a90c9.png" />
-<img alt="../../_images/23cc2fe8ed8ed0a710d22693bdebe6b83c3009c2eb1deb01fad9d9f40cee9f7f.png" src="../../_images/23cc2fe8ed8ed0a710d22693bdebe6b83c3009c2eb1deb01fad9d9f40cee9f7f.png" />
-</div>
-</div>
-<p>Universidad de los Andes | Vigilada Mineducación. Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia. Departamento de Ingeniería Industrial Carrera 1 Este No. 19 A 40 Bogotá, Colombia Tel. (57.1) 3324320 | (57.1) 3394949 Ext. 2880 /2881 <a class="reference external" href="http://industrial.uniandes.edu.co">http://industrial.uniandes.edu.co</a></p>
 </section>
 </section>
 </section>
@@ -1066,16 +574,16 @@ IC 95% para E[A]: (1.4263, 1.4336)   (teórico 1/λ_a = 1.4286)
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "entorno"
+            mode: "python"
         },
         kernelOptions: {
-            name: "entorno",
+            name: "python3",
             path: "./content\complementarias"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'entorno'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -1097,11 +605,11 @@ IC 95% para E[A]: (1.4263, 1.4336)   (teórico 1/λ_a = 1.4286)
       </div>
     </a>
     <a class="right-next"
-       href="complementaria_filas.html"
+       href="complementaria_tlc.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Complementaria 5: Cálculo de filas</p>
+        <p class="prev-next-title">Complementaria 3: Teorema del Límite Central y validación empírica</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1121,33 +629,16 @@ IC 95% para E[A]: (1.4263, 1.4336)   (teórico 1/λ_a = 1.4286)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximo-de-dos-dados-y-simulacion-de-montecarlo">Máximo de dos dados y Simulación de Montecarlo</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-guiado-maximo-de-dos-dados-y-simulacion-monte-carlo">Ejercicio guiado: Máximo de dos dados y simulación Monte Carlo</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contexto">Contexto</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-a-deriva-la-pmf-teoricamente">Parte A — Deriva la pmf teóricamente</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-b-validacion-por-simulacion-monte-carlo">Parte B — Validación por simulación Monte Carlo</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#profundizacion-resuelva-estas-preguntas-como-cambia-el-codigo">Profundización: resuelva estas preguntas ¿cómo cambia el código?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-a-deriva-la-pmf-teoricamente">Parte A — Deriva la pmf teóricamente</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-b-validacion-por-simulacion-monte-carlo">Parte B — Validación por simulación Monte Carlo</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-profundizacion">Preguntas de Profundización</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-c-media-y-varianza">Parte C — Media y varianza</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profundizacion-pregunta-corta">Profundización: pregunta corta</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-d-extension-teorema-central-del-limite-tcl">Parte D — Extensión: Teorema Central del Límite (TCL)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-profundizacion-tlc-en-accion">Preguntas de Profundización: TLC en acción</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-aplicado">Ejercicio Aplicado</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#escenario-a-planta-produccion-y-calidad">Escenario A — Planta (Producción y Calidad)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1-defectos-por-hora-poisson">A.1 Defectos por hora (Poisson)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-proporcion-de-no-conformes-por-lote-binomial">A.2 Proporción de no conformes por lote (Binomial)</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#escenario-b-servicio-atencion-al-cliente">Escenario B — Servicio (Atención al cliente)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1-tiempos-de-servicio-exponencial-lambda">B.1 Tiempos de servicio ~ Exponencial (<span class="math notranslate nohighlight">\(\lambda\)</span>)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#b-2-tiempos-entre-llegadas-exponencial-lambda-a">B.2 Tiempos entre llegadas ~ Exponencial (<span class="math notranslate nohighlight">\(\lambda_a\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-c-media-y-varianza">Parte C — Media y varianza</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#profundizacion-pregunta-corta">Profundización: pregunta corta</a></li>
 </ul>
 </li>
 </ul>
@@ -1176,7 +667,7 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

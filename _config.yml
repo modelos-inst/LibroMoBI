@@ -45,8 +45,8 @@ sphinx:
     myst_update_mathjax: false
     # Forzar que myst-nb use el parser MyST para markdown en notebooks
     nb_render_markdown_format: myst
-    # Usar MathJax LOCAL - versión completa con AMS incluido
-    mathjax_path: mathjax/tex-mml-chtml.js
+    # Usar MathJax desde CDN (funciona en GitHub Pages sin CORS)
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     mathjax3_config:
       tex:
         inlineMath: [['$', '$'], ['\\(', '\\)']]

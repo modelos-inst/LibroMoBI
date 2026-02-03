@@ -16,5 +16,5 @@ parts:
   - file: content/complementarias/complementaria_tlc.ipynb
   - file: content/complementarias/complementaria_intro_simpy.ipynb
   - file: content/complementarias/complementaria_simu_cola_simpy.ipynb
-  - file: content/complementarias/complementaria_transf_inversa_gba.ipynb
+  - file: content/complementarias/complementaria_transf_inversa_gva.ipynb
   - file: content/complementarias/complementaria_simu_proceso_poisson.ipynb

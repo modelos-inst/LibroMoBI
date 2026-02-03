@@ -41,22 +41,12 @@ parse:
 
 sphinx:
   config:
-    # Desactivar que myst sobrescriba la config de MathJax
-    myst_update_mathjax: false
-    # Forzar que myst-nb use el parser MyST para markdown en notebooks
     nb_render_markdown_format: myst
-    # Usar MathJax desde CDN (funciona en GitHub Pages sin CORS)
-    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    myst_dmath_double_inline: true
+    myst_update_mathjax: false
     mathjax3_config:
-      tex:
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
-        processEscapes: true
-        processEnvironments: true
       options:
-        ignoreHtmlClass: "ignore-this-class-that-does-not-exist"
         processHtmlClass: "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"
-        enableMenu: false
 
 
 

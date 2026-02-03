@@ -19,6 +19,24 @@
     font-size: 1.1rem;
 }
 
+/* Fix para fórmulas MathJax cortadas */
+.math, .MathJax, .MathJax_Display, mjx-container {
+    overflow: visible !important;
+    line-height: 1.6 !important;
+}
+
+/* Asegurar que los párrafos con fórmulas no las corten */
+p:has(.math), p:has(mjx-container), li:has(.math) {
+    overflow: visible !important;
+    line-height: 1.8 !important;
+}
+
+/* Margen extra para fórmulas display */
+div.math, .MathJax_Display, mjx-container[display="true"] {
+    margin: 1em 0 !important;
+    padding: 0.2em 0 !important;
+}
+
 
 
 img[alt=fig1]{

@@ -55,8 +55,6 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script src="../../_static/mathjax/tex-mml-chtml.js"></script>
-    <script src="../../_static/mathjax/tex-svg.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -65,9 +63,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore", "enableMenu": false}}</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_transf_inversa_gba';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_transf_inversa_gva';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Complementaria Semana 8: Simulación de un Proceso de Poisson" href="complementaria_simu_proceso_poisson.html" />
@@ -255,7 +253,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/content/complementarias/complementaria_transf_inversa_gba.ipynb" target="_blank"
+      <li><a href="../../_sources/content/complementarias/complementaria_transf_inversa_gva.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -463,9 +461,7 @@ Note: you may need to restart the kernel to use updated packages.
 <h2>El problema central<a class="headerlink" href="#el-problema-central" title="Permalink to this heading">#</a></h2>
 <p>En un computador, el generador básico de números aleatorios produce valores:</p>
 <div class="math notranslate nohighlight">
-\[
-U \sim \text{Unif}(0,1)
-\]</div>
+\[U \sim \text{Unif}(0,1)\]</div>
 <p>Es decir, sabemos generar <strong>uniformes</strong>, pero <strong>no directamente</strong> exponenciales, normales, Weibull, etc.</p>
 <p>La pregunta es:</p>
 <blockquote>
@@ -477,9 +473,7 @@ U \sim \text{Unif}(0,1)
 <p>Sea <span class="math notranslate nohighlight">\(X\)</span> una variable aleatoria continua con función de distribución acumulada (CDF) <span class="math notranslate nohighlight">\(F\)</span>.</p>
 <p>Entonces ocurre algo muy importante:</p>
 <div class="math notranslate nohighlight">
-\[
-U = F(X) \sim \text{Unif}(0,1)
-\]</div>
+\[U = F(X) \sim \text{Unif}(0,1)\]</div>
 <p>Es decir, <strong>si evaluamos la CDF de una variable aleatoria en su propio valor, el resultado es uniforme</strong>.</p>
 </section>
 <section id="por-que-pasa-esto-intuicion-argumento-corto">
@@ -490,15 +484,7 @@ U = F(X) \sim \text{Unif}(0,1)
 </div></blockquote>
 <p>Si tomamos <span class="math notranslate nohighlight">\(U = F(X)\)</span>, entonces para cualquier <span class="math notranslate nohighlight">\(u \in [0,1]\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-P(U \le u)
-&amp;= P(F(X) \le u) \\
-&amp;= P(X \le F^{-1}(u)) \\
-&amp;= F(F^{-1}(u)) \\
-&amp;= u
-\end{aligned}
-\end{split}\]</div>
+\[P(U \le u) = P(F(X) \le u) = P(X \le F^{-1}(u)) = F(F^{-1}(u)) = u\]</div>
 <p>Esto es exactamente la CDF de una <strong>Uniforme(0,1)</strong>.</p>
 </section>
 <section id="la-idea-se-puede-dar-la-vuelta">
@@ -510,9 +496,7 @@ P(U \le u)
 </ul>
 <p>entonces podemos <strong>invertir el proceso</strong>:</p>
 <div class="math notranslate nohighlight">
-\[
-X = F^{-1}(U)
-\]</div>
+\[X = F^{-1}(U)\]</div>
 <p>y así obtener una variable <span class="math notranslate nohighlight">\(X\)</span> con la distribución deseada.</p>
 <p><strong>Este es el método de la transformada inversa.</strong></p>
 </section>
@@ -529,9 +513,11 @@ X = F^{-1}(U)
 <section id="fuente-de-aleatoriedad-generador-por-congruencia-lineal-lcg">
 <h2>Fuente de aleatoriedad: generador por congruencia lineal (LCG)<a class="headerlink" href="#fuente-de-aleatoriedad-generador-por-congruencia-lineal-lcg" title="Permalink to this heading">#</a></h2>
 <p>En la sección anterior asumimos que el computador puede producir directamente valores
-$<span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[
 U \sim \mathrm{Unif}(0,1).
-\)</span>$
+\]</div>
+
 En la práctica, esa uniforme proviene de un <strong>generador pseudoaleatorio</strong>: un algoritmo determinista que produce una secuencia larga de números que <em>se comporta</em> como aleatoria.</p>
 <p>Un generador clásico y fácil de analizar es el <strong>generador congruencial lineal</strong> (<em>Linear Congruential Generator</em>, LCG):</p>
 <div class="math notranslate nohighlight">

@@ -55,8 +55,6 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script src="../../_static/mathjax/tex-mml-chtml.js"></script>
-    <script src="../../_static/mathjax/tex-svg.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -65,12 +63,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore", "enableMenu": false}}</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_simu_cola_simpy';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)" href="complementaria_transf_inversa_gba.html" />
+    <link rel="next" title="Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)" href="complementaria_transf_inversa_gva.html" />
     <link rel="prev" title="Complementaria Semana 5: Introducción a la Simulación con SimPy con Python" href="complementaria_intro_simpy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -190,7 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria 3: Teorema del Límite Central y validación empírica</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gba.html">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gva.html">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
 
 
 
@@ -360,7 +358,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-estimamos-con-la-simulacion">5) Qué estimamos con la simulación</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nota-metodologica">6) Nota metodológica</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-guiado-construir-una-m-m-1-en-simpy">Ejercicio guiado: construir una M/M/1 en SimPy</a><ul class="nav section-nav flex-column">
@@ -484,33 +481,40 @@ Note: you may need to restart the kernel to use updated packages.
 <section id="definicion-del-modelo-m-m-1">
 <h3>1) Definición del modelo M/M/1<a class="headerlink" href="#definicion-del-modelo-m-m-1" title="Permalink to this heading">#</a></h3>
 <p>Una cola <strong>M/M/1</strong> se caracteriza por:</p>
-<ul class="simple">
-<li><p>Llegadas según un proceso de Poisson de tasa <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span>. Equivalentemente, los <strong>tiempos entre llegadas</strong> <span class="math notranslate nohighlight">\((A_i)\)</span> son i.i.d. exponenciales:
-$<span class="math notranslate nohighlight">\(
-A_i \sim \mathrm{Exp}(\lambda), \qquad \mathbb{E}[A_i]=\frac{1}{\lambda}.
-\)</span>$</p></li>
-<li><p>Tiempos de servicio i.i.d. exponenciales de tasa <span class="math notranslate nohighlight">\(\mu&gt;0\)</span>:
-$<span class="math notranslate nohighlight">\(
-S_i \sim \mathrm{Exp}(\mu), \qquad \mathbb{E}[S_i]=\frac{1}{\mu}.
-\)</span>$</p></li>
+<ul>
+<li><p>Llegadas según un proceso de Poisson de tasa <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span>. Equivalentemente, los <strong>tiempos entre llegadas</strong> <span class="math notranslate nohighlight">\((A_i)\)</span> son i.i.d. exponenciales:</p>
+<div class="math notranslate nohighlight">
+\[
+  A_i \sim \mathrm{Exp}(\lambda), \qquad \mathbb{E}[A_i]=\frac{1}{\lambda}.
+  \]</div>
+</li>
+<li><p>Tiempos de servicio i.i.d. exponenciales de tasa <span class="math notranslate nohighlight">\(\mu&gt;0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  S_i \sim \mathrm{Exp}(\mu), \qquad \mathbb{E}[S_i]=\frac{1}{\mu}.
+  \]</div>
+</li>
 <li><p>Un servidor (capacidad 1) y disciplina típica <strong>FCFS</strong> (<em>First-Come First-Served</em>).</p></li>
 </ul>
-<p>El estado natural del sistema es
-$<span class="math notranslate nohighlight">\(
+<p>El estado natural del sistema es</p>
+<div class="math notranslate nohighlight">
+\[
 N(t)=\text{número de clientes en el sistema (en cola + en servicio) en el tiempo }t.
-\)</span><span class="math notranslate nohighlight">\(
-Bajo las hipótesis M/M/1, \)</span>(N(t))_{t\ge 0}<span class="math notranslate nohighlight">\( es una **cadena de Markov en tiempo continuo** (CTMC) tipo *birth–death* con transiciones:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Bajo las hipótesis M/M/1, <span class="math notranslate nohighlight">\(\bigl(N(t)\bigr)_{t\ge 0}\)</span> es una <strong>cadena de Markov en tiempo continuo</strong> (CTMC) tipo <em>birth–death</em> con transiciones:</p>
+<div class="math notranslate nohighlight">
+\[
 n \to n+1 \text{ a tasa } \lambda, \qquad
 n \to n-1 \text{ a tasa } \mu \text{ si } n\ge 1.
-\)</span>$</p>
+\]</div>
 </section>
 <section id="estabilidad-y-utilizacion">
 <h3>2) Estabilidad y utilización<a class="headerlink" href="#estabilidad-y-utilizacion" title="Permalink to this heading">#</a></h3>
-<p>Definimos la <strong>intensidad de tráfico</strong> o <strong>utilización</strong>:
-$<span class="math notranslate nohighlight">\(
+<p>Definimos la <strong>intensidad de tráfico</strong> o <strong>utilización</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
 \rho=\frac{\lambda}{\mu}.
-\)</span>$</p>
+\]</div>
 <ul class="simple">
 <li><p>Si <span class="math notranslate nohighlight">\(\rho&lt;1\)</span>, el sistema es <strong>estable</strong>: existe distribución estacionaria y las métricas promedio son finitas.</p></li>
 <li><p>Si <span class="math notranslate nohighlight">\(\rho\ge 1\)</span>, el sistema es <strong>inestable</strong>: el número en cola crece sin límite en promedio.</p></li>
@@ -519,34 +523,44 @@ $<span class="math notranslate nohighlight">\(
 </section>
 <section id="resultados-analiticos-lo-que-esperamos-ver">
 <h3>3) Resultados analíticos (lo que esperamos ver)<a class="headerlink" href="#resultados-analiticos-lo-que-esperamos-ver" title="Permalink to this heading">#</a></h3>
-<p>Cuando <span class="math notranslate nohighlight">\(\rho&lt;1\)</span>, la distribución estacionaria de <span class="math notranslate nohighlight">\(N\)</span> es geométrica:
-$<span class="math notranslate nohighlight">\(
+<p>Cuando <span class="math notranslate nohighlight">\(\rho&lt;1\)</span>, la distribución estacionaria de <span class="math notranslate nohighlight">\(N\)</span> es geométrica:</p>
+<div class="math notranslate nohighlight">
+\[
 \pi_n=\mathbb{P}(N=n)=(1-\rho)\rho^n,\qquad n=0,1,2,\dots
-\)</span>$
-De allí se obtienen las métricas clásicas:</p>
-<ul class="simple">
-<li><p>Número esperado en el sistema:
-$<span class="math notranslate nohighlight">\(
-L=\mathbb{E}[N]=\frac{\rho}{1-\rho}.
-\)</span>$</p></li>
-<li><p>Tiempo esperado en el sistema:
-$<span class="math notranslate nohighlight">\(
-W=\mathbb{E}[\text{tiempo en sistema}]=\frac{1}{\mu-\lambda}.
-\)</span>$</p></li>
-<li><p>Tiempo esperado en cola:
-$<span class="math notranslate nohighlight">\(
-W_q=W-\frac{1}{\mu}=\frac{\lambda}{\mu(\mu-\lambda)}.
-\)</span>$</p></li>
-<li><p>Número esperado en cola:
-$<span class="math notranslate nohighlight">\(
-L_q=\lambda W_q=\frac{\rho^2}{1-\rho}.
-\)</span>$</p></li>
+\]</div>
+<p>De allí se obtienen las métricas clásicas:</p>
+<ul>
+<li><p>Número esperado en el sistema:</p>
+<div class="math notranslate nohighlight">
+\[
+  L=\mathbb{E}[N]=\frac{\rho}{1-\rho}.
+  \]</div>
+</li>
+<li><p>Tiempo esperado en el sistema:</p>
+<div class="math notranslate nohighlight">
+\[
+  W=\mathbb{E}[\text{tiempo en sistema}]=\frac{1}{\mu-\lambda}.
+  \]</div>
+</li>
+<li><p>Tiempo esperado en cola:</p>
+<div class="math notranslate nohighlight">
+\[
+  W_q=W-\frac{1}{\mu}=\frac{\lambda}{\mu(\mu-\lambda)}.
+  \]</div>
+</li>
+<li><p>Número esperado en cola:</p>
+<div class="math notranslate nohighlight">
+\[
+  L_q=\lambda W_q=\frac{\rho^2}{1-\rho}.
+  \]</div>
+</li>
 </ul>
-<p>Además, se cumple la <strong>Ley de Little</strong> (en estacionario):
-$<span class="math notranslate nohighlight">\(
+<p>Además, se cumple la <strong>Ley de Little</strong> (en estacionario):</p>
+<div class="math notranslate nohighlight">
+\[
 L=\lambda W,\qquad L_q=\lambda W_q.
-\)</span>$
-Estas identidades son un chequeo de consistencia muy útil: si la simulación está bien instrumentada y el horizonte es grande, las estimaciones deberían ser cercanas a las fórmulas teóricas y coherentes con Little.</p>
+\]</div>
+<p>Estas identidades son un chequeo de consistencia muy útil: si la simulación está bien instrumentada y el horizonte es grande, las estimaciones deberían ser cercanas a las fórmulas teóricas y coherentes con Little.</p>
 </section>
 <section id="que-hace-simpy-y-como-se-traduce-un-modelo-de-colas-a-codigo">
 <h3>4) Qué hace SimPy y cómo se traduce un modelo de colas a código<a class="headerlink" href="#que-hace-simpy-y-como-se-traduce-un-modelo-de-colas-a-codigo" title="Permalink to this heading">#</a></h3>
@@ -646,36 +660,36 @@ SimPy necesita que le “lances” procesos para que corran en paralelo (en el s
 <h3>5) Qué estimamos con la simulación<a class="headerlink" href="#que-estimamos-con-la-simulacion" title="Permalink to this heading">#</a></h3>
 <p>En un horizonte de simulación grande <span class="math notranslate nohighlight">\(T\)</span> (y con <span class="math notranslate nohighlight">\(\rho&lt;1\)</span>), buscamos aproximar cantidades estacionarias.</p>
 <p><strong>Métricas por cliente completado</strong> (promedios muestrales):
-Para cada cliente <span class="math notranslate nohighlight">\(i\)</span> definimos:
-$<span class="math notranslate nohighlight">\(
+Para cada cliente <span class="math notranslate nohighlight">\(i\)</span> definimos:</p>
+<div class="math notranslate nohighlight">
+\[
 W_i = t^{\text{salida}}_i - t^{\text{llegada}}_i,\qquad
 W_{q,i} = t^{\text{inicio}}_i - t^{\text{llegada}}_i.
-\)</span><span class="math notranslate nohighlight">\(
-Si \)</span>D<span class="math notranslate nohighlight">\( clientes completan dentro de la ventana de medición, estimamos:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Si <span class="math notranslate nohighlight">\(D\)</span> clientes completan dentro de la ventana de medición, estimamos:</p>
+<div class="math notranslate nohighlight">
+\[
 \widehat{W}=\frac{1}{D}\sum_{i=1}^D W_i,\qquad
 \widehat{W_q}=\frac{1}{D}\sum_{i=1}^D W_{q,i}.
-\)</span>$</p>
-<p><strong>Utilización</strong> (promedio temporal):
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p><strong>Utilización</strong> (promedio temporal):</p>
+<div class="math notranslate nohighlight">
+\[
 \widehat{\rho}_T \approx \frac{\text{tiempo total ocupado}}{T}.
-\)</span><span class="math notranslate nohighlight">\(
-En teoría, \)</span>\rho=\lambda/\mu$.</p>
+\]</div>
+<p>En teoría, <span class="math notranslate nohighlight">\(\rho=\lambda/\mu\)</span>.</p>
 <p><strong>Chequeo con Little</strong> (validación práctica):
-Si aproximamos la tasa efectiva de salida por <span class="math notranslate nohighlight">\(\widehat{\lambda}_{\mathrm{eff}}\approx D/T\)</span>, entonces:
-$<span class="math notranslate nohighlight">\(
+Si aproximamos la tasa efectiva de salida por <span class="math notranslate nohighlight">\(\widehat{\lambda}_{\mathrm{eff}}\approx D/T\)</span>, entonces:</p>
+<div class="math notranslate nohighlight">
+\[
 \widehat{L}\approx \widehat{\lambda}_{\mathrm{eff}}\,\widehat{W},\qquad
 \widehat{L_q}\approx \widehat{\lambda}_{\mathrm{eff}}\,\widehat{W_q}.
-\)</span>$
-Luego comparamos observados vs. teóricos:</p>
+\]</div>
+<p>Luego comparamos observados vs. teóricos:</p>
 <ul class="simple">
 <li><p>Observados: <span class="math notranslate nohighlight">\(\widehat{W}, \widehat{W_q}, \widehat{L}, \widehat{L_q}, \widehat{\rho}_T\)</span></p></li>
-<li><p>Teóricos: , W_q, L, L_q, \rho$</p></li>
+<li><p>Teóricos: <span class="math notranslate nohighlight">\(W, W_q, L, L_q, \rho\)</span></p></li>
 </ul>
-</section>
-<section id="nota-metodologica">
-<h3>6) Nota metodológica<a class="headerlink" href="#nota-metodologica" title="Permalink to this heading">#</a></h3>
-<p>La simulación suele iniciar con el sistema vacío <span class="math notranslate nohighlight">\(N(0)=0\)</span>, lo que corresponde a un <strong>régimen transitorio</strong>. En horizontes grandes, el efecto inicial se diluye; en horizontes pequeños puede sesgar los promedios. En prácticas más avanzadas se usa un <em>warm-up</em> para descartar el inicio; aquí lo mencionamos para tener claridad conceptual sobre lo que significa “estimar estacionario”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">teorico_mm1</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
@@ -1611,7 +1625,7 @@ Base (teoría)
       </div>
     </a>
     <a class="right-next"
-       href="complementaria_transf_inversa_gba.html"
+       href="complementaria_transf_inversa_gva.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -1646,7 +1660,6 @@ Base (teoría)
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-estimamos-con-la-simulacion">5) Qué estimamos con la simulación</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nota-metodologica">6) Nota metodológica</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-guiado-construir-una-m-m-1-en-simpy">Ejercicio guiado: construir una M/M/1 en SimPy</a><ul class="nav section-nav flex-column">

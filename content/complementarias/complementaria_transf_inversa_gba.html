@@ -1,0 +1,1113 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA) &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/mathjax/tex-mml-chtml.js"></script>
+    <script src="../../_static/mathjax/tex-svg.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore", "enableMenu": false}}</script>
+    <script defer="defer" src="../../_static/mathjax/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_transf_inversa_gba';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Complementaria Semana 8: Simulación de un Proceso de Poisson" href="complementaria_simu_proceso_poisson.html" />
+    <link rel="prev" title="Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy" href="complementaria_simu_cola_simpy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uniandes.png" class="logo__image only-light" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>
+    <script>document.write(`<img src="../../_static/uniandes.png" class="logo__image only-dark" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Bienvenidos al libro del curso Modelado de Sistemas Bajo Incertidumbre
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Instalación Python y Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ambientes_virtuales.html">Ambientes virtuales en Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_python.html">Complementaria 1: Introducción a Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria 3: Teorema del Límite Central y validación empírica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/complementarias/complementaria_transf_inversa_gba.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias-que-usaremos">Librerías que usaremos</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#como-funciona-la-transformada-inversa">¿Cómo funciona la Transformada Inversa?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-problema-central">El problema central</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-clave">Idea clave</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-pasa-esto-intuicion-argumento-corto">¿Por qué pasa esto? (intuición + argumento corto)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-idea-se-puede-dar-la-vuelta">La idea se puede “dar la vuelta”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-necesitamos-en-la-practica">¿Qué necesitamos en la práctica?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuente-de-aleatoriedad-generador-por-congruencia-lineal-lcg">Fuente de aleatoriedad: generador por congruencia lineal (LCG)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-guiado-exponencial-lambda">Ejemplo guiado — Exponencial(<span class="math notranslate nohighlight">\(\lambda\)</span>)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-transformada-inversa">Cálculo de la transformada inversa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#procedimiento-aplicado-al-caso-exponencial">Procedimiento aplicado al caso Exponencial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-adicional-ks-test">Validación adicional: KS test</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-aplicado-generacion-weibull-por-transformada-inversa">Ejercicio aplicado — Generación Weibull por Transformada Inversa</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-a-derivacion-de-la-transformada-inversa">Parte A — Derivación de la transformada inversa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-b-implementacion-en-python">Parte B — Implementación en Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-c-analisis">Parte C — Análisis</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="complementaria-semana-7-transformada-inversa-para-generacion-de-variables-aleatorias-gva">
+<h1>Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)<a class="headerlink" href="#complementaria-semana-7-transformada-inversa-para-generacion-de-variables-aleatorias-gva" title="Permalink to this heading">#</a></h1>
+<p>En esta complementaria aprenderemos a <strong>generar variables aleatorias continuas</strong> a partir de una fuente básica de aleatoriedad: una uniforme <code class="docutils literal notranslate"><span class="pre">U</span> <span class="pre">~</span> <span class="pre">Unif(0,1)</span></code>.</p>
+<p>La idea central es:</p>
+<div class="math notranslate nohighlight">
+\[
+X = F^{-1}(U) \quad \text{donde } U \sim \text{Unif}(0,1)
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(F\)</span> es la CDF (función de distribución acumulada) de <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<section id="objetivos">
+<h2>Objetivos<a class="headerlink" href="#objetivos" title="Permalink to this heading">#</a></h2>
+<p>Al final de esta guía podrás:</p>
+<ol class="arabic simple">
+<li><p>Entender por qué <span class="math notranslate nohighlight">\(F(X)\sim \text{Unif}(0,1)\)</span> y cómo eso implica <span class="math notranslate nohighlight">\(X=F^{-1}(U)\)</span>.</p></li>
+<li><p>Derivar <span class="math notranslate nohighlight">\(F^{-1}\)</span> para distribuciones continuas simples.</p></li>
+<li><p>Implementar algoritmos de generación por <strong>transformada inversa</strong> en Python.</p></li>
+<li><p>Validar empíricamente los resultados (histogramas, comparación con pdf, cuantiles).</p></li>
+</ol>
+</section>
+<section id="librerias-que-usaremos">
+<h2>Librerías que usaremos<a class="headerlink" href="#librerias-que-usaremos" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> para muestreo y cálculo numérico</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> para visualización</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">math</span></code> para funciones matemáticas</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> para validaciones (KS-test, pdf/cdf)</p></li>
+</ul>
+<p>Si aún no están instaladas en el entorno, utilizar este comando en una celda de python (no es necesario instalar <code class="docutils literal notranslate"><span class="pre">math</span></code>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">matplotlib</span> <span class="n">scipy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (2.3.4)
+Requirement already satisfied: matplotlib in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (3.10.7)
+Requirement already satisfied: scipy in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (1.15.2)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (1.3.1)
+Requirement already satisfied: cycler&gt;=0.10 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (4.57.0)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (1.4.8)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (26.0)
+Requirement already satisfied: pillow&gt;=8 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (11.0.0)
+Requirement already satisfied: pyparsing&gt;=3 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (3.2.3)
+Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.2 -&gt; 26.0
+[notice] To update, run: C:\Users\jpine\AppData\Local\Programs\Python\Python312\python.exe -m pip install --upgrade pip
+</pre></div>
+</div>
+</div>
+</div>
+<p>Posteriormente, importar las librerías:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="como-funciona-la-transformada-inversa">
+<h1>¿Cómo funciona la Transformada Inversa?<a class="headerlink" href="#como-funciona-la-transformada-inversa" title="Permalink to this heading">#</a></h1>
+<p>Antes de programar, es clave entender <strong>qué problema estamos resolviendo</strong>.</p>
+<section id="el-problema-central">
+<h2>El problema central<a class="headerlink" href="#el-problema-central" title="Permalink to this heading">#</a></h2>
+<p>En un computador, el generador básico de números aleatorios produce valores:</p>
+<div class="math notranslate nohighlight">
+\[
+U \sim \text{Unif}(0,1)
+\]</div>
+<p>Es decir, sabemos generar <strong>uniformes</strong>, pero <strong>no directamente</strong> exponenciales, normales, Weibull, etc.</p>
+<p>La pregunta es:</p>
+<blockquote>
+<div><p>¿Cómo usamos una uniforme para generar una variable aleatoria con una distribución cualquiera?</p>
+</div></blockquote>
+</section>
+<section id="idea-clave">
+<h2>Idea clave<a class="headerlink" href="#idea-clave" title="Permalink to this heading">#</a></h2>
+<p>Sea <span class="math notranslate nohighlight">\(X\)</span> una variable aleatoria continua con función de distribución acumulada (CDF) <span class="math notranslate nohighlight">\(F\)</span>.</p>
+<p>Entonces ocurre algo muy importante:</p>
+<div class="math notranslate nohighlight">
+\[
+U = F(X) \sim \text{Unif}(0,1)
+\]</div>
+<p>Es decir, <strong>si evaluamos la CDF de una variable aleatoria en su propio valor, el resultado es uniforme</strong>.</p>
+</section>
+<section id="por-que-pasa-esto-intuicion-argumento-corto">
+<h2>¿Por qué pasa esto? (intuición + argumento corto)<a class="headerlink" href="#por-que-pasa-esto-intuicion-argumento-corto" title="Permalink to this heading">#</a></h2>
+<p>La CDF <span class="math notranslate nohighlight">\(F(x)\)</span> nos dice:</p>
+<blockquote>
+<div><p>la probabilidad de que <span class="math notranslate nohighlight">\(X\)</span> sea menor o igual que <span class="math notranslate nohighlight">\(x\)</span>.</p>
+</div></blockquote>
+<p>Si tomamos <span class="math notranslate nohighlight">\(U = F(X)\)</span>, entonces para cualquier <span class="math notranslate nohighlight">\(u \in [0,1]\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+P(U \le u)
+&amp;= P(F(X) \le u) \\
+&amp;= P(X \le F^{-1}(u)) \\
+&amp;= F(F^{-1}(u)) \\
+&amp;= u
+\end{aligned}
+\end{split}\]</div>
+<p>Esto es exactamente la CDF de una <strong>Uniforme(0,1)</strong>.</p>
+</section>
+<section id="la-idea-se-puede-dar-la-vuelta">
+<h2>La idea se puede “dar la vuelta”<a class="headerlink" href="#la-idea-se-puede-dar-la-vuelta" title="Permalink to this heading">#</a></h2>
+<p>Si:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F(X)\)</span> es uniforme,</p></li>
+<li><p>y sabemos generar <span class="math notranslate nohighlight">\(U \sim \text{Unif}(0,1)\)</span>,</p></li>
+</ul>
+<p>entonces podemos <strong>invertir el proceso</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+X = F^{-1}(U)
+\]</div>
+<p>y así obtener una variable <span class="math notranslate nohighlight">\(X\)</span> con la distribución deseada.</p>
+<p><strong>Este es el método de la transformada inversa.</strong></p>
+</section>
+<section id="que-necesitamos-en-la-practica">
+<h2>¿Qué necesitamos en la práctica?<a class="headerlink" href="#que-necesitamos-en-la-practica" title="Permalink to this heading">#</a></h2>
+<p>Para usar la transformada inversa necesitamos:</p>
+<ol class="arabic simple">
+<li><p>Saber la CDF <span class="math notranslate nohighlight">\(F(x)\)</span> de la distribución objetivo.</p></li>
+<li><p>Poder despejar <span class="math notranslate nohighlight">\(x\)</span> en función de <span class="math notranslate nohighlight">\(u\)</span>, es decir, calcular <span class="math notranslate nohighlight">\(F^{-1}(u)\)</span>.</p></li>
+<li><p>Generar valores <span class="math notranslate nohighlight">\(U \sim \text{Unif}(0,1)\)</span>.</p></li>
+<li><p>Aplicar la fórmula <span class="math notranslate nohighlight">\(X = F^{-1}(U)\)</span>.</p></li>
+</ol>
+</section>
+<section id="fuente-de-aleatoriedad-generador-por-congruencia-lineal-lcg">
+<h2>Fuente de aleatoriedad: generador por congruencia lineal (LCG)<a class="headerlink" href="#fuente-de-aleatoriedad-generador-por-congruencia-lineal-lcg" title="Permalink to this heading">#</a></h2>
+<p>En la sección anterior asumimos que el computador puede producir directamente valores
+$<span class="math notranslate nohighlight">\(
+U \sim \mathrm{Unif}(0,1).
+\)</span>$
+En la práctica, esa uniforme proviene de un <strong>generador pseudoaleatorio</strong>: un algoritmo determinista que produce una secuencia larga de números que <em>se comporta</em> como aleatoria.</p>
+<p>Un generador clásico y fácil de analizar es el <strong>generador congruencial lineal</strong> (<em>Linear Congruential Generator</em>, LCG):</p>
+<div class="math notranslate nohighlight">
+\[
+X_{k+1} = (aX_k + c) \bmod m,
+\qquad
+U_{k+1} = \frac{X_{k+1}}{m}.
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_k\)</span> es el <strong>estado</strong> (un entero).</p></li>
+<li><p><span class="math notranslate nohighlight">\(m\)</span> es el <strong>módulo</strong> (define el rango de estados: <span class="math notranslate nohighlight">\(0,1,\dots,m-1\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> es el <strong>multiplicador</strong> y <span class="math notranslate nohighlight">\(c\)</span> el <strong>incremento</strong>.</p></li>
+</ul>
+<p>La secuencia <span class="math notranslate nohighlight">\(\{U_k\}\)</span> se usa como fuente básica de uniformes, y luego aplicamos la <strong>transformada inversa</strong>
+para construir variables con otras distribuciones (Exponencial, Weibull, etc.).</p>
+<p><strong>Importante:</strong> el LCG es determinista. Con la misma semilla <span class="math notranslate nohighlight">\(X_0\)</span> produce exactamente la misma secuencia.
+Eso es útil en simulación porque garantiza <strong>reproducibilidad</strong>.</p>
+<p>En este laboratorio usaremos un conjunto de parámetros estándar (con buen periodo para fines didácticos):</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(m = 2^{31}-1\)</span> (primo de Mersenne),</p></li>
+<li><p><span class="math notranslate nohighlight">\(a = 16807\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(c = 0\)</span>.</p></li>
+</ul>
+<p>Este caso se conoce como el <em>minimal standard</em> de Park–Miller.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Implementación simple de un generador congruencial lineal (LCG)</span>
+<span class="c1"># Retorna una lista/array de U en (0,1).</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lcg_uniform</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">16807</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2147483647</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Genera n pseudo-uniformes U ~ Unif(0,1) usando un LCG.</span>
+
+<span class="sd">    Parámetros:</span>
+<span class="sd">    - n: número de valores a generar</span>
+<span class="sd">    - seed: semilla entera (estado inicial X0). Debe ser 1..m-1 para este LCG multiplicativo.</span>
+<span class="sd">    - a, c, m: parámetros del generador</span>
+
+<span class="sd">    Retorna:</span>
+<span class="sd">    - np.array de tamaño n con valores en (0,1)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Aseguramos que la semilla esté en el rango permitido</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># evitamos el estado 0 (en el caso c=0 se queda atrapado)</span>
+
+    <span class="n">U</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span>
+        <span class="c1"># Convertimos a (0,1). Usamos m como escala.</span>
+        <span class="n">U</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">m</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+
+<span class="c1"># Pequeña prueba rápida (opcional)</span>
+<span class="n">U_test</span> <span class="o">=</span> <span class="n">lcg_uniform</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">U_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([9.62643419e-04, 1.79147942e-01, 9.39454630e-01, 4.13966227e-01,
+       5.30370202e-01, 9.31979918e-01, 7.86487794e-01, 5.00360175e-01,
+       5.53457918e-01, 9.67226201e-01])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Validación muy básica del LCG: histograma + media/varianza esperadas de Unif(0,1)</span>
+<span class="c1"># (Esto NO prueba &#39;aleatoriedad&#39;, solo da una verificación rápida de plausibilidad.)</span>
+
+<span class="n">n_check</span> <span class="o">=</span> <span class="mi">50000</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">lcg_uniform</span><span class="p">(</span><span class="n">n_check</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">2026</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;LCG: histograma de U ~ Unif(0,1) (aprox.)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;densidad&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Media empírica:&quot;</span><span class="p">,</span> <span class="n">U</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">&quot; | Teórica:&quot;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Var empírica :&quot;</span><span class="p">,</span> <span class="n">U</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="s2">&quot; | Teórica:&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media empírica: 0.5020793585805872  | Teórica: 0.5
+Var empírica : 0.08358436772439962  | Teórica: 0.08333333333333333
+</pre></div>
+</div>
+<img alt="../../_images/3d2d51ee3692632c1253a8b616e9b22b77e31b1c679490ff0b71612b17c7a1e9.png" src="../../_images/3d2d51ee3692632c1253a8b616e9b22b77e31b1c679490ff0b71612b17c7a1e9.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="ejemplo-guiado-exponencial-lambda">
+<h1>Ejemplo guiado — Exponencial(<span class="math notranslate nohighlight">\(\lambda\)</span>)<a class="headerlink" href="#ejemplo-guiado-exponencial-lambda" title="Permalink to this heading">#</a></h1>
+<p>En este ejemplo aplicaremos el método de la <strong>transformada inversa</strong> para generar variables aleatorias con distribución exponencial, una de las distribuciones continuas más importantes en simulación (por ejemplo, para modelar tiempos entre eventos).</p>
+<p>El objetivo es:</p>
+<ul class="simple">
+<li><p>derivar explícitamente la inversa de la CDF,</p></li>
+<li><p>implementarla en Python,</p></li>
+<li><p>y verificar empíricamente que los datos generados siguen una distribución exponencial.</p></li>
+</ul>
+<p><br><br></p>
+<p>Sea <span class="math notranslate nohighlight">\(X \sim \text{Exp}(\lambda)\)</span> con <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>, su función de distribución acumulada (CDF) es:</p>
+<div class="math notranslate nohighlight">
+\[
+F(x) = 1 - e^{-\lambda x}, \quad x \ge 0
+\]</div>
+<section id="calculo-de-la-transformada-inversa">
+<h2>Cálculo de la transformada inversa<a class="headerlink" href="#calculo-de-la-transformada-inversa" title="Permalink to this heading">#</a></h2>
+<p>Para aplicar el método, igualamos la CDF a una variable uniforme <span class="math notranslate nohighlight">\(U \sim \text{Unif}(0,1)\)</span> y despejamos <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+u = 1 - e^{-\lambda x}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+e^{-\lambda x} = 1 - u
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+-\lambda x = \ln(1 - u)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+x = -\frac{1}{\lambda} \ln(1 - u)
+\]</div>
+<p>Como <span class="math notranslate nohighlight">\(U \sim \text{Unif}(0,1)\)</span> implica que <span class="math notranslate nohighlight">\(1 - U \sim \text{Unif}(0,1)\)</span>, se suele usar la forma equivalente:</p>
+<div class="math notranslate nohighlight">
+\[
+X = -\frac{1}{\lambda} \ln(U)
+\]</div>
+</section>
+<section id="procedimiento-aplicado-al-caso-exponencial">
+<h2>Procedimiento aplicado al caso Exponencial<a class="headerlink" href="#procedimiento-aplicado-al-caso-exponencial" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Generar <span class="math notranslate nohighlight">\(U_1,\dots,U_n \sim \text{Unif}(0,1)\)</span>.</p></li>
+<li><p>Calcular <span class="math notranslate nohighlight">\(X_i = F^{-1}(U_i)\)</span>, en este caso <span class="math notranslate nohighlight">\(X_i = -\frac{1}{\lambda}\ln(U_i)\)</span>.</p></li>
+<li><p>Validar empíricamente los resultados mediante:</p>
+<ul class="simple">
+<li><p>Un histograma de los <span class="math notranslate nohighlight">\(X_i\)</span></p></li>
+<li><p>Comparación con la pdf teórica, en este caso <span class="math notranslate nohighlight">\(f(x)=\lambda e^{-\lambda x}\)</span></p></li>
+<li><p>Cálculo de la media y varianza muestral</p></li>
+<li><p>Test KS (opcional)</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parámetros del experimento (Exponencial)</span>
+
+<span class="n">lam</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50000</span>
+
+<span class="c1"># Elegir la fuente de uniformes:</span>
+<span class="c1"># - True  : usar nuestro LCG (congruencia lineal)</span>
+<span class="c1"># - False : usar el generador de NumPy (por defecto)</span>
+<span class="n">USAR_LCG</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Semillas (reproducibilidad)</span>
+<span class="n">seed_lcg</span> <span class="o">=</span> <span class="mi">123</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># si USAR_LCG=False, se usa esta semilla</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Generar U ~ Unif(0,1)</span>
+
+<span class="k">if</span> <span class="n">USAR_LCG</span><span class="p">:</span>
+    <span class="c1"># Uniformes producidas por congruencia lineal</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">lcg_uniform</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed_lcg</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Uniformes producidas por el generador de NumPy</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Nota numérica:</span>
+<span class="c1"># log(0) no está definido. Por seguridad, evitamos valores extremadamente cercanos a 0.</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="mf">1e-12</span><span class="p">)</span>
+
+<span class="c1"># 2. Calcular X ~ Exp(lam) con la transformada inversa</span>
+<span class="c1">#    Si F(x)=1-exp(-lam x), entonces F^{-1}(u)=-(1/lam) log(1-u).</span>
+<span class="c1">#    Como U y 1-U tienen la misma distribución Unif(0,1), usamos:</span>
+<span class="n">X</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">lam</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3. Validación empírica: histograma + pdf teórica</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># Histograma normalizado de las muestras simuladas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+            <span class="c1"># bins: en cuántos intervalos (barras) se divide el rango de los datos.</span>
+            <span class="c1"># density=True: Normaliza el histograma para que represente una densidad de probabilidad, no conteos.</span>
+
+<span class="c1"># Malla de valores donde se evalúa la pdf teórica</span>
+<span class="n">xgrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">),</span> <span class="mi">400</span><span class="p">)</span>
+                        <span class="c1"># Se usa el percentil 99 para evitar colas muy largas</span>
+
+<span class="c1"># Función de densidad teórica de la Exponencial(lamda) en la malla</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">lam</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">lam</span> <span class="o">*</span> <span class="n">xgrid</span><span class="p">)</span>
+
+<span class="c1"># Superposición de la pdf teórica sobre el histograma</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xgrid</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Elementos gráficos</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Exponencial por Transformada Inversa: histograma vs pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;densidad&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/8702e92a91eccf3bd1ed635ecf42ebd6c673e5761838911511014d78938ea43a.png" src="../../_images/8702e92a91eccf3bd1ed635ecf42ebd6c673e5761838911511014d78938ea43a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comparar media y varianza empírica vs teórica</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Media empírica:&quot;</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">&quot; | Teórica:&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">lam</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Var empírica :&quot;</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="s2">&quot; | Teórica:&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">lam</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media empírica: 0.5016234835686951  | Teórica: 0.5
+Var empírica : 0.25384200162094983  | Teórica: 0.25
+</pre></div>
+</div>
+</div>
+</div>
+<p>Como podemos observar, el histograma de los valores simulados se ajusta muy bien a la forma de la función de densidad teórica de la distribución exponencial, lo que sugiere que el procedimiento de generación por transformada inversa está produciendo observaciones con la distribución esperada.</p>
+<p>Adicionalmente, la media y la varianza empíricas son muy cercanas a sus valores teóricos. Estas pequeñas diferencias se deben al error muestral propio de trabajar con un número finito de observaciones y tienden a desaparecer a medida que el tamaño de la muestra aumenta.</p>
+</section>
+<section id="validacion-adicional-ks-test">
+<h2>Validación adicional: KS test<a class="headerlink" href="#validacion-adicional-ks-test" title="Permalink to this heading">#</a></h2>
+<p>El test de Kolmogorov–Smirnov (KS) compara la función de distribución acumulada empírica con la CDF teórica de la distribución exponencial.</p>
+<p>Si el procedimiento de generación es consistente con la distribución teórica, el p-value del test debería ser <strong>mayor que un nivel de significancia <span class="math notranslate nohighlight">\(\alpha\)</span></strong> (por ejemplo, <span class="math notranslate nohighlight">\(\alpha=0.05\)</span>), de modo que no se rechace la hipótesis nula de que los datos provienen de dicha distribución.</p>
+<p><strong>Importante:</strong> el test KS no prueba que la distribución sea exactamente correcta; únicamente detecta discrepancias estadísticamente significativas entre la CDF empírica y la teórica. Además, para tamaños muestrales grandes, el test puede volverse muy sensible.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test KS para comparar la CDF empírica con la CDF teórica exponencial</span>
+<span class="n">D</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s2">&quot;expon&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">lam</span><span class="p">))</span> <span class="c1"># En SciPy, la exponencial se parametriza con &#39;scale = 1/lambda&#39;</span>
+
+<span class="c1"># Estadístico KS: máxima diferencia entre CDF empírica y teórica</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;KS statistic:&quot;</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+
+<span class="c1"># p-value del test: se compara con un nivel de significancia alpha</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p-value     :&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KS statistic: 0.003115473602542329
+p-value     : 0.7155843801748469
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="ejercicio-aplicado-generacion-weibull-por-transformada-inversa">
+<h1>Ejercicio aplicado — Generación Weibull por Transformada Inversa<a class="headerlink" href="#ejercicio-aplicado-generacion-weibull-por-transformada-inversa" title="Permalink to this heading">#</a></h1>
+<p>En este ejercicio aplicarás el método de la <strong>transformada inversa</strong> para generar variables aleatorias con distribución <strong>Weibull</strong>, una distribución ampliamente usada para modelar tiempos de vida y fallas en sistemas.</p>
+<p>Sea <span class="math notranslate nohighlight">\(X \sim \text{Weibull}(k,\lambda)\)</span>, donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(k&gt;0\)</span> es el parámetro de forma,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda&gt;0\)</span> es el parámetro de escala.</p></li>
+</ul>
+<p>Su función de distribución acumulada (CDF) es:</p>
+<div class="math notranslate nohighlight">
+\[
+F(x) = 1 - \exp\left(-\left(\frac{x}{\lambda}\right)^k\right), \quad x \ge 0
+\]</div>
+<section id="parte-a-derivacion-de-la-transformada-inversa">
+<h2>Parte A — Derivación de la transformada inversa<a class="headerlink" href="#parte-a-derivacion-de-la-transformada-inversa" title="Permalink to this heading">#</a></h2>
+<p>Partiendo de <span class="math notranslate nohighlight">\(u = F(x)\)</span>, derive una expresión explícita para <span class="math notranslate nohighlight">\(x = F^{-1}(u)\)</span>.</p>
+<p><strong>Solución:</strong></p>
+<p>Partimos de:</p>
+<div class="math notranslate nohighlight">
+\[
+u = 1 - \exp\left(-\left(\frac{x}{\lambda}\right)^k\right)
+\]</div>
+<p>Despejamos:</p>
+<div class="math notranslate nohighlight">
+\[
+\exp\left(-\left(\frac{x}{\lambda}\right)^k\right) = 1 - u
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+-\left(\frac{x}{\lambda}\right)^k = \ln(1-u)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\left(\frac{x}{\lambda}\right)^k = -\ln(1-u)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+x = \lambda \left(-\ln(1-u)\right)^{1/k}
+\]</div>
+<p>Como <span class="math notranslate nohighlight">\(U\sim \text{Unif}(0,1)\)</span> implica que <span class="math notranslate nohighlight">\(1-U\sim \text{Unif}(0,1)\)</span>, se usa comúnmente la forma equivalente:</p>
+<div class="math notranslate nohighlight">
+\[
+X = \lambda \left(-\ln(U)\right)^{1/k}
+\]</div>
+</section>
+<section id="parte-b-implementacion-en-python">
+<h2>Parte B — Implementación en Python<a class="headerlink" href="#parte-b-implementacion-en-python" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Implemente un generador de variables Weibull usando la transformada inversa.</p></li>
+<li><p>Genere <span class="math notranslate nohighlight">\(n=50\,000\)</span> observaciones para los siguientes parámetros:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(k=1.5\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda=2\)</span></p></li>
+</ul>
+</li>
+<li><p>Valide empíricamente los resultados mediante:</p>
+<ul class="simple">
+<li><p>histograma y pdf teórica,</p></li>
+<li><p>comparación de la media empírica con la media teórica,</p></li>
+<li><p>test KS con nivel de significancia <span class="math notranslate nohighlight">\(\alpha=0.05\)</span>.</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Solución:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parámetros (Weibull)</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">lam</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50000</span>
+
+<span class="c1"># Elegir fuente de uniformes:</span>
+<span class="n">USAR_LCG</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">seed_lcg</span> <span class="o">=</span> <span class="mi">321</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Generar U ~ Unif(0,1)</span>
+<span class="k">if</span> <span class="n">USAR_LCG</span><span class="p">:</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">lcg_uniform</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed_lcg</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Seguridad numérica para log(0)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="mf">1e-12</span><span class="p">)</span>
+
+<span class="c1"># Transformada inversa Weibull</span>
+<span class="c1"># F(x)=1-exp(-(x/lam)^k)  =&gt;  X = lam * (-log(U))^(1/k)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">lam</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">U</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Validación empírica: histograma + pdf</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># Histograma normalizado</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="c1"># Malla para la pdf teórica</span>
+<span class="n">xgrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">),</span> <span class="mi">400</span><span class="p">)</span>
+
+<span class="c1"># pdf teórica Weibull</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="n">lam</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">xgrid</span><span class="o">/</span><span class="n">lam</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">xgrid</span><span class="o">/</span><span class="n">lam</span><span class="p">)</span><span class="o">**</span><span class="n">k</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xgrid</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Weibull por Transformada Inversa: histograma vs pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;densidad&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/97af2a4236c3359649a86521fb3b83aaa0922e957cc579ff57127b74955659bb.png" src="../../_images/97af2a4236c3359649a86521fb3b83aaa0922e957cc579ff57127b74955659bb.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Media teórica de Weibull(k, lam)</span>
+<span class="n">mean_theoretical</span> <span class="o">=</span> <span class="n">lam</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">k</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Media empírica:&quot;</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Media teórica :&quot;</span><span class="p">,</span> <span class="n">mean_theoretical</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media empírica: 1.8092630644165195
+Media teórica : 1.8054905859018673
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test KS (en SciPy, Weibull usa &#39;c = k&#39; y &#39;scale = lam&#39;)</span>
+<span class="n">D</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s2">&quot;weibull_min&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">lam</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;KS statistic:&quot;</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p-value     :&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KS statistic: 0.004128840250833321
+p-value     : 0.36048169196311963
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="parte-c-analisis">
+<h2>Parte C — Análisis<a class="headerlink" href="#parte-c-analisis" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>¿La forma del histograma coincide con la pdf teórica?</p></li>
+<li><p>¿La media empírica es cercana a la media teórica?</p></li>
+<li><p>¿El test KS permite rechazar la hipótesis de que los datos provienen de una Weibull <span class="math notranslate nohighlight">\((k,\lambda)\)</span>?</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content\complementarias"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="complementaria_simu_cola_simpy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="complementaria_simu_proceso_poisson.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Complementaria Semana 8: Simulación de un Proceso de Poisson</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias-que-usaremos">Librerías que usaremos</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#como-funciona-la-transformada-inversa">¿Cómo funciona la Transformada Inversa?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-problema-central">El problema central</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-clave">Idea clave</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-pasa-esto-intuicion-argumento-corto">¿Por qué pasa esto? (intuición + argumento corto)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-idea-se-puede-dar-la-vuelta">La idea se puede “dar la vuelta”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-necesitamos-en-la-practica">¿Qué necesitamos en la práctica?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuente-de-aleatoriedad-generador-por-congruencia-lineal-lcg">Fuente de aleatoriedad: generador por congruencia lineal (LCG)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-guiado-exponencial-lambda">Ejemplo guiado — Exponencial(<span class="math notranslate nohighlight">\(\lambda\)</span>)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-transformada-inversa">Cálculo de la transformada inversa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#procedimiento-aplicado-al-caso-exponencial">Procedimiento aplicado al caso Exponencial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-adicional-ks-test">Validación adicional: KS test</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-aplicado-generacion-weibull-por-transformada-inversa">Ejercicio aplicado — Generación Weibull por Transformada Inversa</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-a-derivacion-de-la-transformada-inversa">Parte A — Derivación de la transformada inversa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-b-implementacion-en-python">Parte B — Implementación en Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-c-analisis">Parte C — Análisis</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Equipo Modelado Bajo Incertidumbre | Uniandes
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

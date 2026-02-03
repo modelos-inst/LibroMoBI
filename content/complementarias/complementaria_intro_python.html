@@ -55,6 +55,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/mathjax/tex-mml-chtml.js"></script>
     <script src="../../_static/mathjax/tex-svg.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
@@ -175,18 +176,23 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial. Instalación Python y Visual Studio Code</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Instalación Python y Visual Studio Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ambientes_virtuales.html">Ambientes virtuales en Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria 1: Introducción a Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria 2: Introducción a la simulación de Montecarlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria 3: Teorema del Límite Central y validación empírica</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_filas.html">Complementaria 5: Cálculo de filas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_cmtc.html">Complementaria 7: Cadenas de Markov en Python I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gba.html">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
-
-
 
 
 
@@ -963,12 +969,12 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[25.61709443 17.13478282 33.17597933  8.34117609 20.29894005 26.9032052 ]
- [10.78724424 21.09608494 27.88794617 26.38409351 19.49580172 13.2102202 ]
- [ 6.00936352  7.93962853  5.84228801 13.8290793  16.25228252 14.685482  ]
- [17.93484572 21.77892974 31.78876856 16.2301889  15.68340617 -1.72976248]
- [31.02190948 14.5960125  26.1623652  14.31270743 11.79934572  7.09262835]
- [28.7527439  10.28285715 15.76902903 15.59625825 23.11156955 14.65252976]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[34.98446238  2.81092632 16.16303454 11.12820464 35.37294091 21.11450044]
+ [10.0728355  30.6759168  19.75390389 14.99093095 26.78722433 18.94724184]
+ [ 0.82919626 20.16545755  8.20036524 21.5937482  25.68358084 12.58628534]
+ [ 8.09331539 10.00718181 16.48064572 23.90875046 27.77958303 33.30672866]
+ [12.7641654  24.54440363  6.29885427  7.18653204 25.6988132  15.79331842]
+ [29.28311874 25.64484425 10.19034818 30.60643198 12.82772255 22.26581124]]
 </pre></div>
 </div>
 </div>
@@ -981,12 +987,12 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[12.38031627 11.91941284  6.29980117 12.27194788 12.56722794  7.09194667]
- [ 9.51322619 10.52313925 12.34821536 11.83625453  7.07324875  6.96424079]
- [ 7.97230455 14.83587852 13.92334838 11.39028321 10.55261362  6.61663891]
- [ 8.24764008 13.25983579  8.46652785 10.51684316 12.9698125  12.78140166]
- [ 7.66012023 15.53773608  7.57713314 11.51781723 10.42177139  7.01376121]
- [10.04786014  8.37084462  8.11157917  1.82931532 12.85682345 10.46168748]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[11.78460136 11.83722404  9.57022268 15.56594044 10.46433651 15.20337968]
+ [13.30685895  6.82650976 13.96517416  6.43900764  9.06750643 11.14511721]
+ [ 8.66873715  3.20302389  5.73311656  9.27428583  9.58998943  9.96450697]
+ [ 6.32022382  7.51840285 11.34875263  5.64929614  8.23073386 10.46611217]
+ [11.46383382 14.54655426  7.28398975 12.84170286 13.56060764  6.99571531]
+ [ 9.45967177 10.53261941  9.82168278  7.67550907  6.00933691 11.31635228]]
 </pre></div>
 </div>
 </div>
@@ -1043,12 +1049,12 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[37.9974107  29.05419566 39.4757805  20.61312397 32.86616799 33.99515187]
- [20.30047043 31.6192242  40.23616153 38.22034804 26.56905047 20.17446099]
- [13.98166806 22.77550706 19.76563638 25.21936251 26.80489613 21.30212091]
- [26.1824858  35.03876553 40.25529642 26.74703206 28.65321867 11.05163917]
- [38.68202971 30.13374857 33.73949834 25.83052466 22.22111711 14.10638956]
- [38.80060404 18.65370177 23.8806082  17.42557358 35.968393   25.11421724]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[46.76906374 14.64815036 25.73325722 26.69414508 45.83727742 36.31788012]
+ [23.37969445 37.50242656 33.71907805 21.42993859 35.85473076 30.09235905]
+ [ 9.4979334  23.36848144 13.9334818  30.86803404 35.27357026 22.55079232]
+ [14.41353921 17.52558466 27.82939835 29.5580466  36.01031689 43.77284083]
+ [24.22799922 39.09095789 13.58284402 20.0282349  39.25942083 22.78903373]
+ [38.74279052 36.17746366 20.01203096 38.28194104 18.83705946 33.58216351]]
 </pre></div>
 </div>
 </div>
@@ -1060,18 +1066,18 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1239.2507891  1629.05197791 1277.54335772 1265.80386619 1458.85189928
-  1050.95606194]
- [1056.25366048 1527.66690862 1195.00977901 1225.92284755 1294.29333761
-  1020.11103556]
- [ 582.61517814  800.67826149  576.59469295  593.76082981  730.87820455
-   580.94744955]
- [ 919.27381321 1358.98454215 1066.74047375 1188.12420032 1066.60580372
-   788.54947789]
- [1011.18676612 1343.99104991 1008.05085846 1150.85998458 1168.97385199
-   834.65791385]
- [1032.40300674 1373.43050299  953.6899388  1111.19872873 1232.00899137
-   894.59444892]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1265.37414528 1305.69004758 1058.0560378  1391.74609569 1244.7366198
+  1327.13402574]
+ [1279.21086548 1093.84983916 1189.38526616 1111.63048139 1173.49710382
+  1250.57196751]
+ [ 899.16921017  842.26569376  892.32291765  767.22182512  871.82140647
+   867.17401959]
+ [1156.04693677 1151.56433968 1112.50114617 1090.71346481 1107.12652063
+  1220.27886335]
+ [1021.05965341  933.02571261  924.89987196  906.98234522  919.0803317
+   964.09307169]
+ [1325.80130245 1205.56350836 1356.27269707 1223.99086765 1196.35639951
+  1494.59617222]]
 </pre></div>
 </div>
 </div>
@@ -1083,8 +1089,8 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([131.47117791, 118.8613908 ,  64.55812387, 101.68637662,
-       104.98496868, 108.16498765])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([121.57406923, 121.22805331,  89.05863343, 119.57620506,
+        92.28608695, 130.81827694])
 </pre></div>
 </div>
 </div>
@@ -1096,8 +1102,8 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([120.1232013 ,  92.82829569, 140.6263763 ,  94.69350349,
-       106.64134574,  74.81430303])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 96.02709366, 113.84873037,  77.08715184, 109.41459826,
+       154.14986486, 124.01388593])
 </pre></div>
 </div>
 </div>

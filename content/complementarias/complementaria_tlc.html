@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Complementaria 3 — Teorema del Límite Central y validación empírica &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
+    <title>Complementaria 3: Teorema del Límite Central y validación empírica &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
   
   
@@ -55,6 +55,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/mathjax/tex-mml-chtml.js"></script>
     <script src="../../_static/mathjax/tex-svg.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
@@ -64,12 +65,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"loader": {"load": ["[tex]/ams"]}, "tex": {"packages": {"[+]": ["ams"]}, "inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "svg": {"fontCache": "global"}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
-    <script defer="defer" src="../../_static/mathjax/tex-svg.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore", "enableMenu": false}}</script>
+    <script defer="defer" src="../../_static/mathjax/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_tlc';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Complementaria 5: Cálculo de filas" href="complementaria_filas.html" />
+    <link rel="next" title="Complementaria Semana 5: Introducción a la Simulación con SimPy con Python" href="complementaria_intro_simpy.html" />
     <link rel="prev" title="Complementaria Semana 2: Introducción a la simulación de Montecarlo" href="complementaria_intro_montecarlo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -177,18 +178,23 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial. Instalación Python y Visual Studio Code</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Instalación Python y Visual Studio Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ambientes_virtuales.html">Ambientes virtuales en Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="complementaria_intro_python.html">Complementaria 1: Introducción a Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria 2: Introducción a la simulación de Montecarlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria 3: Teorema del Límite Central y validación empírica</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_filas.html">Complementaria 5: Cálculo de filas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_cmtc.html">Complementaria 7: Cadenas de Markov en Python I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gba.html">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
-
-
 
 
 
@@ -333,7 +339,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Complementaria 3 — Teorema del Límite Central y validación empírica</h1>
+    <h1>Complementaria 3: Teorema del Límite Central y validación empírica</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -382,7 +388,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="complementaria-3-teorema-del-limite-central-y-validacion-empirica">
-<h1>Complementaria 3 — Teorema del Límite Central y validación empírica<a class="headerlink" href="#complementaria-3-teorema-del-limite-central-y-validacion-empirica" title="Permalink to this heading">#</a></h1>
+<h1>Complementaria 3: Teorema del Límite Central y validación empírica<a class="headerlink" href="#complementaria-3-teorema-del-limite-central-y-validacion-empirica" title="Permalink to this heading">#</a></h1>
 <p>En la complementaria anterior se estudió una variable aleatoria definida como el
 máximo de dos dados mediante simulación de Monte Carlo, a partir de la cual se estimaron
 empíricamente su función de probabilidad, su media y su varianza.</p>
@@ -563,7 +569,7 @@ la variable aleatoria ( M ), dado por:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualización TCL con un histograma de los z</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>   <span class="c1"># histograma de z</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.60</span><span class="p">)</span>   <span class="c1"># histograma de z</span>
 <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">()</span>                         <span class="c1"># límites del eje x para trazar la pdf</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>                <span class="c1"># malla para la curva teórica</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                           <span class="c1"># pdf de N(0,1)</span>
@@ -576,7 +582,7 @@ la variable aleatoria ( M ), dado por:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/edd968a41cbd112e439de8884d43af4a14b2096127c70c3abce44beefc1de4bb.png" src="../../_images/edd968a41cbd112e439de8884d43af4a14b2096127c70c3abce44beefc1de4bb.png" />
+<img alt="../../_images/2d8d344aeb06448acf8cfd82a44b29b0b77a0b3dd6045475b2b47e4c2ee625e2.png" src="../../_images/2d8d344aeb06448acf8cfd82a44b29b0b77a0b3dd6045475b2b47e4c2ee625e2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -600,7 +606,7 @@ la variable aleatoria ( M ), dado por:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/789720f5c69daed8eaaada88f9bb4d995a7301c29f634e2804eef486492de03e.png" src="../../_images/789720f5c69daed8eaaada88f9bb4d995a7301c29f634e2804eef486492de03e.png" />
+<img alt="../../_images/1adb0e5a5f47e9ce8298c41ddb3a532939fab3af5932c17ca64049de37aa4752.png" src="../../_images/1adb0e5a5f47e9ce8298c41ddb3a532939fab3af5932c17ca64049de37aa4752.png" />
 </div>
 </div>
 </section>
@@ -682,7 +688,7 @@ mean(z) ~ 0.007535749520341884   sd(z) ~ 0.9958304138037191
 IC 95% para E[X]: (3.9977, 4.0078)   (teórico λ=4.0)
 </pre></div>
 </div>
-<img alt="../../_images/4a9ca2e6f645f614facf4f7241d8cf21beabbf23a05c23f9a7bea8ba1cc971ca.png" src="../../_images/4a9ca2e6f645f614facf4f7241d8cf21beabbf23a05c23f9a7bea8ba1cc971ca.png" />
+<img alt="../../_images/9da05df51b067c24489689452247b12666990f1f25f238159fe069cc1c7bd831.png" src="../../_images/9da05df51b067c24489689452247b12666990f1f25f238159fe069cc1c7bd831.png" />
 </div>
 </div>
 </section>
@@ -747,7 +753,7 @@ mean(z) ~ 0.0010672220776235888   sd(z) ~ 0.9970079531158527
 IC 95% para E[Y]: (0.0999, 0.1001)   (teórico p=0.1)
 </pre></div>
 </div>
-<img alt="../../_images/22db08c7a2768859456bb616d8ebb870b40b9ab219acd54b92db52e8792cbbd3.png" src="../../_images/22db08c7a2768859456bb616d8ebb870b40b9ab219acd54b92db52e8792cbbd3.png" />
+<img alt="../../_images/9606627b3eababd2da04a83d3c65083c8d5172612a8a9bd52cc5f089050caff8.png" src="../../_images/9606627b3eababd2da04a83d3c65083c8d5172612a8a9bd52cc5f089050caff8.png" />
 </div>
 </div>
 </section>
@@ -840,7 +846,7 @@ La idea consiste en:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/59edcaffbdadfd730479bc8524cb5590e5ff462ad967f0393dbefc06527e7f76.png" src="../../_images/59edcaffbdadfd730479bc8524cb5590e5ff462ad967f0393dbefc06527e7f76.png" />
+<img alt="../../_images/5f55961efe9800ad99efbb03d82a258e324bc7b21d588e0d956de1b3d14506b4.png" src="../../_images/5f55961efe9800ad99efbb03d82a258e324bc7b21d588e0d956de1b3d14506b4.png" />
 </div>
 </div>
 </section>
@@ -898,10 +904,10 @@ La idea consiste en:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/96a281fc8f84505c0b00d32593f674880e35f1de8eed25654982e3b3833e5e16.png" src="../../_images/96a281fc8f84505c0b00d32593f674880e35f1de8eed25654982e3b3833e5e16.png" />
-<img alt="../../_images/3c9114ab17a1e9bff9e2169e94a6fde5fa537e61c57eb3e98e034abad0d6bf87.png" src="../../_images/3c9114ab17a1e9bff9e2169e94a6fde5fa537e61c57eb3e98e034abad0d6bf87.png" />
-<img alt="../../_images/28d2983db159a7c3c7bffeb39045c348857331109c9e82e5d2edee71da6f0bbe.png" src="../../_images/28d2983db159a7c3c7bffeb39045c348857331109c9e82e5d2edee71da6f0bbe.png" />
-<img alt="../../_images/f7e873dad09a3b752f8081bd6b394b8f497f2c6c6d981b04673f72cf42b31950.png" src="../../_images/f7e873dad09a3b752f8081bd6b394b8f497f2c6c6d981b04673f72cf42b31950.png" />
+<img alt="../../_images/b23a58e39f8a1d0c78fa8340dee6d1eb4627566249581636bd01b8f94a12cdb0.png" src="../../_images/b23a58e39f8a1d0c78fa8340dee6d1eb4627566249581636bd01b8f94a12cdb0.png" />
+<img alt="../../_images/52aac5e686ba77535feaae70af467828c03e6b1992ef0565c046162f3f01801d.png" src="../../_images/52aac5e686ba77535feaae70af467828c03e6b1992ef0565c046162f3f01801d.png" />
+<img alt="../../_images/3930dd632b160bce628c7b33ef2fadd58bb93d75e99fe7dca2a65caa29596000.png" src="../../_images/3930dd632b160bce628c7b33ef2fadd58bb93d75e99fe7dca2a65caa29596000.png" />
+<img alt="../../_images/7c26033e6161047ae336ee0d3e874992a2919c40c0cecde8163f0441feaeef69.png" src="../../_images/7c26033e6161047ae336ee0d3e874992a2919c40c0cecde8163f0441feaeef69.png" />
 </div>
 </div>
 </section>
@@ -979,13 +985,13 @@ Teorema del Límite Central, ya que posee esperanza y varianza finitas.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a093ac2fc6bbd1f480670af185f2a0cb23fe87603195fa6399f31a270f5cfb46.png" src="../../_images/a093ac2fc6bbd1f480670af185f2a0cb23fe87603195fa6399f31a270f5cfb46.png" />
-<img alt="../../_images/5a34fab96e1b3bd4107891648328d489ba5d617f65602372c8410eed6346fabf.png" src="../../_images/5a34fab96e1b3bd4107891648328d489ba5d617f65602372c8410eed6346fabf.png" />
-<img alt="../../_images/15df57fa837d70339e04b6cb08004565eca7c9b5dcce9cab90176daec02fffdb.png" src="../../_images/15df57fa837d70339e04b6cb08004565eca7c9b5dcce9cab90176daec02fffdb.png" />
-<img alt="../../_images/9fa5f5e824bacf5d60f2032fee7473e0bb208d56e9fd29d0a59da9b40aaf1f3f.png" src="../../_images/9fa5f5e824bacf5d60f2032fee7473e0bb208d56e9fd29d0a59da9b40aaf1f3f.png" />
+<img alt="../../_images/9e8cba66bd00cd91b7414fd687e83eaf11f509abcebf5212d50d5dac7a725ffd.png" src="../../_images/9e8cba66bd00cd91b7414fd687e83eaf11f509abcebf5212d50d5dac7a725ffd.png" />
+<img alt="../../_images/675cce6c238f4e09dd608184d507cb81b4b9c5855f09795dbb1dce437f9bd0d5.png" src="../../_images/675cce6c238f4e09dd608184d507cb81b4b9c5855f09795dbb1dce437f9bd0d5.png" />
+<img alt="../../_images/fdb83f4199436fe2ad409ee4ce38341d1aae71fc7d9edd9a3803a31bfd4dcfb7.png" src="../../_images/fdb83f4199436fe2ad409ee4ce38341d1aae71fc7d9edd9a3803a31bfd4dcfb7.png" />
+<img alt="../../_images/c6091fc1d4c8fdcadfa3dd20c3107a42d7f65d375f58c654819488c3cdb84c26.png" src="../../_images/c6091fc1d4c8fdcadfa3dd20c3107a42d7f65d375f58c654819488c3cdb84c26.png" />
 </div>
 </div>
-<div style="background-color:#fff4e5; border-left:4px solid #f5a623; padding:10px; margin:10px 0;">
+<p>``<div style="background-color:#fff4e5; border-left:4px solid #f5a623; padding:10px; margin:10px 0;"></p>
 <p><strong>Observación importante</strong></p>
 <p>Si bien el Teorema del Límite Central garantiza la convergencia de la distribución
 de la media muestral hacia una normal, es importante notar que no existe un tamaño
@@ -1045,7 +1051,7 @@ normal estándar <span class="math notranslate nohighlight">\(\mathcal{N}(0,1)\)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/207bb7b8d7876d6ce4efacbbf9adca7cd54fab9814eebcf09ef52e1eb31d5d26.png" src="../../_images/207bb7b8d7876d6ce4efacbbf9adca7cd54fab9814eebcf09ef52e1eb31d5d26.png" />
+<img alt="../../_images/6f55ac346f45d8e47014c3796a54c5b0d9cb38ca2909a7931f05d0e8f1c88549.png" src="../../_images/6f55ac346f45d8e47014c3796a54c5b0d9cb38ca2909a7931f05d0e8f1c88549.png" />
 </div>
 </div>
 </section>
@@ -1182,16 +1188,16 @@ en ausencia de una expresión analítica para su distribución.</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "libromobi"
+            mode: "python"
         },
         kernelOptions: {
-            name: "libromobi",
+            name: "python3",
             path: "./content\complementarias"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'libromobi'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -1213,11 +1219,11 @@ en ausencia de una expresión analítica para su distribución.</p>
       </div>
     </a>
     <a class="right-next"
-       href="complementaria_filas.html"
+       href="complementaria_intro_simpy.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Complementaria 5: Cálculo de filas</p>
+        <p class="prev-next-title">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -55,6 +55,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/mathjax/tex-mml-chtml.js"></script>
     <script src="../../_static/mathjax/tex-svg.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
@@ -64,12 +65,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"loader": {"load": ["[tex]/ams"]}, "tex": {"packages": {"[+]": ["ams"]}, "inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "svg": {"fontCache": "global"}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
-    <script defer="defer" src="../../_static/mathjax/tex-svg.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore", "enableMenu": false}}</script>
+    <script defer="defer" src="../../_static/mathjax/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_intro_montecarlo';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Complementaria 3 — Teorema del Límite Central y validación empírica" href="complementaria_tlc.html" />
+    <link rel="next" title="Complementaria 3: Teorema del Límite Central y validación empírica" href="complementaria_tlc.html" />
     <link rel="prev" title="Complementaria 1: Introducción a Python" href="complementaria_intro_python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -177,18 +178,23 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial. Instalación Python y Visual Studio Code</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Instalación Python y Visual Studio Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ambientes_virtuales.html">Ambientes virtuales en Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="complementaria_intro_python.html">Complementaria 1: Introducción a Python</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria 2: Introducción a la simulación de Montecarlo</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria 3: Teorema del Límite Central y validación empírica</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_filas.html">Complementaria 5: Cálculo de filas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_cmtc.html">Complementaria 7: Cadenas de Markov en Python I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gba.html">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
-
-
 
 
 
@@ -449,6 +455,9 @@ P(M=m) = \left(\frac{m}{6}\right)^2 - \left(\frac{m-1}{6}\right)^2 = \frac{2m-1}
 <span class="c1"># Esto no elimina la aleatoriedad del fenómeno, sino que permite replicar</span>
 <span class="c1"># exactamente el mismo experimento computacional.</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">xml.etree.ElementPath</span><span class="w"> </span><span class="kn">import</span> <span class="n">find</span>
+
+
 <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># 0) generador con semilla (reproducible)</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">200000</span>                        <span class="c1"># 1) número de simulaciones</span>
 
@@ -461,6 +470,7 @@ P(M=m) = \left(\frac{m}{6}\right)^2 - \left(\frac{m-1}{6}\right)^2 = \frac{2m-1}
 <span class="c1">#    3.1 cuenta ocurrencias forzando 7 posiciones (índices 0..6)</span>
 <span class="c1">#    3.2 elimina el índice 0 (no hay resultado 0), quedan valores 1..6</span>
 <span class="n">counts</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">minlength</span><span class="o">=</span><span class="mi">7</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+
 <span class="c1">#    3.3 divide por N para obtener frecuencias (probabilidades)</span>
 <span class="n">pmf_emp</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">N</span>
 
@@ -564,16 +574,16 @@ Var(M) = \sum_{m=1}^6 m^2 \cdot \frac{2m-1}{36} - (E[M])^2
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "libromobi"
+            mode: "python"
         },
         kernelOptions: {
-            name: "libromobi",
+            name: "python3",
             path: "./content\complementarias"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'libromobi'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -599,7 +609,7 @@ Var(M) = \sum_{m=1}^6 m^2 \cdot \frac{2m-1}{36} - (E[M])^2
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Complementaria 3 — Teorema del Límite Central y validación empírica</p>
+        <p class="prev-next-title">Complementaria 3: Teorema del Límite Central y validación empírica</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -55,6 +55,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/mathjax/tex-mml-chtml.js"></script>
     <script src="../../_static/mathjax/tex-svg.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
@@ -64,12 +65,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"loader": {"load": ["[tex]/ams"]}, "tex": {"packages": {"[+]": ["ams"]}, "inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "svg": {"fontCache": "global"}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
-    <script defer="defer" src="../../_static/mathjax/tex-svg.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore", "enableMenu": false}}</script>
+    <script defer="defer" src="../../_static/mathjax/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_simu_proceso_poisson';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Complementaria 7: Cadenas de Markov en Python I" href="complementaria_cmtc.html" />
+    <link rel="prev" title="Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)" href="complementaria_transf_inversa_gba.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,18 +177,23 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial. Instalación Python y Visual Studio Code</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Instalación Python y Visual Studio Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ambientes_virtuales.html">Ambientes virtuales en Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="complementaria_intro_python.html">Complementaria 1: Introducción a Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria 2: Introducción a la simulación de Montecarlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria 3: Teorema del Límite Central y validación empírica</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_filas.html">Complementaria 5: Cálculo de filas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_cmtc.html">Complementaria 7: Cadenas de Markov en Python I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gba.html">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+
+
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
-
-
 
 
 
@@ -342,9 +348,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias-que-usaremos">Librerías que usaremos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complementaria Semana 8: Simulación de un Proceso de Poisson</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias-que-usaremos">Librerías que usaremos</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#proceso-de-poisson">Proceso de Poisson</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-lo-simulamos">¿Cómo lo simulamos?</a></li>
 </ul>
@@ -379,9 +387,8 @@ document.write(`
 <h1>Complementaria Semana 8: Simulación de un Proceso de Poisson<a class="headerlink" href="#complementaria-semana-8-simulacion-de-un-proceso-de-poisson" title="Permalink to this heading">#</a></h1>
 <p>En esta complementaria modelaremos la ocurrencia de eventos en el tiempo usando un <strong>Proceso de Poisson</strong>, un modelo clásico para llegadas aleatorias (clientes a una fila, llamadas, fallas, mensajes, etc.).</p>
 <p>Un proceso de Poisson con tasa <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span> se denota <span class="math notranslate nohighlight">\(N(t)\)</span> y representa el <strong>número de eventos</strong> ocurridos hasta el tiempo <span class="math notranslate nohighlight">\(t\)</span>.</p>
-</section>
 <section id="objetivos">
-<h1>Objetivos<a class="headerlink" href="#objetivos" title="Permalink to this heading">#</a></h1>
+<h2>Objetivos<a class="headerlink" href="#objetivos" title="Permalink to this heading">#</a></h2>
 <p>Al final de esta guía podrás:</p>
 <ol class="arabic simple">
 <li><p>Simular un Proceso de Poisson usando tiempos entre eventos.</p></li>
@@ -392,7 +399,7 @@ document.write(`
 </ol>
 </section>
 <section id="librerias-que-usaremos">
-<h1>Librerías que usaremos<a class="headerlink" href="#librerias-que-usaremos" title="Permalink to this heading">#</a></h1>
+<h2>Librerías que usaremos<a class="headerlink" href="#librerias-que-usaremos" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> para muestreo y cálculo numérico</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> para visualización</p></li>
@@ -406,19 +413,23 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (2.4.1)
-Requirement already satisfied: matplotlib in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (3.10.8)
-Requirement already satisfied: scipy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (1.17.0)
-Requirement already satisfied: contourpy&gt;=1.0.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.3.3)
-Requirement already satisfied: cycler&gt;=0.10 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (4.61.1)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.4.9)
-Requirement already satisfied: packaging&gt;=20.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (25.0)
-Requirement already satisfied: pillow&gt;=8 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (12.1.0)
-Requirement already satisfied: pyparsing&gt;=3 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (3.3.1)
-Requirement already satisfied: python-dateutil&gt;=2.7 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (2.9.0.post0)
-Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (2.3.4)
+Requirement already satisfied: matplotlib in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (3.10.7)
+Requirement already satisfied: scipy in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (1.15.2)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (1.3.1)
+Requirement already satisfied: cycler&gt;=0.10 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (4.57.0)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (1.4.8)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (26.0)
+Requirement already satisfied: pillow&gt;=8 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (11.0.0)
+Requirement already satisfied: pyparsing&gt;=3 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (3.2.3)
+Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
 Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.2 -&gt; 26.0
+[notice] To update, run: C:\Users\jpine\AppData\Local\Programs\Python\Python312\python.exe -m pip install --upgrade pip
 </pre></div>
 </div>
 </div>
@@ -433,6 +444,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="proceso-de-poisson">
 <h1>Proceso de Poisson<a class="headerlink" href="#proceso-de-poisson" title="Permalink to this heading">#</a></h1>
@@ -540,7 +552,7 @@ Número de eventos N(T): 13
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/855f9c1bd8ece8756dbcc3806402873f8cf8686915bfd4cb29fb19ddfe843c7b.png" src="../../_images/855f9c1bd8ece8756dbcc3806402873f8cf8686915bfd4cb29fb19ddfe843c7b.png" />
+<img alt="../../_images/712416809c59650ae2dc3565fcc10c7020bf6bbaf5e157861abcd0ec3accb3f9.png" src="../../_images/712416809c59650ae2dc3565fcc10c7020bf6bbaf5e157861abcd0ec3accb3f9.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Número total de eventos N(T): 13
 </pre></div>
 </div>
@@ -558,7 +570,7 @@ T_i \sim \text{Exp}(\lambda)
 <ul class="simple">
 <li><p>histograma vs pdf exponencial</p></li>
 <li><p>media y varianza empírica vs teórica</p></li>
-<li><p>test Kolmogorov-Smirnov (opcional)</p></li>
+<li><p>test Kolmogorov-Smirnov (KS)</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -585,7 +597,7 @@ T_i \sim \text{Exp}(\lambda)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3148f7973a7f1eb687d2647e89091a22b17ba1270f1b108b141ea13fc332cb27.png" src="../../_images/3148f7973a7f1eb687d2647e89091a22b17ba1270f1b108b141ea13fc332cb27.png" />
+<img alt="../../_images/5113c46f753f50b8b4ce882b9872fff23d8e6e32889fb801c83b37111b41ba9e.png" src="../../_images/5113c46f753f50b8b4ce882b9872fff23d8e6e32889fb801c83b37111b41ba9e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -598,16 +610,14 @@ T_i \sim \text{Exp}(\lambda)
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media empírica: 0.33350822062474755 | Teórica: 0.3333333333333333
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Var  empírica: 0.11062649867596966 | Teórica: 0.1111111111111111
+Var  empírica: 0.11062649867596966 | Teórica: 0.1111111111111111
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># KS test (opcional)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># KS test</span>
 <span class="n">D</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">interarrivals</span><span class="p">,</span> <span class="s2">&quot;expon&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">lambda_rate</span><span class="p">))</span>  <span class="c1"># scale=1/lambda</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;KS statistic:&quot;</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p-value     :&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
@@ -664,8 +674,8 @@ y comparando con la distribución de Poisson teórica.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e23948c2dc29dc9fd8bc5cf87492cad52de21a8c687c7d7f8282319265301aad.png" src="../../_images/e23948c2dc29dc9fd8bc5cf87492cad52de21a8c687c7d7f8282319265301aad.png" />
-<img alt="../../_images/78a0f7ad8f011aff75bf6331de2ca6bb1019a3978a75884902f8f3ce674845db.png" src="../../_images/78a0f7ad8f011aff75bf6331de2ca6bb1019a3978a75884902f8f3ce674845db.png" />
+<img alt="../../_images/17bd28a3300da3803e1a37c3bc095f47e4fb5d12fabd6567b6cc836cadb07a15.png" src="../../_images/17bd28a3300da3803e1a37c3bc095f47e4fb5d12fabd6567b6cc836cadb07a15.png" />
+<img alt="../../_images/97d8192ced1ba3aa54365cb6910b056b374158faa433249a2a3daff16b90a64b.png" src="../../_images/97d8192ced1ba3aa54365cb6910b056b374158faa433249a2a3daff16b90a64b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -742,7 +752,7 @@ N(t) = N_1(t) + N_2(t)
 Var emp: 28.265008410841087 | Teórica: 28.0
 </pre></div>
 </div>
-<img alt="../../_images/a9d6800d17079a2750bdc208c2d6366ee0de5b6436005d1dc0635b1ce1e6e95b.png" src="../../_images/a9d6800d17079a2750bdc208c2d6366ee0de5b6436005d1dc0635b1ce1e6e95b.png" />
+<img alt="../../_images/657772405c20991d03db4129a91245abe4aca245cadaf479dfd40b86fdb7e056.png" src="../../_images/657772405c20991d03db4129a91245abe4aca245cadaf479dfd40b86fdb7e056.png" />
 </div>
 </div>
 </section>
@@ -934,7 +944,7 @@ P(NV&gt;=5) teo: 0.1523239430211616
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c25a99b76cf253b7b56ef45d7c23526f3fe40309d22ae867ded9e64d23d02a41.png" src="../../_images/c25a99b76cf253b7b56ef45d7c23526f3fe40309d22ae867ded9e64d23d02a41.png" />
+<img alt="../../_images/3e3fc109e09a2aa0d7c643a33f519999356f70c7630fae2da26d5ba0c6bce69e.png" src="../../_images/3e3fc109e09a2aa0d7c643a33f519999356f70c7630fae2da26d5ba0c6bce69e.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media empírica interarribos: 0.12238058495292842 | Teórica: 0.125
 </pre></div>
 </div>
@@ -952,16 +962,16 @@ P(NV&gt;=5) teo: 0.1523239430211616
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "libromobi"
+            mode: "python"
         },
         kernelOptions: {
-            name: "libromobi",
+            name: "python3",
             path: "./content\complementarias"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'libromobi'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -974,12 +984,12 @@ P(NV&gt;=5) teo: 0.1523239430211616
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="complementaria_cmtc.html"
+       href="complementaria_transf_inversa_gba.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Complementaria 7: Cadenas de Markov en Python I</p>
+        <p class="prev-next-title">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</p>
       </div>
     </a>
 </div>
@@ -998,9 +1008,11 @@ P(NV&gt;=5) teo: 0.1523239430211616
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias-que-usaremos">Librerías que usaremos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complementaria Semana 8: Simulación de un Proceso de Poisson</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias-que-usaremos">Librerías que usaremos</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#proceso-de-poisson">Proceso de Poisson</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-lo-simulamos">¿Cómo lo simulamos?</a></li>
 </ul>

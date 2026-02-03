@@ -1,0 +1,1722 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/mathjax/tex-mml-chtml.js"></script>
+    <script src="../../_static/mathjax/tex-svg.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\\\[", "\\\\]"]], "processEscapes": true, "processEnvironments": true}, "options": {"ignoreHtmlClass": "ignore-this-class-that-does-not-exist", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore", "enableMenu": false}}</script>
+    <script defer="defer" src="../../_static/mathjax/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_simu_cola_simpy';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)" href="complementaria_transf_inversa_gba.html" />
+    <link rel="prev" title="Complementaria Semana 5: Introducción a la Simulación con SimPy con Python" href="complementaria_intro_simpy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uniandes.png" class="logo__image only-light" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>
+    <script>document.write(`<img src="../../_static/uniandes.png" class="logo__image only-dark" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Bienvenidos al libro del curso Modelado de Sistemas Bajo Incertidumbre
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Instalación Python y Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ambientes_virtuales.html">Ambientes virtuales en Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_python.html">Complementaria 1: Introducción a Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria 3: Teorema del Límite Central y validación empírica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gba.html">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/complementarias/complementaria_simu_cola_simpy.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias-que-usaremos">Librerías que usaremos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#marco-teorico-m-m-1-y-que-estamos-estimando-con-la-simulacion">Marco teórico (M/M/1) y qué estamos estimando con la simulación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-del-modelo-m-m-1">1) Definición del modelo M/M/1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estabilidad-y-utilizacion">2) Estabilidad y utilización</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-analiticos-lo-que-esperamos-ver">3) Resultados analíticos (lo que esperamos ver)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-hace-simpy-y-como-se-traduce-un-modelo-de-colas-a-codigo">4) Qué hace SimPy y cómo se traduce un modelo de colas a código</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#traduccion-directa-m-m-1-simpy-mapa-mental">Traducción directa M/M/1 → SimPy (mapa mental)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-estimamos-con-la-simulacion">5) Qué estimamos con la simulación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nota-metodologica">6) Nota metodológica</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-guiado-construir-una-m-m-1-en-simpy">Ejercicio guiado: construir una M/M/1 en SimPy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-paso-a-paso">Construcción paso a paso</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consolidacion">Consolidación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-base-y-comparacion-con-teoria">Caso base y comparación con teoría</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles-y-propuesta-de-sla">Percentiles y propuesta de SLA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimentos-rapidos">Experimentos rápidos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variacion-porcentual-respecto-al-escenario-base">Variación porcentual respecto al escenario base</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-practico-farmacia-de-ventanilla-m-m-1">Ejercicio Práctico: Farmacia de Ventanilla (M/M/1)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supuestos-del-modelo">Supuestos del modelo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros">Parámetros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#para-realizar">Para realizar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solucion">Solución:</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="complementaria-semana-6-simulacion-de-una-cola-m-m-1-con-simpy">
+<h1>Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy<a class="headerlink" href="#complementaria-semana-6-simulacion-de-una-cola-m-m-1-con-simpy" title="Permalink to this heading">#</a></h1>
+<p>En la complementaria anterior aprendimos los elementos básicos de SimPy: <code class="docutils literal notranslate"><span class="pre">Environment</span></code>, procesos con <code class="docutils literal notranslate"><span class="pre">yield</span></code>, y recursos (<code class="docutils literal notranslate"><span class="pre">Resource</span></code>) que representan servidores compartidos con cola.</p>
+<p>En esta complementaria construiremos un modelo completo de una cola <strong>M/M/1</strong>:</p>
+<ul class="simple">
+<li><p>llegadas aleatorias (Proceso de Poisson) con tasa <span class="math notranslate nohighlight">\(\lambda\)</span>,</p></li>
+<li><p>tiempos de servicio exponenciales con tasa <span class="math notranslate nohighlight">\(\mu\)</span>,</p></li>
+<li><p>un solo servidor (capacidad 1),</p></li>
+<li><p>cola FIFO, sin abandonos.</p></li>
+</ul>
+<p>Además, recolectaremos métricas de desempeño típicas:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(W_q\)</span>: espera promedio en cola</p></li>
+<li><p><span class="math notranslate nohighlight">\(W\)</span>: tiempo promedio en el sistema</p></li>
+<li><p><span class="math notranslate nohighlight">\(L_q\)</span> y <span class="math notranslate nohighlight">\(L\)</span>: número promedio en cola y en sistema (vía Ley de Little)</p></li>
+<li><p>utilización del servidor <span class="math notranslate nohighlight">\(\rho\)</span> (observada y teórica)</p></li>
+<li><p>percentiles (p50, p90) de la espera</p></li>
+</ul>
+<section id="objetivos">
+<h2>Objetivos<a class="headerlink" href="#objetivos" title="Permalink to this heading">#</a></h2>
+<p>Al final de esta guía podrás:</p>
+<ol class="arabic simple">
+<li><p>Implementar una cola M/M/1 en SimPy usando <code class="docutils literal notranslate"><span class="pre">Resource</span></code>.</p></li>
+<li><p>Programar un generador de llegadas con interarribos exponenciales.</p></li>
+<li><p>Medir tiempos de espera y tiempos en sistema por cliente completado.</p></li>
+<li><p>Calcular utilización, <span class="math notranslate nohighlight">\(W_q\)</span>, <span class="math notranslate nohighlight">\(W\)</span>, <span class="math notranslate nohighlight">\(L_q\)</span>, <span class="math notranslate nohighlight">\(L\)</span> y percentiles.</p></li>
+<li><p>Comparar simulación con teoría cuando <span class="math notranslate nohighlight">\(\lambda &lt; \mu\)</span>.</p></li>
+</ol>
+</section>
+<section id="librerias-que-usaremos">
+<h2>Librerías que usaremos<a class="headerlink" href="#librerias-que-usaremos" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> para muestreo y cálculo numérico</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> para visualización</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> para dataframes (tablas)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">simpy</span></code> para la simulación de eventos discretos (entorno, procesos y recursos)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">random</span></code> para generar variables aleatorias (por ejemplo, exponenciales con <code class="docutils literal notranslate"><span class="pre">expovariate</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">statistics</span></code> para promedios simples de métricas simuladas</p></li>
+</ul>
+<p>Si aún no están instaladas en el entorno, utilizar este comando en una celda de python (no es necesario instalar <code class="docutils literal notranslate"><span class="pre">math</span></code>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">matplotlib</span> <span class="n">pandas</span> <span class="n">simpy</span> <span class="n">statistics</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (2.3.4)
+Requirement already satisfied: matplotlib in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (3.10.7)
+Requirement already satisfied: pandas in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (2.2.3)
+Requirement already satisfied: simpy in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (4.1.1)
+Requirement already satisfied: statistics in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (1.0.3.5)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (1.3.1)
+Requirement already satisfied: cycler&gt;=0.10 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (4.57.0)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (1.4.8)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (26.0)
+Requirement already satisfied: pillow&gt;=8 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (11.0.0)
+Requirement already satisfied: pyparsing&gt;=3 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (3.2.3)
+Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from pandas) (2024.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from pandas) (2024.2)
+Requirement already satisfied: docutils&gt;=0.3 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from statistics) (0.18.1)
+Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.2 -&gt; 26.0
+[notice] To update, run: C:\Users\jpine\AppData\Local\Programs\Python\Python312\python.exe -m pip install --upgrade pip
+</pre></div>
+</div>
+</div>
+</div>
+<p>Posteriormente, importar las librerías:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">simpy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statistics</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="marco-teorico-m-m-1-y-que-estamos-estimando-con-la-simulacion">
+<h2>Marco teórico (M/M/1) y qué estamos estimando con la simulación<a class="headerlink" href="#marco-teorico-m-m-1-y-que-estamos-estimando-con-la-simulacion" title="Permalink to this heading">#</a></h2>
+<section id="definicion-del-modelo-m-m-1">
+<h3>1) Definición del modelo M/M/1<a class="headerlink" href="#definicion-del-modelo-m-m-1" title="Permalink to this heading">#</a></h3>
+<p>Una cola <strong>M/M/1</strong> se caracteriza por:</p>
+<ul class="simple">
+<li><p>Llegadas según un proceso de Poisson de tasa <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span>. Equivalentemente, los <strong>tiempos entre llegadas</strong> <span class="math notranslate nohighlight">\((A_i)\)</span> son i.i.d. exponenciales:
+$<span class="math notranslate nohighlight">\(
+A_i \sim \mathrm{Exp}(\lambda), \qquad \mathbb{E}[A_i]=\frac{1}{\lambda}.
+\)</span>$</p></li>
+<li><p>Tiempos de servicio i.i.d. exponenciales de tasa <span class="math notranslate nohighlight">\(\mu&gt;0\)</span>:
+$<span class="math notranslate nohighlight">\(
+S_i \sim \mathrm{Exp}(\mu), \qquad \mathbb{E}[S_i]=\frac{1}{\mu}.
+\)</span>$</p></li>
+<li><p>Un servidor (capacidad 1) y disciplina típica <strong>FCFS</strong> (<em>First-Come First-Served</em>).</p></li>
+</ul>
+<p>El estado natural del sistema es
+$<span class="math notranslate nohighlight">\(
+N(t)=\text{número de clientes en el sistema (en cola + en servicio) en el tiempo }t.
+\)</span><span class="math notranslate nohighlight">\(
+Bajo las hipótesis M/M/1, \)</span>(N(t))_{t\ge 0}<span class="math notranslate nohighlight">\( es una **cadena de Markov en tiempo continuo** (CTMC) tipo *birth–death* con transiciones:
+\)</span><span class="math notranslate nohighlight">\(
+n \to n+1 \text{ a tasa } \lambda, \qquad
+n \to n-1 \text{ a tasa } \mu \text{ si } n\ge 1.
+\)</span>$</p>
+</section>
+<section id="estabilidad-y-utilizacion">
+<h3>2) Estabilidad y utilización<a class="headerlink" href="#estabilidad-y-utilizacion" title="Permalink to this heading">#</a></h3>
+<p>Definimos la <strong>intensidad de tráfico</strong> o <strong>utilización</strong>:
+$<span class="math notranslate nohighlight">\(
+\rho=\frac{\lambda}{\mu}.
+\)</span>$</p>
+<ul class="simple">
+<li><p>Si <span class="math notranslate nohighlight">\(\rho&lt;1\)</span>, el sistema es <strong>estable</strong>: existe distribución estacionaria y las métricas promedio son finitas.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(\rho\ge 1\)</span>, el sistema es <strong>inestable</strong>: el número en cola crece sin límite en promedio.</p></li>
+</ul>
+<p>En régimen estacionario (cuando <span class="math notranslate nohighlight">\(\rho&lt;1\)</span>), el servidor está ocupado una fracción <span class="math notranslate nohighlight">\(\rho\)</span> del tiempo.</p>
+</section>
+<section id="resultados-analiticos-lo-que-esperamos-ver">
+<h3>3) Resultados analíticos (lo que esperamos ver)<a class="headerlink" href="#resultados-analiticos-lo-que-esperamos-ver" title="Permalink to this heading">#</a></h3>
+<p>Cuando <span class="math notranslate nohighlight">\(\rho&lt;1\)</span>, la distribución estacionaria de <span class="math notranslate nohighlight">\(N\)</span> es geométrica:
+$<span class="math notranslate nohighlight">\(
+\pi_n=\mathbb{P}(N=n)=(1-\rho)\rho^n,\qquad n=0,1,2,\dots
+\)</span>$
+De allí se obtienen las métricas clásicas:</p>
+<ul class="simple">
+<li><p>Número esperado en el sistema:
+$<span class="math notranslate nohighlight">\(
+L=\mathbb{E}[N]=\frac{\rho}{1-\rho}.
+\)</span>$</p></li>
+<li><p>Tiempo esperado en el sistema:
+$<span class="math notranslate nohighlight">\(
+W=\mathbb{E}[\text{tiempo en sistema}]=\frac{1}{\mu-\lambda}.
+\)</span>$</p></li>
+<li><p>Tiempo esperado en cola:
+$<span class="math notranslate nohighlight">\(
+W_q=W-\frac{1}{\mu}=\frac{\lambda}{\mu(\mu-\lambda)}.
+\)</span>$</p></li>
+<li><p>Número esperado en cola:
+$<span class="math notranslate nohighlight">\(
+L_q=\lambda W_q=\frac{\rho^2}{1-\rho}.
+\)</span>$</p></li>
+</ul>
+<p>Además, se cumple la <strong>Ley de Little</strong> (en estacionario):
+$<span class="math notranslate nohighlight">\(
+L=\lambda W,\qquad L_q=\lambda W_q.
+\)</span>$
+Estas identidades son un chequeo de consistencia muy útil: si la simulación está bien instrumentada y el horizonte es grande, las estimaciones deberían ser cercanas a las fórmulas teóricas y coherentes con Little.</p>
+</section>
+<section id="que-hace-simpy-y-como-se-traduce-un-modelo-de-colas-a-codigo">
+<h3>4) Qué hace SimPy y cómo se traduce un modelo de colas a código<a class="headerlink" href="#que-hace-simpy-y-como-se-traduce-un-modelo-de-colas-a-codigo" title="Permalink to this heading">#</a></h3>
+<p>La idea central es que el tiempo simulado <strong>no avanza en pasos fijos</strong>
+(como “cada 0.01 segundos”), sino que avanza <strong>saltando de evento en evento</strong>. En una cola, los eventos típicos son:
+llegadas, comienzos de servicio y salidas (fin de servicio). Entre eventos, el estado del sistema no cambia.</p>
+<p>En SimPy, hay cuatro conceptos que debes identificar siempre:</p>
+<ol class="arabic simple">
+<li><p><strong>Environment (<code class="docutils literal notranslate"><span class="pre">env</span></code>)</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>Es el “mundo” de la simulación: contiene el <strong>reloj simulado</strong> y la agenda de eventos.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">env.now</span></code> devuelve el <strong>tiempo actual</strong> (simulado).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">env.run(until=T)</span></code> hace correr la simulación hasta el tiempo <code class="docutils literal notranslate"><span class="pre">T</span></code> (o hasta que no haya eventos).</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>Procesos (funciones con <code class="docutils literal notranslate"><span class="pre">yield</span></code>)</strong>
+Un “proceso” en SimPy se escribe como una función (normalmente con <code class="docutils literal notranslate"><span class="pre">def</span></code>) que usa <code class="docutils literal notranslate"><span class="pre">yield</span></code>.<br />
+Ese <code class="docutils literal notranslate"><span class="pre">yield</span></code> NO es un “truco” de Python al azar: significa que el proceso <strong>cede el control</strong> a SimPy y queda <strong>pausado</strong>
+hasta que ocurra algo.</p></li>
+</ol>
+<p>Los dos <code class="docutils literal notranslate"><span class="pre">yield</span></code> más comunes en colas son:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">env.timeout(x)</span></code><br />
+Interpreta: “espera <strong>x</strong> unidades de tiempo simulado”.<br />
+En una cola M/M/1 se usa para:</p>
+<ul>
+<li><p><strong>interarribos</strong>: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">Exp(λ)</span></code></p></li>
+<li><p><strong>servicios</strong>: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">Exp(μ)</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">req</span></code> donde <code class="docutils literal notranslate"><span class="pre">req</span> <span class="pre">=</span> <span class="pre">resource.request()</span></code><br />
+Interpreta: “espera hasta conseguir el recurso”.<br />
+Si el recurso está ocupado, el cliente queda en cola. Cuando el recurso se libera, SimPy reanuda el proceso y el <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">req</span></code>
+termina (ya tienes el servidor).</p></li>
+</ul>
+<p>Por eso, en un cliente típico verás el patrón:</p>
+<ul class="simple">
+<li><p>llega en <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">env.now</span></code></p></li>
+<li><p>pide servidor y espera: <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">req</span></code></p></li>
+<li><p>cuando lo consigue, genera un servicio <code class="docutils literal notranslate"><span class="pre">s</span></code> y espera: <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">env.timeout(s)</span></code></p></li>
+<li><p>al terminar, libera el servidor automáticamente al salir del bloque <code class="docutils literal notranslate"><span class="pre">with</span></code></p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p><strong>Resources (<code class="docutils literal notranslate"><span class="pre">simpy.Resource</span></code>)</strong>
+Un <code class="docutils literal notranslate"><span class="pre">Resource</span></code> modela un recurso con capacidad limitada. Para M/M/1:</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">capacity</span> <span class="pre">=</span> <span class="pre">1</span></code> representa <strong>un solo servidor</strong>.</p></li>
+<li><p>Si <code class="docutils literal notranslate"><span class="pre">capacity</span> <span class="pre">=</span> <span class="pre">c</span></code>, eso es una M/M/c.</p></li>
+</ul>
+<p>El uso típico es:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">server.request()</span> <span class="pre">as</span> <span class="pre">req:</span></code> crea una solicitud</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">req</span></code> hace que el cliente espere si el servidor está ocupado</p></li>
+<li><p>cuando sales del <code class="docutils literal notranslate"><span class="pre">with</span></code>, el servidor queda libre (no tienes que “liberarlo” manualmente)</p></li>
+</ul>
+<p>Intuición importante para colas:</p>
+<ul class="simple">
+<li><p>Si <code class="docutils literal notranslate"><span class="pre">server.count</span></code> es 1, el servidor está ocupado (en M/M/1).</p></li>
+<li><p>Si hay solicitudes esperando, están en <code class="docutils literal notranslate"><span class="pre">server.queue</span></code> (cola interna del recurso).</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p><strong>Cómo conectar los procesos: <code class="docutils literal notranslate"><span class="pre">env.process(...)</span></code></strong>
+SimPy necesita que le “lances” procesos para que corran en paralelo (en el sentido de concurrencia simulada):</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">env.process(cliente(...))</span></code> crea un proceso cliente y lo agenda.</p></li>
+<li><p>Un generador de llegadas típicamente hace:</p>
+<ul>
+<li><p>espera un interarribo con <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">env.timeout(...)</span></code></p></li>
+<li><p>crea un cliente con <code class="docutils literal notranslate"><span class="pre">env.process(cliente(...))</span></code></p></li>
+<li><p>repite para generar muchos clientes</p></li>
+</ul>
+</li>
+</ul>
+<p>Esto es lo que convierte una descripción matemática (Poisson + Exponencial + servidor) en una dinámica simulada.</p>
+<section id="traduccion-directa-m-m-1-simpy-mapa-mental">
+<h4>Traducción directa M/M/1 → SimPy (mapa mental)<a class="headerlink" href="#traduccion-directa-m-m-1-simpy-mapa-mental" title="Permalink to this heading">#</a></h4>
+<p>Para que siempre puedas “ligar” teoría y código, usa este mapa:</p>
+<ul class="simple">
+<li><p>“Llegadas Poisson de tasa λ”<br />
+⇔ “interarribos exponenciales”:<br />
+<code class="docutils literal notranslate"><span class="pre">inter</span> <span class="pre">=</span> <span class="pre">random.expovariate(lam)</span></code> y luego <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">env.timeout(inter)</span></code></p></li>
+<li><p>“Servicio exponencial de tasa μ”<br />
+⇔ <code class="docutils literal notranslate"><span class="pre">serv</span> <span class="pre">=</span> <span class="pre">random.expovariate(mu)</span></code> y luego <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">env.timeout(serv)</span></code></p></li>
+<li><p>“Un servidor (capacidad 1)”<br />
+⇔ <code class="docutils literal notranslate"><span class="pre">server</span> <span class="pre">=</span> <span class="pre">simpy.Resource(env,</span> <span class="pre">capacity=1)</span></code></p></li>
+<li><p>“Esperar en cola si está ocupado”<br />
+⇔ <code class="docutils literal notranslate"><span class="pre">req</span> <span class="pre">=</span> <span class="pre">server.request()</span></code> y <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">req</span></code></p></li>
+<li><p>“El cliente se va cuando termina el servicio”<br />
+⇔ termina la función del cliente después del <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">env.timeout(serv)</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="que-estimamos-con-la-simulacion">
+<h3>5) Qué estimamos con la simulación<a class="headerlink" href="#que-estimamos-con-la-simulacion" title="Permalink to this heading">#</a></h3>
+<p>En un horizonte de simulación grande <span class="math notranslate nohighlight">\(T\)</span> (y con <span class="math notranslate nohighlight">\(\rho&lt;1\)</span>), buscamos aproximar cantidades estacionarias.</p>
+<p><strong>Métricas por cliente completado</strong> (promedios muestrales):
+Para cada cliente <span class="math notranslate nohighlight">\(i\)</span> definimos:
+$<span class="math notranslate nohighlight">\(
+W_i = t^{\text{salida}}_i - t^{\text{llegada}}_i,\qquad
+W_{q,i} = t^{\text{inicio}}_i - t^{\text{llegada}}_i.
+\)</span><span class="math notranslate nohighlight">\(
+Si \)</span>D<span class="math notranslate nohighlight">\( clientes completan dentro de la ventana de medición, estimamos:
+\)</span><span class="math notranslate nohighlight">\(
+\widehat{W}=\frac{1}{D}\sum_{i=1}^D W_i,\qquad
+\widehat{W_q}=\frac{1}{D}\sum_{i=1}^D W_{q,i}.
+\)</span>$</p>
+<p><strong>Utilización</strong> (promedio temporal):
+$<span class="math notranslate nohighlight">\(
+\widehat{\rho}_T \approx \frac{\text{tiempo total ocupado}}{T}.
+\)</span><span class="math notranslate nohighlight">\(
+En teoría, \)</span>\rho=\lambda/\mu$.</p>
+<p><strong>Chequeo con Little</strong> (validación práctica):
+Si aproximamos la tasa efectiva de salida por <span class="math notranslate nohighlight">\(\widehat{\lambda}_{\mathrm{eff}}\approx D/T\)</span>, entonces:
+$<span class="math notranslate nohighlight">\(
+\widehat{L}\approx \widehat{\lambda}_{\mathrm{eff}}\,\widehat{W},\qquad
+\widehat{L_q}\approx \widehat{\lambda}_{\mathrm{eff}}\,\widehat{W_q}.
+\)</span><span class="math notranslate nohighlight">\(
+Luego comparamos \)</span>\widehat{W},\widehat{W_q},\widehat{L},\widehat{L_q},\widehat{\rho}_T<span class="math notranslate nohighlight">\( contra \)</span>W,W_q,L,L_q,\rho$ teóricos.</p>
+</section>
+<section id="nota-metodologica">
+<h3>6) Nota metodológica<a class="headerlink" href="#nota-metodologica" title="Permalink to this heading">#</a></h3>
+<p>La simulación suele iniciar con el sistema vacío <span class="math notranslate nohighlight">\(N(0)=0\)</span>, lo que corresponde a un <strong>régimen transitorio</strong>. En horizontes grandes, el efecto inicial se diluye; en horizontes pequeños puede sesgar los promedios. En prácticas más avanzadas se usa un <em>warm-up</em> para descartar el inicio; aquí lo mencionamos para tener claridad conceptual sobre lo que significa “estimar estacionario”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">teorico_mm1</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fórmulas teóricas de M/M/1 (solo válidas si lam &lt; mu).</span>
+<span class="sd">    Retorna rho, W, Wq, L, Lq.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">lam</span> <span class="o">&lt;</span> <span class="n">mu</span><span class="p">,</span> <span class="s2">&quot;Para régimen estacionario se requiere lam &lt; mu.&quot;</span>
+    
+    <span class="n">rho</span> <span class="o">=</span> <span class="n">lam</span> <span class="o">/</span> <span class="n">mu</span>                          <span class="c1"># utilización teórica</span>
+    <span class="n">W</span>   <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="n">lam</span><span class="p">)</span>                    <span class="c1"># tiempo promedio en sistema</span>
+    <span class="n">Wq</span>  <span class="o">=</span> <span class="n">rho</span> <span class="o">/</span> <span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="n">lam</span><span class="p">)</span>                  <span class="c1"># tiempo promedio en cola</span>
+    <span class="n">L</span>   <span class="o">=</span> <span class="n">lam</span> <span class="o">*</span> <span class="n">W</span>                           <span class="c1"># Ley de Little</span>
+    <span class="n">Lq</span>  <span class="o">=</span> <span class="n">lam</span> <span class="o">*</span> <span class="n">Wq</span>                          <span class="c1"># Ley de Little</span>
+    
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;rho&quot;</span><span class="p">:</span> <span class="n">rho</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">:</span> <span class="n">W</span><span class="p">,</span> <span class="s2">&quot;Wq&quot;</span><span class="p">:</span> <span class="n">Wq</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">:</span> <span class="n">L</span><span class="p">,</span> <span class="s2">&quot;Lq&quot;</span><span class="p">:</span> <span class="n">Lq</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="ejercicio-guiado-construir-una-m-m-1-en-simpy">
+<h2>Ejercicio guiado: construir una M/M/1 en SimPy<a class="headerlink" href="#ejercicio-guiado-construir-una-m-m-1-en-simpy" title="Permalink to this heading">#</a></h2>
+<p>Vamos a construir el modelo con 3 componentes:</p>
+<ol class="arabic simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">generador_llegadas</span></code></strong></p>
+<ul class="simple">
+<li><p>espera un interarribo exponencial con tasa <span class="math notranslate nohighlight">\(\lambda\)</span></p></li>
+<li><p>crea un cliente y lanza su proceso</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">cliente</span></code></strong></p>
+<ul class="simple">
+<li><p>registra tiempo de llegada</p></li>
+<li><p>solicita el servidor (<code class="docutils literal notranslate"><span class="pre">Resource</span></code>) y espera si está ocupado</p></li>
+<li><p>al obtener servidor, registra espera en cola</p></li>
+<li><p>realiza servicio exponencial con tasa <span class="math notranslate nohighlight">\(\mu\)</span></p></li>
+<li><p>registra tiempo total en sistema</p></li>
+</ul>
+</li>
+<li><p><strong>Monitor (<code class="docutils literal notranslate"><span class="pre">monitor</span></code>)</strong></p>
+<ul class="simple">
+<li><p>almacena métricas por cliente completado</p></li>
+<li><p>acumula tiempo ocupado para estimar utilización</p></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<div><p>En SimPy, la cola FIFO está implícita en <code class="docutils literal notranslate"><span class="pre">Resource</span></code>: si hay varios procesos esperando, se atienden en orden de llegada.</p>
+</div></blockquote>
+<section id="construccion-paso-a-paso">
+<h3>Construcción paso a paso<a class="headerlink" href="#construccion-paso-a-paso" title="Permalink to this heading">#</a></h3>
+<p>Para no ver todo el modelo de una sola vez, lo construiremos por componentes:</p>
+<ol class="arabic simple" start="0">
+<li><p>Definir los parámetros.</p></li>
+<li><p>Crear el <code class="docutils literal notranslate"><span class="pre">Environment</span></code> y el <code class="docutils literal notranslate"><span class="pre">Resource</span></code> (el servidor).</p></li>
+<li><p>Definir un monitor para guardar métricas.</p></li>
+<li><p>Programar el proceso <code class="docutils literal notranslate"><span class="pre">cliente</span></code>.</p></li>
+<li><p>Programar el proceso <code class="docutils literal notranslate"><span class="pre">generador_llegadas</span></code>.</p></li>
+<li><p>Registrar procesos y correr la simulación.</p></li>
+<li><p>Calcular métricas: utilización, <span class="math notranslate nohighlight">\(W_q\)</span>, <span class="math notranslate nohighlight">\(W\)</span>, <span class="math notranslate nohighlight">\(L_q\)</span>, <span class="math notranslate nohighlight">\(L\)</span> y percentiles.</p></li>
+<li><p>(Al final) Consolidar todo en una sola función <code class="docutils literal notranslate"><span class="pre">simular_mm1(...)</span></code> para reutilizarla.</p></li>
+</ol>
+<p>Paso 0: Definir los parámetros.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Semilla para reproducibilidad</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Parámetros base</span>
+<span class="n">lam</span> <span class="o">=</span> <span class="mf">0.85</span>      <span class="c1"># tasa de llegadas (clientes/min)</span>
+<span class="n">mu</span>  <span class="o">=</span> <span class="mf">1.00</span>      <span class="c1"># tasa de servicio (clientes/min)</span>
+<span class="n">T</span>   <span class="o">=</span> <span class="mi">10_000</span>    <span class="c1"># horizonte de simulación (min)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Paso 1: Crear el <code class="docutils literal notranslate"><span class="pre">Environment</span></code> y el <code class="docutils literal notranslate"><span class="pre">Resource</span></code> (el servidor).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) Crear el entorno (reloj y planificador)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
+
+<span class="c1"># 2) Crear el servidor como un recurso compartido con capacidad 1 (M/M/1)</span>
+<span class="n">servidor</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Resource</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tiempo inicial env.now =&quot;</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Capacidad del servidor =&quot;</span><span class="p">,</span> <span class="n">servidor</span><span class="o">.</span><span class="n">capacity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tiempo inicial env.now = 0
+Capacidad del servidor = 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Paso 2: Definir un monitor para guardar métricas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Monitor: aquí guardamos información para calcular métricas después</span>
+<span class="n">monitor</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;arrivals&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>        <span class="c1"># número de clientes que llegaron</span>
+    <span class="s2">&quot;departures&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>      <span class="c1"># número de clientes que completaron servicio</span>
+    <span class="s2">&quot;busy_time&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>     <span class="c1"># tiempo total que el servidor estuvo ocupado</span>
+    <span class="s2">&quot;waits&quot;</span><span class="p">:</span> <span class="p">[],</span>          <span class="c1"># esperas en cola (Wq) por cliente completado</span>
+    <span class="s2">&quot;system_times&quot;</span><span class="p">:</span> <span class="p">[]</span>    <span class="c1"># tiempos en el sistema (W) por cliente completado</span>
+<span class="p">}</span>
+
+<span class="n">monitor</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;arrivals&#39;: 0,
+ &#39;departures&#39;: 0,
+ &#39;busy_time&#39;: 0.0,
+ &#39;waits&#39;: [],
+ &#39;system_times&#39;: []}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Paso 3: Programar el proceso <code class="docutils literal notranslate"><span class="pre">cliente</span></code>.</p>
+<p>Proceso <code class="docutils literal notranslate"><span class="pre">cliente(env,</span> <span class="pre">servidor,</span> <span class="pre">mu,</span> <span class="pre">monitor)</span></code></p>
+<p>Este proceso representa <strong>un cliente</strong>:</p>
+<ol class="arabic simple">
+<li><p>Guarda el instante de llegada <span class="math notranslate nohighlight">\(t_0 = env.now\)</span>.</p></li>
+<li><p>Solicita el servidor con <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">servidor.request()</span> <span class="pre">as</span> <span class="pre">req:</span></code>.</p></li>
+<li><p>Hace <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">req</span></code> para esperar hasta que haya servidor libre.</p></li>
+<li><p>Calcula espera en cola: <span class="math notranslate nohighlight">\(W_q = env.now - t_0\)</span>.</p></li>
+<li><p>Genera un tiempo de servicio exponencial con tasa <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
+<li><p>Hace <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">env.timeout(t_serv)</span></code> para simular el servicio.</p></li>
+<li><p>Registra métricas al finalizar.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cliente</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">servidor</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">monitor</span><span class="p">,</span> <span class="n">nombre</span><span class="o">=</span><span class="s2">&quot;cliente&quot;</span><span class="p">):</span>
+    <span class="c1"># 1) Registrar el tiempo de llegada del cliente</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span>
+    
+    <span class="c1"># 2) Solicitar el servidor (entra a la cola si está ocupado)</span>
+    <span class="k">with</span> <span class="n">servidor</span><span class="o">.</span><span class="n">request</span><span class="p">()</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+        <span class="c1"># 3) Esperar hasta que el servidor esté disponible</span>
+        <span class="k">yield</span> <span class="n">req</span>
+        
+        <span class="c1"># 4) Una vez se obtiene el servidor, calcular espera en cola</span>
+        <span class="n">espera</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span> <span class="o">-</span> <span class="n">t0</span>
+        
+        <span class="c1"># 5) Tiempo de servicio aleatorio ~ Exp(mu)</span>
+        <span class="n">t_serv</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
+        
+        <span class="c1"># 6) Acumular tiempo ocupado (sirve para utilización)</span>
+        <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;busy_time&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">t_serv</span>
+        
+        <span class="c1"># 7) Simular el servicio: el reloj avanza t_serv</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">t_serv</span><span class="p">)</span>
+    
+    <span class="c1"># 8) Registrar métricas cuando el cliente termina</span>
+    <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;waits&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">espera</span><span class="p">)</span>
+    <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;system_times&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">espera</span> <span class="o">+</span> <span class="n">t_serv</span><span class="p">)</span>
+    <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;departures&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mini prueba de cliente con una llegada manual:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset rápido del entorno para la prueba</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
+<span class="n">servidor</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Resource</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Reset del monitor</span>
+<span class="n">monitor</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;arrivals&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> 
+       <span class="s2">&quot;departures&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> 
+       <span class="s2">&quot;busy_time&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> 
+       <span class="s2">&quot;waits&quot;</span><span class="p">:</span> <span class="p">[],</span> 
+       <span class="s2">&quot;system_times&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+
+<span class="c1"># Registramos UN cliente que llega en t=0</span>
+<span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">cliente</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">servidor</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">monitor</span><span class="p">,</span> <span class="n">nombre</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">))</span>
+
+<span class="c1"># Ejecutamos un poco (suficiente para que termine)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;env.now =&quot;</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;departures =&quot;</span><span class="p">,</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;departures&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;primera espera (Wq) =&quot;</span><span class="p">,</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;waits&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;primer tiempo en sistema (W) =&quot;</span><span class="p">,</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;system_times&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>env.now = 20
+departures = 1
+primera espera (Wq) = 0
+primer tiempo en sistema (W) = 1.8606071110652234
+</pre></div>
+</div>
+</div>
+</div>
+<p>Paso 4: Programar el proceso <code class="docutils literal notranslate"><span class="pre">generador_llegadas</span></code>.</p>
+<p>Proceso <code class="docutils literal notranslate"><span class="pre">generador_llegadas(env,</span> <span class="pre">lam,</span> <span class="pre">...)</span></code></p>
+<p>Este proceso genera una secuencia de clientes:</p>
+<ol class="arabic simple">
+<li><p>Espera un interarribo <span class="math notranslate nohighlight">\(T_a \sim \text{Exp}(\lambda)\)</span>.</p></li>
+<li><p>Incrementa el contador de llegadas.</p></li>
+<li><p>Lanza el proceso de un nuevo cliente con <code class="docutils literal notranslate"><span class="pre">env.process(cliente(...))</span></code>.</p></li>
+<li><p>Repite hasta que termine la simulación (por horizonte <span class="math notranslate nohighlight">\(T\)</span>).</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">generador_llegadas</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">servidor</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">monitor</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># 1) Interarribo aleatorio ~ Exp(lam)</span>
+        <span class="n">inter</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="n">lam</span><span class="p">)</span>
+        
+        <span class="c1"># 2) Avanzar el reloj simulado hasta la próxima llegada</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">inter</span><span class="p">)</span>
+        
+        <span class="c1"># 3) Registrar la llegada</span>
+        <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;arrivals&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="c1"># 4) Crear y registrar el proceso del cliente</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">cliente</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">servidor</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">monitor</span><span class="p">,</span> <span class="n">nombre</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;C</span><span class="si">{</span><span class="n">monitor</span><span class="p">[</span><span class="s1">&#39;arrivals&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Paso 5: Registrar procesos y correr la simulación.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear entorno y recurso de nuevo (modelo completo)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
+<span class="n">servidor</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Resource</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Reset del monitor</span>
+<span class="n">monitor</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;arrivals&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;departures&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;busy_time&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;waits&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;system_times&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+
+<span class="c1"># Registrar el generador de llegadas</span>
+<span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">generador_llegadas</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">servidor</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">monitor</span><span class="p">))</span>
+
+<span class="c1"># Correr la simulación hasta T</span>
+<span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulación terminada en env.now =&quot;</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Llegadas:&quot;</span><span class="p">,</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;arrivals&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Salidas :&quot;</span><span class="p">,</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;departures&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulación terminada en env.now = 10000
+Llegadas: 8596
+Salidas : 8594
+</pre></div>
+</div>
+</div>
+</div>
+<p>Paso 6: Calcular métricas: utilización, <span class="math notranslate nohighlight">\(W_q\)</span>, <span class="math notranslate nohighlight">\(W\)</span>, <span class="math notranslate nohighlight">\(L_q\)</span>, <span class="math notranslate nohighlight">\(L\)</span> y percentiles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Utilización observada: tiempo ocupado / tiempo disponible del servidor</span>
+<span class="n">utilizacion</span> <span class="o">=</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;busy_time&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">T</span> <span class="k">if</span> <span class="n">T</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">0.0</span>
+
+<span class="c1"># Promedios (solo con clientes completados)</span>
+<span class="n">Wq</span> <span class="o">=</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;waits&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;waits&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="mf">0.0</span>
+<span class="n">W</span>  <span class="o">=</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;system_times&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;system_times&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="mf">0.0</span>
+
+<span class="c1"># Tasa efectiva de salida (clientes completados por unidad de tiempo)</span>
+<span class="n">lam_eff</span> <span class="o">=</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;departures&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">T</span> <span class="k">if</span> <span class="n">T</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">0.0</span>
+
+<span class="c1"># Ley de Little usando lambda efectivo</span>
+<span class="n">L</span>  <span class="o">=</span> <span class="n">lam_eff</span> <span class="o">*</span> <span class="n">W</span>
+<span class="n">Lq</span> <span class="o">=</span> <span class="n">lam_eff</span> <span class="o">*</span> <span class="n">Wq</span>
+
+<span class="c1"># Percentiles (si hay datos)</span>
+<span class="n">p50</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;waits&quot;</span><span class="p">],</span> <span class="mi">50</span><span class="p">)</span> <span class="k">if</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;waits&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="mf">0.0</span>
+<span class="n">p90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;waits&quot;</span><span class="p">],</span> <span class="mi">90</span><span class="p">)</span> <span class="k">if</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;waits&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="mf">0.0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;utilización (obs):&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">utilizacion</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wq (obs):&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">Wq</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;W  (obs):&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lq (obs):&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">Lq</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L  (obs):&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p50(Wq):&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">p50</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p90(Wq):&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">p90</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;waits&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histograma de espera en cola (Wq)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;minutos&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;frecuencia&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>utilización (obs): 0.8622
+Wq (obs): 6.0476
+W  (obs): 7.0506
+Lq (obs): 5.1973
+L  (obs): 6.0593
+p50(Wq): 4.0124
+p90(Wq): 14.9192
+</pre></div>
+</div>
+<img alt="../../_images/c6425562bd3b8c56f43e4b798a952f92a3a2a7c395d0e1275dfe8664cd708f2d.png" src="../../_images/c6425562bd3b8c56f43e4b798a952f92a3a2a7c395d0e1275dfe8664cd708f2d.png" />
+</div>
+</div>
+</section>
+<section id="consolidacion">
+<h3>Consolidación<a class="headerlink" href="#consolidacion" title="Permalink to this heading">#</a></h3>
+<p>Ahora que ya entendimos cada componente por separado, empaquetamos todo en una función <code class="docutils literal notranslate"><span class="pre">simular_mm1(...)</span></code> para poder:</p>
+<ul class="simple">
+<li><p>correr múltiples escenarios,</p></li>
+<li><p>comparar resultados,</p></li>
+<li><p>y reutilizar el modelo sin reescribir código.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">simular_mm1</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simula una cola M/M/1 con SimPy durante un horizonte T.</span>
+<span class="sd">    </span>
+<span class="sd">    Parámetros:</span>
+<span class="sd">    - lam: tasa de llegadas (clientes/unidad de tiempo)</span>
+<span class="sd">    - mu: tasa de servicio (clientes/unidad de tiempo)</span>
+<span class="sd">    - T: horizonte de simulación</span>
+<span class="sd">    - seed: semilla para reproducibilidad</span>
+<span class="sd">    </span>
+<span class="sd">    Retorna un diccionario con métricas y muestras (waits, system_times).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Fijar semilla para que los resultados se puedan repetir</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        
+    <span class="c1"># Monitor: aquí guardamos información para calcular métricas después</span>
+    <span class="n">monitor</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;arrivals&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>        <span class="c1"># número de clientes que llegaron</span>
+        <span class="s2">&quot;departures&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>      <span class="c1"># número de clientes que completaron servicio</span>
+        <span class="s2">&quot;busy_time&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>     <span class="c1"># tiempo total que el servidor estuvo ocupado</span>
+        <span class="s2">&quot;waits&quot;</span><span class="p">:</span> <span class="p">[],</span>          <span class="c1"># esperas en cola (Wq) por cliente completado</span>
+        <span class="s2">&quot;system_times&quot;</span><span class="p">:</span> <span class="p">[]</span>    <span class="c1"># tiempos en el sistema (W) por cliente completado</span>
+    <span class="p">}</span>
+
+    <span class="n">monitor</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">cliente</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">servidor</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Proceso de un cliente:</span>
+<span class="sd">        - llega en env.now</span>
+<span class="sd">        - pide el recurso (servidor)</span>
+<span class="sd">        - espera en cola si es necesario</span>
+<span class="sd">        - se atiende por un tiempo exponencial</span>
+<span class="sd">        - registra métricas al salir</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Tiempo de llegada (reloj simulado)</span>
+        <span class="n">t0</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span>
+        
+        <span class="c1"># Solicitar el servidor (Resource) dentro de un contexto</span>
+        <span class="k">with</span> <span class="n">servidor</span><span class="o">.</span><span class="n">request</span><span class="p">()</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+            <span class="c1"># yield req: esperar hasta que el servidor esté disponible</span>
+            <span class="k">yield</span> <span class="n">req</span>
+            
+            <span class="c1"># En este punto, el cliente ya obtuvo el servidor</span>
+            <span class="n">espera</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span> <span class="o">-</span> <span class="n">t0</span>     <span class="c1"># tiempo en cola</span>
+            
+            <span class="c1"># Tiempo de servicio ~ Exp(mu)</span>
+            <span class="n">t_serv</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
+            
+            <span class="c1"># Acumular tiempo ocupado (para utilización)</span>
+            <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;busy_time&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">t_serv</span>
+            
+            <span class="c1"># Simular servicio: el reloj avanza t_serv</span>
+            <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">t_serv</span><span class="p">)</span>
+        
+        <span class="c1"># Al salir del &quot;with&quot;, el servidor se libera automáticamente</span>
+        
+        <span class="c1"># Registrar métricas del cliente completado</span>
+        <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;waits&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">espera</span><span class="p">)</span>
+        <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;system_times&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">espera</span> <span class="o">+</span> <span class="n">t_serv</span><span class="p">)</span>
+        <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;departures&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">generador_llegadas</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">servidor</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Genera llegadas:</span>
+<span class="sd">        - espera interarribos ~ Exp(lam)</span>
+<span class="sd">        - incrementa contador de llegadas</span>
+<span class="sd">        - crea el proceso de cliente</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="c1"># Interarribo ~ Exp(lam)</span>
+            <span class="n">inter</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="n">lam</span><span class="p">)</span>
+            
+            <span class="c1"># Esperar ese tiempo de interarribo</span>
+            <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">inter</span><span class="p">)</span>
+            
+            <span class="c1"># Registrar llegada</span>
+            <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;arrivals&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            
+            <span class="c1"># Lanzar el proceso del cliente</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">cliente</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">servidor</span><span class="p">))</span>
+
+    <span class="c1"># 1) Crear entorno (reloj + planificador)</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
+    
+    <span class="c1"># 2) Crear el servidor (capacidad 1 =&gt; M/M/1)</span>
+    <span class="n">servidor</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Resource</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># 3) Registrar proceso de llegadas</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">generador_llegadas</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">servidor</span><span class="p">))</span>
+    
+    <span class="c1"># 4) Ejecutar simulación hasta T</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+
+    <span class="c1"># ---------------------------</span>
+    <span class="c1"># Métricas al finalizar</span>
+    <span class="c1"># ---------------------------</span>
+    
+    <span class="c1"># Utilización observada: tiempo ocupado / tiempo total disponible</span>
+    <span class="n">util</span> <span class="o">=</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;busy_time&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">T</span> <span class="k">if</span> <span class="n">T</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">0.0</span>
+    
+    <span class="c1"># Promedios (solo con clientes completados)</span>
+    <span class="n">Wq</span> <span class="o">=</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;waits&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;waits&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="n">W</span>  <span class="o">=</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;system_times&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;system_times&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="mf">0.0</span>
+    
+    <span class="c1"># Tasa efectiva de salida: clientes completados por unidad de tiempo</span>
+    <span class="n">lam_eff</span> <span class="o">=</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;departures&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">T</span> <span class="k">if</span> <span class="n">T</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">0.0</span>
+    
+    <span class="c1"># Ley de Little (usando lambda efectivo)</span>
+    <span class="n">L</span>  <span class="o">=</span> <span class="n">lam_eff</span> <span class="o">*</span> <span class="n">W</span>
+    <span class="n">Lq</span> <span class="o">=</span> <span class="n">lam_eff</span> <span class="o">*</span> <span class="n">Wq</span>
+    
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;lam&quot;</span><span class="p">:</span> <span class="n">lam</span><span class="p">,</span> <span class="s2">&quot;mu&quot;</span><span class="p">:</span> <span class="n">mu</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span>
+        <span class="s2">&quot;rho&quot;</span><span class="p">:</span> <span class="n">util</span><span class="p">,</span>
+        <span class="s2">&quot;Wq&quot;</span><span class="p">:</span> <span class="n">Wq</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">:</span> <span class="n">W</span><span class="p">,</span> <span class="s2">&quot;Lq&quot;</span><span class="p">:</span> <span class="n">Lq</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">:</span> <span class="n">L</span><span class="p">,</span>
+        <span class="s2">&quot;arrivals&quot;</span><span class="p">:</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;arrivals&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;departures&quot;</span><span class="p">:</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;departures&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;waits_sample&quot;</span><span class="p">:</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;waits&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;system_sample&quot;</span><span class="p">:</span> <span class="n">monitor</span><span class="p">[</span><span class="s2">&quot;system_times&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="caso-base-y-comparacion-con-teoria">
+<h3>Caso base y comparación con teoría<a class="headerlink" href="#caso-base-y-comparacion-con-teoria" title="Permalink to this heading">#</a></h3>
+<p>Elegimos parámetros base tales que <span class="math notranslate nohighlight">\(\lambda &lt; \mu\)</span> para que el sistema sea estable.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda = 0.85\)</span> clientes/min</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu = 1.00\)</span> clientes/min</p></li>
+<li><p><span class="math notranslate nohighlight">\(T = 10\,000\)</span> min</p></li>
+</ul>
+<p>Luego comparamos simulación vs teoría.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lam</span> <span class="o">=</span> <span class="mf">0.85</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">1.00</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">10_000</span>
+
+<span class="n">resultados_base</span> <span class="o">=</span> <span class="n">simular_mm1</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resultados simulación (base)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">({</span>
+    <span class="s2">&quot;rho&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">resultados_base</span><span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="s2">&quot;Wq&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">resultados_base</span><span class="p">[</span><span class="s2">&quot;Wq&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="s2">&quot;W&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">resultados_base</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="s2">&quot;Lq&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">resultados_base</span><span class="p">[</span><span class="s2">&quot;Lq&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="s2">&quot;L&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">resultados_base</span><span class="p">[</span><span class="s2">&quot;L&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
+<span class="p">})</span>
+
+<span class="k">if</span> <span class="n">lam</span> <span class="o">&lt;</span> <span class="n">mu</span><span class="p">:</span>
+    <span class="n">theo</span> <span class="o">=</span> <span class="n">teorico_mm1</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Teoría M/M/1 (lam &lt; mu)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">theo</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">lam &gt;= mu: no hay régimen estacionario para comparación teórica.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Resultados simulación (base)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;rho&#39;: 0.8496, &#39;Wq&#39;: 5.4149, &#39;W&#39;: 6.4141, &#39;Lq&#39;: 4.6021, &#39;L&#39;: 5.4513}
+
+Teoría M/M/1 (lam &lt; mu)
+{&#39;rho&#39;: 0.85, &#39;W&#39;: 6.6667, &#39;Wq&#39;: 5.6667, &#39;L&#39;: 5.6667, &#39;Lq&#39;: 4.8167}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="percentiles-y-propuesta-de-sla">
+<h3>Percentiles y propuesta de SLA<a class="headerlink" href="#percentiles-y-propuesta-de-sla" title="Permalink to this heading">#</a></h3>
+<p>Además de promedios, en operación suele importar el comportamiento “típico” y “malo”:</p>
+<ul class="simple">
+<li><p>p50: mediana (50% de clientes espera menos que esto)</p></li>
+<li><p>p90: 90% de clientes espera menos que esto</p></li>
+</ul>
+<p>Un SLA (Service Level Agreement) típico sería:</p>
+<ul class="simple">
+<li><p>“el 90% de los clientes espera menos de <span class="math notranslate nohighlight">\(X\)</span> minutos”.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">waits</span> <span class="o">=</span> <span class="n">resultados_base</span><span class="p">[</span><span class="s2">&quot;waits_sample&quot;</span><span class="p">]</span>
+<span class="n">system_times</span> <span class="o">=</span> <span class="n">resultados_base</span><span class="p">[</span><span class="s2">&quot;system_sample&quot;</span><span class="p">]</span>
+
+<span class="n">p50</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">waits</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="k">if</span> <span class="n">waits</span> <span class="k">else</span> <span class="mf">0.0</span>
+<span class="n">p90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">waits</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span> <span class="k">if</span> <span class="n">waits</span> <span class="k">else</span> <span class="mf">0.0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;p50 espera en cola (Wq): </span><span class="si">{</span><span class="n">p50</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;p90 espera en cola (Wq): </span><span class="si">{</span><span class="n">p90</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SLA sugerido: 90% espera &lt; </span><span class="si">{</span><span class="n">p90</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">waits</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histograma de espera en cola (Wq)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;minutos&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;frecuencia&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p50 espera en cola (Wq): 3.543 min
+p90 espera en cola (Wq): 13.288 min
+SLA sugerido: 90% espera &lt; 13.288 min
+</pre></div>
+</div>
+<img alt="../../_images/e7dddbe9f50e66d51eb42728f95fa0ec7c53c10c5cc1613be1c2e7a5626c85c7.png" src="../../_images/e7dddbe9f50e66d51eb42728f95fa0ec7c53c10c5cc1613be1c2e7a5626c85c7.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="experimentos-rapidos">
+<h2>Experimentos rápidos<a class="headerlink" href="#experimentos-rapidos" title="Permalink to this heading">#</a></h2>
+<p>Vamos a comparar 3 escenarios:</p>
+<ul class="simple">
+<li><p><strong>Base</strong>: <span class="math notranslate nohighlight">\(\lambda=0.85\)</span>, <span class="math notranslate nohighlight">\(\mu=1.00\)</span></p></li>
+<li><p><strong>A (mayor demanda)</strong>: <span class="math notranslate nohighlight">\(\lambda=0.95\)</span>, <span class="math notranslate nohighlight">\(\mu=1.00\)</span></p></li>
+<li><p><strong>B (mayor capacidad)</strong>: <span class="math notranslate nohighlight">\(\lambda=0.85\)</span>, <span class="math notranslate nohighlight">\(\mu=1.10\)</span></p></li>
+</ul>
+<p>La hipótesis esperada:</p>
+<ul class="simple">
+<li><p>subir <span class="math notranslate nohighlight">\(\lambda\)</span> aumenta la utilización y dispara <span class="math notranslate nohighlight">\(W_q\)</span> y <span class="math notranslate nohighlight">\(W\)</span>.</p></li>
+<li><p>subir <span class="math notranslate nohighlight">\(\mu\)</span> reduce <span class="math notranslate nohighlight">\(W_q\)</span> y <span class="math notranslate nohighlight">\(W\)</span> y baja la utilización.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">escenarios</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;escenario&quot;</span><span class="p">:</span> <span class="s2">&quot;base&quot;</span><span class="p">,</span> <span class="s2">&quot;lam&quot;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span> <span class="s2">&quot;mu&quot;</span><span class="p">:</span> <span class="mf">1.00</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;escenario&quot;</span><span class="p">:</span> <span class="s2">&quot;A_mayor_demanda&quot;</span><span class="p">,</span> <span class="s2">&quot;lam&quot;</span><span class="p">:</span> <span class="mf">0.95</span><span class="p">,</span> <span class="s2">&quot;mu&quot;</span><span class="p">:</span> <span class="mf">1.00</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;escenario&quot;</span><span class="p">:</span> <span class="s2">&quot;B_mayor_capacidad&quot;</span><span class="p">,</span> <span class="s2">&quot;lam&quot;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span> <span class="s2">&quot;mu&quot;</span><span class="p">:</span> <span class="mf">1.10</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="n">filas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">escenarios</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">simular_mm1</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;lam&quot;</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;mu&quot;</span><span class="p">],</span> <span class="n">T</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">filas</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s2">&quot;escenario&quot;</span><span class="p">:</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;escenario&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;lam&quot;</span><span class="p">:</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;lam&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;mu&quot;</span><span class="p">:</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;mu&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;rho&quot;</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Wq&quot;</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;Wq&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;W&quot;</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Lq&quot;</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;Lq&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;L&quot;</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;L&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;departures&quot;</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;departures&quot;</span><span class="p">],</span>
+    <span class="p">})</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span>
+
+<span class="c1"># redondeo para lectura</span>
+<span class="n">df_round</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">,</span> <span class="s2">&quot;Wq&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;Lq&quot;</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">]:</span>
+    <span class="n">df_round</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_round</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">df_round</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>escenario</th>
+      <th>lam</th>
+      <th>mu</th>
+      <th>rho</th>
+      <th>Wq</th>
+      <th>W</th>
+      <th>Lq</th>
+      <th>L</th>
+      <th>departures</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>base</td>
+      <td>0.85</td>
+      <td>1.0</td>
+      <td>0.8559</td>
+      <td>6.3275</td>
+      <td>7.3314</td>
+      <td>5.3929</td>
+      <td>6.2486</td>
+      <td>8523</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A_mayor_demanda</td>
+      <td>0.95</td>
+      <td>1.0</td>
+      <td>0.9590</td>
+      <td>22.8807</td>
+      <td>23.8864</td>
+      <td>21.8190</td>
+      <td>22.7780</td>
+      <td>9536</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>B_mayor_capacidad</td>
+      <td>0.85</td>
+      <td>1.1</td>
+      <td>0.7888</td>
+      <td>3.3621</td>
+      <td>4.2793</td>
+      <td>2.8910</td>
+      <td>3.6798</td>
+      <td>8599</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;escenario&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Wq&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Wq promedio por escenario&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;escenario&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Wq (min)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;escenario&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Utilización del servidor por escenario&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;escenario&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;utilización&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/03966074db1330c1f68bc17d49179a3a696357a10d5aded57071eae295ada510.png" src="../../_images/03966074db1330c1f68bc17d49179a3a696357a10d5aded57071eae295ada510.png" />
+<img alt="../../_images/6fd276bde89b8b15a0b24a01695f30130d521845dfa3f98795b55a0fd42ca1ba.png" src="../../_images/6fd276bde89b8b15a0b24a01695f30130d521845dfa3f98795b55a0fd42ca1ba.png" />
+</div>
+</div>
+<section id="variacion-porcentual-respecto-al-escenario-base">
+<h3>Variación porcentual respecto al escenario base<a class="headerlink" href="#variacion-porcentual-respecto-al-escenario-base" title="Permalink to this heading">#</a></h3>
+<p>Para comunicar resultados, muchas veces es útil reportar cambios relativos (%):</p>
+<div class="math notranslate nohighlight">
+\[
+\%\Delta = 100\cdot\frac{\text{métrica} - \text{métrica}_{base}}{\text{métrica}_{base}}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;escenario&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;base&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">cols_cmp</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">,</span> <span class="s2">&quot;Wq&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;Lq&quot;</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">]</span>
+
+<span class="n">df_cmp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols_cmp</span><span class="p">:</span>
+    <span class="n">df_cmp</span><span class="p">[</span><span class="n">c</span> <span class="o">+</span> <span class="s2">&quot;_vs_base_%&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">-</span> <span class="n">base</span><span class="p">[</span><span class="n">c</span><span class="p">])</span> <span class="o">/</span> <span class="n">base</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+
+<span class="c1"># redondeo para lectura</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_cmp</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;_vs_base_%&quot;</span><span class="p">)]:</span>
+    <span class="n">df_cmp</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_cmp</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">df_cmp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>escenario</th>
+      <th>lam</th>
+      <th>mu</th>
+      <th>rho</th>
+      <th>Wq</th>
+      <th>W</th>
+      <th>Lq</th>
+      <th>L</th>
+      <th>departures</th>
+      <th>rho_vs_base_%</th>
+      <th>Wq_vs_base_%</th>
+      <th>W_vs_base_%</th>
+      <th>Lq_vs_base_%</th>
+      <th>L_vs_base_%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>base</td>
+      <td>0.85</td>
+      <td>1.0</td>
+      <td>0.855901</td>
+      <td>6.327505</td>
+      <td>7.331441</td>
+      <td>5.392932</td>
+      <td>6.248587</td>
+      <td>8523</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A_mayor_demanda</td>
+      <td>0.95</td>
+      <td>1.0</td>
+      <td>0.959033</td>
+      <td>22.880696</td>
+      <td>23.886373</td>
+      <td>21.819031</td>
+      <td>22.778045</td>
+      <td>9536</td>
+      <td>12.05</td>
+      <td>261.61</td>
+      <td>225.81</td>
+      <td>304.59</td>
+      <td>264.53</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>B_mayor_capacidad</td>
+      <td>0.85</td>
+      <td>1.1</td>
+      <td>0.788849</td>
+      <td>3.362057</td>
+      <td>4.279320</td>
+      <td>2.891033</td>
+      <td>3.679787</td>
+      <td>8599</td>
+      <td>-7.83</td>
+      <td>-46.87</td>
+      <td>-41.63</td>
+      <td>-46.39</td>
+      <td>-41.11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="ejercicio-practico-farmacia-de-ventanilla-m-m-1">
+<h2>Ejercicio Práctico: Farmacia de Ventanilla (M/M/1)<a class="headerlink" href="#ejercicio-practico-farmacia-de-ventanilla-m-m-1" title="Permalink to this heading">#</a></h2>
+<p>Una farmacia atiende a los clientes en una única ventanilla. Los clientes llegan de manera aleatoria y forman una cola FIFO. El tiempo de atención también es aleatorio. Cuando el sistema está ocupado, los clientes esperan y nadie abandona.</p>
+<section id="supuestos-del-modelo">
+<h3>Supuestos del modelo<a class="headerlink" href="#supuestos-del-modelo" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>llegadas <span class="math notranslate nohighlight">\(\sim\)</span> Poisson con tasa <span class="math notranslate nohighlight">\(\lambda\)</span></p></li>
+<li><p>servicio <span class="math notranslate nohighlight">\(\sim\)</span> Exponencial con tasa <span class="math notranslate nohighlight">\(\mu\)</span></p></li>
+<li><p>un solo servidor con cola FIFO</p></li>
+<li><p>sin abandonos</p></li>
+</ul>
+</section>
+<section id="parametros">
+<h3>Parámetros<a class="headerlink" href="#parametros" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda = 0.85\)</span> clientes por minuto</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu  = 1.00\)</span> clientes por minuto</p></li>
+<li><p><span class="math notranslate nohighlight">\(T   = 10\,000\)</span> minutos</p></li>
+</ul>
+</section>
+<section id="para-realizar">
+<h3>Para realizar<a class="headerlink" href="#para-realizar" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Estimar por simulación:</p>
+<ul class="simple">
+<li><p>utilización del servidor</p></li>
+<li><p>tiempos promedio <span class="math notranslate nohighlight">\(W_q\)</span> y <span class="math notranslate nohighlight">\(W\)</span></p></li>
+<li><p>números promedio <span class="math notranslate nohighlight">\(L_q\)</span> y <span class="math notranslate nohighlight">\(L\)</span> vía Ley de Little con la tasa efectiva de salida</p></li>
+</ul>
+</li>
+<li><p>Calcular valores teóricos (si <span class="math notranslate nohighlight">\(\lambda &lt; \mu\)</span>) y compararlos con la simulación.</p></li>
+<li><p>Reportar los percentiles p50 y p90 de la espera en cola.</p></li>
+<li><p>Proponer un SLA del tipo:<br />
+“el 90% de los clientes espera menos de <span class="math notranslate nohighlight">\(X\)</span> minutos”.</p></li>
+<li><p>Experimentos:</p>
+<ul class="simple">
+<li><p>Escenario A: aumenta la demanda a <span class="math notranslate nohighlight">\(\lambda = 0.95\)</span> y comenta el efecto.</p></li>
+<li><p>Escenario B: mejora la capacidad a <span class="math notranslate nohighlight">\(\mu = 1.10\)</span> con <span class="math notranslate nohighlight">\(\lambda = 0.85\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Grafica información relevante y calcula la variación porcentual de cada escenario respecto al base.</p></li>
+</ol>
+</section>
+</section>
+<section id="solucion">
+<h2>Solución:<a class="headerlink" href="#solucion" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Puedes reutilizar simular_mm1(...) y teorico_mm1(...)</span>
+
+<span class="c1"># 1) Caso base</span>
+<span class="n">lam_base</span> <span class="o">=</span> <span class="mf">0.85</span>
+<span class="n">mu_base</span> <span class="o">=</span> <span class="mf">1.00</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">10_000</span>
+
+<span class="n">resultados_base</span> <span class="o">=</span> <span class="n">simular_mm1</span><span class="p">(</span><span class="n">lam_base</span><span class="p">,</span> <span class="n">mu_base</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 2) Teoría (si aplica)</span>
+<span class="k">if</span> <span class="n">lam_base</span> <span class="o">&lt;</span> <span class="n">mu_base</span><span class="p">:</span>
+    <span class="n">theo_base</span> <span class="o">=</span> <span class="n">teorico_mm1</span><span class="p">(</span><span class="n">lam_base</span><span class="p">,</span> <span class="n">mu_base</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">theo_base</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># 3) Percentiles</span>
+<span class="n">waits_base</span> <span class="o">=</span> <span class="n">resultados_base</span><span class="p">[</span><span class="s2">&quot;waits_sample&quot;</span><span class="p">]</span>
+<span class="n">p50</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">waits_base</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">p90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">waits_base</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Base (simulación)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">({</span>
+    <span class="s2">&quot;rho&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">resultados_base</span><span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="s2">&quot;Wq&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">resultados_base</span><span class="p">[</span><span class="s2">&quot;Wq&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="s2">&quot;W&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">resultados_base</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="s2">&quot;Lq&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">resultados_base</span><span class="p">[</span><span class="s2">&quot;Lq&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="s2">&quot;L&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">resultados_base</span><span class="p">[</span><span class="s2">&quot;L&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
+<span class="p">})</span>
+
+<span class="k">if</span> <span class="n">theo_base</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Base (teoría)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">theo_base</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Base (simulación)
+{&#39;rho&#39;: 0.8527, &#39;Wq&#39;: 6.7904, &#39;W&#39;: 7.7844, &#39;Lq&#39;: 5.8248, &#39;L&#39;: 6.6775}
+
+Base (teoría)
+{&#39;rho&#39;: 0.85, &#39;W&#39;: 6.6667, &#39;Wq&#39;: 5.6667, &#39;L&#39;: 5.6667, &#39;Lq&#39;: 4.8167}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content\complementarias"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="complementaria_intro_simpy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="complementaria_transf_inversa_gba.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias-que-usaremos">Librerías que usaremos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#marco-teorico-m-m-1-y-que-estamos-estimando-con-la-simulacion">Marco teórico (M/M/1) y qué estamos estimando con la simulación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-del-modelo-m-m-1">1) Definición del modelo M/M/1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estabilidad-y-utilizacion">2) Estabilidad y utilización</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-analiticos-lo-que-esperamos-ver">3) Resultados analíticos (lo que esperamos ver)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-hace-simpy-y-como-se-traduce-un-modelo-de-colas-a-codigo">4) Qué hace SimPy y cómo se traduce un modelo de colas a código</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#traduccion-directa-m-m-1-simpy-mapa-mental">Traducción directa M/M/1 → SimPy (mapa mental)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-estimamos-con-la-simulacion">5) Qué estimamos con la simulación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nota-metodologica">6) Nota metodológica</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-guiado-construir-una-m-m-1-en-simpy">Ejercicio guiado: construir una M/M/1 en SimPy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-paso-a-paso">Construcción paso a paso</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consolidacion">Consolidación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-base-y-comparacion-con-teoria">Caso base y comparación con teoría</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles-y-propuesta-de-sla">Percentiles y propuesta de SLA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimentos-rapidos">Experimentos rápidos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variacion-porcentual-respecto-al-escenario-base">Variación porcentual respecto al escenario base</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-practico-farmacia-de-ventanilla-m-m-1">Ejercicio Práctico: Farmacia de Ventanilla (M/M/1)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supuestos-del-modelo">Supuestos del modelo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros">Parámetros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#para-realizar">Para realizar</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solucion">Solución:</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Equipo Modelado Bajo Incertidumbre | Uniandes
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

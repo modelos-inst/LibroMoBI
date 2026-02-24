@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Complementaria 3: Teorema del Límite Central y validación empírica &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
@@ -29,40 +28,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0361f5db" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_tlc';</script>
@@ -166,7 +161,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -187,7 +193,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria 3: Teorema del Límite Central y validación empírica</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Modelado Avanzado en SimPy</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gva.html">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
 
 
@@ -228,9 +239,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -324,9 +335,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -386,7 +397,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="complementaria-3-teorema-del-limite-central-y-validacion-empirica">
-<h1>Complementaria 3: Teorema del Límite Central y validación empírica<a class="headerlink" href="#complementaria-3-teorema-del-limite-central-y-validacion-empirica" title="Permalink to this heading">#</a></h1>
+<h1>Complementaria 3: Teorema del Límite Central y validación empírica<a class="headerlink" href="#complementaria-3-teorema-del-limite-central-y-validacion-empirica" title="Link to this heading">#</a></h1>
 <p>En la complementaria anterior se estudió una variable aleatoria definida como el
 máximo de dos dados mediante simulación de Monte Carlo, a partir de la cual se estimaron
 empíricamente su función de probabilidad, su media y su varianza.</p>
@@ -399,7 +410,7 @@ estimaciones obtenidas por simulación.</p>
 la media muestral cuando el número de observaciones aumenta? El Teorema del Límite Central
 responde a esta cuestión. A continuación, la parte D del ejercicio trabajado en la complementaria 2.</p>
 <section id="parte-d-extension-teorema-de-limite-central-tlc">
-<h2>1. Parte D — Extensión: Teorema de límite central (TLC)<a class="headerlink" href="#parte-d-extension-teorema-de-limite-central-tlc" title="Permalink to this heading">#</a></h2>
+<h2>1. Parte D — Extensión: Teorema de límite central (TLC)<a class="headerlink" href="#parte-d-extension-teorema-de-limite-central-tlc" title="Link to this heading">#</a></h2>
 <p>Tomaremos muchos promedios de <span class="math notranslate nohighlight">\(M=\max(D_1,D_2)\)</span>. Aunque <span class="math notranslate nohighlight">\(M\)</span> no es Normal, el <strong>promedio</strong> de <span class="math notranslate nohighlight">\(k\)</span> réplicas independientes se aproxima a Normal para <span class="math notranslate nohighlight">\(k\)</span> suficientemente grande (generalmente se considera 30 un valor de <span class="math notranslate nohighlight">\(k\)</span> suficientemente grande).</p>
 <p>Definimos el promedio:</p>
 <div class="math notranslate nohighlight">
@@ -453,7 +464,7 @@ Z_k \;=\; \frac{\bar M_k - \mu}{\sigma/\sqrt{k}}
 </div>
 </div>
 <section id="simulacion-de-la-variable-aleatoria-base">
-<h3>1.1 Simulación de la variable aleatoria base<a class="headerlink" href="#simulacion-de-la-variable-aleatoria-base" title="Permalink to this heading">#</a></h3>
+<h3>1.1 Simulación de la variable aleatoria base<a class="headerlink" href="#simulacion-de-la-variable-aleatoria-base" title="Link to this heading">#</a></h3>
 <p>En esta sección se utiliza simulación de Monte Carlo para generar realizaciones independientes de la variable aleatoria <span class="math notranslate nohighlight">\(M = \max(D_1, D_2) \)</span>, donde <span class="math notranslate nohighlight">\( D_1 \)</span> y <span class="math notranslate nohighlight">\( D_2 \)</span> representan lanzamientos independientes de dos dados justos. La semilla del generador se fija para garantizar reproducibilidad.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -471,7 +482,7 @@ Z_k \;=\; \frac{\bar M_k - \mu}{\sigma/\sqrt{k}}
 </div>
 </section>
 <section id="construccion-de-promedios-muestrales">
-<h3>1.2 Construcción de promedios muestrales<a class="headerlink" href="#construccion-de-promedios-muestrales" title="Permalink to this heading">#</a></h3>
+<h3>1.2 Construcción de promedios muestrales<a class="headerlink" href="#construccion-de-promedios-muestrales" title="Link to this heading">#</a></h3>
 <p>Para analizar empíricamente el comportamiento de la media muestral, se construyen
 réplicas independientes. Cada réplica consiste en ( k ) observaciones de la variable
 ( M ), a partir de las cuales se calcula un promedio.
@@ -494,7 +505,7 @@ El número total de réplicas se denota por <code class="docutils literal notran
 </div>
 </section>
 <section id="parametros-teoricos-de-la-variable-aleatoria">
-<h3>1.3 Parámetros teóricos de la variable aleatoria<a class="headerlink" href="#parametros-teoricos-de-la-variable-aleatoria" title="Permalink to this heading">#</a></h3>
+<h3>1.3 Parámetros teóricos de la variable aleatoria<a class="headerlink" href="#parametros-teoricos-de-la-variable-aleatoria" title="Link to this heading">#</a></h3>
 <p>Con el fin de aplicar el Teorema del Límite Central, se calculan los parámetros
 teóricos de la variable aleatoria ( M ), utilizando su función de probabilidad:</p>
 <div class="math notranslate nohighlight">
@@ -513,7 +524,7 @@ teóricos de la variable aleatoria ( M ), utilizando su función de probabilidad
 </div>
 </section>
 <section id="aplicacion-del-teorema-del-limite-central">
-<h3>1.4 Aplicación del Teorema del Límite Central<a class="headerlink" href="#aplicacion-del-teorema-del-limite-central" title="Permalink to this heading">#</a></h3>
+<h3>1.4 Aplicación del Teorema del Límite Central<a class="headerlink" href="#aplicacion-del-teorema-del-limite-central" title="Link to this heading">#</a></h3>
 <p>A continuación, se estandarizan los promedios muestrales utilizando la expresión
 del Teorema del Límite Central:</p>
 <div class="math notranslate nohighlight">
@@ -540,7 +551,7 @@ distribución normal estándar cuando el tamaño de muestra ( k ) es suficientem
 </div>
 </section>
 <section id="intervalo-de-confianza-para-la-esperanza-de-m">
-<h3>1.5 Intervalo de confianza para la esperanza de ( M )<a class="headerlink" href="#intervalo-de-confianza-para-la-esperanza-de-m" title="Permalink to this heading">#</a></h3>
+<h3>1.5 Intervalo de confianza para la esperanza de ( M )<a class="headerlink" href="#intervalo-de-confianza-para-la-esperanza-de-m" title="Link to this heading">#</a></h3>
 <p>Finalmente, se construye un intervalo de confianza del 95% para la esperanza de
 la variable aleatoria ( M ), dado por:</p>
 <div class="math notranslate nohighlight">
@@ -580,7 +591,7 @@ la variable aleatoria ( M ), dado por:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2d8d344aeb06448acf8cfd82a44b29b0b77a0b3dd6045475b2b47e4c2ee625e2.png" src="../../_images/2d8d344aeb06448acf8cfd82a44b29b0b77a0b3dd6045475b2b47e4c2ee625e2.png" />
+<img alt="../../_images/edd968a41cbd112e439de8884d43af4a14b2096127c70c3abce44beefc1de4bb.png" src="../../_images/edd968a41cbd112e439de8884d43af4a14b2096127c70c3abce44beefc1de4bb.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -604,18 +615,18 @@ la variable aleatoria ( M ), dado por:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1adb0e5a5f47e9ce8298c41ddb3a532939fab3af5932c17ca64049de37aa4752.png" src="../../_images/1adb0e5a5f47e9ce8298c41ddb3a532939fab3af5932c17ca64049de37aa4752.png" />
+<img alt="../../_images/789720f5c69daed8eaaada88f9bb4d995a7301c29f634e2804eef486492de03e.png" src="../../_images/789720f5c69daed8eaaada88f9bb4d995a7301c29f634e2804eef486492de03e.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="ejemplo-de-aplicacion-en-ingenieria">
-<h2>2. Ejemplo de aplicación en Ingeniería<a class="headerlink" href="#ejemplo-de-aplicacion-en-ingenieria" title="Permalink to this heading">#</a></h2>
+<h2>2. Ejemplo de aplicación en Ingeniería<a class="headerlink" href="#ejemplo-de-aplicacion-en-ingenieria" title="Link to this heading">#</a></h2>
 <p>La empresa “ProdServ” integra una planta de ensamblaje y un centro de servicio al cliente. En la planta operan varias líneas que producen en turnos horarios; cada línea registra el número de defectos por hora, la proporción de piezas no conformes por lote y el consumo de tiempo de máquinas en operaciones críticas. La inspección de calidad se realiza por muestreo: de cada lote de tamaño fijo se mide la fracción de no conformes y, si supera un umbral, se activa reproceso. La dirección de operaciones busca dimensionar recursos y ajustar estándares de calidad, pero las métricas clave fluctúan por la variabilidad inherente del proceso: horas “tranquilas” alternan con picos de defectos y cambios de mezcla de producto. Para planear con rigor, el equipo necesita estimar medias, dispersión y probabilidades de excedencia con control de incertidumbre.</p>
 <p>En paralelo, el centro de servicio gestiona solicitudes de clientes asociadas a garantías y soporte técnico. Se registran los tiempos entre llegadas y los tiempos de servicio de cada caso, así como la carga simultánea por franja horaria. La gerencia requiere evaluar tiempos de respuesta, dimensionar personal y establecer acuerdos de nivel de servicio.</p>
 <p>Para ambos frentes se propone un enfoque de simulación Monte Carlo. Realice 20000 réplicas de tamaño 30.</p>
 <section id="escenario-a-planta-produccion-y-calidad">
-<h3>2.1 Escenario A — Planta (Producción y Calidad)<a class="headerlink" href="#escenario-a-planta-produccion-y-calidad" title="Permalink to this heading">#</a></h3>
+<h3>2.1 Escenario A — Planta (Producción y Calidad)<a class="headerlink" href="#escenario-a-planta-produccion-y-calidad" title="Link to this heading">#</a></h3>
 <p>En la planta se monitorean dos métricas clave:</p>
 <ol class="arabic simple">
 <li><p><strong>Defectos por hora</strong> en una línea de producción (conteos por intervalo de tiempo).<br />
@@ -625,7 +636,7 @@ Utilice: Binomial con <span class="math notranslate nohighlight">\(n\)</span> = 
 </ol>
 <p>Use <strong>simulación Monte Carlo</strong> para generar datos, construir <strong>promedios de tamaño</strong> (k) por réplica, <strong>estandarizar</strong> y verificar el <strong>TLC</strong>. Además, construya <strong>intervalos de confianza (IC)</strong> para la media.</p>
 <section id="a-1-defectos-por-hora-poisson">
-<h4>2.1.1 A.1 Defectos por hora (Poisson)<a class="headerlink" href="#a-1-defectos-por-hora-poisson" title="Permalink to this heading">#</a></h4>
+<h4>2.1.1 A.1 Defectos por hora (Poisson)<a class="headerlink" href="#a-1-defectos-por-hora-poisson" title="Link to this heading">#</a></h4>
 <p>Suponga <span class="math notranslate nohighlight">\(X \sim \text{Poisson}(\lambda)\)</span> como el número de defectos por hora en una línea. Para cada réplica, promediamos <span class="math notranslate nohighlight">\(k\)</span> horas: <span class="math notranslate nohighlight">\(\bar X_k = \frac{1}{k}\sum_{j=1}^k X_j\)</span>.<br />
 Parámetros teóricos: <span class="math notranslate nohighlight">\(\mathbb E[X] = \lambda\)</span>, <span class="math notranslate nohighlight">\(\mathrm{Var}(X) = \lambda\)</span>.</p>
 <p>Por TCL, la estandarización</p>
@@ -686,12 +697,12 @@ mean(z) ~ 0.007535749520341884   sd(z) ~ 0.9958304138037191
 IC 95% para E[X]: (3.9977, 4.0078)   (teórico λ=4.0)
 </pre></div>
 </div>
-<img alt="../../_images/9da05df51b067c24489689452247b12666990f1f25f238159fe069cc1c7bd831.png" src="../../_images/9da05df51b067c24489689452247b12666990f1f25f238159fe069cc1c7bd831.png" />
+<img alt="../../_images/4a9ca2e6f645f614facf4f7241d8cf21beabbf23a05c23f9a7bea8ba1cc971ca.png" src="../../_images/4a9ca2e6f645f614facf4f7241d8cf21beabbf23a05c23f9a7bea8ba1cc971ca.png" />
 </div>
 </div>
 </section>
 <section id="a-2-proporcion-de-no-conformes-por-lote-binomial">
-<h4>2.1.2 A.2 Proporción de no conformes por lote (Binomial)<a class="headerlink" href="#a-2-proporcion-de-no-conformes-por-lote-binomial" title="Permalink to this heading">#</a></h4>
+<h4>2.1.2 A.2 Proporción de no conformes por lote (Binomial)<a class="headerlink" href="#a-2-proporcion-de-no-conformes-por-lote-binomial" title="Link to this heading">#</a></h4>
 <p>Cada lote tiene tamaño <span class="math notranslate nohighlight">\(n\)</span>. El número de no conformes <span class="math notranslate nohighlight">\(B \sim \text{Binomial}(n, p)\)</span>.<br />
 Proporción por lote <span class="math notranslate nohighlight">\(Y = B/n\)</span>.<br />
 Para cada réplica, promediamos <span class="math notranslate nohighlight">\(k\)</span> lotes: <span class="math notranslate nohighlight">\(\bar Y_k = \frac{1}{k}\sum_{j=1}^k Y_j\)</span>.</p>
@@ -751,20 +762,20 @@ mean(z) ~ 0.0010672220776235888   sd(z) ~ 0.9970079531158527
 IC 95% para E[Y]: (0.0999, 0.1001)   (teórico p=0.1)
 </pre></div>
 </div>
-<img alt="../../_images/9606627b3eababd2da04a83d3c65083c8d5172612a8a9bd52cc5f089050caff8.png" src="../../_images/9606627b3eababd2da04a83d3c65083c8d5172612a8a9bd52cc5f089050caff8.png" />
+<img alt="../../_images/22db08c7a2768859456bb616d8ebb870b40b9ab219acd54b92db52e8792cbbd3.png" src="../../_images/22db08c7a2768859456bb616d8ebb870b40b9ab219acd54b92db52e8792cbbd3.png" />
 </div>
 </div>
 </section>
 </section>
 </section>
 <section id="formalizacion-del-tlc">
-<h2>3. Formalización del TLC<a class="headerlink" href="#formalizacion-del-tlc" title="Permalink to this heading">#</a></h2>
+<h2>3. Formalización del TLC<a class="headerlink" href="#formalizacion-del-tlc" title="Link to this heading">#</a></h2>
 <p>A partir de este momento se introduce formalmente el Teorema del Límite Central (TLC),
 el cual describe el comportamiento asintótico de la media muestral. A través de
 procedimientos de simulación y ejemplos con distintas distribuciones de probabilidad,
 se validará empíricamente el TLC y se ilustrarán algunas de sus aplicaciones utilizando Simulación de Montecarlo.</p>
 <section id="tlc">
-<h3>3.1 TLC<a class="headerlink" href="#tlc" title="Permalink to this heading">#</a></h3>
+<h3>3.1 TLC<a class="headerlink" href="#tlc" title="Link to this heading">#</a></h3>
 <p>El análisis estadístico de fenómenos aleatorios se basa en el estudio de variables
 aleatorias y sus distribuciones de probabilidad. En muchos contextos prácticos,
 las distribuciones originales no siguen una forma normal, lo que dificulta el
@@ -797,7 +808,7 @@ Z \;\xrightarrow{d}\; \mathcal{N}(0,1)
 \]</div>
 </section>
 <section id="validacion-empirica-del-tlc-mediante-simulacion">
-<h3>3.2 Validación empírica del TLC mediante simulación<a class="headerlink" href="#validacion-empirica-del-tlc-mediante-simulacion" title="Permalink to this heading">#</a></h3>
+<h3>3.2 Validación empírica del TLC mediante simulación<a class="headerlink" href="#validacion-empirica-del-tlc-mediante-simulacion" title="Link to this heading">#</a></h3>
 <p>Para verificar empíricamente el Teorema del Límite Central utilizaremos simulación.
 La idea consiste en:</p>
 <ol class="arabic simple">
@@ -844,14 +855,14 @@ La idea consiste en:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5f55961efe9800ad99efbb03d82a258e324bc7b21d588e0d956de1b3d14506b4.png" src="../../_images/5f55961efe9800ad99efbb03d82a258e324bc7b21d588e0d956de1b3d14506b4.png" />
+<img alt="../../_images/59edcaffbdadfd730479bc8524cb5590e5ff462ad967f0393dbefc06527e7f76.png" src="../../_images/59edcaffbdadfd730479bc8524cb5590e5ff462ad967f0393dbefc06527e7f76.png" />
 </div>
 </div>
 </section>
 <section id="generacion-de-distribuciones-y-validacion-empirica-del-tlc">
-<h3>3.3 Generación de Distribuciones y Validación empírica del TLC<a class="headerlink" href="#generacion-de-distribuciones-y-validacion-empirica-del-tlc" title="Permalink to this heading">#</a></h3>
+<h3>3.3 Generación de Distribuciones y Validación empírica del TLC<a class="headerlink" href="#generacion-de-distribuciones-y-validacion-empirica-del-tlc" title="Link to this heading">#</a></h3>
 <section id="distribucion-uniforme">
-<h4>3.3.1 Distribución Uniforme<a class="headerlink" href="#distribucion-uniforme" title="Permalink to this heading">#</a></h4>
+<h4>3.3.1 Distribución Uniforme<a class="headerlink" href="#distribucion-uniforme" title="Link to this heading">#</a></h4>
 <p>Sea <span class="math notranslate nohighlight">\(X \sim \mathcal{U}(0,1)\)</span>. Se tiene:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -902,15 +913,15 @@ La idea consiste en:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b23a58e39f8a1d0c78fa8340dee6d1eb4627566249581636bd01b8f94a12cdb0.png" src="../../_images/b23a58e39f8a1d0c78fa8340dee6d1eb4627566249581636bd01b8f94a12cdb0.png" />
-<img alt="../../_images/52aac5e686ba77535feaae70af467828c03e6b1992ef0565c046162f3f01801d.png" src="../../_images/52aac5e686ba77535feaae70af467828c03e6b1992ef0565c046162f3f01801d.png" />
-<img alt="../../_images/3930dd632b160bce628c7b33ef2fadd58bb93d75e99fe7dca2a65caa29596000.png" src="../../_images/3930dd632b160bce628c7b33ef2fadd58bb93d75e99fe7dca2a65caa29596000.png" />
-<img alt="../../_images/7c26033e6161047ae336ee0d3e874992a2919c40c0cecde8163f0441feaeef69.png" src="../../_images/7c26033e6161047ae336ee0d3e874992a2919c40c0cecde8163f0441feaeef69.png" />
+<img alt="../../_images/96a281fc8f84505c0b00d32593f674880e35f1de8eed25654982e3b3833e5e16.png" src="../../_images/96a281fc8f84505c0b00d32593f674880e35f1de8eed25654982e3b3833e5e16.png" />
+<img alt="../../_images/3c9114ab17a1e9bff9e2169e94a6fde5fa537e61c57eb3e98e034abad0d6bf87.png" src="../../_images/3c9114ab17a1e9bff9e2169e94a6fde5fa537e61c57eb3e98e034abad0d6bf87.png" />
+<img alt="../../_images/28d2983db159a7c3c7bffeb39045c348857331109c9e82e5d2edee71da6f0bbe.png" src="../../_images/28d2983db159a7c3c7bffeb39045c348857331109c9e82e5d2edee71da6f0bbe.png" />
+<img alt="../../_images/f7e873dad09a3b752f8081bd6b394b8f497f2c6c6d981b04673f72cf42b31950.png" src="../../_images/f7e873dad09a3b752f8081bd6b394b8f497f2c6c6d981b04673f72cf42b31950.png" />
 </div>
 </div>
 </section>
 <section id="distribucion-exponencial">
-<h4>3.3.2 Distribución Exponencial<a class="headerlink" href="#distribucion-exponencial" title="Permalink to this heading">#</a></h4>
+<h4>3.3.2 Distribución Exponencial<a class="headerlink" href="#distribucion-exponencial" title="Link to this heading">#</a></h4>
 <p>Sea una variable aleatoria:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -983,10 +994,10 @@ Teorema del Límite Central, ya que posee esperanza y varianza finitas.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9e8cba66bd00cd91b7414fd687e83eaf11f509abcebf5212d50d5dac7a725ffd.png" src="../../_images/9e8cba66bd00cd91b7414fd687e83eaf11f509abcebf5212d50d5dac7a725ffd.png" />
-<img alt="../../_images/675cce6c238f4e09dd608184d507cb81b4b9c5855f09795dbb1dce437f9bd0d5.png" src="../../_images/675cce6c238f4e09dd608184d507cb81b4b9c5855f09795dbb1dce437f9bd0d5.png" />
-<img alt="../../_images/fdb83f4199436fe2ad409ee4ce38341d1aae71fc7d9edd9a3803a31bfd4dcfb7.png" src="../../_images/fdb83f4199436fe2ad409ee4ce38341d1aae71fc7d9edd9a3803a31bfd4dcfb7.png" />
-<img alt="../../_images/c6091fc1d4c8fdcadfa3dd20c3107a42d7f65d375f58c654819488c3cdb84c26.png" src="../../_images/c6091fc1d4c8fdcadfa3dd20c3107a42d7f65d375f58c654819488c3cdb84c26.png" />
+<img alt="../../_images/a093ac2fc6bbd1f480670af185f2a0cb23fe87603195fa6399f31a270f5cfb46.png" src="../../_images/a093ac2fc6bbd1f480670af185f2a0cb23fe87603195fa6399f31a270f5cfb46.png" />
+<img alt="../../_images/5a34fab96e1b3bd4107891648328d489ba5d617f65602372c8410eed6346fabf.png" src="../../_images/5a34fab96e1b3bd4107891648328d489ba5d617f65602372c8410eed6346fabf.png" />
+<img alt="../../_images/15df57fa837d70339e04b6cb08004565eca7c9b5dcce9cab90176daec02fffdb.png" src="../../_images/15df57fa837d70339e04b6cb08004565eca7c9b5dcce9cab90176daec02fffdb.png" />
+<img alt="../../_images/9fa5f5e824bacf5d60f2032fee7473e0bb208d56e9fd29d0a59da9b40aaf1f3f.png" src="../../_images/9fa5f5e824bacf5d60f2032fee7473e0bb208d56e9fd29d0a59da9b40aaf1f3f.png" />
 </div>
 </div>
 <p>``<div style="background-color:#fff4e5; border-left:4px solid #f5a623; padding:10px; margin:10px 0;"></p>
@@ -1049,13 +1060,13 @@ normal estándar <span class="math notranslate nohighlight">\(\mathcal{N}(0,1)\)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6f55ac346f45d8e47014c3796a54c5b0d9cb38ca2909a7931f05d0e8f1c88549.png" src="../../_images/6f55ac346f45d8e47014c3796a54c5b0d9cb38ca2909a7931f05d0e8f1c88549.png" />
+<img alt="../../_images/207bb7b8d7876d6ce4efacbbf9adca7cd54fab9814eebcf09ef52e1eb31d5d26.png" src="../../_images/207bb7b8d7876d6ce4efacbbf9adca7cd54fab9814eebcf09ef52e1eb31d5d26.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="extension-del-teorema-del-limite-central-mediante-simulacion-monte-carlo">
-<h3>3.4 Extensión del Teorema del Límite Central mediante Simulación Monte Carlo<a class="headerlink" href="#extension-del-teorema-del-limite-central-mediante-simulacion-monte-carlo" title="Permalink to this heading">#</a></h3>
+<h3>3.4 Extensión del Teorema del Límite Central mediante Simulación Monte Carlo<a class="headerlink" href="#extension-del-teorema-del-limite-central-mediante-simulacion-monte-carlo" title="Link to this heading">#</a></h3>
 <p>En muchos problemas aplicados, la variable de interés no corresponde a una
 distribución de probabilidad elemental, sino al resultado de un sistema compuesto
 por varias variables aleatorias. En estos casos, la distribución analítica de la
@@ -1292,7 +1303,7 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

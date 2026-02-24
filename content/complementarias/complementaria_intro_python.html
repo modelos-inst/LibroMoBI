@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Complementaria 1: Introducción a Python &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
@@ -29,40 +28,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0361f5db" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_intro_python';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -164,7 +159,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -185,7 +191,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria 3: Teorema del Límite Central y validación empírica</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Modelado Avanzado en SimPy</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gva.html">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
 
 
@@ -226,9 +237,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -322,9 +333,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -366,11 +377,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="complementaria-1-introduccion-a-python">
-<h1>Complementaria 1: Introducción a Python<a class="headerlink" href="#complementaria-1-introduccion-a-python" title="Permalink to this heading">#</a></h1>
+<h1>Complementaria 1: Introducción a Python<a class="headerlink" href="#complementaria-1-introduccion-a-python" title="Link to this heading">#</a></h1>
 <p>Esta complementaria está diseñada para hacer una introducción a Python y aprender a definir y manejar matrices en Python. Python es un lenguaje de programación de alto nivel, ampliamente utilizado por su simplicidad y legibilidad. En esta complementaria, cubriremos los fundamentos del lenguaje, incluyendo la sintaxis básica, la estructura de control de flujo, y las principales bibliotecas que hacen de Python una herramienta poderosa para una amplia gama de aplicaciones.</p>
 <p>Para ejecutar Python utilizaremos Visual Studio Code (VSC), un editor de código fuente gratuito y multiplataforma desarrollado por Microsoft.</p>
 <section id="asignacion-de-variables">
-<h2>Asignación de variables<a class="headerlink" href="#asignacion-de-variables" title="Permalink to this heading">#</a></h2>
+<h2>Asignación de variables<a class="headerlink" href="#asignacion-de-variables" title="Link to this heading">#</a></h2>
 <p>Las variables en Python se utilizan para almacenar datos que puedes usar más adelante en tu código. Puedes asignar valores a las variables utilizando el operador ‘=’.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -395,7 +406,7 @@ document.write(`
 </div>
 </section>
 <section id="tipos-de-objetos">
-<h2>Tipos de objetos<a class="headerlink" href="#tipos-de-objetos" title="Permalink to this heading">#</a></h2>
+<h2>Tipos de objetos<a class="headerlink" href="#tipos-de-objetos" title="Link to this heading">#</a></h2>
 <p>En Python existen diferentes tipos de objetos para representar datos. Aqui se presenta una introducción a los tipos de objetos más comunes:</p>
 <ol class="arabic simple">
 <li><p>Cadenas de Texto <strong>(‘str’)</strong></p></li>
@@ -530,7 +541,7 @@ document.write(`
 </div>
 </section>
 <section id="paquetes-o-librerias-en-python">
-<h2>Paquetes o librerias en Python<a class="headerlink" href="#paquetes-o-librerias-en-python" title="Permalink to this heading">#</a></h2>
+<h2>Paquetes o librerias en Python<a class="headerlink" href="#paquetes-o-librerias-en-python" title="Link to this heading">#</a></h2>
 <p>En Python los paquetes deben ser instalados cuando estos no están presentes en el computador, y también se deben importar en cada sesión. Por ejemplo, vamos a instalar la librería matplotlib, que sirve para generar gráficas. Para instalar la librería en la terminal puede emitir el comando:</p>
 <p>pip install matplotlib</p>
 <p>O desde una celda de un cuaderno puede hacer con el siguiente comando, para eso se debe utilizar el siguiente comando:</p>
@@ -541,21 +552,21 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matplotlib in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (3.10.7)
-Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (1.3.1)
-Requirement already satisfied: cycler&gt;=0.10 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (4.57.0)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (1.4.8)
-Requirement already satisfied: numpy&gt;=1.23 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (2.3.4)
-Requirement already satisfied: packaging&gt;=20.0 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (26.0)
-Requirement already satisfied: pillow&gt;=8 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (11.0.0)
-Requirement already satisfied: pyparsing&gt;=3 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (3.2.3)
-Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (2.9.0.post0)
-Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matplotlib in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (3.10.8)
+Requirement already satisfied: contourpy&gt;=1.0.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (4.61.1)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.4.9)
+Requirement already satisfied: numpy&gt;=1.23 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (2.4.1)
+Requirement already satisfied: packaging&gt;=20.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (25.0)
+Requirement already satisfied: pillow&gt;=8 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (12.1.0)
+Requirement already satisfied: pyparsing&gt;=3 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (3.3.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.2 -&gt; 26.0
-[notice] To update, run: C:\Users\jpine\AppData\Local\Programs\Python\Python312\python.exe -m pip install --upgrade pip
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 26.0 -&gt; 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
 </pre></div>
 </div>
 </div>
@@ -578,7 +589,7 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </section>
 <section id="funciones-en-python">
-<h2>Funciones en Python<a class="headerlink" href="#funciones-en-python" title="Permalink to this heading">#</a></h2>
+<h2>Funciones en Python<a class="headerlink" href="#funciones-en-python" title="Link to this heading">#</a></h2>
 <p>Para definir una función en Python, se utiliza la palabra clave <strong>def</strong>, seguida del nombre de la función y paréntesis que pueden contener parámetros opcionales. El bloque de código de la función está indentado. A continuación se presenta la sintaxis basica:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -637,7 +648,7 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </section>
 <section id="recorridos-o-ciclos">
-<h2>Recorridos o ciclos<a class="headerlink" href="#recorridos-o-ciclos" title="Permalink to this heading">#</a></h2>
+<h2>Recorridos o ciclos<a class="headerlink" href="#recorridos-o-ciclos" title="Link to this heading">#</a></h2>
 <p>En algunas ocasiones, es necesario recorrer los elementos de otro elemento como son las listas o los diccionarios. Para hacerlo, en Python podemos utilizar los ciclos for de la siguiente manera:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -680,7 +691,7 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </section>
 <section id="estructuras-de-control-o-condicionales">
-<h2>Estructuras de control o condicionales<a class="headerlink" href="#estructuras-de-control-o-condicionales" title="Permalink to this heading">#</a></h2>
+<h2>Estructuras de control o condicionales<a class="headerlink" href="#estructuras-de-control-o-condicionales" title="Link to this heading">#</a></h2>
 <p>Los condicionales permiten ejecutar diferentes bloques de código basados en ciertas condiciones. Son fundamentales para controlar el flujo de un programa. A continuacion se presenta la sintaxis basica:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -760,7 +771,7 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </section>
 <section id="graficas-en-python">
-<h2>Graficas en Python<a class="headerlink" href="#graficas-en-python" title="Permalink to this heading">#</a></h2>
+<h2>Graficas en Python<a class="headerlink" href="#graficas-en-python" title="Link to this heading">#</a></h2>
 <p>En Python, crear gráficos y visualizaciones es bastante sencillo gracias a varias bibliotecas. En este caso se utilizará la libreria <strong>Matplotlib</strong>, una de las bibliotecas de visualización más comunes en Python. Es muy versátil y permite crear una amplia variedad de gráficos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -788,7 +799,7 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 <p>En este link puedes encontrar mas explicaciones y ejemplos de cómo construir todo tipo de graficas con la libreria <strong>Matplotlib</strong>: <a class="reference external" href="https://matplotlib.org/stable/tutorials/pyplot.html">Tutorial Pyplot</a></p>
 </section>
 <section id="manejo-de-matrices">
-<h2>Manejo de matrices<a class="headerlink" href="#manejo-de-matrices" title="Permalink to this heading">#</a></h2>
+<h2>Manejo de matrices<a class="headerlink" href="#manejo-de-matrices" title="Link to this heading">#</a></h2>
 <p>Para crear y realizar operaciones sobre matrices en Python utilzaremos la libreria <code class="docutils literal notranslate"><span class="pre">numpy</span></code> que se abrevia como <code class="docutils literal notranslate"><span class="pre">np</span></code>.</p>
 <p>Si no la tienen instalada en su computador, deben usar el mismo comando que utilizamos anteriormente:</p>
 <div class="cell docutils container">
@@ -798,11 +809,11 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (2.3.4)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (2.4.1)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.2 -&gt; 26.0
-[notice] To update, run: C:\Users\jpine\AppData\Local\Programs\Python\Python312\python.exe -m pip install --upgrade pip
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 26.0 -&gt; 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
 </pre></div>
 </div>
 </div>
@@ -957,7 +968,7 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </section>
 <section id="operaciones-matriciales">
-<h2>Operaciones matriciales<a class="headerlink" href="#operaciones-matriciales" title="Permalink to this heading">#</a></h2>
+<h2>Operaciones matriciales<a class="headerlink" href="#operaciones-matriciales" title="Link to this heading">#</a></h2>
 <p>A modo de ejemplo, se crearán dos matrices llenas de números aleatorios que siguen una distribución normal generados por el comando <code class="docutils literal notranslate"><span class="pre">random.normal</span></code> de la libreria numpy, que tiene como parámetros la media, la desviación estandar y el tamaño de la matriz</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -967,12 +978,12 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[21.57499068 13.94789852 15.59852026 17.51472715 20.72048925 11.25043308]
- [-1.16185093 12.3428276   7.7937718  24.67765738 29.6367548  18.54150307]
- [26.18525263 19.42883989 23.15470847 16.59767872 29.50760107 19.23779429]
- [31.72453642 16.64825696 16.35718463 15.1743088  19.05326978 15.03025294]
- [14.85870228 23.31044868 31.24442624 15.3793527  31.24961597 17.55043075]
- [12.64712983 19.79354593 21.0472604  35.97751803 13.25408562 11.36307831]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[22.15917209 13.63213105 10.08586534 13.7168315  39.57339596 24.85898748]
+ [26.37603112 26.26381803 31.18236428 15.71673828 16.92786865 29.51902935]
+ [22.83561678 21.87149445 21.47283288 23.09717012 21.946197   16.88059515]
+ [24.54353083 27.19274332 29.55944167 36.88809621 15.49777574 -8.91331059]
+ [22.41806417 17.4122459   7.37773798 21.98314542  8.90612993 13.25697059]
+ [30.79165652 13.56219314 24.37644083 15.05500451 13.74495494 24.6936324 ]]
 </pre></div>
 </div>
 </div>
@@ -985,12 +996,12 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[15.95963676 10.74663293 10.67530539 11.45555644 11.02516    11.22390462]
- [ 7.3809213  10.60082168  9.04324322  7.96081045 10.32422619 13.44628099]
- [ 9.90656617  8.61741067  6.83624641 11.49887505 14.11626886  3.04107242]
- [10.64311474 10.48243472 11.19965292 14.61721495 12.41943368  6.34218128]
- [15.82816687 12.30936172 13.34781318 10.02930549  7.27088962  6.9385293 ]
- [ 9.37086082  7.59496349  8.23672813 10.02936771  8.21223651 12.73298768]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[10.46435872 11.2471981   8.08268048  5.64906572  7.65766167 12.32053182]
+ [10.33612712  8.32771848 11.61522466  9.93020918 13.14543499  6.94895316]
+ [ 3.59543771 10.08807527  8.55296062  8.05067276  5.58007184 12.29153527]
+ [ 9.20536684 12.1285053   7.29109045 16.851577    8.35604218  6.85557171]
+ [14.55959612  6.97527818  8.79042577 10.89992301 13.26462686 11.69840716]
+ [12.66789037 10.75165469  6.0546558  10.79286959  9.58321953 13.61562535]]
 </pre></div>
 </div>
 </div>
@@ -1047,12 +1058,12 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[37.53462744 24.69453145 26.27382565 28.97028359 31.74564925 22.4743377 ]
- [ 6.21907037 22.94364928 16.83701503 32.63846783 39.96098099 31.98778406]
- [36.09181881 28.04625055 29.99095488 28.09655377 43.62386993 22.27886671]
- [42.36765117 27.13069169 27.55683755 29.79152374 31.47270346 21.37243422]
- [30.68686916 35.6198104  44.59223942 25.40865819 38.52050558 24.48896005]
- [22.01799065 27.38850942 29.28398853 46.00688574 21.46632213 24.09606599]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[32.62353081 24.87932915 18.16854582 19.36589722 47.23105763 37.17951929]
+ [36.71215824 34.59153651 42.79758895 25.64694745 30.07330365 36.46798251]
+ [26.43105449 31.95956973 30.0257935  31.14784288 27.52626884 29.17213042]
+ [33.74889767 39.32124862 36.85053211 53.73967321 23.85381792 -2.05773888]
+ [36.9776603  24.38752408 16.16816375 32.88306843 22.17075679 24.95537775]
+ [43.45954688 24.31384784 30.43109662 25.8478741  23.32817447 38.30925775]]
 </pre></div>
 </div>
 </div>
@@ -1064,18 +1075,18 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1221.60998359 1038.23615499 1028.4880245  1114.21891348 1062.63248885
-   875.24215224]
- [1055.26072058  949.83376768  977.18460694 1018.48311216  898.87484006
-   774.86044684]
- [1614.67043591 1370.21276125 1351.73325484 1452.38454632 1394.80802456
-  1180.52100328]
- [1395.16173563 1166.125242   1149.11168096 1247.68618785 1202.97341157
-  1049.49360845]
- [1541.48804995 1355.20774904 1316.93341336 1429.29549195 1407.88028314
-  1113.06250034]
- [1255.62683748 1153.69828219 1131.33744211 1317.25727293 1277.40414077
-   936.9317414 ]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1426.40012186 1174.17547512 1022.10005278 1272.54355512 1282.94147636
+  1387.16567514]
+ [1424.67376109 1456.01971491 1227.07360785 1428.80347526 1359.98679575
+  1598.44827287]
+ [1288.21808297 1270.30521818 1085.79777512 1329.68482615 1228.07717714
+  1342.18472978]
+ [1096.47606563 1260.36326682 1118.26754637 1340.99799701 1138.7427911
+  1167.50935402]
+ [ 941.06247253  942.85166656  765.38286955  969.55166915  870.60284555
+   923.27958965]
+ [1201.56352618 1249.14035217  995.00063002 1174.90092683 1094.86175877
+  1373.46050047]]
 </pre></div>
 </div>
 </div>
@@ -1087,8 +1098,8 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([100.60705894,  91.83066372, 134.11187507, 113.98780953,
-       133.59297661, 114.08261811])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([124.02638342, 145.98584972, 128.10390639, 124.76827717,
+        91.354294  , 122.22388234])
 </pre></div>
 </div>
 </div>
@@ -1100,8 +1111,8 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([105.82876091, 105.47181758, 115.19587179, 125.32124277,
-       143.42181649,  92.97349244])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([149.12407152, 119.93462589, 124.05468297, 126.45698605,
+       116.59632222, 100.29590438])
 </pre></div>
 </div>
 </div>
@@ -1207,7 +1218,7 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

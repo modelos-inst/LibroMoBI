@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Complementaria Semana 5: Introducción a la Simulación con SimPy con Python &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
@@ -29,46 +28,42 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0361f5db" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_intro_simpy';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy" href="complementaria_simu_cola_simpy.html" />
+    <link rel="next" title="Complementaria Semana 6: Modelado Avanzado en SimPy" href="complementaria_simu_cola_simpy.html" />
     <link rel="prev" title="Complementaria 3: Teorema del Límite Central y validación empírica" href="complementaria_tlc.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -166,7 +161,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -187,7 +193,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria 3: Teorema del Límite Central y validación empírica</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Modelado Avanzado en SimPy</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gva.html">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
 
 
@@ -228,9 +239,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -324,9 +335,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -384,7 +395,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="complementaria-semana-5-introduccion-a-la-simulacion-con-simpy-con-python">
-<h1>Complementaria Semana 5: Introducción a la Simulación con SimPy con Python<a class="headerlink" href="#complementaria-semana-5-introduccion-a-la-simulacion-con-simpy-con-python" title="Permalink to this heading">#</a></h1>
+<h1>Complementaria Semana 5: Introducción a la Simulación con SimPy con Python<a class="headerlink" href="#complementaria-semana-5-introduccion-a-la-simulacion-con-simpy-con-python" title="Link to this heading">#</a></h1>
 <p>La simulación es una representación de un sistema del mundo real. A partir de un modelo matemático o computacional se estudia cómo funciona ese sistema y qué pasa cuando cambian algunos componentes, por ejemplo el número de servidores, la política de atención o el inventario. Se usa en aeropuertos, restaurantes, bancos, manufactura y entidades públicas, donde una asignación deficiente de recursos puede generar congestión, malas experiencias y retrasos.</p>
 <p>Un sistema es cualquier entorno donde ocurren eventos. Dentro del sistema hay agentes que atraviesan procesos. Ejemplos:</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -412,9 +423,9 @@ document.write(`
 </div>
 <p>Comprender los procesos que siguen los agentes ayuda a planear la operación. En un aeropuerto, si hay poco personal, los tiempos de espera en seguridad pueden crecer de forma considerable. En mensajería, un mal enrutamiento retrasa la entrega. Simular antes de decidir permite detectar cuellos de botella, comparar alternativas y asignar recursos de forma más eficiente.</p>
 <section id="ejercicio-guiado">
-<h2>Ejercicio Guiado<a class="headerlink" href="#ejercicio-guiado" title="Permalink to this heading">#</a></h2>
+<h2>Ejercicio Guiado<a class="headerlink" href="#ejercicio-guiado" title="Link to this heading">#</a></h2>
 <section id="como-usar-este-laboratorio-primera-vez-en-simpy">
-<h3>Cómo usar este laboratorio (primera vez en SimPy)<a class="headerlink" href="#como-usar-este-laboratorio-primera-vez-en-simpy" title="Permalink to this heading">#</a></h3>
+<h3>Cómo usar este laboratorio (primera vez en SimPy)<a class="headerlink" href="#como-usar-este-laboratorio-primera-vez-en-simpy" title="Link to this heading">#</a></h3>
 <p>Este notebook tiene varias partes. Si es tu primera vez viendo SimPy, sigue este orden:</p>
 <ol class="arabic simple">
 <li><p><strong>Parte 1</strong>: ejemplo mínimo (entender <code class="docutils literal notranslate"><span class="pre">Environment</span></code>, <code class="docutils literal notranslate"><span class="pre">process</span></code>, <code class="docutils literal notranslate"><span class="pre">yield</span></code>, <code class="docutils literal notranslate"><span class="pre">timeout</span></code>).</p></li>
@@ -426,7 +437,7 @@ Si solo quieres aprender SimPy hoy, puedes saltarte los experimentos y volver lu
 <p>Meta pedagógica: que siempre puedas traducir “llegadas”, “servicio” y “cola” a líneas concretas de SimPy.</p>
 </section>
 <section id="parte-1-que-es-simpy">
-<h3>Parte 1. ¿Qué es SimPy?<a class="headerlink" href="#parte-1-que-es-simpy" title="Permalink to this heading">#</a></h3>
+<h3>Parte 1. ¿Qué es SimPy?<a class="headerlink" href="#parte-1-que-es-simpy" title="Link to this heading">#</a></h3>
 <p>SimPy es una librería de simulación de eventos discretos para Python. Los componentes activos del sistema se modelan como procesos escritos con generadores que hacen <code class="docutils literal notranslate"><span class="pre">yield</span></code> sobre eventos. Estos procesos viven dentro de un Environment que mantiene el reloj de la simulación y agenda lo que ocurre.</p>
 <p>Elementos clave que usaremos:</p>
 <ul class="simple">
@@ -474,7 +485,7 @@ Si solo quieres aprender SimPy hoy, puedes saltarte los experimentos y volver lu
 </div>
 </section>
 <section id="que-hace-cada-linea">
-<h3>¿Qué hace cada línea?<a class="headerlink" href="#que-hace-cada-linea" title="Permalink to this heading">#</a></h3>
+<h3>¿Qué hace cada línea?<a class="headerlink" href="#que-hace-cada-linea" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>import simpy<br />
 Carga la librería.</p></li>
@@ -495,7 +506,7 @@ Muestra el tiempo actual del reloj cuando terminó todo.</p></li>
 Un proceso va “viviendo” en el tiempo. Cada <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">env.timeout(x)</span></code> significa “pasa x unidades de tiempo simulado”.</p>
 </section>
 <section id="parte-2-guia-rapida-de-conceptos-simpy-en-espanol">
-<h3>Parte 2. Guía rápida de conceptos (SimPy “en español”)<a class="headerlink" href="#parte-2-guia-rapida-de-conceptos-simpy-en-espanol" title="Permalink to this heading">#</a></h3>
+<h3>Parte 2. Guía rápida de conceptos (SimPy “en español”)<a class="headerlink" href="#parte-2-guia-rapida-de-conceptos-simpy-en-espanol" title="Link to this heading">#</a></h3>
 <p>SimPy sirve para <strong>simulación de eventos discretos (DES)</strong>: el tiempo simulado no avanza “paso a paso”, sino que <strong>salta entre eventos</strong>.
 En una cola, los eventos típicos son: llegada, comienzo de servicio y salida.</p>
 <p>Idea clave: en SimPy, un <strong>proceso</strong> (cliente, máquina, barista) se escribe como una función que contiene <code class="docutils literal notranslate"><span class="pre">yield</span></code>.
@@ -652,9 +663,9 @@ Cada <code class="docutils literal notranslate"><span class="pre">yield</span></
 </ul>
 </section>
 <section id="parte-3-ejercicio-base-cafeteria-360">
-<h3>Parte 3. Ejercicio base - Cafetería 360°<a class="headerlink" href="#parte-3-ejercicio-base-cafeteria-360" title="Permalink to this heading">#</a></h3>
+<h3>Parte 3. Ejercicio base - Cafetería 360°<a class="headerlink" href="#parte-3-ejercicio-base-cafeteria-360" title="Link to this heading">#</a></h3>
 <section id="enunciado">
-<h4>Enunciado<a class="headerlink" href="#enunciado" title="Permalink to this heading">#</a></h4>
+<h4>Enunciado<a class="headerlink" href="#enunciado" title="Link to this heading">#</a></h4>
 <p>Una cafetería universitaria atiende a estudiantes y personal durante toda la jornada. Los clientes llegan de manera aleatoria y forman una cola única frente al área de preparación. La preparación de cada bebida requiere atención de un barista y consume leche del inventario. Si no hay suficiente leche, el pedido espera a que llegue reposición. La administración quiere estimar tiempos de espera, utilización del personal y el efecto de distintos niveles de demanda y número de baristas para planear turnos y reabastecimientos.</p>
 <p>Siga los siguientes supuestos:</p>
 <ul class="simple">
@@ -891,11 +902,11 @@ Cada <code class="docutils literal notranslate"><span class="pre">yield</span></
 <li><p>nivel_leche_final muestra cuántos ml quedaron al final del horizonte</p></li>
 </ul>
 <section id="explicacion-del-codigo-por-bloques-cafeteria">
-<h5>Explicación del código por bloques (Cafetería)<a class="headerlink" href="#explicacion-del-codigo-por-bloques-cafeteria" title="Permalink to this heading">#</a></h5>
+<h5>Explicación del código por bloques (Cafetería)<a class="headerlink" href="#explicacion-del-codigo-por-bloques-cafeteria" title="Link to this heading">#</a></h5>
 <p>La cafetería es una <strong>extensión</strong> del ejemplo M/M/1: ahora tenemos <strong>s baristas</strong> (servidores en paralelo) y un <strong>inventario</strong> de leche.</p>
 </section>
 <section id="parametros-y-semilla">
-<h5>1. Parámetros y semilla<a class="headerlink" href="#parametros-y-semilla" title="Permalink to this heading">#</a></h5>
+<h5>1. Parámetros y semilla<a class="headerlink" href="#parametros-y-semilla" title="Link to this heading">#</a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">lam</span></code> es la tasa de llegadas (interarribos ~ Exp(lam)).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">mu</span></code> es la tasa de servicio por barista (servicios ~ Exp(mu)).</p></li>
@@ -905,7 +916,7 @@ Cada <code class="docutils literal notranslate"><span class="pre">yield</span></
 </ul>
 </section>
 <section id="monitor-diccionario">
-<h5>2. Monitor (diccionario)<a class="headerlink" href="#monitor-diccionario" title="Permalink to this heading">#</a></h5>
+<h5>2. Monitor (diccionario)<a class="headerlink" href="#monitor-diccionario" title="Link to this heading">#</a></h5>
 <p>Guardamos métricas para calcular al final:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">busy_time</span></code> para utilización</p></li>
@@ -914,12 +925,12 @@ Cada <code class="docutils literal notranslate"><span class="pre">yield</span></
 </ul>
 </section>
 <section id="proceso-de-llegadas">
-<h5>3. Proceso de llegadas<a class="headerlink" href="#proceso-de-llegadas" title="Permalink to this heading">#</a></h5>
+<h5>3. Proceso de llegadas<a class="headerlink" href="#proceso-de-llegadas" title="Link to this heading">#</a></h5>
 <p><code class="docutils literal notranslate"><span class="pre">llegada_clientes(...)</span></code> genera llegadas: en cada llegada crea un proceso <code class="docutils literal notranslate"><span class="pre">cliente_cafeteria(...)</span></code>.
 Esto implementa “llegadas Poisson” vía interarribos exponenciales.</p>
 </section>
 <section id="proceso-del-cliente-cola-inventario">
-<h5>4. Proceso del cliente (cola + inventario)<a class="headerlink" href="#proceso-del-cliente-cola-inventario" title="Permalink to this heading">#</a></h5>
+<h5>4. Proceso del cliente (cola + inventario)<a class="headerlink" href="#proceso-del-cliente-cola-inventario" title="Link to this heading">#</a></h5>
 <p>Cada cliente:</p>
 <ol class="arabic simple">
 <li><p>solicita un barista con <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">baristas.request()</span> <span class="pre">as</span> <span class="pre">req:</span> <span class="pre">yield</span> <span class="pre">req</span></code></p></li>
@@ -929,11 +940,11 @@ Esto implementa “llegadas Poisson” vía interarribos exponenciales.</p>
 </ol>
 </section>
 <section id="proceso-de-reposicion">
-<h5>5. Proceso de reposición<a class="headerlink" href="#proceso-de-reposicion" title="Permalink to this heading">#</a></h5>
+<h5>5. Proceso de reposición<a class="headerlink" href="#proceso-de-reposicion" title="Link to this heading">#</a></h5>
 <p><code class="docutils literal notranslate"><span class="pre">reposicion(...)</span></code> agrega leche cada <code class="docutils literal notranslate"><span class="pre">R</span></code> unidades de tiempo usando <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">leche.put(qty)</span></code>.</p>
 </section>
 <section id="correr-y-medir">
-<h5>6. Correr y medir<a class="headerlink" href="#correr-y-medir" title="Permalink to this heading">#</a></h5>
+<h5>6. Correr y medir<a class="headerlink" href="#correr-y-medir" title="Link to this heading">#</a></h5>
 <p>En <code class="docutils literal notranslate"><span class="pre">correr_cafeteria(...)</span></code>:</p>
 <ul class="simple">
 <li><p>se crean <code class="docutils literal notranslate"><span class="pre">Environment</span></code>, <code class="docutils literal notranslate"><span class="pre">Resource(capacity=s)</span></code> y <code class="docutils literal notranslate"><span class="pre">Container</span></code> para inventario</p></li>
@@ -945,7 +956,7 @@ Esto implementa “llegadas Poisson” vía interarribos exponenciales.</p>
 </section>
 </section>
 <section id="parte-4-experimentos-rapidos-opcional">
-<h3>Parte 4. Experimentos rápidos (opcional)<a class="headerlink" href="#parte-4-experimentos-rapidos-opcional" title="Permalink to this heading">#</a></h3>
+<h3>Parte 4. Experimentos rápidos (opcional)<a class="headerlink" href="#parte-4-experimentos-rapidos-opcional" title="Link to this heading">#</a></h3>
 <p>Esta parte compara escenarios cambiando parámetros (más baristas, más demanda, reposición más frecuente).
 Si estás aprendiendo SimPy por primera vez, puedes correr <strong>solo el escenario base</strong> y revisar que:</p>
 <ul class="simple">
@@ -1115,12 +1126,12 @@ Si estás aprendiendo SimPy por primera vez, puedes correr <strong>solo el escen
 </section>
 </section>
 <section id="ejercicio-practico-integrador">
-<h2>Ejercicio Práctico (integrador)<a class="headerlink" href="#ejercicio-practico-integrador" title="Permalink to this heading">#</a></h2>
+<h2>Ejercicio Práctico (integrador)<a class="headerlink" href="#ejercicio-practico-integrador" title="Link to this heading">#</a></h2>
 <p>Este ejercicio repite la idea de una <strong>M/M/1</strong> (una ventanilla, cola FIFO) pero ahora la usamos como caso aplicado:
 además de promedios, se calculan percentiles y se comparan escenarios para discutir niveles de servicio.
 Si ya terminaste la Parte 3 y 4, aquí vas a reconocer el mismo patrón <code class="docutils literal notranslate"><span class="pre">Resource</span> <span class="pre">+</span> <span class="pre">clientes</span> <span class="pre">como</span> <span class="pre">procesos</span></code>.</p>
 <section id="ejercicio-practico-farmacia-de-ventanilla">
-<h3>Ejercicio práctico · Farmacia de Ventanilla<a class="headerlink" href="#ejercicio-practico-farmacia-de-ventanilla" title="Permalink to this heading">#</a></h3>
+<h3>Ejercicio práctico · Farmacia de Ventanilla<a class="headerlink" href="#ejercicio-practico-farmacia-de-ventanilla" title="Link to this heading">#</a></h3>
 <p>Enunciado</p>
 <p>Una farmacia de barrio atiende a los clientes en una única ventanilla. Los clientes llegan de manera aleatoria y forman una cola FIFO. El tiempo de atención también es aleatorio. Cuando el sistema está ocupado, los clientes esperan y nadie abandona.</p>
 <p>Supuestos del modelo</p>
@@ -1308,7 +1319,7 @@ p90 espera: 13.288 min
 p90 tiempo en sistema: 14.358 min
 </pre></div>
 </div>
-<img alt="../../_images/cebd27877518c9a5bb77ee1f98c9c96ab63312f2c4e4d7e93c088a39c970307b.png" src="../../_images/cebd27877518c9a5bb77ee1f98c9c96ab63312f2c4e4d7e93c088a39c970307b.png" />
+<img alt="../../_images/5d48434c25301d93f59b123d4c168a752279137d254812ae46fe55c96709080b.png" src="../../_images/5d48434c25301d93f59b123d4c168a752279137d254812ae46fe55c96709080b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1436,8 +1447,8 @@ p90 tiempo en sistema: 14.358 min
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f4f5f3b31941444d13bab9c2a8499c227c12fb506e248bd813d8ca2d83f2cfca.png" src="../../_images/f4f5f3b31941444d13bab9c2a8499c227c12fb506e248bd813d8ca2d83f2cfca.png" />
-<img alt="../../_images/355bd0db3a81e689490fd9bb2396981cb3f4fcbdd59a178ecb1c6631c547bfa8.png" src="../../_images/355bd0db3a81e689490fd9bb2396981cb3f4fcbdd59a178ecb1c6631c547bfa8.png" />
+<img alt="../../_images/4f036291b8c2b4ffc45072ffe08061e160a3543888044ac4b87647d780c5c1df.png" src="../../_images/4f036291b8c2b4ffc45072ffe08061e160a3543888044ac4b87647d780c5c1df.png" />
+<img alt="../../_images/12958363692d80c329479c798240f0ded69a5ef1ac2ed9fbed4791ea2e44ee28.png" src="../../_images/12958363692d80c329479c798240f0ded69a5ef1ac2ed9fbed4791ea2e44ee28.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1462,8 +1473,8 @@ p90 tiempo en sistema: 14.358 min
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/46825d1c4e9c7741bd0ad9e376b6e252ec8da7fee080241fab55c524b7c96568.png" src="../../_images/46825d1c4e9c7741bd0ad9e376b6e252ec8da7fee080241fab55c524b7c96568.png" />
-<img alt="../../_images/6ef2e2e7402670f831b0ce850e6edd3e52611dd0bfe989f15db6de91c987dee3.png" src="../../_images/6ef2e2e7402670f831b0ce850e6edd3e52611dd0bfe989f15db6de91c987dee3.png" />
+<img alt="../../_images/0bbb7cdfb8a48d3d2468f68738aff2cd766a4bd42d813f6672707863229db38c.png" src="../../_images/0bbb7cdfb8a48d3d2468f68738aff2cd766a4bd42d813f6672707863229db38c.png" />
+<img alt="../../_images/38e4bc1e6b5efa88f0b899ffa4adadfe7d0552ed8fdfb61afa642a1bb5d00cc7.png" src="../../_images/38e4bc1e6b5efa88f0b899ffa4adadfe7d0552ed8fdfb61afa642a1bb5d00cc7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1480,7 +1491,7 @@ p90 tiempo en sistema: 14.358 min
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6fd276bde89b8b15a0b24a01695f30130d521845dfa3f98795b55a0fd42ca1ba.png" src="../../_images/6fd276bde89b8b15a0b24a01695f30130d521845dfa3f98795b55a0fd42ca1ba.png" />
+<img alt="../../_images/e4134ff735fe969013de922366539a097519841bf27648a03e5f4d1dcfedb046.png" src="../../_images/e4134ff735fe969013de922366539a097519841bf27648a03e5f4d1dcfedb046.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1498,7 +1509,7 @@ p90 tiempo en sistema: 14.358 min
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6704bb24667299fb5c8423f09b9edace70b574b3febca229b522fb3ee3a5f07e.png" src="../../_images/6704bb24667299fb5c8423f09b9edace70b574b3febca229b522fb3ee3a5f07e.png" />
+<img alt="../../_images/1482c84abe1579b757d2c69640b4bdf37016b4d1ffeade6b7b88756caa1eb42b.png" src="../../_images/1482c84abe1579b757d2c69640b4bdf37016b4d1ffeade6b7b88756caa1eb42b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1656,7 +1667,7 @@ p90 tiempo en sistema: 14.358 min
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Complementaria Semana 6: Simulación de una cola M/M/1 con SimPy</p>
+        <p class="prev-next-title">Complementaria Semana 6: Modelado Avanzado en SimPy</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1725,7 +1736,7 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

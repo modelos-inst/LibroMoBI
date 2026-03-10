@@ -10,6 +10,7 @@ logo: uniandes.png
 execute:
   execute_notebooks: force
   kernel_name: libromobi
+  timeout: 180
 
 # Define the name of the latex output file for PDF builds
 latex:

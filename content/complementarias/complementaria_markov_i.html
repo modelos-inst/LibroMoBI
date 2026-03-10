@@ -1,0 +1,1302 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Complementaria Semana 8: Cadenas de Markov en Python I &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_markov_i';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Complementaria Semana 9: Cadenas de Markov en Python II" href="complementaria_markov_ii.html" />
+    <link rel="prev" title="Complementaria Semana 7: Simulación de un Proceso de Poisson" href="complementaria_simu_proceso_poisson.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uniandes.png" class="logo__image only-light" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>
+    <script>document.write(`<img src="../../_static/uniandes.png" class="logo__image only-dark" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Bienvenidos al libro del curso Modelado de Sistemas Bajo Incertidumbre
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Instalación Python y Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ambientes_virtuales.html">Ambientes virtuales en Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_python.html">Complementaria Semana 1: Introducción a Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria Semana 3: Teorema del Límite Central y validación empírica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gva.html">Complementaria Semana 5: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Modelado Avanzado en SimPy</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 7: Simulación de un Proceso de Poisson</a></li>
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/complementarias/complementaria_markov_i.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Complementaria Semana 8: Cadenas de Markov en Python I</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="complementaria-semana-8-cadenas-de-markov-en-python-i">
+<h1>Complementaria Semana 8: Cadenas de Markov en Python I<a class="headerlink" href="#complementaria-semana-8-cadenas-de-markov-en-python-i" title="Permalink to this heading">#</a></h1>
+<h2 style="color: #ADD8E6;">Objetivos de aprendizaje</h2>
+<p>Al finalizar esta sesión, el estudiante será capaz de:</p>
+<ol class="arabic simple">
+<li><p>Construir una CMTC en <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> a partir de una matriz generadora <span class="math notranslate nohighlight">\(Q\)</span>.</p></li>
+<li><p>Interpretar las probabilidades transitorias y de estado estable como distribuciones de probabilidad discretas.</p></li>
+<li><p>Formular y responder preguntas típicas sobre distribuciones (PMF, valor esperado, varianza, probabilidades acumuladas).</p></li>
+<li><p>Simular una CMTC correctamente en <code class="docutils literal notranslate"><span class="pre">SimPy</span></code> modelando procesos de llegada y servicio.</p></li>
+<li><p>Comparar resultados analíticos con resultados de simulación.</p></li>
+</ol>
+<h2 style="color: #ADD8E6;">Introducción a jmarkov</h2>
+<p>En esta sección construiremos una cadena de Markov en tiempo continuo (CMTC) sencilla con 3 estados. La idea de este ejercicio es ilustrar, de manera compacta, los principales cálculos que podemos realizar con <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>, tanto estructurales como probabilísticos.</p>
+<p>Consideremos una cadena con variable <span class="math notranslate nohighlight">\(X\left(t\right)\)</span> y un espacio de estados <span class="math notranslate nohighlight">\(S_x = \{1,2,3\}\)</span>. Las transiciones entre estados están gobernadas por la siguiente matriz generadora:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Q_{(i,j)} = \begin{pmatrix}
+-3 &amp; 2 &amp; 1 \\
+1 &amp; -4 &amp; 3 \\
+2 &amp; 1 &amp; -3
+\end{pmatrix}
+\end{split}\]</div>
+<blockquote>
+<div><p><strong>Recordemos que en una CMTC</strong></p>
+<ul class="simple">
+<li><p>Las filas de <span class="math notranslate nohighlight">\(Q\)</span> suman cero.</p></li>
+<li><p>Los elementos fuera de la diagonal son no negativos.</p></li>
+<li><p>La diagonal es negativa y representa la tasa de salida del estado.</p></li>
+</ul>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jmarkov.ctmc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ctmc</span>
+
+<span class="c1"># Definimos la matriz generadora</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="c1"># Verificamos que las filas sumen cero</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Suma por filas:&quot;</span><span class="p">,</span> <span class="n">Q</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Creamos la cadena de jmarkov continua</span>
+<span class="n">cadena</span> <span class="o">=</span> <span class="n">ctmc</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Suma por filas: [0 0 0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos verificar propiedades importantes de la cadena.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Número de estados:&quot;</span><span class="p">,</span> <span class="n">cadena</span><span class="o">.</span><span class="n">n_states</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¿Es irreducible?:&quot;</span><span class="p">,</span> <span class="n">cadena</span><span class="o">.</span><span class="n">is_irreducible</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¿Es ergódica?:&quot;</span><span class="p">,</span> <span class="n">cadena</span><span class="o">.</span><span class="n">is_ergodic</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Número de estados: 3
+¿Es irreducible?: True
+¿Es ergódica?: True
+</pre></div>
+</div>
+</div>
+</div>
+<h3 style="color: #ADD8E6;">Análisis transitorio</h3>
+<p>Podemos calcular la distribución en un instante <span class="math notranslate nohighlight">\( t \)</span> dado un estado inicial indicado con un vector de estados inciales <span class="math notranslate nohighlight">\( \overrightarrow{\pi}(0) \)</span>, así</p>
+<div class="math notranslate nohighlight">
+\[
+\overrightarrow{\pi}(t) = \overrightarrow{\pi}(0)e^{Qt},
+\]</div>
+<p>Supongamos que la cadena inicia en el estado 0 (esto lo indicamos con un 1 en el estado correspondiente):</p>
+<div class="math notranslate nohighlight">
+\[
+\overrightarrow{\pi}(0) = (1, 0, 0)
+\]</div>
+<blockquote>
+<div><p><strong>Punto clave:</strong> <span class="math notranslate nohighlight">\(\vec{\pi}(t)\)</span> es un <strong>vector de probabilidades</strong>. Cada entrada <span class="math notranslate nohighlight">\(\pi_i(t)\)</span> es la probabilidad de que la cadena esté en el estado <span class="math notranslate nohighlight">\(i\)</span> en el instante <span class="math notranslate nohighlight">\(t\)</span>. Juntas, forman una distribución de probabilidad discreta sobre el espacio de estados.</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> recibe como parámetros <code class="docutils literal notranslate"><span class="pre">t</span></code> y <code class="docutils literal notranslate"><span class="pre">alpha</span></code> para encontrar el vector de probabilidades <span class="math notranslate nohighlight">\(\overrightarrow{\pi}(t)\)</span>. Estos son el tiempo total que se esta evaluando y el vector de estados iniciales respectivamente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">p_t</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">transient_probabilities</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">pi_0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distribución en t=</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_t</span><span class="p">)</span>
+
+<span class="c1"># Asi por ejemplo, la probabilidad de estar en el estado 1 dado que empezamos en el estado 0,</span>
+<span class="c1">#  luego de que transcurran t = 2 uniades de tiempo es:</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">La probabilidad de estar en el estado 1 en t=2 es </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">p_t</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribución en t=2:
+[0.34615261 0.26926285 0.38458454]
+
+La probabilidad de estar en el estado 1 en t=2 es 0.269
+</pre></div>
+</div>
+</div>
+</div>
+<h3 style="color: #ADD8E6;">Probabilidades en estado estable</h3>
+<p>Si la cadena es ergódica, existe una distribución estacionaria <span class="math notranslate nohighlight">\( \pi \)</span> tal que:</p>
+<div class="math notranslate nohighlight">
+\[
+\overrightarrow{\pi}\mathbb{Q =}\overrightarrow{0},
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i \in S}^{}\pi_{i} = 1
+\]</div>
+<blockquote>
+<div><p><strong>Interpretación:</strong> En el largo plazo, <strong>sin importar el estado inicial</strong>, la probabilidad de encontrar el sistema en cada estado converge a <span class="math notranslate nohighlight">\(\vec{\pi}\)</span>. Similar al caso de probabilidades transitorias, <span class="math notranslate nohighlight">\(\vec{\pi}\)</span> es un vector de probabilidades.</p>
+</div></blockquote>
+<p>Podemos calcularla directamente:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">steady_state</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribución estacionaria:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="c1"># Asi por ejemplo, la probabilidad de estar en el estado 1 en el largo plazo es:</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">La probabilidad de estar en el estado 1 en el largo plazo es&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">pi</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribución estacionaria:
+[0.34615385 0.26923077 0.38461538]
+
+La probabilidad de estar en el estado 1 en el largo plazo es 0.269
+</pre></div>
+</div>
+</div>
+</div>
+<h3 style="color: #ADD8E6;">Tiempo de primera pasada</h3>
+<p>El tiempo promedio de primera pasada (hitting time) <span class="math notranslate nohighlight">\(m_{i,j}\)</span> desde un estado inicial <span class="math notranslate nohighlight">\(i\)</span> hacia un estado objetivo <span class="math notranslate nohighlight">\(j\)</span> puede calcularse al escribir <span class="math notranslate nohighlight">\(m_{i,j}\)</span> como</p>
+<div class="math notranslate nohighlight">
+\[
+m_{i,j} = \frac{1}{r_{ij}}\ \left( 1 + \sum_{k \neq j}^{}{q_{ik}m_{k,j}} \right).
+\]</div>
+<p>Esta expresión permite encontrar el tiempo <span class="math notranslate nohighlight">\(m_{i,j}\)</span> a partir de los otros tiempos <span class="math notranslate nohighlight">\(m_{k,j}\)</span>, siendo <span class="math notranslate nohighlight">\(1/r_{i} = - 1/q_{ii}\)</span>. Matemáticamente, para encontrar <span class="math notranslate nohighlight">\(m_{i,j}\)</span> hay que solucionar el sistema de ecuaciones simultaneas asociado. <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> ya implementa una función para encontrar los tiempos de primera pasada a un estado objetivo.</p>
+<p>Por ejemplo, el tiempo promedio para llegar al estado 2 comenzando desde el estado 1 se calcula de la siguiente forma:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Se define un array con los nombres de los estados</span>
+<span class="n">estados</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">]</span>
+<span class="n">estados</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">estados</span><span class="p">)</span>
+
+<span class="n">estado_inicial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">estados</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<span class="n">estado_futuro</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">estados</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calcular el tiempo</span>
+<span class="n">fpts</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">first_passage_time</span><span class="p">(</span><span class="n">estado_futuro</span><span class="p">)</span>
+<span class="c1"># No tiene sentido calcular el tiempo de primera pasada al estado 2 desde el estado 2.</span>
+<span class="c1"># Por lo tanto, el arreglo que se regresa es de n-1 estados.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Arreglo de tiempos de primera pasada al estado 2:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fpts</span><span class="p">)</span>
+
+
+<span class="c1"># La variable estado_inicial contiene el índice del estado &#39;1&#39;, que es el estado desde el cual </span>
+<span class="c1"># queremos calcular el tiempo de primera pasada al estado &#39;2&#39;.</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Índice del estado inicial:&quot;</span><span class="p">,</span> <span class="n">estado_inicial</span><span class="p">)</span>
+
+<span class="c1"># Indexamos el tiempo de primera pasada desde el estado &#39;1&#39; al estado &#39;2&#39; utilizando el índice obtenido</span>
+<span class="c1"># utilizamos [0][0] para obtener el numero directamente del array</span>
+<span class="n">tiempo_1_2</span> <span class="o">=</span> <span class="n">fpts</span><span class="p">[</span><span class="n">estado_inicial</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">El tiempo de primera pasada desde el estado 1 al estado 2 es:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">tiempo_1_2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arreglo de tiempos de primera pasada al estado 2:
+[[0.6]
+ [0.4]]
+
+Índice del estado inicial: (array([1]),)
+
+El tiempo de primera pasada desde el estado 1 al estado 2 es: 0.4
+</pre></div>
+</div>
+</div>
+</div>
+<h3 style="color: #ADD8E6;">Tiempo de ocupación</h3>
+<p>En una cadena de Markov en tiempo continuo, el <strong>tiempo de ocupación</strong> mide cuánto tiempo, en promedio, el proceso pasa en cada estado durante un intervalo finito <span class="math notranslate nohighlight">\([0,t]\)</span>, y se calcula como</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{M}^{t} = \int_{0}^{t}{e^{\mathbf{Q}u}du}
+\]</div>
+<p>En la matriz resultante:</p>
+<ul class="simple">
+<li><p>Cada fila corresponde al estado inicial.</p></li>
+<li><p>Cada columna corresponde al estado donde se acumula el tiempo.</p></li>
+</ul>
+<p>Por lo tanto para nuestro ejemplo, la matriz devuelta por <code class="docutils literal notranslate"><span class="pre">occupation_time(T)</span></code> tiene la forma:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{M}^{t} =
+\begin{pmatrix}
+\text{Tiempo desde 0 en 0} &amp; \text{Tiempo desde 0 en 1} &amp; \text{Tiempo desde 0 en 2} \\
+\text{Tiempo desde 1 en 0} &amp; \text{Tiempo desde 1 en 1} &amp; \text{Tiempo desde 1 en 2} \\
+\text{Tiempo desde 2 en 0} &amp; \text{Tiempo desde 2 en 1} &amp; \text{Tiempo desde 2 en 2}
+\end{pmatrix}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tiempo_ocupacion</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">occupation_time</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tiempo esperado en cada estado en 4 unidades de tiempo:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tiempo_ocupacion</span><span class="p">)</span>
+
+<span class="n">sum_tiempo_ocupacion</span> <span class="o">=</span> <span class="n">tiempo_ocupacion</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Suma del tiempo de ocupación por filas:&quot;</span><span class="p">,</span> <span class="n">sum_tiempo_ocupacion</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Tiempo en 2 desde 1:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">tiempo_ocupacion</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tiempo esperado en cada estado en 4 unidades de tiempo:
+[[1.52070832 1.0502945  1.42899215]
+ [1.28993909 1.20414066 1.50591523]
+ [1.32840063 1.01183297 1.65976138]]
+
+Suma del tiempo de ocupación por filas: [3.99999497 3.99999497 3.99999497]
+
+Tiempo en 2 desde 1: 1.506
+</pre></div>
+</div>
+</div>
+</div>
+<h3 style="color: #ADD8E6;">¿Qué preguntas puedo hacerle a una distribución?</h3>
+<p>Una vez que tenemos una distribución de probabilidad discreta (sea transitoria o en estado estable) podemos calcular cualquier medida típica de probabilidad y estadística:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pregunta</p></th>
+<th class="head"><p>Fórmula</p></th>
+<th class="head"><p>Código</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>¿Cuál es la prob. de estar en un estado específico?</p></td>
+<td><p><span class="math notranslate nohighlight">\(P(X = k) = \pi_k\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pi[k]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>¿Cuál es la prob. de estar en un conjunto de estados?</p></td>
+<td><p><span class="math notranslate nohighlight">\(P(X \in A) = \sum_{k \in A} \pi_k\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pi[list_A].sum()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>¿Cuál es el valor esperado?</p></td>
+<td><p><span class="math notranslate nohighlight">\(E[X] = \sum_k k \cdot \pi_k\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sum(k</span> <span class="pre">*</span> <span class="pre">pi[k]</span> <span class="pre">for</span> <span class="pre">k</span> <span class="pre">in</span> <span class="pre">S)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>¿Cuál es la varianza?</p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{Var}(X) = E[X^2] - (E[X])^2\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">E[X**2]</span> <span class="pre">-</span> <span class="pre">E[X]**2</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>¿Cuál es el valor esperado de una función <span class="math notranslate nohighlight">\(g(X)\)</span>?</p></td>
+<td><p><span class="math notranslate nohighlight">\(E[g(X)] = \sum_k g(k) \cdot \pi_k\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sum(g(k)*pi[k]</span> <span class="pre">for</span> <span class="pre">k</span> <span class="pre">in</span> <span class="pre">S)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Ahora que vimos cómo utilizar las funciones básicas de <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> en cadenas continuas y algunas de las preguntas que podemos realizar con distribuciones discretas, sigamos con un ejercicio más elaborado (este ejercicio continuará en la siguiente complementaria <strong>Cadenas de Markov en Python II</strong>).</p>
+<h2 style="color: #ADD8E6;">Ejercicio de implementación: Hospital en tiempo continuo</h2>
+<p>Considere un hospital con <span class="math notranslate nohighlight">\(B = 20\)</span> camas. Hay dos tipos de pacientes que usan este hospital. Los pacientes de tipo <span class="math notranslate nohighlight">\(i\ (i=1,2)\)</span> llegan según un proceso de Poisson con tasa <span class="math notranslate nohighlight">\(\lambda_1 = 6.5\)</span> y <span class="math notranslate nohighlight">\(\lambda_2 = 3\)</span> pacientes por hora, respectivamente, y requieren un servicio independiente e idénticamente distribuido (iid) con tiempos de servicio que siguen una distribución exponencial con parámetros <span class="math notranslate nohighlight">\(\mu_1 = 2\)</span> y <span class="math notranslate nohighlight">\(\mu_2 = 1.5\)</span> pacientes por hora, respectivamente. El hospital utiliza la siguiente política: reserva <span class="math notranslate nohighlight">\(b = 5\)</span> camas para pacientes de tipo 1. Así, cuando un paciente de tipo 1 llega, se le admite en el hospital siempre que haya una cama disponible. Sin embargo, un paciente de tipo 2 es admitido solo si el número de pacientes de tipo 2 que actualmente ocupan camas es menor que <span class="math notranslate nohighlight">\(B-b\)</span>.</p>
+<p>Se le ha solicitado modelar la anterior situación definiendo claramente variables de estado, espacios de estado y matriz de transición o generadora según sea el caso.</p>
+<h3 style="color: #ADD8E6;">Preguntas</h3>
+<ol class="arabic simple">
+<li><p>Construya la matriz de tasas de transición <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span>, luego cree la cadena de Markov utilizando la librería <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>.</p></li>
+</ol>
+<p>Para responder las preguntas 2 a 5 asuma que el hospital inició vacío y transcurrieron 6 horas:</p>
+<ol class="arabic simple" start="2">
+<li><p>Calcule la probabilidad de que el hospital tenga 1 paciente tipo 1 y 3 pacientes tipo 2. Utilice <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> para responder.</p></li>
+<li><p>Muestre la distribución conjunta del número de pacientes tipo 1 y tipo 2 en un mapa de calor.</p></li>
+<li><p>Calcule las distribuciones marginales de los pacientes de ambos tipos, así como su valor esperado, varianza y desviación estándar. Realice un histograma que muestre las dos distribuciones.</p></li>
+<li><p>Responda nuevamente la pregunta 2 utilizando simulación en SimPy y compare los resultados.</p></li>
+</ol>
+<h4 style="color: #ADD8E6;">1. Construir la matriz de de transición y la cadena en jmarkov</h4>
+<p><strong>Variables de estado:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\left(t\right)\)</span>: El número de pacientes tipo 1 en el tiempo <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y\left(t\right)\)</span>: El número de pacientes tipo 2 en el tiempo <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Z\left(t\right)\)</span>: <span class="math notranslate nohighlight">\(\{X\left(t\right),\ Y\left(t\right)\}\)</span>.</p></li>
+</ul>
+<p><strong>Espacio de estados:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+S_X=\{0,\ 1,\ 2,\ 3,\ \ldots,B\}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+S_Y=\{0,\ 1,\ 2,\ 3,\ \ldots,B-b\}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+S_Z=\{(i,j):0\le i\le B,\ 0\le j\le B-b\}
+\]</div>
+<blockquote>
+<div><p><strong>Nota:</strong> El espacio de estados tiene <span class="math notranslate nohighlight">\((B+1) \times (B-b+1) = 21 \times 16 = 336\)</span> estados. La variable de estado <span class="math notranslate nohighlight">\(Z(t) = (X(t), Y(t))\)</span> es <strong>bidimensional</strong>, lo cual hace que la distribución de probabilidad sea una distribución <strong>conjunta</strong> sobre dos variables.</p>
+</div></blockquote>
+<p><strong>Matriz generadora:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Q((i,j),(i',j')) = \begin{cases}
+\lambda_1, &amp; \text{si } i' = i + 1,\; j' = j,\; i &lt; B, \\[1mm]
+\lambda_2, &amp; \text{si } j' = j + 1,\; i' = i,\; j &lt; B - b, \\[1mm]
+i \cdot \mu_1, &amp; \text{si } i' = i - 1,\; j' = j,\; i &gt; 0, \\[1mm]
+j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
+0, &amp; \text{en otro caso (d.l.c.)}.
+\end{cases}
+\end{split}\]</div>
+<blockquote>
+<div><p><strong>¿Por qué la tasa de salida depende del número de pacientes?</strong> Porque cada paciente se va de forma independiente con tasa <span class="math notranslate nohighlight">\(\mu_i\)</span>. Si hay <span class="math notranslate nohighlight">\(i\)</span> pacientes tipo 1, cada uno intenta irse con tasa <span class="math notranslate nohighlight">\(\mu_1\)</span>, y por la propiedad de suma de exponenciales independientes, la tasa total de salida de un paciente tipo 1 es <span class="math notranslate nohighlight">\(i \cdot \mu_1\)</span>.</p>
+</div></blockquote>
+<p>A continuación, se implementa el modelo en Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jmarkov.ctmc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ctmc</span>
+
+<span class="c1"># Se definen los parámetros</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># Número total de camas</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>   <span class="c1"># Número de camas reservadas para pacientes tipo 1</span>
+<span class="n">lambda_1</span> <span class="o">=</span> <span class="mf">6.5</span>  <span class="c1"># Tasa de llegada de pacientes tipo 1 (por hora)</span>
+<span class="n">lambda_2</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># Tasa de llegada de pacientes tipo 2 (por hora)</span>
+<span class="n">mu_1</span> <span class="o">=</span> <span class="mi">2</span>      <span class="c1"># Tasa de salida de pacientes tipo 1 (por hora)</span>
+<span class="n">mu_2</span> <span class="o">=</span> <span class="mf">1.5</span>    <span class="c1"># Tasa de salida de pacientes tipo 2 (por hora)</span>
+
+<span class="c1"># Dimensión de la matriz Q</span>
+<span class="n">num_estados</span> <span class="o">=</span> <span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Inicializamos la matriz Q con ceros</span>
+<span class="n">Q_hospital</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_estados</span><span class="p">,</span> <span class="n">num_estados</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># Función para mapear (i, j) a índice en la matriz Q</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">j</span>
+
+<span class="c1"># Llenar la matriz Q</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+
+        <span class="c1"># Llegada de un paciente tipo 1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">B</span><span class="p">:</span>
+            <span class="n">Q_hospital</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="n">lambda_1</span>
+
+        <span class="c1"># Llegada de un paciente tipo 2 (si hay espacio disponible)</span>
+        <span class="k">if</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">B</span> <span class="o">-</span> <span class="n">b</span><span class="p">:</span>
+            <span class="n">Q_hospital</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">lambda_2</span>
+
+        <span class="c1"># Salida de un paciente tipo 1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">Q_hospital</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">mu_1</span>
+
+        <span class="c1"># Salida de un paciente tipo 2</span>
+        <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">Q_hospital</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">mu_2</span>
+
+<span class="c1"># Llenar la diagonal con la suma negativa de las filas de la matriz</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_estados</span><span class="p">):</span>
+    <span class="n">Q_hospital</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Q_hospital</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:])</span>
+
+
+<span class="c1"># Verificación</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Suma por filas (debe ser ≈ 0):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">Q_hospital</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tamaño de Q: </span><span class="si">{</span><span class="n">Q_hospital</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    
+<span class="nb">print</span><span class="p">(</span><span class="n">Q_hospital</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Suma por filas (debe ser ≈ 0): True
+Tamaño de Q: (336, 336)
+[[ -9.5   3.    0.  ...   0.    0.    0. ]
+ [  1.5 -11.    3.  ...   0.    0.    0. ]
+ [  0.    3.  -12.5 ...   0.    0.    0. ]
+ ...
+ [  0.    0.    0.  ... -62.5   3.    0. ]
+ [  0.    0.    0.  ...  21.  -64.    3. ]
+ [  0.    0.    0.  ...   0.   22.5 -62.5]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es posible visualizar la matriz en excel</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Crear etiquetas para cada estado en formato &quot;(i, j)&quot;</span>
+<span class="n">etiquetas_estados</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">)&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+
+<span class="c1"># Convertir la matriz de NumPy a un DataFrame de Pandas</span>
+<span class="n">df_Q</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Q_hospital</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">etiquetas_estados</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">etiquetas_estados</span><span class="p">)</span>
+
+<span class="c1"># 3. Exportar a Excel</span>
+<span class="n">nombre_archivo</span> <span class="o">=</span> <span class="s2">&quot;matriz_Q_hospital.xlsx&quot;</span>
+<span class="n">df_Q</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matriz exportada exitosamente a </span><span class="si">{</span><span class="n">nombre_archivo</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz exportada exitosamente a matriz_Q_hospital.xlsx
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para crear la cadena de markov utilizaremos la instancia <code class="docutils literal notranslate"><span class="pre">ctmc</span></code> la libreria <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>, ya que estamos creando una cadena de tiempo continuo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">jmarkov.ctmc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ctmc</span>
+
+<span class="c1"># Crear la cadena de Markov en tiempo continuo usando jmarkov</span>
+<span class="n">hospital_chain</span> <span class="o">=</span> <span class="n">ctmc</span><span class="p">(</span><span class="n">Q_hospital</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Número de estados: </span><span class="si">{</span><span class="n">hospital_chain</span><span class="o">.</span><span class="n">n_states</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;¿Es irreducible?: </span><span class="si">{</span><span class="n">hospital_chain</span><span class="o">.</span><span class="n">is_irreducible</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;¿Es ergódica?: </span><span class="si">{</span><span class="n">hospital_chain</span><span class="o">.</span><span class="n">is_ergodic</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Número de estados: 336
+¿Es irreducible?: True
+¿Es ergódica?: True
+</pre></div>
+</div>
+</div>
+</div>
+<h4 style="color: #ADD8E6;">2. Cálculo de la probabilidad: después de 6 horas, el hospital tenga 1 paciente tipo 1 y 3 pacientes tipo 2</h4>
+<p>La matriz exponencial <span class="math notranslate nohighlight">\(e^{Qt}\)</span> corresponde a la matriz de probabilidades transitorias al tiempo <span class="math notranslate nohighlight">\(t\)</span>. En esta matriz, las filas representan el estado inicial y las columnas el estado al que se transita. La distribución de probabilidad en el tiempo <span class="math notranslate nohighlight">\(t\)</span> está dada por:</p>
+<div class="math notranslate nohighlight">
+\[
+\pi(t) = \pi(0)e^{Qt}.
+\]</div>
+<p>Si se conoce con certeza el estado inicial, el vector <span class="math notranslate nohighlight">\(\pi(0)\)</span> tiene un 1 en dicho estado y 0 en los demás. En general, si existe incertidumbre inicial, sus componentes deben ser no negativos y sumar 1.</p>
+<p>En nuestro problema se parte del estado <span class="math notranslate nohighlight">\((0,0)\)</span>, es decir,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{split}
+\pi(0)=\begin{cases}
+1, &amp; i=0,\ j=0,\\
+0, &amp; \text{d.l.c.}
+\end{cases}
+\end{split}
+\end{split}\]</div>
+<p>La probabilidad solicitada es el componente correspondiente al estado <span class="math notranslate nohighlight">\((1,3)\)</span> del vector <span class="math notranslate nohighlight">\(\pi(6)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\big[\pi(0)e^{Q(6)}\big]_{(1,3)}
+\]</div>
+<p>Recordemos que el proceso conjunto es <span class="math notranslate nohighlight">\(Z(t) = (X(t),Y(t))\)</span>, por lo que el estado <span class="math notranslate nohighlight">\((1,3)\)</span> indica 1 paciente tipo 1 y 3 pacientes tipo 2.</p>
+<blockquote>
+<div><p><strong>Nota:</strong> Dado que el estado inicial está completamente determinado, la multiplicación <span class="math notranslate nohighlight">\(\pi(0)e^{Q(6)}\)</span> equivale a seleccionar la fila de <span class="math notranslate nohighlight">\(e^{Q(6)}\)</span> correspondiente al estado <span class="math notranslate nohighlight">\((0,0)\)</span>. Por lo tanto,</p>
+<div class="math notranslate nohighlight">
+\[
+&gt; \big[\pi(0)e^{Q(6)}\big]_{(1,3)}
+&gt; =
+&gt; \big[e^{Q(6)}\big]_{((0,0),(1,3))}
+&gt; \]</div>
+</div></blockquote>
+<h5 style="color: #ADD8E6;">Solución en jmarkov</h5>
+<p>Para resolver a esta pregunta primero se debe establecer correctamente el vector de estado inicial (hospital vacío).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --------------------------------------------------------------------</span>
+<span class="c1"># Pregunta 2: Probabilidad de que después de 6 horas el hospital tenga 1 paciente tipo 1, y 3</span>
+<span class="c1"># pacientes tipo 2, dado que al inicio está vacío.</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_estados</span><span class="p">)</span>
+<span class="n">alpha</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Una vez definido este vector, se puede calcular la distribución de probabilidad a las 6 horas utilizando la función <code class="docutils literal notranslate"><span class="pre">transient_probabilities</span></code> de <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Probabilidades transitorias en 6 horas</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">probs_transitorias_6h</span> <span class="o">=</span> <span class="n">hospital_chain</span><span class="o">.</span><span class="n">transient_probabilities</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Con esto podemos identificar que la probabilidad correspondiente al estado <span class="math notranslate nohighlight">\((1,3)\)</span> es la siguiente:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Probabilidad de que el estado sea (1,3)</span>
+<span class="n">prob_1_3</span> <span class="o">=</span> <span class="n">probs_transitorias_6h</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(X(6)=1, Y(6)=3) = </span><span class="si">{</span><span class="n">prob_1_3</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(X(6)=1, Y(6)=3) = 0.022737
+</pre></div>
+</div>
+</div>
+</div>
+<h4 style="color: #ADD8E6;">3. Visualización de la distribución conjunta después de 6 horas dado que el sistema inició vacío</h4>
+<p>Dado que el vector calculado en el punto anterior <code class="docutils literal notranslate"><span class="pre">probs_transitorias_6h</span></code> contiene las probabilidades de todas las posibles combinaciones de pacientes de tipo 1 y 2, dado que el hospital estaba vacío al inicio y de que transcurran 6 horas, es posible hacer un mapa de calor que ilustre el posible comportamiento del hospital según el tipo de paciente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reorganizar el vector en una matriz 2D para visualización</span>
+<span class="n">pi_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">pi_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">probs_transitorias_6h</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Suma total de probabilidades: </span><span class="si">{</span><span class="n">pi_matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dimensión de la distribución conjunta: </span><span class="si">{</span><span class="n">pi_matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> (tipo1 × tipo2)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Suma total de probabilidades: 1.000000
+Dimensión de la distribución conjunta: (21, 16) (tipo1 × tipo2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualización: Heatmap de la distribución conjunta</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Solo mostramos la región con probabilidad significativa</span>
+<span class="n">max_i_show</span> <span class="o">=</span> <span class="mi">10</span>   <span class="c1"># Mostrar hasta 12 pacientes tipo 1</span>
+<span class="n">max_j_show</span> <span class="o">=</span> <span class="mi">10</span>   <span class="c1"># Mostrar hasta 12 pacientes tipo 2</span>
+
+<span class="n">region</span> <span class="o">=</span> <span class="n">pi_matrix</span><span class="p">[:</span><span class="n">max_i_show</span><span class="p">,</span> <span class="p">:</span><span class="n">max_j_show</span><span class="p">]</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrRd&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pacientes Tipo 1 (i)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pacientes Tipo 2 (j)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución conjunta P(X(</span><span class="si">{</span><span class="n">t_eval</span><span class="si">}</span><span class="s1">)=i, Y(</span><span class="si">{</span><span class="n">t_eval</span><span class="si">}</span><span class="s1">)=j)</span><span class="se">\n</span><span class="s1">&#39;</span>
+             <span class="sa">f</span><span class="s1">&#39;Hospital vacío al inicio&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Probabilidad&#39;</span><span class="p">)</span>
+
+<span class="c1"># Anotar las celdas con mayor probabilidad</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_i_show</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_j_show</span><span class="p">)):</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">region</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mf">0.005</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span> <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mf">0.02</span> <span class="k">else</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estado más probable: &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">i_max</span><span class="p">,</span> <span class="n">j_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">pi_matrix</span><span class="o">.</span><span class="n">argmax</span><span class="p">(),</span> <span class="n">pi_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">i_max</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">j_max</span><span class="si">}</span><span class="s2">) con P = </span><span class="si">{</span><span class="n">pi_matrix</span><span class="p">[</span><span class="n">i_max</span><span class="p">,</span><span class="w"> </span><span class="n">j_max</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b934af5a6be756c68120468681137c831fd1cf2d59173723aa7ee42bc3831529.png" src="../../_images/b934af5a6be756c68120468681137c831fd1cf2d59173723aa7ee42bc3831529.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estado más probable: (3, 1) con P = 0.0601
+</pre></div>
+</div>
+</div>
+</div>
+<h4 style="color: #ADD8E6;">4. Probabilidades marginales de pacientes tipo 1 y 2</h4><p>Un resultado interesante del mapa de calor es ver como el comportamiento de los pacientes tipo 1 y 2 está concentrado en un área y a medida que nos alejamos de esta, la probabilidad disminuye drásticamente.
+Otra forma de ver este comportamineto es si realizamos un histograma para la distribución marginal de los pacientes de cada tipo. La distribuciones marginales se pueden calcular de la siguiente manera:</p>
+<p>Olvidamos <span class="math notranslate nohighlight">\(Y\)</span> sumando sobre todos sus valores:
+<div class="math notranslate nohighlight">
+\[P(X(6) = i) = \sum_j P(X(6)=i, Y(6)=j)\]</div>
+</p>
+<p>Olvidamos <span class="math notranslate nohighlight">\(X\)</span> sumando sobre todos sus valores
+<div class="math notranslate nohighlight">
+\[P(Y(6) = j) = \sum_i P(X(6)=i, Y(6)=j)\]</div>
+</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Distribuciones marginales</span>
+<span class="n">marginal_X</span> <span class="o">=</span> <span class="n">pi_matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Sumar sobre j</span>
+<span class="n">marginal_Y</span> <span class="o">=</span> <span class="n">pi_matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Sumar sobre i</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Valor esperado y varianza de cada variable</span>
+<span class="n">E_X</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">marginal_X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">E_Y</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">j</span> <span class="o">*</span> <span class="n">marginal_Y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span><span class="o">-</span><span class="n">b</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">Var_X</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">marginal_X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="n">E_X</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">Var_Y</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">j</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">marginal_Y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span><span class="o">-</span><span class="n">b</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="n">E_Y</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;E[X(6)] = </span><span class="si">{</span><span class="n">E_X</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> pacientes tipo 1 en promedio&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;E[Y(6)] = </span><span class="si">{</span><span class="n">E_Y</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> pacientes tipo 2 en promedio&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Var[X(6)] = </span><span class="si">{</span><span class="n">Var_X</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Var[Y(6)] = </span><span class="si">{</span><span class="n">Var_Y</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ïƒ_X = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Var_X</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">,  Ïƒ_Y = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Var_Y</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E[X(6)] = 3.250 pacientes tipo 1 en promedio
+E[Y(6)] = 2.000 pacientes tipo 2 en promedio
+Var[X(6)] = 3.250
+Var[Y(6)] = 2.000
+Ïƒ_X = 1.803,  Ïƒ_Y = 1.414
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># histogramas de las distribuciones marginales</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Marginal de X (tipo 1)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">B</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">marginal_X</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3498db&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pacientes Tipo 1 (i)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;P(X(6) = i)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribución marginal de X(6)</span><span class="se">\n</span><span class="s1">(Pacientes Tipo 1)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Marginal de Y (tipo 2)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">B</span><span class="o">-</span><span class="n">b</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">marginal_Y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#e74c3c&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pacientes Tipo 2 (j)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;P(Y(6) = j)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribución marginal de Y(6)</span><span class="se">\n</span><span class="s1">(Pacientes Tipo 2)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b7d7bf6a6d863d1d2cd2ba25e55af75a6e52f931b64346d4e156a5f7c1fac623.png" src="../../_images/b7d7bf6a6d863d1d2cd2ba25e55af75a6e52f931b64346d4e156a5f7c1fac623.png" />
+</div>
+</div>
+<h4 style="color: #ADD8E6;">5. Comparación con Simulación en SimPy</h4>
+<p>En las sesiones anteriores utilizamos <strong>SimPy</strong> para simular sistemas de colas. Dado que una Cadena de Markov en Tiempo Continuo (CMTC) se basa en eventos que ocurren en el tiempo (llegadas, salidas, transiciones), podemos usar el entorno de SimPy para simular el comportamiento dinámico de nuestro hospital.</p>
+<p>Para esto, simularemos el hospital múltiples veces, parando el reloj de SimPy exactamente a las 6 horas, para revisar en qué estado se encuentra. Para esto se modelarán las llegadas como procesos de Poisson y los tiempos de servicio como exponenciales.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">simpy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simular_hospital_procesos</span><span class="p">(</span><span class="n">n_simulaciones</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+    <span class="c1"># Simula el hospital modelando llegadas y salidas de cada tipo de paciente.</span>
+    <span class="c1"># Retorna un array con el estado (x1, x2) al final de cada réplica.</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">semilla</span><span class="p">)</span>
+    <span class="n">resultados</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_simulaciones</span><span class="p">):</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
+        
+        <span class="c1"># Estado del sistema</span>
+        <span class="n">estado</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;tipo1&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;tipo2&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+        
+        <span class="c1"># Proceso de llegadas Tipo 1</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">llegadas_tipo1</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">estado</span><span class="p">):</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="c1"># Tiempo entre llegadas ~ Exp(λ₁)</span>
+                <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">lambda_1</span><span class="p">))</span>
+                <span class="c1"># Admitir si hay cama disponible (i &lt; B)</span>
+                <span class="k">if</span> <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo1&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">B</span><span class="p">:</span>
+                    <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo1&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="c1"># Calcular la salida de este paciente</span>
+                    <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">servicio_tipo1</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">estado</span><span class="p">))</span>
+        
+        <span class="c1"># Proceso de llegadas Tipo 2</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">llegadas_tipo2</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">estado</span><span class="p">):</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">lambda_2</span><span class="p">))</span>
+                <span class="c1"># Admitir solo si j &lt; B - b</span>
+                <span class="k">if</span> <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">B</span> <span class="o">-</span> <span class="n">b</span><span class="p">:</span>
+                    <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo2&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">servicio_tipo2</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">estado</span><span class="p">))</span>
+        
+        <span class="c1"># Tiempo de servicio de un paciente Tipo 1</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">servicio_tipo1</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">estado</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">mu_1</span><span class="p">))</span>
+            <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo1&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+        
+        <span class="c1"># Tiempo de servicio de un paciente Tipo 2</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">servicio_tipo2</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">estado</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">mu_2</span><span class="p">))</span>
+            <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo2&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+        
+        <span class="c1"># Iniciar los procesos de llegada</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">llegadas_tipo1</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">estado</span><span class="p">))</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">llegadas_tipo2</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">estado</span><span class="p">))</span>
+        
+        <span class="c1"># Correr hasta t_final</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="n">t_final</span><span class="p">)</span>
+        
+        <span class="n">resultados</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo1&#39;</span><span class="p">],</span> <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo2&#39;</span><span class="p">]))</span>
+    
+    <span class="k">return</span> <span class="n">resultados</span>
+
+<span class="c1"># Ejecutar la simulación</span>
+<span class="n">n_sim</span> <span class="o">=</span> <span class="mi">50_000</span>
+<span class="n">resultados_sim</span> <span class="o">=</span> <span class="n">simular_hospital_procesos</span><span class="p">(</span><span class="n">n_sim</span><span class="p">,</span> <span class="n">t_final</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulación completada con </span><span class="si">{</span><span class="n">n_sim</span><span class="si">}</span><span class="s2"> réplicas&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulación completada con 50000 réplicas
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapear los resultados a índices de estados con index(i, j)</span>
+<span class="n">estados_simulados</span> <span class="o">=</span> <span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">resultados_sim</span><span class="p">]</span>
+
+<span class="c1"># Contar las ocurrencias de cada estado</span>
+<span class="n">conteos_estados</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">estados_simulados</span><span class="p">)</span>
+
+<span class="c1"># Calcular el vector de probabilidades dividiendo por el total de simulaciones</span>
+<span class="n">probs_simuladas_6h</span> <span class="o">=</span> <span class="n">conteos_estados</span> <span class="o">/</span> <span class="n">n_sim</span>
+
+<span class="c1"># Probabilidad de que el estado sea (1,3)</span>
+<span class="n">idx_1_3</span> <span class="o">=</span> <span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">prob_1_3_sim</span> <span class="o">=</span> <span class="n">probs_simuladas_6h</span><span class="p">[</span><span class="n">idx_1_3</span><span class="p">]</span>
+<span class="n">prob_1_3</span> <span class="o">=</span> <span class="n">probs_transitorias_6h</span><span class="p">[</span><span class="n">idx_1_3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(X(6)=1, Y(6)=3):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resultado simulado = </span><span class="si">{</span><span class="n">prob_1_3_sim</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resultado de jmarkov = </span><span class="si">{</span><span class="n">prob_1_3</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(X(6)=1, Y(6)=3):
+Resultado simulado = 0.023180
+Resultado de jmarkov = 0.022737
+</pre></div>
+</div>
+</div>
+</div>
+<p>Al igual que en casos anteriores, podemos observar cómo la simulación logra una excelente aproximación al resultado exacto resuelto mediante la matriz exponencial de la distribución transitoria en <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>.</p>
+<p>Por el teorema de la Ley de los números grandes, a medida que aumentemos el número de réplicas (<code class="docutils literal notranslate"><span class="pre">n_simulaciones</span></code>), nuestra probabilidad estimada convergerá de manera mucho más exacta a la probabilidad teórica calculada por la herramienta analítica.</p>
+<h4 style="color: #ADD8E6;">(Opcional) Simulación modelando saltos a partir de la matriz Q</h4>
+<p>También es posible usar la matriz <span class="math notranslate nohighlight">\(Q\)</span> directamente para generar tiempos de permanencia y transiciones.</p>
+<p><strong>Intuición</strong></p>
+<ol class="arabic simple">
+<li><p>Utilizamos la tasa de salida (<span class="math notranslate nohighlight">\(-q_{ii}\)</span>) de la diagonal de la matriz, y generamos números aleatorios exponenciales <code class="docutils literal notranslate"><span class="pre">rng.exponential</span></code></p></li>
+<li><p>Una vez transcurrido el tiempo, calculamos las probabilidades de salto de la cadena <span class="math notranslate nohighlight">\(p_{ij} = q_{ij} / -q_{ii}\)</span> y hacemos la transición a un nuevo estado.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">simular_saltos_Q</span><span class="p">(</span><span class="n">Q_mat</span><span class="p">,</span> <span class="n">estado_inicial</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="n">n_simulaciones</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+    <span class="c1"># Simula una CMTC general usando la matriz Q directamente.</span>
+    <span class="c1"># Tiempo de permanencia ~ Exp(-q_ii), salto con prob q_ij/(-q_ii)</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">semilla</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">Q_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">estados_finales</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_simulaciones</span><span class="p">):</span>
+        <span class="n">estado</span> <span class="o">=</span> <span class="n">estado_inicial</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="mf">0.0</span>
+        
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">tasa_salida</span> <span class="o">=</span> <span class="o">-</span><span class="n">Q_mat</span><span class="p">[</span><span class="n">estado</span><span class="p">,</span> <span class="n">estado</span><span class="p">]</span>
+            
+            <span class="k">if</span> <span class="n">tasa_salida</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">break</span>  <span class="c1"># Estado absorbente</span>
+            
+            <span class="c1"># Tiempo de permanencia</span>
+            <span class="n">dt</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">tasa_salida</span><span class="p">)</span>
+            
+            <span class="k">if</span> <span class="n">t</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">&gt;=</span> <span class="n">t_final</span><span class="p">:</span>
+                <span class="k">break</span>  <span class="c1"># Se acabó el tiempo, nos quedamos en este estado</span>
+            <span class="n">t</span> <span class="o">+=</span> <span class="n">dt</span>
+            
+            <span class="c1"># Probabilidades de salto</span>
+            <span class="n">probs</span> <span class="o">=</span> <span class="n">Q_mat</span><span class="p">[</span><span class="n">estado</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">probs</span><span class="p">[</span><span class="n">estado</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="n">probs</span> <span class="o">=</span> <span class="n">probs</span> <span class="o">/</span> <span class="n">tasa_salida</span>
+            
+            <span class="c1"># Nuevo estado</span>
+            <span class="n">estado</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">probs</span><span class="p">)</span>
+        
+        <span class="n">estados_finales</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">estado</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">estados_finales</span>
+
+<span class="c1"># Ejecutar la simulación de saltos con la matriz Q</span>
+<span class="n">estados_finales_Q</span> <span class="o">=</span> <span class="n">simular_saltos_Q</span><span class="p">(</span><span class="n">Q_hospital</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mf">6.0</span><span class="p">,</span> <span class="n">n_sim</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Comparar con jmarkov</span>
+<span class="n">prob_1_3_Q</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">estados_finales_Q</span> <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">/</span> <span class="n">n_sim</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(X(6)=1, Y(6)=3):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  jmarkov:        </span><span class="si">{</span><span class="n">prob_1_3</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Sim. procesos:  </span><span class="si">{</span><span class="n">prob_1_3_sim</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Sim. saltos Q:  </span><span class="si">{</span><span class="n">prob_1_3_Q</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(X(6)=1, Y(6)=3):
+  jmarkov:        0.022737
+  Sim. procesos:  0.023180
+  Sim. saltos Q:  0.023500
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Preguntas de profundización</strong></p>
+<ul class="simple">
+<li><p>¿Por qué si la semilla utilizada en los dos ejemplos de simulación fue la misma los resultados dieron distintos?</p></li>
+<li><p>A partir de los vectores simulados elabore un mapa de calor y compare con los resultados de <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code></p></li>
+</ul>
+<h4 style="color: #ADD8E6;">Próxima sesión</h4>
+<p>En la siguiente sesión profundizaremos en el análisis transitorio vs estado estable, mostraremos cómo la distribución converge al estado estable, y responderemos preguntas más complejas sobre el hospital (costos, tiempos de primera pasada, tiempos de ocupación).</p>
+<p>Universidad de los Andes | Vigilada Mineducación. Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia. Departamento de Ingeniería Industrial Carrera 1 Este No. 19 A 40 Bogotá, Colombia Tel. (57.1) 3324320 | (57.1) 3394949 Ext. 2880 /2881 http://industrial.uniandes.edu.co</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content\complementarias"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="complementaria_simu_proceso_poisson.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Complementaria Semana 7: Simulación de un Proceso de Poisson</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="complementaria_markov_ii.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Complementaria Semana 9: Cadenas de Markov en Python II</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Equipo Modelado Bajo Incertidumbre | Uniandes
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

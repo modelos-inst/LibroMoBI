@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Complementaria Semana 6: Modelado Avanzado en SimPy &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
@@ -28,43 +29,47 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0361f5db" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_simu_cola_simpy';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)" href="complementaria_transf_inversa_gva.html" />
-    <link rel="prev" title="Complementaria Semana 5: Introducción a la Simulación con SimPy con Python" href="complementaria_intro_simpy.html" />
+    <link rel="next" title="Complementaria Semana 7: Simulación de un Proceso de Poisson" href="complementaria_simu_proceso_poisson.html" />
+    <link rel="prev" title="Complementaria Semana 5: Transformada Inversa para Generación de Variables Aleatorias (GVA)" href="complementaria_transf_inversa_gva.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -161,18 +166,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -189,27 +183,29 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_python.html">Complementaria 1: Introducción a Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_python.html">Complementaria Semana 1: Introducción a Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria 3: Teorema del Límite Central y validación empírica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria Semana 3: Teorema del Límite Central y validación empírica</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gva.html">Complementaria Semana 5: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+
+
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 6: Modelado Avanzado en SimPy</a></li>
 
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gva.html">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 8: Simulación de un Proceso de Poisson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 7: Simulación de un Proceso de Poisson</a></li>
 
 
 
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 </ul>
 
     </div>
@@ -239,9 +235,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -335,9 +331,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -406,9 +402,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="complementaria-semana-6-modelado-avanzado-en-simpy">
-<h1>Complementaria Semana 6: Modelado Avanzado en SimPy<a class="headerlink" href="#complementaria-semana-6-modelado-avanzado-en-simpy" title="Link to this heading">#</a></h1>
+<h1>Complementaria Semana 6: Modelado Avanzado en SimPy<a class="headerlink" href="#complementaria-semana-6-modelado-avanzado-en-simpy" title="Permalink to this heading">#</a></h1>
 <section id="sistemas-multi-servidor-y-abandonos">
-<h2>Sistemas Multi-Servidor y Abandonos<a class="headerlink" href="#sistemas-multi-servidor-y-abandonos" title="Link to this heading">#</a></h2>
+<h2>Sistemas Multi-Servidor y Abandonos<a class="headerlink" href="#sistemas-multi-servidor-y-abandonos" title="Permalink to this heading">#</a></h2>
 <p>En la semana anterior construimos nuestro primer modelo <strong>M/M/1</strong> (un servidor, llegadas Poisson, tiempos exponenciales). Sin embargo, los sistemas reales rara vez son tan simples. A menudo tenemos:</p>
 <ol class="arabic simple">
 <li><p>Múltiples servidores (cajas de banco, peajes).</p></li>
@@ -417,7 +413,7 @@ document.write(`
 <p>Hoy trabajaremos con un nuevo ejemplo base M/M/1 y luego lo extenderemos.</p>
 </section>
 <section id="objetivos">
-<h2>Objetivos<a class="headerlink" href="#objetivos" title="Link to this heading">#</a></h2>
+<h2>Objetivos<a class="headerlink" href="#objetivos" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Implementar un nuevo ejemplo de cola <strong>M/M/1</strong></p></li>
 <li><p>Implementar una cola <strong>M/M/k</strong> (múltiples servidores)</p></li>
@@ -440,9 +436,9 @@ document.write(`
 </section>
 </section>
 <section id="caso-base-m-m-1">
-<h1>1. Caso Base: M/M/1<a class="headerlink" href="#caso-base-m-m-1" title="Link to this heading">#</a></h1>
+<h1>1. Caso Base: M/M/1<a class="headerlink" href="#caso-base-m-m-1" title="Permalink to this heading">#</a></h1>
 <section id="centro-de-impresion-universitario">
-<h2>Centro de Impresión Universitario<a class="headerlink" href="#centro-de-impresion-universitario" title="Link to this heading">#</a></h2>
+<h2>Centro de Impresión Universitario<a class="headerlink" href="#centro-de-impresion-universitario" title="Permalink to this heading">#</a></h2>
 <p>En una universidad existe un único punto de impresión para estudiantes.</p>
 <ul class="simple">
 <li><p>Los estudiantes llegan aleatoriamente.</p></li>
@@ -451,7 +447,7 @@ document.write(`
 <li><p>Nadie abandona la fila.</p></li>
 </ul>
 <section id="supuestos">
-<h3>Supuestos<a class="headerlink" href="#supuestos" title="Link to this heading">#</a></h3>
+<h3>Supuestos<a class="headerlink" href="#supuestos" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Llegadas ~ Poisson con tasa <code class="docutils literal notranslate"><span class="pre">lam</span></code></p></li>
 <li><p>Servicio ~ Exponencial con tasa <code class="docutils literal notranslate"><span class="pre">mu</span></code></p></li>
@@ -460,7 +456,7 @@ document.write(`
 </ul>
 </section>
 <section id="parametros-base">
-<h3>Parámetros Base<a class="headerlink" href="#parametros-base" title="Link to this heading">#</a></h3>
+<h3>Parámetros Base<a class="headerlink" href="#parametros-base" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">lam</span> <span class="pre">=</span> <span class="pre">0.75</span></code> estudiantes por minuto</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">mu</span>&#160; <span class="pre">=</span> <span class="pre">1.00</span></code> estudiantes por minuto</p></li>
@@ -469,7 +465,7 @@ document.write(`
 </section>
 </section>
 <section id="actividades">
-<h2>Actividades<a class="headerlink" href="#actividades" title="Link to this heading">#</a></h2>
+<h2>Actividades<a class="headerlink" href="#actividades" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Estimar por simulación:</p>
 <ul class="simple">
@@ -651,7 +647,7 @@ document.write(`
 </div>
 </section>
 <section id="valores-teoricos-m-m-1">
-<h2>Valores Teóricos M/M/1<a class="headerlink" href="#valores-teoricos-m-m-1" title="Link to this heading">#</a></h2>
+<h2>Valores Teóricos M/M/1<a class="headerlink" href="#valores-teoricos-m-m-1" title="Permalink to this heading">#</a></h2>
 <p>Si ρ = <span class="math notranslate nohighlight">\(\lambda\)</span> / <span class="math notranslate nohighlight">\(\mu\)</span> &lt; 1:</p>
 <ul class="simple">
 <li><p>Utilización: ρ</p></li>
@@ -731,7 +727,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="experimentos-de-sensibilidad">
-<h1>2. Experimentos de Sensibilidad<a class="headerlink" href="#experimentos-de-sensibilidad" title="Link to this heading">#</a></h1>
+<h1>2. Experimentos de Sensibilidad<a class="headerlink" href="#experimentos-de-sensibilidad" title="Permalink to this heading">#</a></h1>
 <p>Ahora analizaremos cómo cambia el sistema cuando:</p>
 <ul class="simple">
 <li><p>Aumenta la demanda</p></li>
@@ -906,11 +902,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/db5fe1a3cb62c596608a852ac1eb80cb397ed1029267c3a581724fbdf71d0235.png" src="../../_images/db5fe1a3cb62c596608a852ac1eb80cb397ed1029267c3a581724fbdf71d0235.png" />
+<img alt="../../_images/abdb4576b7f0067c29cad405e071a6b498119db618bab7bfa3dc3e8f032d1ed1.png" src="../../_images/abdb4576b7f0067c29cad405e071a6b498119db618bab7bfa3dc3e8f032d1ed1.png" />
 </div>
 </div>
 <section id="analisis-de-sensibilidad">
-<h2>Análisis de Sensibilidad<a class="headerlink" href="#analisis-de-sensibilidad" title="Link to this heading">#</a></h2>
+<h2>Análisis de Sensibilidad<a class="headerlink" href="#analisis-de-sensibilidad" title="Permalink to this heading">#</a></h2>
 <p>Observe los resultados obtenidos y responda:</p>
 <ol class="arabic simple">
 <li><p>¿Cómo cambia la utilización cuando <span class="math notranslate nohighlight">\(\lambda\)</span> aumenta?</p></li>
@@ -933,7 +929,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="sistemas-multi-servidor-m-m-k">
-<h1>3. Sistemas Multi-Servidor (M/M/k)<a class="headerlink" href="#sistemas-multi-servidor-m-m-k" title="Link to this heading">#</a></h1>
+<h1>3. Sistemas Multi-Servidor (M/M/k)<a class="headerlink" href="#sistemas-multi-servidor-m-m-k" title="Permalink to this heading">#</a></h1>
 <p>Ahora duplicamos la impresora.</p>
 <p>En SimPy esto se implementa cambiando la capacidad del recurso.</p>
 <p>Compararemos el desempeño con el sistema M/M/1 original.</p>
@@ -955,9 +951,9 @@ document.write(`
 </div>
 </section>
 <section id="comparacion">
-<h1>Comparación:<a class="headerlink" href="#comparacion" title="Link to this heading">#</a></h1>
+<h1>Comparación:<a class="headerlink" href="#comparacion" title="Permalink to this heading">#</a></h1>
 <section id="impresora-rapida-vs-2-impresoras-lentas">
-<h2>1 impresora rápida vs 2 impresoras lentas<a class="headerlink" href="#impresora-rapida-vs-2-impresoras-lentas" title="Link to this heading">#</a></h2>
+<h2>1 impresora rápida vs 2 impresoras lentas<a class="headerlink" href="#impresora-rapida-vs-2-impresoras-lentas" title="Permalink to this heading">#</a></h2>
 <p>Si la capacidad total de servicio es la misma:</p>
 <ul class="simple">
 <li><p>1 servidor con μ = 2</p></li>
@@ -1050,11 +1046,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fb28cd8bd23249535da1b8617248cfb9019a57277ae81a43c84f8bf39adf37ba.png" src="../../_images/fb28cd8bd23249535da1b8617248cfb9019a57277ae81a43c84f8bf39adf37ba.png" />
+<img alt="../../_images/0e0fe990bda55a4a6dbc7235e8fdb854b7d7fa30c5c083900f9d1d6aa596da43.png" src="../../_images/0e0fe990bda55a4a6dbc7235e8fdb854b7d7fa30c5c083900f9d1d6aa596da43.png" />
 </div>
 </div>
 <section id="reflexion">
-<h3>Reflexión:<a class="headerlink" href="#reflexion" title="Link to this heading">#</a></h3>
+<h3>Reflexión:<a class="headerlink" href="#reflexion" title="Permalink to this heading">#</a></h3>
 <p>Ambos sistemas tienen la misma capacidad total de servicio (2 clientes por minuto), pero los resultados no son iguales.</p>
 <ul class="simple">
 <li><p>Con <strong>2 servidores lentos</strong>, el tiempo de espera en cola es menor.</p></li>
@@ -1066,7 +1062,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="clientes-impacientes-reneging">
-<h1>4. Clientes Impacientes (Reneging)<a class="headerlink" href="#clientes-impacientes-reneging" title="Link to this heading">#</a></h1>
+<h1>4. Clientes Impacientes (Reneging)<a class="headerlink" href="#clientes-impacientes-reneging" title="Permalink to this heading">#</a></h1>
 <p>Ahora los estudiantes abandonan si esperan más de un tiempo máximo <code class="docutils literal notranslate"><span class="pre">paciencia</span></code>.</p>
 <p>El cliente espera lo que ocurra primero:</p>
 <ul class="simple">
@@ -1288,9 +1284,9 @@ document.write(`
 </div></div></div>
 </div>
 <section id="discusion-conceptual-sistema-con-abandonos">
-<h2>Discusión Conceptual: Sistema con Abandonos<a class="headerlink" href="#discusion-conceptual-sistema-con-abandonos" title="Link to this heading">#</a></h2>
+<h2>Discusión Conceptual: Sistema con Abandonos<a class="headerlink" href="#discusion-conceptual-sistema-con-abandonos" title="Permalink to this heading">#</a></h2>
 <section id="advertencia-importante">
-<h3>Advertencia Importante<a class="headerlink" href="#advertencia-importante" title="Link to this heading">#</a></h3>
+<h3>Advertencia Importante<a class="headerlink" href="#advertencia-importante" title="Permalink to this heading">#</a></h3>
 <p>Un sistema con abandonos puede mostrar:</p>
 <ul class="simple">
 <li><p>Menor (W_q)</p></li>
@@ -1303,7 +1299,7 @@ document.write(`
 solo observamos a quienes toleraron la espera.</p>
 </section>
 <section id="reflexione">
-<h3>Reflexione:<a class="headerlink" href="#reflexione" title="Link to this heading">#</a></h3>
+<h3>Reflexione:<a class="headerlink" href="#reflexione" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>¿Disminuye realmente la congestión o simplemente se expulsan clientes?</p></li>
 <li><p>¿Cómo debería medirse el desempeño si hay pérdida de clientes?</p></li>
@@ -1344,20 +1340,20 @@ solo observamos a quienes toleraron la espera.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="complementaria_intro_simpy.html"
+       href="complementaria_transf_inversa_gva.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</p>
+        <p class="prev-next-title">Complementaria Semana 5: Transformada Inversa para Generación de Variables Aleatorias (GVA)</p>
       </div>
     </a>
     <a class="right-next"
-       href="complementaria_transf_inversa_gva.html"
+       href="complementaria_simu_proceso_poisson.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Complementaria Semana 7: Transformada Inversa para Generación de Variables Aleatorias (GVA)</p>
+        <p class="prev-next-title">Complementaria Semana 7: Simulación de un Proceso de Poisson</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1437,7 +1433,7 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

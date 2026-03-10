@@ -6,14 +6,16 @@ Despliega el contenido:
 ```{dropdown} Módulos: Complementarias
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Tutorial: Instalación de Python y VSCode](content/complementarias/tutorial.ipynb)
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Tutorial: Ambientes Virtuales en Python](content/complementarias/ambientes_virtuales.ipynb)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 1: Introducción a Python y Álgebra Lineal en Python](content/complementarias/complementaria_intro_python.ipynb)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 2: Introducción a la Simulación de Montecarlo](content/complementarias/complementaria_intro_montecarlo.ipynb)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 3: Teorema del Límite Central y validación epírica](content/complementarias/complementaria_tlc.ipynb)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 4: Introducción a SimPy](content/complementarias/complementaria_intro_simpy.ipynb)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 5: Modelado avanzado en SimPy](content/complementarias/complementaria_simu_cola_simpy.ipynb)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 6: Transformada Inversa para Generación de Variables Aleatorias (GBA)](content/complementarias/complementaria_transf_inversa_gva.ipynb)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria 7: Simulación de un Proceso de Poisson](content/complementarias/complementaria_simu_proceso_poisson.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 1: Introducción a Python y Álgebra Lineal en Python](content/complementarias/complementaria_intro_python.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 2: Introducción a la Simulación de Montecarlo](content/complementarias/complementaria_intro_montecarlo.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 3: Teorema del Límite Central y validación epírica](content/complementarias/complementaria_tlc.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 5: Introducción a SimPy](content/complementarias/complementaria_intro_simpy.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 5: Transformada Inversa para Generación de Variables Aleatorias (GBA)](content/complementarias/complementaria_transf_inversa_gva.ipynb)
 
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 6: Modelado avanzado en SimPy](content/complementarias/complementaria_simu_cola_simpy.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 7: Simulación de un Proceso de Poisson](content/complementarias/complementaria_simu_proceso_poisson.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 8: Cadenas de Markov en Python I](content/complementarias/complementaria_markov_i.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 9: Cadenas de Markov en Python II](content/complementarias/complementaria_markov_ii.ipynb)
 
 
 

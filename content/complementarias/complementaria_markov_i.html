@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Complementaria Semana 8: Cadenas de Markov en Python I &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
@@ -29,40 +28,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0361f5db" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_markov_i';</script>
@@ -166,7 +161,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -235,9 +241,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -357,7 +363,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="complementaria-semana-8-cadenas-de-markov-en-python-i">
-<h1>Complementaria Semana 8: Cadenas de Markov en Python I<a class="headerlink" href="#complementaria-semana-8-cadenas-de-markov-en-python-i" title="Permalink to this heading">#</a></h1>
+<h1>Complementaria Semana 8: Cadenas de Markov en Python I<a class="headerlink" href="#complementaria-semana-8-cadenas-de-markov-en-python-i" title="Link to this heading">#</a></h1>
 <h2 style="color: #ADD8E6;">Objetivos de aprendizaje</h2>
 <p>Al finalizar esta sesión, el estudiante será capaz de:</p>
 <ol class="arabic simple">
@@ -829,15 +835,13 @@ Tamaño de Q: (336, 336)
 \big[\pi(0)e^{Q(6)}\big]_{(1,3)}
 \]</div>
 <p>Recordemos que el proceso conjunto es <span class="math notranslate nohighlight">\(Z(t) = (X(t),Y(t))\)</span>, por lo que el estado <span class="math notranslate nohighlight">\((1,3)\)</span> indica 1 paciente tipo 1 y 3 pacientes tipo 2.</p>
-<blockquote>
-<div><p><strong>Nota:</strong> Dado que el estado inicial está completamente determinado, la multiplicación <span class="math notranslate nohighlight">\(\pi(0)e^{Q(6)}\)</span> equivale a seleccionar la fila de <span class="math notranslate nohighlight">\(e^{Q(6)}\)</span> correspondiente al estado <span class="math notranslate nohighlight">\((0,0)\)</span>. Por lo tanto,</p>
+<p><strong>Nota:</strong> Dado que el estado inicial está completamente determinado, la multiplicación <span class="math notranslate nohighlight">\(\pi(0)e^{Q(6)}\)</span> equivale a seleccionar la fila de <span class="math notranslate nohighlight">\(e^{Q(6)}\)</span> correspondiente al estado <span class="math notranslate nohighlight">\((0,0)\)</span>. Por lo tanto,</p>
 <div class="math notranslate nohighlight">
 \[
-&gt; \big[\pi(0)e^{Q(6)}\big]_{(1,3)}
-&gt; =
-&gt; \big[e^{Q(6)}\big]_{((0,0),(1,3))}
-&gt; \]</div>
-</div></blockquote>
+\big[\pi(0)e^{Q(6)}\big]_{(1,3)}
+=
+\big[e^{Q(6)}\big]_{((0,0),(1,3))}
+\]</div>
 <h5 style="color: #ADD8E6;">Solución en jmarkov</h5>
 <p>Para resolver a esta pregunta primero se debe establecer correctamente el vector de estado inicial (hospital vacío).</p>
 <div class="cell docutils container">
@@ -935,7 +939,7 @@ Dimensión de la distribución conjunta: (21, 16) (tipo1 × tipo2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b934af5a6be756c68120468681137c831fd1cf2d59173723aa7ee42bc3831529.png" src="../../_images/b934af5a6be756c68120468681137c831fd1cf2d59173723aa7ee42bc3831529.png" />
+<img alt="../../_images/1edba4d30fbd2c95cae1250d4220dae4aea2bbc6b321e9ac239c67ed7530d3ab.png" src="../../_images/1edba4d30fbd2c95cae1250d4220dae4aea2bbc6b321e9ac239c67ed7530d3ab.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estado más probable: (3, 1) con P = 0.0601
 </pre></div>
 </div>
@@ -972,7 +976,7 @@ Otra forma de ver este comportamineto es si realizamos un histograma para la dis
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;E[Y(6)] = </span><span class="si">{</span><span class="n">E_Y</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> pacientes tipo 2 en promedio&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Var[X(6)] = </span><span class="si">{</span><span class="n">Var_X</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Var[Y(6)] = </span><span class="si">{</span><span class="n">Var_Y</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ïƒ_X = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Var_X</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">,  Ïƒ_Y = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Var_Y</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;σ_X = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Var_X</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">,  σ_Y = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Var_Y</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -981,7 +985,7 @@ Otra forma de ver este comportamineto es si realizamos un histograma para la dis
 E[Y(6)] = 2.000 pacientes tipo 2 en promedio
 Var[X(6)] = 3.250
 Var[Y(6)] = 2.000
-Ïƒ_X = 1.803,  Ïƒ_Y = 1.414
+σ_X = 1.803,  σ_Y = 1.414
 </pre></div>
 </div>
 </div>
@@ -1011,7 +1015,7 @@ Var[Y(6)] = 2.000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b7d7bf6a6d863d1d2cd2ba25e55af75a6e52f931b64346d4e156a5f7c1fac623.png" src="../../_images/b7d7bf6a6d863d1d2cd2ba25e55af75a6e52f931b64346d4e156a5f7c1fac623.png" />
+<img alt="../../_images/75a866ac7ed1917eb3bf56c2fdbc1a2a5c424d2c5c96d88975909e0d4883315b.png" src="../../_images/75a866ac7ed1917eb3bf56c2fdbc1a2a5c424d2c5c96d88975909e0d4883315b.png" />
 </div>
 </div>
 <h4 style="color: #ADD8E6;">5. Comparación con Simulación en SimPy</h4>
@@ -1269,7 +1273,7 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

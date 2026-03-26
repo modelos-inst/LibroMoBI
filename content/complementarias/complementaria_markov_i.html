@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0361f5db" />
@@ -212,6 +212,7 @@
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
 </ul>
 
     </div>
@@ -337,7 +338,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -353,6 +356,38 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos-de-aprendizaje">Objetivos de aprendizaje</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-jmarkov">Introducción a jmarkov</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-transitorio">Análisis transitorio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidades-en-estado-estable">Probabilidades en estado estable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-primera-pasada">Tiempo de primera pasada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-ocupacion">Tiempo de ocupación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-preguntas-puedo-hacerle-a-una-distribucion">¿Qué preguntas puedo hacerle a una distribución?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-de-implementacion-hospital-en-tiempo-continuo">Ejercicio de implementación: Hospital en tiempo continuo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas">Preguntas</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#construir-la-matriz-de-de-transicion-y-la-cadena-en-jmarkov">1. Construir la matriz de de transición y la cadena en jmarkov</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-probabilidad-despues-de-6-horas-el-hospital-tenga-1-paciente-tipo-1-y-3-pacientes-tipo-2">2. Cálculo de la probabilidad: después de 6 horas, el hospital tenga 1 paciente tipo 1 y 3 pacientes tipo 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solucion-en-jmarkov">Solución en jmarkov</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-la-distribucion-conjunta-despues-de-6-horas-dado-que-el-sistema-inicio-vacio">3. Visualización de la distribución conjunta después de 6 horas dado que el sistema inició vacío</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidades-marginales-de-pacientes-tipo-1-y-2">4. Probabilidades marginales de pacientes tipo 1 y 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-con-simulacion-en-simpy">5. Comparación con Simulación en SimPy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#opcional-simulacion-modelando-saltos-a-partir-de-la-matriz-q">(Opcional) Simulación modelando saltos a partir de la matriz Q</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proxima-sesion">Próxima sesión</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -364,7 +399,8 @@ document.write(`
                   
   <section id="complementaria-semana-8-cadenas-de-markov-en-python-i">
 <h1>Complementaria Semana 8: Cadenas de Markov en Python I<a class="headerlink" href="#complementaria-semana-8-cadenas-de-markov-en-python-i" title="Link to this heading">#</a></h1>
-<h2 style="color: #ADD8E6;">Objetivos de aprendizaje</h2>
+<section id="objetivos-de-aprendizaje">
+<h2>Objetivos de aprendizaje<a class="headerlink" href="#objetivos-de-aprendizaje" title="Link to this heading">#</a></h2>
 <p>Al finalizar esta sesión, el estudiante será capaz de:</p>
 <ol class="arabic simple">
 <li><p>Construir una CMTC en <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> a partir de una matriz generadora <span class="math notranslate nohighlight">\(Q\)</span>.</p></li>
@@ -373,9 +409,11 @@ document.write(`
 <li><p>Simular una CMTC correctamente en <code class="docutils literal notranslate"><span class="pre">SimPy</span></code> modelando procesos de llegada y servicio.</p></li>
 <li><p>Comparar resultados analíticos con resultados de simulación.</p></li>
 </ol>
-<h2 style="color: #ADD8E6;">Introducción a jmarkov</h2>
+</section>
+<section id="introduccion-a-jmarkov">
+<h2>Introducción a jmarkov<a class="headerlink" href="#introduccion-a-jmarkov" title="Link to this heading">#</a></h2>
 <p>En esta sección construiremos una cadena de Markov en tiempo continuo (CMTC) sencilla con 3 estados. La idea de este ejercicio es ilustrar, de manera compacta, los principales cálculos que podemos realizar con <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>, tanto estructurales como probabilísticos.</p>
-<p>Consideremos una cadena con variable <span class="math notranslate nohighlight">\(X\left(t\right)\)</span> y un espacio de estados <span class="math notranslate nohighlight">\(S_x = \{1,2,3\}\)</span>. Las transiciones entre estados están gobernadas por la siguiente matriz generadora:</p>
+<p>Consideremos una cadena con variable <span class="math notranslate nohighlight">\(X\left(t\right)\)</span> y un espacio de estados <span class="math notranslate nohighlight">\(S_x = \{0,1,2\}\)</span>. Las transiciones entre estados están gobernadas por la siguiente matriz generadora:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 Q_{(i,j)} = \begin{pmatrix}
@@ -392,6 +430,22 @@ Q_{(i,j)} = \begin{pmatrix}
 <li><p>La diagonal es negativa y representa la tasa de salida del estado.</p></li>
 </ul>
 </div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">jmarkov</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jmarkov in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (0.3.9)
+Requirement already satisfied: numpy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from jmarkov) (2.4.1)
+Requirement already satisfied: scipy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from jmarkov) (1.17.0)
+Requirement already satisfied: typing in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from jmarkov) (3.7.4.3)
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -437,7 +491,8 @@ Q_{(i,j)} = \begin{pmatrix}
 </div>
 </div>
 </div>
-<h3 style="color: #ADD8E6;">Análisis transitorio</h3>
+<section id="analisis-transitorio">
+<h3>Análisis transitorio<a class="headerlink" href="#analisis-transitorio" title="Link to this heading">#</a></h3>
 <p>Podemos calcular la distribución en un instante <span class="math notranslate nohighlight">\( t \)</span> dado un estado inicial indicado con un vector de estados inciales <span class="math notranslate nohighlight">\( \overrightarrow{\pi}(0) \)</span>, así</p>
 <div class="math notranslate nohighlight">
 \[
@@ -477,7 +532,9 @@ La probabilidad de estar en el estado 1 en t=2 es 0.269
 </div>
 </div>
 </div>
-<h3 style="color: #ADD8E6;">Probabilidades en estado estable</h3>
+</section>
+<section id="probabilidades-en-estado-estable">
+<h3>Probabilidades en estado estable<a class="headerlink" href="#probabilidades-en-estado-estable" title="Link to this heading">#</a></h3>
 <p>Si la cadena es ergódica, existe una distribución estacionaria <span class="math notranslate nohighlight">\( \pi \)</span> tal que:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -512,7 +569,9 @@ La probabilidad de estar en el estado 1 en el largo plazo es 0.269
 </div>
 </div>
 </div>
-<h3 style="color: #ADD8E6;">Tiempo de primera pasada</h3>
+</section>
+<section id="tiempo-de-primera-pasada">
+<h3>Tiempo de primera pasada<a class="headerlink" href="#tiempo-de-primera-pasada" title="Link to this heading">#</a></h3>
 <p>El tiempo promedio de primera pasada (hitting time) <span class="math notranslate nohighlight">\(m_{i,j}\)</span> desde un estado inicial <span class="math notranslate nohighlight">\(i\)</span> hacia un estado objetivo <span class="math notranslate nohighlight">\(j\)</span> puede calcularse al escribir <span class="math notranslate nohighlight">\(m_{i,j}\)</span> como</p>
 <div class="math notranslate nohighlight">
 \[
@@ -560,7 +619,9 @@ El tiempo de primera pasada desde el estado 1 al estado 2 es: 0.4
 </div>
 </div>
 </div>
-<h3 style="color: #ADD8E6;">Tiempo de ocupación</h3>
+</section>
+<section id="tiempo-de-ocupacion">
+<h3>Tiempo de ocupación<a class="headerlink" href="#tiempo-de-ocupacion" title="Link to this heading">#</a></h3>
 <p>En una cadena de Markov en tiempo continuo, el <strong>tiempo de ocupación</strong> mide cuánto tiempo, en promedio, el proceso pasa en cada estado durante un intervalo finito <span class="math notranslate nohighlight">\([0,t]\)</span>, y se calcula como</p>
 <div class="math notranslate nohighlight">
 \[
@@ -608,7 +669,9 @@ Tiempo en 2 desde 1: 1.506
 </div>
 </div>
 </div>
-<h3 style="color: #ADD8E6;">¿Qué preguntas puedo hacerle a una distribución?</h3>
+</section>
+<section id="que-preguntas-puedo-hacerle-a-una-distribucion">
+<h3>¿Qué preguntas puedo hacerle a una distribución?<a class="headerlink" href="#que-preguntas-puedo-hacerle-a-una-distribucion" title="Link to this heading">#</a></h3>
 <p>Una vez que tenemos una distribución de probabilidad discreta (sea transitoria o en estado estable) podemos calcular cualquier medida típica de probabilidad y estadística:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -642,10 +705,14 @@ Tiempo en 2 desde 1: 1.506
 </table>
 </div>
 <p>Ahora que vimos cómo utilizar las funciones básicas de <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> en cadenas continuas y algunas de las preguntas que podemos realizar con distribuciones discretas, sigamos con un ejercicio más elaborado (este ejercicio continuará en la siguiente complementaria <strong>Cadenas de Markov en Python II</strong>).</p>
-<h2 style="color: #ADD8E6;">Ejercicio de implementación: Hospital en tiempo continuo</h2>
-<p>Considere un hospital con <span class="math notranslate nohighlight">\(B = 20\)</span> camas. Hay dos tipos de pacientes que usan este hospital. Los pacientes de tipo <span class="math notranslate nohighlight">\(i\ (i=1,2)\)</span> llegan según un proceso de Poisson con tasa <span class="math notranslate nohighlight">\(\lambda_1 = 6.5\)</span> y <span class="math notranslate nohighlight">\(\lambda_2 = 3\)</span> pacientes por hora, respectivamente, y requieren un servicio independiente e idénticamente distribuido (iid) con tiempos de servicio que siguen una distribución exponencial con parámetros <span class="math notranslate nohighlight">\(\mu_1 = 2\)</span> y <span class="math notranslate nohighlight">\(\mu_2 = 1.5\)</span> pacientes por hora, respectivamente. El hospital utiliza la siguiente política: reserva <span class="math notranslate nohighlight">\(b = 5\)</span> camas para pacientes de tipo 1. Así, cuando un paciente de tipo 1 llega, se le admite en el hospital siempre que haya una cama disponible. Sin embargo, un paciente de tipo 2 es admitido solo si el número de pacientes de tipo 2 que actualmente ocupan camas es menor que <span class="math notranslate nohighlight">\(B-b\)</span>.</p>
+</section>
+</section>
+<section id="ejercicio-de-implementacion-hospital-en-tiempo-continuo">
+<h2>Ejercicio de implementación: Hospital en tiempo continuo<a class="headerlink" href="#ejercicio-de-implementacion-hospital-en-tiempo-continuo" title="Link to this heading">#</a></h2>
+<p>Considere un hospital con <span class="math notranslate nohighlight">\(B = 20\)</span> camas. Hay dos tipos de pacientes que usan este hospital. Los pacientes de tipo <span class="math notranslate nohighlight">\(i\ (i=1,2)\)</span> llegan según un proceso de Poisson con tasa <span class="math notranslate nohighlight">\(\lambda_1 = 6.5\)</span> y <span class="math notranslate nohighlight">\(\lambda_2 = 3\)</span> pacientes por hora, respectivamente, y requieren un servicio independiente e idénticamente distribuido (iid) con tiempos de servicio que siguen una distribución exponencial con parámetros <span class="math notranslate nohighlight">\(\mu_1 = 2\)</span> y <span class="math notranslate nohighlight">\(\mu_2 = 1.5\)</span> pacientes por hora, respectivamente. El hospital utiliza la siguiente política: reserva <span class="math notranslate nohighlight">\(b = 5\)</span> camas para pacientes de tipo 1. Así, cuando un paciente de tipo 1 llega, se le admite en el hospital siempre que haya una cama disponible. Sin embargo, un paciente de tipo 2 es admitido solo si hay una cama disponible y el número de pacientes de tipo 2 que actualmente ocupan camas es menor que <span class="math notranslate nohighlight">\(B-b\)</span>.</p>
 <p>Se le ha solicitado modelar la anterior situación definiendo claramente variables de estado, espacios de estado y matriz de transición o generadora según sea el caso.</p>
-<h3 style="color: #ADD8E6;">Preguntas</h3>
+<section id="preguntas">
+<h3>Preguntas<a class="headerlink" href="#preguntas" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Construya la matriz de tasas de transición <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span>, luego cree la cadena de Markov utilizando la librería <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>.</p></li>
 </ol>
@@ -656,7 +723,8 @@ Tiempo en 2 desde 1: 1.506
 <li><p>Calcule las distribuciones marginales de los pacientes de ambos tipos, así como su valor esperado, varianza y desviación estándar. Realice un histograma que muestre las dos distribuciones.</p></li>
 <li><p>Responda nuevamente la pregunta 2 utilizando simulación en SimPy y compare los resultados.</p></li>
 </ol>
-<h4 style="color: #ADD8E6;">1. Construir la matriz de de transición y la cadena en jmarkov</h4>
+<section id="construir-la-matriz-de-de-transicion-y-la-cadena-en-jmarkov">
+<h4>1. Construir la matriz de de transición y la cadena en jmarkov<a class="headerlink" href="#construir-la-matriz-de-de-transicion-y-la-cadena-en-jmarkov" title="Link to this heading">#</a></h4>
 <p><strong>Variables de estado:</strong></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(X\left(t\right)\)</span>: El número de pacientes tipo 1 en el tiempo <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
@@ -672,24 +740,24 @@ S_X=\{0,\ 1,\ 2,\ 3,\ \ldots,B\}
 \[
 S_Y=\{0,\ 1,\ 2,\ 3,\ \ldots,B-b\}
 \]</div>
+<p>El espacio de estados conjunto, teniendo en cuenta que el número total de pacientes no puede exceder la capacidad del hospital (<span class="math notranslate nohighlight">\(i + j \le B\)</span>), es:</p>
 <div class="math notranslate nohighlight">
 \[
-S_Z=\{(i,j):0\le i\le B,\ 0\le j\le B-b\}
+S_Z=\{(i,j) : i \ge 0,\ j \ge 0,\ j \le B-b,\ i+j \le B \}
 \]</div>
 <blockquote>
-<div><p><strong>Nota:</strong> El espacio de estados tiene <span class="math notranslate nohighlight">\((B+1) \times (B-b+1) = 21 \times 16 = 336\)</span> estados. La variable de estado <span class="math notranslate nohighlight">\(Z(t) = (X(t), Y(t))\)</span> es <strong>bidimensional</strong>, lo cual hace que la distribución de probabilidad sea una distribución <strong>conjunta</strong> sobre dos variables.</p>
+<div><p><strong>Nota:</strong> La restricción física de las 20 camas reduce el tamaño del sistema. Para cada número de pacientes tipo 2 (<span class="math notranslate nohighlight">\(j\)</span> de 0 a 15), el número de pacientes tipo 1 (<span class="math notranslate nohighlight">\(i\)</span>) puede ir de 0 a <span class="math notranslate nohighlight">\(20-j\)</span>.
+Al sumar estas posibilidades, el espacio de estados real tiene <span class="math notranslate nohighlight">\(216\)</span> estados válidos. La variable de estado <span class="math notranslate nohighlight">\(Z(t) = (X(t), Y(t))\)</span> es bidimensional, lo cual hace que la distribución de probabilidad sea una distribución conjunta sobre dos variables.</p>
 </div></blockquote>
 <p><strong>Matriz generadora:</strong></p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-Q((i,j),(i',j')) = \begin{cases}
-\lambda_1, &amp; \text{si } i' = i + 1,\; j' = j,\; i &lt; B, \\[1mm]
-\lambda_2, &amp; \text{si } j' = j + 1,\; i' = i,\; j &lt; B - b, \\[1mm]
+\[\begin{split}Q((i,j),(i',j')) = \begin{cases}
+\lambda_1, &amp; \text{si } i' = i + 1,\; j' = j,\; i+j &lt; B, \\[1mm]
+\lambda_2, &amp; \text{si } j' = j + 1,\; i' = i,\; i+j &lt; B,\; j &lt; B - b, \\[1mm]
 i \cdot \mu_1, &amp; \text{si } i' = i - 1,\; j' = j,\; i &gt; 0, \\[1mm]
 j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 0, &amp; \text{en otro caso (d.l.c.)}.
-\end{cases}
-\end{split}\]</div>
+\end{cases}\end{split}\]</div>
 <blockquote>
 <div><p><strong>¿Por qué la tasa de salida depende del número de pacientes?</strong> Porque cada paciente se va de forma independiente con tasa <span class="math notranslate nohighlight">\(\mu_i\)</span>. Si hay <span class="math notranslate nohighlight">\(i\)</span> pacientes tipo 1, cada uno intenta irse con tasa <span class="math notranslate nohighlight">\(\mu_1\)</span>, y por la propiedad de suma de exponenciales independientes, la tasa total de salida de un paciente tipo 1 es <span class="math notranslate nohighlight">\(i \cdot \mu_1\)</span>.</p>
 </div></blockquote>
@@ -697,95 +765,1496 @@ j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">jmarkov.ctmc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ctmc</span>
-
-<span class="c1"># Se definen los parámetros</span>
-<span class="n">B</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># Número total de camas</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>   <span class="c1"># Número de camas reservadas para pacientes tipo 1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Definición de parámetros</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mi">20</span>          <span class="c1"># Número total de camas</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>           <span class="c1"># Número de camas reservadas para pacientes tipo 1</span>
 <span class="n">lambda_1</span> <span class="o">=</span> <span class="mf">6.5</span>  <span class="c1"># Tasa de llegada de pacientes tipo 1 (por hora)</span>
-<span class="n">lambda_2</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># Tasa de llegada de pacientes tipo 2 (por hora)</span>
-<span class="n">mu_1</span> <span class="o">=</span> <span class="mi">2</span>      <span class="c1"># Tasa de salida de pacientes tipo 1 (por hora)</span>
-<span class="n">mu_2</span> <span class="o">=</span> <span class="mf">1.5</span>    <span class="c1"># Tasa de salida de pacientes tipo 2 (por hora)</span>
-
-<span class="c1"># Dimensión de la matriz Q</span>
-<span class="n">num_estados</span> <span class="o">=</span> <span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># Inicializamos la matriz Q con ceros</span>
-<span class="n">Q_hospital</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_estados</span><span class="p">,</span> <span class="n">num_estados</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-
-<span class="c1"># Función para mapear (i, j) a índice en la matriz Q</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">j</span>
-
-<span class="c1"># Llenar la matriz Q</span>
+<span class="n">lambda_2</span> <span class="o">=</span> <span class="mi">3</span>    <span class="c1"># Tasa de llegada de pacientes tipo 2 (por hora)</span>
+<span class="n">mu_1</span> <span class="o">=</span> <span class="mi">2</span>        <span class="c1"># Tasa de salida de pacientes tipo 1 (por hora)</span>
+<span class="n">mu_2</span> <span class="o">=</span> <span class="mf">1.5</span>      <span class="c1"># Tasa de salida de pacientes tipo 2 (por hora)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. Generar espacio de estados</span>
+<span class="n">estados</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">idx</span> <span class="o">=</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">B</span><span class="p">:</span>
+            <span class="n">estados</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+                   
+<span class="n">estados</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(0, 0),
+ (0, 1),
+ (0, 2),
+ (0, 3),
+ (0, 4),
+ (0, 5),
+ (0, 6),
+ (0, 7),
+ (0, 8),
+ (0, 9),
+ (0, 10),
+ (0, 11),
+ (0, 12),
+ (0, 13),
+ (0, 14),
+ (0, 15),
+ (1, 0),
+ (1, 1),
+ (1, 2),
+ (1, 3),
+ (1, 4),
+ (1, 5),
+ (1, 6),
+ (1, 7),
+ (1, 8),
+ (1, 9),
+ (1, 10),
+ (1, 11),
+ (1, 12),
+ (1, 13),
+ (1, 14),
+ (1, 15),
+ (2, 0),
+ (2, 1),
+ (2, 2),
+ (2, 3),
+ (2, 4),
+ (2, 5),
+ (2, 6),
+ (2, 7),
+ (2, 8),
+ (2, 9),
+ (2, 10),
+ (2, 11),
+ (2, 12),
+ (2, 13),
+ (2, 14),
+ (2, 15),
+ (3, 0),
+ (3, 1),
+ (3, 2),
+ (3, 3),
+ (3, 4),
+ (3, 5),
+ (3, 6),
+ (3, 7),
+ (3, 8),
+ (3, 9),
+ (3, 10),
+ (3, 11),
+ (3, 12),
+ (3, 13),
+ (3, 14),
+ (3, 15),
+ (4, 0),
+ (4, 1),
+ (4, 2),
+ (4, 3),
+ (4, 4),
+ (4, 5),
+ (4, 6),
+ (4, 7),
+ (4, 8),
+ (4, 9),
+ (4, 10),
+ (4, 11),
+ (4, 12),
+ (4, 13),
+ (4, 14),
+ (4, 15),
+ (5, 0),
+ (5, 1),
+ (5, 2),
+ (5, 3),
+ (5, 4),
+ (5, 5),
+ (5, 6),
+ (5, 7),
+ (5, 8),
+ (5, 9),
+ (5, 10),
+ (5, 11),
+ (5, 12),
+ (5, 13),
+ (5, 14),
+ (5, 15),
+ (6, 0),
+ (6, 1),
+ (6, 2),
+ (6, 3),
+ (6, 4),
+ (6, 5),
+ (6, 6),
+ (6, 7),
+ (6, 8),
+ (6, 9),
+ (6, 10),
+ (6, 11),
+ (6, 12),
+ (6, 13),
+ (6, 14),
+ (7, 0),
+ (7, 1),
+ (7, 2),
+ (7, 3),
+ (7, 4),
+ (7, 5),
+ (7, 6),
+ (7, 7),
+ (7, 8),
+ (7, 9),
+ (7, 10),
+ (7, 11),
+ (7, 12),
+ (7, 13),
+ (8, 0),
+ (8, 1),
+ (8, 2),
+ (8, 3),
+ (8, 4),
+ (8, 5),
+ (8, 6),
+ (8, 7),
+ (8, 8),
+ (8, 9),
+ (8, 10),
+ (8, 11),
+ (8, 12),
+ (9, 0),
+ (9, 1),
+ (9, 2),
+ (9, 3),
+ (9, 4),
+ (9, 5),
+ (9, 6),
+ (9, 7),
+ (9, 8),
+ (9, 9),
+ (9, 10),
+ (9, 11),
+ (10, 0),
+ (10, 1),
+ (10, 2),
+ (10, 3),
+ (10, 4),
+ (10, 5),
+ (10, 6),
+ (10, 7),
+ (10, 8),
+ (10, 9),
+ (10, 10),
+ (11, 0),
+ (11, 1),
+ (11, 2),
+ (11, 3),
+ (11, 4),
+ (11, 5),
+ (11, 6),
+ (11, 7),
+ (11, 8),
+ (11, 9),
+ (12, 0),
+ (12, 1),
+ (12, 2),
+ (12, 3),
+ (12, 4),
+ (12, 5),
+ (12, 6),
+ (12, 7),
+ (12, 8),
+ (13, 0),
+ (13, 1),
+ (13, 2),
+ (13, 3),
+ (13, 4),
+ (13, 5),
+ (13, 6),
+ (13, 7),
+ (14, 0),
+ (14, 1),
+ (14, 2),
+ (14, 3),
+ (14, 4),
+ (14, 5),
+ (14, 6),
+ (15, 0),
+ (15, 1),
+ (15, 2),
+ (15, 3),
+ (15, 4),
+ (15, 5),
+ (16, 0),
+ (16, 1),
+ (16, 2),
+ (16, 3),
+ (16, 4),
+ (17, 0),
+ (17, 1),
+ (17, 2),
+ (17, 3),
+ (18, 0),
+ (18, 1),
+ (18, 2),
+ (19, 0),
+ (19, 1),
+ (20, 0)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convertir los estados a formato texto</span>
+<span class="n">etiquetas</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">estado</span><span class="p">)</span> <span class="k">for</span> <span class="n">estado</span> <span class="ow">in</span> <span class="n">estados</span><span class="p">]</span>
+<span class="n">etiquetas</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;(0, 0)&#39;,
+ &#39;(0, 1)&#39;,
+ &#39;(0, 2)&#39;,
+ &#39;(0, 3)&#39;,
+ &#39;(0, 4)&#39;,
+ &#39;(0, 5)&#39;,
+ &#39;(0, 6)&#39;,
+ &#39;(0, 7)&#39;,
+ &#39;(0, 8)&#39;,
+ &#39;(0, 9)&#39;,
+ &#39;(0, 10)&#39;,
+ &#39;(0, 11)&#39;,
+ &#39;(0, 12)&#39;,
+ &#39;(0, 13)&#39;,
+ &#39;(0, 14)&#39;,
+ &#39;(0, 15)&#39;,
+ &#39;(1, 0)&#39;,
+ &#39;(1, 1)&#39;,
+ &#39;(1, 2)&#39;,
+ &#39;(1, 3)&#39;,
+ &#39;(1, 4)&#39;,
+ &#39;(1, 5)&#39;,
+ &#39;(1, 6)&#39;,
+ &#39;(1, 7)&#39;,
+ &#39;(1, 8)&#39;,
+ &#39;(1, 9)&#39;,
+ &#39;(1, 10)&#39;,
+ &#39;(1, 11)&#39;,
+ &#39;(1, 12)&#39;,
+ &#39;(1, 13)&#39;,
+ &#39;(1, 14)&#39;,
+ &#39;(1, 15)&#39;,
+ &#39;(2, 0)&#39;,
+ &#39;(2, 1)&#39;,
+ &#39;(2, 2)&#39;,
+ &#39;(2, 3)&#39;,
+ &#39;(2, 4)&#39;,
+ &#39;(2, 5)&#39;,
+ &#39;(2, 6)&#39;,
+ &#39;(2, 7)&#39;,
+ &#39;(2, 8)&#39;,
+ &#39;(2, 9)&#39;,
+ &#39;(2, 10)&#39;,
+ &#39;(2, 11)&#39;,
+ &#39;(2, 12)&#39;,
+ &#39;(2, 13)&#39;,
+ &#39;(2, 14)&#39;,
+ &#39;(2, 15)&#39;,
+ &#39;(3, 0)&#39;,
+ &#39;(3, 1)&#39;,
+ &#39;(3, 2)&#39;,
+ &#39;(3, 3)&#39;,
+ &#39;(3, 4)&#39;,
+ &#39;(3, 5)&#39;,
+ &#39;(3, 6)&#39;,
+ &#39;(3, 7)&#39;,
+ &#39;(3, 8)&#39;,
+ &#39;(3, 9)&#39;,
+ &#39;(3, 10)&#39;,
+ &#39;(3, 11)&#39;,
+ &#39;(3, 12)&#39;,
+ &#39;(3, 13)&#39;,
+ &#39;(3, 14)&#39;,
+ &#39;(3, 15)&#39;,
+ &#39;(4, 0)&#39;,
+ &#39;(4, 1)&#39;,
+ &#39;(4, 2)&#39;,
+ &#39;(4, 3)&#39;,
+ &#39;(4, 4)&#39;,
+ &#39;(4, 5)&#39;,
+ &#39;(4, 6)&#39;,
+ &#39;(4, 7)&#39;,
+ &#39;(4, 8)&#39;,
+ &#39;(4, 9)&#39;,
+ &#39;(4, 10)&#39;,
+ &#39;(4, 11)&#39;,
+ &#39;(4, 12)&#39;,
+ &#39;(4, 13)&#39;,
+ &#39;(4, 14)&#39;,
+ &#39;(4, 15)&#39;,
+ &#39;(5, 0)&#39;,
+ &#39;(5, 1)&#39;,
+ &#39;(5, 2)&#39;,
+ &#39;(5, 3)&#39;,
+ &#39;(5, 4)&#39;,
+ &#39;(5, 5)&#39;,
+ &#39;(5, 6)&#39;,
+ &#39;(5, 7)&#39;,
+ &#39;(5, 8)&#39;,
+ &#39;(5, 9)&#39;,
+ &#39;(5, 10)&#39;,
+ &#39;(5, 11)&#39;,
+ &#39;(5, 12)&#39;,
+ &#39;(5, 13)&#39;,
+ &#39;(5, 14)&#39;,
+ &#39;(5, 15)&#39;,
+ &#39;(6, 0)&#39;,
+ &#39;(6, 1)&#39;,
+ &#39;(6, 2)&#39;,
+ &#39;(6, 3)&#39;,
+ &#39;(6, 4)&#39;,
+ &#39;(6, 5)&#39;,
+ &#39;(6, 6)&#39;,
+ &#39;(6, 7)&#39;,
+ &#39;(6, 8)&#39;,
+ &#39;(6, 9)&#39;,
+ &#39;(6, 10)&#39;,
+ &#39;(6, 11)&#39;,
+ &#39;(6, 12)&#39;,
+ &#39;(6, 13)&#39;,
+ &#39;(6, 14)&#39;,
+ &#39;(7, 0)&#39;,
+ &#39;(7, 1)&#39;,
+ &#39;(7, 2)&#39;,
+ &#39;(7, 3)&#39;,
+ &#39;(7, 4)&#39;,
+ &#39;(7, 5)&#39;,
+ &#39;(7, 6)&#39;,
+ &#39;(7, 7)&#39;,
+ &#39;(7, 8)&#39;,
+ &#39;(7, 9)&#39;,
+ &#39;(7, 10)&#39;,
+ &#39;(7, 11)&#39;,
+ &#39;(7, 12)&#39;,
+ &#39;(7, 13)&#39;,
+ &#39;(8, 0)&#39;,
+ &#39;(8, 1)&#39;,
+ &#39;(8, 2)&#39;,
+ &#39;(8, 3)&#39;,
+ &#39;(8, 4)&#39;,
+ &#39;(8, 5)&#39;,
+ &#39;(8, 6)&#39;,
+ &#39;(8, 7)&#39;,
+ &#39;(8, 8)&#39;,
+ &#39;(8, 9)&#39;,
+ &#39;(8, 10)&#39;,
+ &#39;(8, 11)&#39;,
+ &#39;(8, 12)&#39;,
+ &#39;(9, 0)&#39;,
+ &#39;(9, 1)&#39;,
+ &#39;(9, 2)&#39;,
+ &#39;(9, 3)&#39;,
+ &#39;(9, 4)&#39;,
+ &#39;(9, 5)&#39;,
+ &#39;(9, 6)&#39;,
+ &#39;(9, 7)&#39;,
+ &#39;(9, 8)&#39;,
+ &#39;(9, 9)&#39;,
+ &#39;(9, 10)&#39;,
+ &#39;(9, 11)&#39;,
+ &#39;(10, 0)&#39;,
+ &#39;(10, 1)&#39;,
+ &#39;(10, 2)&#39;,
+ &#39;(10, 3)&#39;,
+ &#39;(10, 4)&#39;,
+ &#39;(10, 5)&#39;,
+ &#39;(10, 6)&#39;,
+ &#39;(10, 7)&#39;,
+ &#39;(10, 8)&#39;,
+ &#39;(10, 9)&#39;,
+ &#39;(10, 10)&#39;,
+ &#39;(11, 0)&#39;,
+ &#39;(11, 1)&#39;,
+ &#39;(11, 2)&#39;,
+ &#39;(11, 3)&#39;,
+ &#39;(11, 4)&#39;,
+ &#39;(11, 5)&#39;,
+ &#39;(11, 6)&#39;,
+ &#39;(11, 7)&#39;,
+ &#39;(11, 8)&#39;,
+ &#39;(11, 9)&#39;,
+ &#39;(12, 0)&#39;,
+ &#39;(12, 1)&#39;,
+ &#39;(12, 2)&#39;,
+ &#39;(12, 3)&#39;,
+ &#39;(12, 4)&#39;,
+ &#39;(12, 5)&#39;,
+ &#39;(12, 6)&#39;,
+ &#39;(12, 7)&#39;,
+ &#39;(12, 8)&#39;,
+ &#39;(13, 0)&#39;,
+ &#39;(13, 1)&#39;,
+ &#39;(13, 2)&#39;,
+ &#39;(13, 3)&#39;,
+ &#39;(13, 4)&#39;,
+ &#39;(13, 5)&#39;,
+ &#39;(13, 6)&#39;,
+ &#39;(13, 7)&#39;,
+ &#39;(14, 0)&#39;,
+ &#39;(14, 1)&#39;,
+ &#39;(14, 2)&#39;,
+ &#39;(14, 3)&#39;,
+ &#39;(14, 4)&#39;,
+ &#39;(14, 5)&#39;,
+ &#39;(14, 6)&#39;,
+ &#39;(15, 0)&#39;,
+ &#39;(15, 1)&#39;,
+ &#39;(15, 2)&#39;,
+ &#39;(15, 3)&#39;,
+ &#39;(15, 4)&#39;,
+ &#39;(15, 5)&#39;,
+ &#39;(16, 0)&#39;,
+ &#39;(16, 1)&#39;,
+ &#39;(16, 2)&#39;,
+ &#39;(16, 3)&#39;,
+ &#39;(16, 4)&#39;,
+ &#39;(17, 0)&#39;,
+ &#39;(17, 1)&#39;,
+ &#39;(17, 2)&#39;,
+ &#39;(17, 3)&#39;,
+ &#39;(18, 0)&#39;,
+ &#39;(18, 1)&#39;,
+ &#39;(18, 2)&#39;,
+ &#39;(19, 0)&#39;,
+ &#39;(19, 1)&#39;,
+ &#39;(20, 0)&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3. Inicializar la matriz Q llena de ceros con las etiquetas de texto</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">etiquetas</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">etiquetas</span><span class="p">)</span>
+<span class="n">Q</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-        <span class="c1"># Llegada de un paciente tipo 1</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">B</span><span class="p">:</span>
-            <span class="n">Q_hospital</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="n">lambda_1</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-        <span class="c1"># Llegada de un paciente tipo 2 (si hay espacio disponible)</span>
-        <span class="k">if</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">B</span> <span class="o">-</span> <span class="n">b</span><span class="p">:</span>
-            <span class="n">Q_hospital</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">lambda_2</span>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>(0, 0)</th>
+      <th>(0, 1)</th>
+      <th>(0, 2)</th>
+      <th>(0, 3)</th>
+      <th>(0, 4)</th>
+      <th>(0, 5)</th>
+      <th>(0, 6)</th>
+      <th>(0, 7)</th>
+      <th>(0, 8)</th>
+      <th>(0, 9)</th>
+      <th>...</th>
+      <th>(17, 0)</th>
+      <th>(17, 1)</th>
+      <th>(17, 2)</th>
+      <th>(17, 3)</th>
+      <th>(18, 0)</th>
+      <th>(18, 1)</th>
+      <th>(18, 2)</th>
+      <th>(19, 0)</th>
+      <th>(19, 1)</th>
+      <th>(20, 0)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>(0, 0)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(0, 1)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(0, 2)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(0, 3)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(0, 4)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>(18, 1)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(18, 2)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(19, 0)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(19, 1)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(20, 0)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>216 rows × 216 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4. Llenar la matriz Q</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">estados</span><span class="p">:</span>
+    <span class="n">estado_actual</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span> <span class="c1"># Convertimos la tupla actual a texto</span>
 
-        <span class="c1"># Salida de un paciente tipo 1</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">Q_hospital</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">mu_1</span>
+    <span class="c1"># Llegada paciente tipo 1</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">B</span><span class="p">:</span>
+        <span class="n">estado_futuro</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+        <span class="n">Q</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">estado_actual</span><span class="p">,</span> <span class="n">estado_futuro</span><span class="p">]</span> <span class="o">=</span> <span class="n">lambda_1</span>   
+        
+    <span class="c1"># Llegada paciente tipo 2</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">B</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">B</span> <span class="o">-</span> <span class="n">b</span><span class="p">):</span>
+        <span class="n">estado_futuro</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">Q</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">estado_actual</span><span class="p">,</span> <span class="n">estado_futuro</span><span class="p">]</span> <span class="o">=</span> <span class="n">lambda_2</span>
+        
+    <span class="c1"># Salida paciente tipo 1</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">estado_futuro</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+        <span class="n">Q</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">estado_actual</span><span class="p">,</span> <span class="n">estado_futuro</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">mu_1</span>
+        
+    <span class="c1"># Salida paciente tipo 2</span>
+    <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">estado_futuro</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">Q</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">estado_actual</span><span class="p">,</span> <span class="n">estado_futuro</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">mu_2</span>
 
-        <span class="c1"># Salida de un paciente tipo 2</span>
-        <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">Q_hospital</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">mu_2</span>
+<span class="n">Q</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="c1"># Llenar la diagonal con la suma negativa de las filas de la matriz</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_estados</span><span class="p">):</span>
-    <span class="n">Q_hospital</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Q_hospital</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:])</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>(0, 0)</th>
+      <th>(0, 1)</th>
+      <th>(0, 2)</th>
+      <th>(0, 3)</th>
+      <th>(0, 4)</th>
+      <th>(0, 5)</th>
+      <th>(0, 6)</th>
+      <th>(0, 7)</th>
+      <th>(0, 8)</th>
+      <th>(0, 9)</th>
+      <th>...</th>
+      <th>(17, 0)</th>
+      <th>(17, 1)</th>
+      <th>(17, 2)</th>
+      <th>(17, 3)</th>
+      <th>(18, 0)</th>
+      <th>(18, 1)</th>
+      <th>(18, 2)</th>
+      <th>(19, 0)</th>
+      <th>(19, 1)</th>
+      <th>(20, 0)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>(0, 0)</th>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(0, 1)</th>
+      <td>1.5</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(0, 2)</th>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(0, 3)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.5</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(0, 4)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>(18, 1)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>36.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.5</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6.5</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(18, 2)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>36.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(19, 0)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>38.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>6.5</td>
+    </tr>
+    <tr>
+      <th>(19, 1)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>38.0</td>
+      <td>0.0</td>
+      <td>1.5</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(20, 0)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>40.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>216 rows × 216 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 5. Ajustar la diagonal</span>
+<span class="n">filas_suma</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">estado</span> <span class="ow">in</span> <span class="n">estados</span><span class="p">:</span>
+    <span class="n">estado_actual</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">estado</span><span class="p">)</span>
+    <span class="n">Q</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">estado_actual</span><span class="p">,</span> <span class="n">estado_actual</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">filas_suma</span><span class="p">[</span><span class="n">estado_actual</span><span class="p">]</span>
 
 <span class="c1"># Verificación</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Suma por filas (debe ser ≈ 0):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">Q_hospital</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tamaño de Q: </span><span class="si">{</span><span class="n">Q_hospital</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    
-<span class="nb">print</span><span class="p">(</span><span class="n">Q_hospital</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Suma por filas (debe ser ≈ 0):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">Q</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tamaño de Q: </span><span class="si">{</span><span class="n">Q</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">Q</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Suma por filas (debe ser ≈ 0): True
-Tamaño de Q: (336, 336)
-[[ -9.5   3.    0.  ...   0.    0.    0. ]
- [  1.5 -11.    3.  ...   0.    0.    0. ]
- [  0.    3.  -12.5 ...   0.    0.    0. ]
- ...
- [  0.    0.    0.  ... -62.5   3.    0. ]
- [  0.    0.    0.  ...  21.  -64.    3. ]
- [  0.    0.    0.  ...   0.   22.5 -62.5]]
+Tamaño de Q: (216, 216)
 </pre></div>
 </div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>(0, 0)</th>
+      <th>(0, 1)</th>
+      <th>(0, 2)</th>
+      <th>(0, 3)</th>
+      <th>(0, 4)</th>
+      <th>(0, 5)</th>
+      <th>(0, 6)</th>
+      <th>(0, 7)</th>
+      <th>(0, 8)</th>
+      <th>(0, 9)</th>
+      <th>...</th>
+      <th>(17, 0)</th>
+      <th>(17, 1)</th>
+      <th>(17, 2)</th>
+      <th>(17, 3)</th>
+      <th>(18, 0)</th>
+      <th>(18, 1)</th>
+      <th>(18, 2)</th>
+      <th>(19, 0)</th>
+      <th>(19, 1)</th>
+      <th>(20, 0)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>(0, 0)</th>
+      <td>-9.5</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(0, 1)</th>
+      <td>1.5</td>
+      <td>-11.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(0, 2)</th>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>-12.5</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(0, 3)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.5</td>
+      <td>-14.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(0, 4)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>-15.5</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>(18, 1)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>36.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.5</td>
+      <td>-47.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>6.5</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(18, 2)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>36.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>-39.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(19, 0)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>38.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>-47.5</td>
+      <td>3.0</td>
+      <td>6.5</td>
+    </tr>
+    <tr>
+      <th>(19, 1)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>38.0</td>
+      <td>0.0</td>
+      <td>1.5</td>
+      <td>-39.5</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>(20, 0)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>40.0</td>
+      <td>0.0</td>
+      <td>-40.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>216 rows × 216 columns</p>
+</div></div></div>
 </div>
-</div>
-<p>Es posible visualizar la matriz en excel</p>
+<p>Es posible visualizar la matriz completa en excel</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="c1"># Crear etiquetas para cada estado en formato &quot;(i, j)&quot;</span>
-<span class="n">etiquetas_estados</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">)&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
-
-<span class="c1"># Convertir la matriz de NumPy a un DataFrame de Pandas</span>
-<span class="n">df_Q</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Q_hospital</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">etiquetas_estados</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">etiquetas_estados</span><span class="p">)</span>
-
-<span class="c1"># 3. Exportar a Excel</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exportar a Excel</span>
 <span class="n">nombre_archivo</span> <span class="o">=</span> <span class="s2">&quot;matriz_Q_hospital.xlsx&quot;</span>
-<span class="n">df_Q</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">)</span>
+<span class="n">Q</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matriz exportada exitosamente a </span><span class="si">{</span><span class="n">nombre_archivo</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matriz exportada exitosamente a &#39;</span><span class="si">{</span><span class="n">nombre_archivo</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz exportada exitosamente a matriz_Q_hospital.xlsx
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz exportada exitosamente a &#39;matriz_Q_hospital.xlsx&#39;.
 </pre></div>
 </div>
 </div>
@@ -796,7 +2265,7 @@ Tamaño de Q: (336, 336)
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">jmarkov.ctmc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ctmc</span>
 
 <span class="c1"># Crear la cadena de Markov en tiempo continuo usando jmarkov</span>
-<span class="n">hospital_chain</span> <span class="o">=</span> <span class="n">ctmc</span><span class="p">(</span><span class="n">Q_hospital</span><span class="p">)</span>
+<span class="n">hospital_chain</span> <span class="o">=</span> <span class="n">ctmc</span><span class="p">(</span><span class="n">Q</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Número de estados: </span><span class="si">{</span><span class="n">hospital_chain</span><span class="o">.</span><span class="n">n_states</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;¿Es irreducible?: </span><span class="si">{</span><span class="n">hospital_chain</span><span class="o">.</span><span class="n">is_irreducible</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -805,14 +2274,257 @@ Tamaño de Q: (336, 336)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Número de estados: 336
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Número de estados: 216
 ¿Es irreducible?: True
 ¿Es ergódica?: True
 </pre></div>
 </div>
 </div>
 </div>
-<h4 style="color: #ADD8E6;">2. Cálculo de la probabilidad: después de 6 horas, el hospital tenga 1 paciente tipo 1 y 3 pacientes tipo 2</h4>
+<p>Al modelar cadenas de Markov en Python, es importante recordar que los índices de los arreglos siempre van desde <span class="math notranslate nohighlight">\(0\)</span> hasta <span class="math notranslate nohighlight">\(n-1\)</span>. Sin embargo, la definición matemática de los estados no siempre coincide directamente con esta numeración computacional. Es común trabajar con espacios de estados que incluyen valores negativos (por ejemplo, de -50 a 100) o, como en este modelo, con combinaciones de múltiples variables.</p>
+<p>Por lo tanto, es necesario “traducir” nuestra notación matemática a las posiciones del arreglo. Una forma eficiente y estructurada de resolver esto es crear un diccionario que mapee cada estado del espacio <span class="math notranslate nohighlight">\(S_Z\)</span> a un índice numérico único:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un diccionario para asignarle un índice númerico a cada estado</span>
+<span class="n">mapa_indices</span> <span class="o">=</span> <span class="p">{</span><span class="n">estado</span><span class="p">:</span> <span class="n">idx</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">estado</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">estados</span><span class="p">)}</span>
+<span class="n">mapa_indices</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{(0, 0): 0,
+ (0, 1): 1,
+ (0, 2): 2,
+ (0, 3): 3,
+ (0, 4): 4,
+ (0, 5): 5,
+ (0, 6): 6,
+ (0, 7): 7,
+ (0, 8): 8,
+ (0, 9): 9,
+ (0, 10): 10,
+ (0, 11): 11,
+ (0, 12): 12,
+ (0, 13): 13,
+ (0, 14): 14,
+ (0, 15): 15,
+ (1, 0): 16,
+ (1, 1): 17,
+ (1, 2): 18,
+ (1, 3): 19,
+ (1, 4): 20,
+ (1, 5): 21,
+ (1, 6): 22,
+ (1, 7): 23,
+ (1, 8): 24,
+ (1, 9): 25,
+ (1, 10): 26,
+ (1, 11): 27,
+ (1, 12): 28,
+ (1, 13): 29,
+ (1, 14): 30,
+ (1, 15): 31,
+ (2, 0): 32,
+ (2, 1): 33,
+ (2, 2): 34,
+ (2, 3): 35,
+ (2, 4): 36,
+ (2, 5): 37,
+ (2, 6): 38,
+ (2, 7): 39,
+ (2, 8): 40,
+ (2, 9): 41,
+ (2, 10): 42,
+ (2, 11): 43,
+ (2, 12): 44,
+ (2, 13): 45,
+ (2, 14): 46,
+ (2, 15): 47,
+ (3, 0): 48,
+ (3, 1): 49,
+ (3, 2): 50,
+ (3, 3): 51,
+ (3, 4): 52,
+ (3, 5): 53,
+ (3, 6): 54,
+ (3, 7): 55,
+ (3, 8): 56,
+ (3, 9): 57,
+ (3, 10): 58,
+ (3, 11): 59,
+ (3, 12): 60,
+ (3, 13): 61,
+ (3, 14): 62,
+ (3, 15): 63,
+ (4, 0): 64,
+ (4, 1): 65,
+ (4, 2): 66,
+ (4, 3): 67,
+ (4, 4): 68,
+ (4, 5): 69,
+ (4, 6): 70,
+ (4, 7): 71,
+ (4, 8): 72,
+ (4, 9): 73,
+ (4, 10): 74,
+ (4, 11): 75,
+ (4, 12): 76,
+ (4, 13): 77,
+ (4, 14): 78,
+ (4, 15): 79,
+ (5, 0): 80,
+ (5, 1): 81,
+ (5, 2): 82,
+ (5, 3): 83,
+ (5, 4): 84,
+ (5, 5): 85,
+ (5, 6): 86,
+ (5, 7): 87,
+ (5, 8): 88,
+ (5, 9): 89,
+ (5, 10): 90,
+ (5, 11): 91,
+ (5, 12): 92,
+ (5, 13): 93,
+ (5, 14): 94,
+ (5, 15): 95,
+ (6, 0): 96,
+ (6, 1): 97,
+ (6, 2): 98,
+ (6, 3): 99,
+ (6, 4): 100,
+ (6, 5): 101,
+ (6, 6): 102,
+ (6, 7): 103,
+ (6, 8): 104,
+ (6, 9): 105,
+ (6, 10): 106,
+ (6, 11): 107,
+ (6, 12): 108,
+ (6, 13): 109,
+ (6, 14): 110,
+ (7, 0): 111,
+ (7, 1): 112,
+ (7, 2): 113,
+ (7, 3): 114,
+ (7, 4): 115,
+ (7, 5): 116,
+ (7, 6): 117,
+ (7, 7): 118,
+ (7, 8): 119,
+ (7, 9): 120,
+ (7, 10): 121,
+ (7, 11): 122,
+ (7, 12): 123,
+ (7, 13): 124,
+ (8, 0): 125,
+ (8, 1): 126,
+ (8, 2): 127,
+ (8, 3): 128,
+ (8, 4): 129,
+ (8, 5): 130,
+ (8, 6): 131,
+ (8, 7): 132,
+ (8, 8): 133,
+ (8, 9): 134,
+ (8, 10): 135,
+ (8, 11): 136,
+ (8, 12): 137,
+ (9, 0): 138,
+ (9, 1): 139,
+ (9, 2): 140,
+ (9, 3): 141,
+ (9, 4): 142,
+ (9, 5): 143,
+ (9, 6): 144,
+ (9, 7): 145,
+ (9, 8): 146,
+ (9, 9): 147,
+ (9, 10): 148,
+ (9, 11): 149,
+ (10, 0): 150,
+ (10, 1): 151,
+ (10, 2): 152,
+ (10, 3): 153,
+ (10, 4): 154,
+ (10, 5): 155,
+ (10, 6): 156,
+ (10, 7): 157,
+ (10, 8): 158,
+ (10, 9): 159,
+ (10, 10): 160,
+ (11, 0): 161,
+ (11, 1): 162,
+ (11, 2): 163,
+ (11, 3): 164,
+ (11, 4): 165,
+ (11, 5): 166,
+ (11, 6): 167,
+ (11, 7): 168,
+ (11, 8): 169,
+ (11, 9): 170,
+ (12, 0): 171,
+ (12, 1): 172,
+ (12, 2): 173,
+ (12, 3): 174,
+ (12, 4): 175,
+ (12, 5): 176,
+ (12, 6): 177,
+ (12, 7): 178,
+ (12, 8): 179,
+ (13, 0): 180,
+ (13, 1): 181,
+ (13, 2): 182,
+ (13, 3): 183,
+ (13, 4): 184,
+ (13, 5): 185,
+ (13, 6): 186,
+ (13, 7): 187,
+ (14, 0): 188,
+ (14, 1): 189,
+ (14, 2): 190,
+ (14, 3): 191,
+ (14, 4): 192,
+ (14, 5): 193,
+ (14, 6): 194,
+ (15, 0): 195,
+ (15, 1): 196,
+ (15, 2): 197,
+ (15, 3): 198,
+ (15, 4): 199,
+ (15, 5): 200,
+ (16, 0): 201,
+ (16, 1): 202,
+ (16, 2): 203,
+ (16, 3): 204,
+ (16, 4): 205,
+ (17, 0): 206,
+ (17, 1): 207,
+ (17, 2): 208,
+ (17, 3): 209,
+ (18, 0): 210,
+ (18, 1): 211,
+ (18, 2): 212,
+ (19, 0): 213,
+ (19, 1): 214,
+ (20, 0): 215}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Con este mapa, podemos definir una función auxiliar <code class="docutils literal notranslate"><span class="pre">index(i,</span> <span class="pre">j)</span></code> que nos devuelva rápidamente la posición exacta en el arreglo para cualquier estado de <span class="math notranslate nohighlight">\(S_Z\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Función rápida para obtener el índice de cualquier estado</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mapa_indices</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculo-de-la-probabilidad-despues-de-6-horas-el-hospital-tenga-1-paciente-tipo-1-y-3-pacientes-tipo-2">
+<h4>2. Cálculo de la probabilidad: después de 6 horas, el hospital tenga 1 paciente tipo 1 y 3 pacientes tipo 2<a class="headerlink" href="#calculo-de-la-probabilidad-despues-de-6-horas-el-hospital-tenga-1-paciente-tipo-1-y-3-pacientes-tipo-2" title="Link to this heading">#</a></h4>
 <p>La matriz exponencial <span class="math notranslate nohighlight">\(e^{Qt}\)</span> corresponde a la matriz de probabilidades transitorias al tiempo <span class="math notranslate nohighlight">\(t\)</span>. En esta matriz, las filas representan el estado inicial y las columnas el estado al que se transita. La distribución de probabilidad en el tiempo <span class="math notranslate nohighlight">\(t\)</span> está dada por:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -822,10 +2534,12 @@ Tamaño de Q: (336, 336)
 <p>En nuestro problema se parte del estado <span class="math notranslate nohighlight">\((0,0)\)</span>, es decir,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
+\begin{split}
 \pi(0)=\begin{cases}
 1, &amp; i=0,\ j=0,\\
 0, &amp; \text{d.l.c.}
 \end{cases}
+\end{split}
 \end{split}\]</div>
 <p>La probabilidad solicitada es el componente correspondiente al estado <span class="math notranslate nohighlight">\((1,3)\)</span> del vector <span class="math notranslate nohighlight">\(\pi(6)\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -833,22 +2547,41 @@ Tamaño de Q: (336, 336)
 \big[\pi(0)e^{Q(6)}\big]_{(1,3)}
 \]</div>
 <p>Recordemos que el proceso conjunto es <span class="math notranslate nohighlight">\(Z(t) = (X(t),Y(t))\)</span>, por lo que el estado <span class="math notranslate nohighlight">\((1,3)\)</span> indica 1 paciente tipo 1 y 3 pacientes tipo 2.</p>
-<p><strong>Nota:</strong> Dado que el estado inicial está completamente determinado, la multiplicación <span class="math notranslate nohighlight">\(\pi(0)e^{Q(6)}\)</span> equivale a seleccionar la fila de <span class="math notranslate nohighlight">\(e^{Q(6)}\)</span> correspondiente al estado <span class="math notranslate nohighlight">\((0,0)\)</span>. Por lo tanto,</p>
+<blockquote>
+<div><p><strong>Nota:</strong> Dado que el estado inicial está completamente determinado, la multiplicación <span class="math notranslate nohighlight">\(\pi(0)e^{Q(6)}\)</span> equivale a seleccionar la fila de <span class="math notranslate nohighlight">\(e^{Q(6)}\)</span> correspondiente al estado <span class="math notranslate nohighlight">\((0,0)\)</span>. Por lo tanto,</p>
+</div></blockquote>
 <div class="math notranslate nohighlight">
 \[
-\big[\pi(0)e^{Q(6)}\big]_{(1,3)}
-=
-\big[e^{Q(6)}\big]_{((0,0),(1,3))}
-\]</div>
-<h5 style="color: #ADD8E6;">Solución en jmarkov</h5>
-<p>Para resolver a esta pregunta primero se debe establecer correctamente el vector de estado inicial (hospital vacío).</p>
+ \big[\pi(0)e^{Q(6)}\big]_{(1,3)}
+ =
+ \big[e^{Q(6)}\big]_{((0,0),(1,3))}
+ \]</div>
+<section id="solucion-en-jmarkov">
+<h5>Solución en jmarkov<a class="headerlink" href="#solucion-en-jmarkov" title="Link to this heading">#</a></h5>
+<p>Para resolver esta pregunta primero se debe establecer correctamente el vector de estado inicial (hospital vacío).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --------------------------------------------------------------------</span>
-<span class="c1"># Pregunta 2: Probabilidad de que después de 6 horas el hospital tenga 1 paciente tipo 1, y 3</span>
-<span class="c1"># pacientes tipo 2, dado que al inicio está vacío.</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_estados</span><span class="p">)</span>
-<span class="n">alpha</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pregunta 2: Probabilidad de que después de 6 horas el hospital tenga 1 paciente tipo 1, y 3 pacientes tipo 2, dado que al inicio está vacío.</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estados</span><span class="p">))</span>
+<span class="n">alpha</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>      <span class="c1"># Con probabilidad de 1, el hospital empieza vacío (0,0)</span>
+<span class="n">alpha</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])
 </pre></div>
 </div>
 </div>
@@ -859,6 +2592,65 @@ Tamaño de Q: (336, 336)
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Probabilidades transitorias en 6 horas</span>
 <span class="n">t_eval</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="n">probs_transitorias_6h</span> <span class="o">=</span> <span class="n">hospital_chain</span><span class="o">.</span><span class="n">transient_probabilities</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+<span class="n">probs_transitorias_6h</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5.24891947e-03, 1.04965434e-02, 1.04952481e-02, 6.99596858e-03,
+       3.49755261e-03, 1.39884840e-03, 4.66225256e-04, 1.33190777e-04,
+       3.32935852e-05, 7.39766149e-06, 1.47934973e-06, 2.68939491e-07,
+       4.48177215e-08, 6.89418660e-09, 9.84765039e-10, 1.31288152e-10,
+       1.70588835e-02, 3.41135565e-02, 3.41093466e-02, 2.27367582e-02,
+       1.13669762e-02, 4.54622936e-03, 1.51522277e-03, 4.32867368e-04,
+       1.08203487e-04, 2.40422522e-05, 4.80785710e-06, 8.74047985e-07,
+       1.45656703e-07, 2.24059696e-08, 3.20046692e-09, 4.26683915e-10,
+       2.77205153e-02, 5.54341888e-02, 5.54273478e-02, 3.69470051e-02,
+       1.84712228e-02, 7.38757732e-03, 2.46222188e-03, 7.03405152e-04,
+       1.75829587e-04, 3.90684200e-05, 7.81271986e-06, 1.42031928e-06,
+       2.36690697e-07, 3.64094797e-08, 5.20072754e-09, 6.93357253e-10,
+       3.00303738e-02, 6.00533355e-02, 6.00459245e-02, 4.00256763e-02,
+       2.00103684e-02, 8.00315960e-03, 2.66739066e-03, 7.62017568e-04,
+       1.90480884e-04, 4.23238620e-05, 8.46372799e-06, 1.53866982e-06,
+       2.56413368e-07, 3.94433678e-08, 5.63408890e-09, 7.51132806e-10,
+       2.43995288e-02, 4.87930354e-02, 4.87870139e-02, 3.25206622e-02,
+       1.62583245e-02, 6.50252723e-03, 2.16724160e-03, 6.19135473e-04,
+       1.54764768e-04, 3.43879271e-05, 6.87673698e-06, 1.25016165e-06,
+       2.08334621e-07, 3.20475544e-08, 4.57767371e-09, 6.10292475e-10,
+       1.58595963e-02, 3.17152781e-02, 3.17113642e-02, 2.11383006e-02,
+       1.05678460e-02, 4.22661674e-03, 1.40869839e-03, 4.02435587e-04,
+       1.00596483e-04, 2.23520160e-05, 4.46985191e-06, 8.12600233e-07,
+       1.35416740e-07, 2.08308101e-08, 2.97547934e-09, 3.96688992e-10,
+       8.59056187e-03, 1.71790035e-02, 1.71768834e-02, 1.14498425e-02,
+       5.72421475e-03, 2.28940334e-03, 7.63040277e-04, 2.17984607e-04,
+       5.44894282e-05, 1.21072685e-05, 2.42115534e-06, 4.40155968e-07,
+       7.33503846e-08, 1.12833324e-08, 1.61172817e-09, 3.98845065e-03,
+       7.97591689e-03, 7.97493261e-03, 5.31596564e-03, 2.65765481e-03,
+       1.06293074e-03, 3.54266527e-04, 1.01206520e-04, 2.52985093e-05,
+       5.62119817e-06, 1.12410144e-06, 2.04357145e-07, 3.40554650e-08,
+       5.23872555e-09, 1.62029812e-03, 3.24019633e-03, 3.23979647e-03,
+       2.15959778e-03, 1.07966564e-03, 4.31812965e-04, 1.43919896e-04,
+       4.11148984e-05, 1.02774578e-05, 2.28359871e-06, 4.56663989e-07,
+       8.30199088e-08, 1.38351247e-08, 5.85104061e-04, 1.17006371e-03,
+       1.16991932e-03, 7.79849965e-04, 3.89876867e-04, 1.55931505e-04,
+       5.19707569e-05, 1.48469575e-05, 3.71128292e-06, 8.24628809e-07,
+       1.64906061e-07, 2.99796055e-08, 1.90157652e-04, 3.80268370e-04,
+       3.80221444e-04, 2.53449683e-04, 1.26709206e-04, 5.06774302e-05,
+       1.68903945e-05, 4.82523339e-06, 1.20616095e-06, 2.68003717e-07,
+       5.35948070e-08, 5.61825974e-05, 1.12351329e-04, 1.12337464e-04,
+       7.48824022e-05, 3.74365824e-05, 1.49727869e-05, 4.99031496e-06,
+       1.42562997e-06, 3.56364837e-07, 7.91834002e-08, 1.52160267e-05,
+       3.04282981e-05, 3.04245435e-05, 2.02805268e-05, 1.01390133e-05,
+       4.05510626e-06, 1.35153678e-06, 3.86107105e-07, 9.65160496e-08,
+       3.80398332e-06, 7.60702788e-06, 7.60608942e-06, 5.07010109e-06,
+       2.53473855e-06, 1.01377137e-06, 3.37883274e-07, 9.65273330e-08,
+       8.83062143e-07, 1.76590640e-06, 1.76568866e-06, 1.17698088e-06,
+       5.88418412e-07, 2.35339120e-07, 7.84376281e-08, 1.91328961e-07,
+       3.82610737e-07, 3.82563634e-07, 2.55011196e-07, 1.27490285e-07,
+       5.09904201e-08, 3.88634598e-08, 7.77173494e-08, 7.77078308e-08,
+       5.17989939e-08, 2.58966009e-08, 7.42973533e-09, 1.48576501e-08,
+       1.48558630e-08, 9.90279963e-09, 1.34147286e-09, 2.68262278e-09,
+       2.68232196e-09, 2.29461718e-10, 4.58871904e-10, 3.72877041e-11])
 </pre></div>
 </div>
 </div>
@@ -878,7 +2670,10 @@ Tamaño de Q: (336, 336)
 </div>
 </div>
 </div>
-<h4 style="color: #ADD8E6;">3. Visualización de la distribución conjunta después de 6 horas dado que el sistema inició vacío</h4>
+</section>
+</section>
+<section id="visualizacion-de-la-distribucion-conjunta-despues-de-6-horas-dado-que-el-sistema-inicio-vacio">
+<h4>3. Visualización de la distribución conjunta después de 6 horas dado que el sistema inició vacío<a class="headerlink" href="#visualizacion-de-la-distribucion-conjunta-despues-de-6-horas-dado-que-el-sistema-inicio-vacio" title="Link to this heading">#</a></h4>
 <p>Dado que el vector calculado en el punto anterior <code class="docutils literal notranslate"><span class="pre">probs_transitorias_6h</span></code> contiene las probabilidades de todas las posibles combinaciones de pacientes de tipo 1 y 2, dado que el hospital estaba vacío al inicio y de que transcurran 6 horas, es posible hacer un mapa de calor que ilustre el posible comportamiento del hospital según el tipo de paciente.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -886,7 +2681,8 @@ Tamaño de Q: (336, 336)
 <span class="n">pi_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">pi_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">probs_transitorias_6h</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">B</span><span class="p">:</span>
+            <span class="n">pi_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">probs_transitorias_6h</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Suma total de probabilidades: </span><span class="si">{</span><span class="n">pi_matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dimensión de la distribución conjunta: </span><span class="si">{</span><span class="n">pi_matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> (tipo1 × tipo2)&quot;</span><span class="p">)</span>
@@ -943,7 +2739,10 @@ Dimensión de la distribución conjunta: (21, 16) (tipo1 × tipo2)
 </div>
 </div>
 </div>
-<h4 style="color: #ADD8E6;">4. Probabilidades marginales de pacientes tipo 1 y 2</h4><p>Un resultado interesante del mapa de calor es ver como el comportamiento de los pacientes tipo 1 y 2 está concentrado en un área y a medida que nos alejamos de esta, la probabilidad disminuye drásticamente.
+</section>
+<section id="probabilidades-marginales-de-pacientes-tipo-1-y-2">
+<h4>4. Probabilidades marginales de pacientes tipo 1 y 2<a class="headerlink" href="#probabilidades-marginales-de-pacientes-tipo-1-y-2" title="Link to this heading">#</a></h4>
+<p>Un resultado interesante del mapa de calor es ver como el comportamiento de los pacientes tipo 1 y 2 está concentrado en un área y a medida que nos alejamos de esta, la probabilidad disminuye drásticamente.
 Otra forma de ver este comportamineto es si realizamos un histograma para la distribución marginal de los pacientes de cada tipo. La distribuciones marginales se pueden calcular de la siguiente manera:</p>
 <p>Olvidamos <span class="math notranslate nohighlight">\(Y\)</span> sumando sobre todos sus valores:
 <div class="math notranslate nohighlight">
@@ -1016,7 +2815,9 @@ Var[Y(6)] = 2.000
 <img alt="../../_images/75a866ac7ed1917eb3bf56c2fdbc1a2a5c424d2c5c96d88975909e0d4883315b.png" src="../../_images/75a866ac7ed1917eb3bf56c2fdbc1a2a5c424d2c5c96d88975909e0d4883315b.png" />
 </div>
 </div>
-<h4 style="color: #ADD8E6;">5. Comparación con Simulación en SimPy</h4>
+</section>
+<section id="comparacion-con-simulacion-en-simpy">
+<h4>5. Comparación con Simulación en SimPy<a class="headerlink" href="#comparacion-con-simulacion-en-simpy" title="Link to this heading">#</a></h4>
 <p>En las sesiones anteriores utilizamos <strong>SimPy</strong> para simular sistemas de colas. Dado que una Cadena de Markov en Tiempo Continuo (CMTC) se basa en eventos que ocurren en el tiempo (llegadas, salidas, transiciones), podemos usar el entorno de SimPy para simular el comportamiento dinámico de nuestro hospital.</p>
 <p>Para esto, simularemos el hospital múltiples veces, parando el reloj de SimPy exactamente a las 6 horas, para revisar en qué estado se encuentra. Para esto se modelarán las llegadas como procesos de Poisson y los tiempos de servicio como exponenciales.</p>
 <div class="cell docutils container">
@@ -1041,8 +2842,8 @@ Var[Y(6)] = 2.000
             <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="c1"># Tiempo entre llegadas ~ Exp(λ₁)</span>
                 <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">lambda_1</span><span class="p">))</span>
-                <span class="c1"># Admitir si hay cama disponible (i &lt; B)</span>
-                <span class="k">if</span> <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo1&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">B</span><span class="p">:</span>
+                <span class="c1"># Admitir si hay cama disponible en total</span>
+                <span class="k">if</span> <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo1&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">B</span><span class="p">:</span>
                     <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo1&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
                     <span class="c1"># Calcular la salida de este paciente</span>
                     <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">servicio_tipo1</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">estado</span><span class="p">))</span>
@@ -1051,8 +2852,8 @@ Var[Y(6)] = 2.000
         <span class="k">def</span><span class="w"> </span><span class="nf">llegadas_tipo2</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">estado</span><span class="p">):</span>
             <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">lambda_2</span><span class="p">))</span>
-                <span class="c1"># Admitir solo si j &lt; B - b</span>
-                <span class="k">if</span> <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">B</span> <span class="o">-</span> <span class="n">b</span><span class="p">:</span>
+                <span class="c1"># Admitir solo si hay cama disponible y j &lt; B - b</span>
+                <span class="k">if</span> <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo1&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">B</span> <span class="ow">and</span> <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">B</span> <span class="o">-</span> <span class="n">b</span><span class="p">:</span>
                     <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo2&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
                     <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">servicio_tipo2</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">estado</span><span class="p">))</span>
         
@@ -1076,27 +2877,22 @@ Var[Y(6)] = 2.000
         <span class="n">resultados</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo1&#39;</span><span class="p">],</span> <span class="n">estado</span><span class="p">[</span><span class="s1">&#39;tipo2&#39;</span><span class="p">]))</span>
     
     <span class="k">return</span> <span class="n">resultados</span>
-
-<span class="c1"># Ejecutar la simulación</span>
-<span class="n">n_sim</span> <span class="o">=</span> <span class="mi">50_000</span>
-<span class="n">resultados_sim</span> <span class="o">=</span> <span class="n">simular_hospital_procesos</span><span class="p">(</span><span class="n">n_sim</span><span class="p">,</span> <span class="n">t_final</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulación completada con </span><span class="si">{</span><span class="n">n_sim</span><span class="si">}</span><span class="s2"> réplicas&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulación completada con 50000 réplicas
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapear los resultados a índices de estados con index(i, j)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ejecutar la simulación</span>
+<span class="n">n_sim</span> <span class="o">=</span> <span class="mi">50_000</span>
+<span class="n">resultados_sim</span> <span class="o">=</span> <span class="n">simular_hospital_procesos</span><span class="p">(</span><span class="n">n_sim</span><span class="p">,</span> <span class="n">t_final</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulación completada con </span><span class="si">{</span><span class="n">n_sim</span><span class="si">}</span><span class="s2"> réplicas&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mapear los resultados a índices de estados con la función index(i, j)</span>
 <span class="n">estados_simulados</span> <span class="o">=</span> <span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">resultados_sim</span><span class="p">]</span>
 
 <span class="c1"># Contar las ocurrencias de cada estado</span>
-<span class="n">conteos_estados</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">estados_simulados</span><span class="p">)</span>
+<span class="n">conteos_estados</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">estados_simulados</span><span class="p">,</span> <span class="n">minlength</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">estados</span><span class="p">))</span>
 
 <span class="c1"># Calcular el vector de probabilidades dividiendo por el total de simulaciones</span>
 <span class="n">probs_simuladas_6h</span> <span class="o">=</span> <span class="n">conteos_estados</span> <span class="o">/</span> <span class="n">n_sim</span>
@@ -1112,8 +2908,9 @@ Var[Y(6)] = 2.000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(X(6)=1, Y(6)=3):
-Resultado simulado = 0.023180
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulación completada con 50000 réplicas
+P(X(6)=1, Y(6)=3):
+Resultado simulado = 0.022860
 Resultado de jmarkov = 0.022737
 </pre></div>
 </div>
@@ -1121,7 +2918,9 @@ Resultado de jmarkov = 0.022737
 </div>
 <p>Al igual que en casos anteriores, podemos observar cómo la simulación logra una excelente aproximación al resultado exacto resuelto mediante la matriz exponencial de la distribución transitoria en <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>.</p>
 <p>Por el teorema de la Ley de los números grandes, a medida que aumentemos el número de réplicas (<code class="docutils literal notranslate"><span class="pre">n_simulaciones</span></code>), nuestra probabilidad estimada convergerá de manera mucho más exacta a la probabilidad teórica calculada por la herramienta analítica.</p>
-<h4 style="color: #ADD8E6;">(Opcional) Simulación modelando saltos a partir de la matriz Q</h4>
+</section>
+<section id="opcional-simulacion-modelando-saltos-a-partir-de-la-matriz-q">
+<h4>(Opcional) Simulación modelando saltos a partir de la matriz Q<a class="headerlink" href="#opcional-simulacion-modelando-saltos-a-partir-de-la-matriz-q" title="Link to this heading">#</a></h4>
 <p>También es posible usar la matriz <span class="math notranslate nohighlight">\(Q\)</span> directamente para generar tiempos de permanencia y transiciones.</p>
 <p><strong>Intuición</strong></p>
 <ol class="arabic simple">
@@ -1166,11 +2965,13 @@ Resultado de jmarkov = 0.022737
     
     <span class="k">return</span> <span class="n">estados_finales</span>
 
+<span class="n">Q_numpy</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
 <span class="c1"># Ejecutar la simulación de saltos con la matriz Q</span>
-<span class="n">estados_finales_Q</span> <span class="o">=</span> <span class="n">simular_saltos_Q</span><span class="p">(</span><span class="n">Q_hospital</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mf">6.0</span><span class="p">,</span> <span class="n">n_sim</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">estados_finales_Q</span> <span class="o">=</span> <span class="n">simular_saltos_Q</span><span class="p">(</span><span class="n">Q_numpy</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">6.0</span><span class="p">,</span> <span class="n">n_sim</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="c1"># Comparar con jmarkov</span>
-<span class="n">prob_1_3_Q</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">estados_finales_Q</span> <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">/</span> <span class="n">n_sim</span>
+<span class="n">prob_1_3_Q</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">estados_finales_Q</span> <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">/</span> <span class="n">n_sim</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(X(6)=1, Y(6)=3):&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  jmarkov:        </span><span class="si">{</span><span class="n">prob_1_3</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Sim. procesos:  </span><span class="si">{</span><span class="n">prob_1_3_sim</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1181,7 +2982,7 @@ Resultado de jmarkov = 0.022737
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(X(6)=1, Y(6)=3):
   jmarkov:        0.022737
-  Sim. procesos:  0.023180
+  Sim. procesos:  0.022860
   Sim. saltos Q:  0.023500
 </pre></div>
 </div>
@@ -1192,9 +2993,14 @@ Resultado de jmarkov = 0.022737
 <li><p>¿Por qué si la semilla utilizada en los dos ejemplos de simulación fue la misma los resultados dieron distintos?</p></li>
 <li><p>A partir de los vectores simulados elabore un mapa de calor y compare con los resultados de <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code></p></li>
 </ul>
-<h4 style="color: #ADD8E6;">Próxima sesión</h4>
+</section>
+<section id="proxima-sesion">
+<h4>Próxima sesión<a class="headerlink" href="#proxima-sesion" title="Link to this heading">#</a></h4>
 <p>En la siguiente sesión profundizaremos en el análisis transitorio vs estado estable, mostraremos cómo la distribución converge al estado estable, y responderemos preguntas más complejas sobre el hospital (costos, tiempos de primera pasada, tiempos de ocupación).</p>
 <p>Universidad de los Andes | Vigilada Mineducación. Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia. Departamento de Ingeniería Industrial Carrera 1 Este No. 19 A 40 Bogotá, Colombia Tel. (57.1) 3324320 | (57.1) 3394949 Ext. 2880 /2881 http://industrial.uniandes.edu.co</p>
+</section>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1251,6 +3057,45 @@ Resultado de jmarkov = 0.022737
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos-de-aprendizaje">Objetivos de aprendizaje</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-jmarkov">Introducción a jmarkov</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-transitorio">Análisis transitorio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidades-en-estado-estable">Probabilidades en estado estable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-primera-pasada">Tiempo de primera pasada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-ocupacion">Tiempo de ocupación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-preguntas-puedo-hacerle-a-una-distribucion">¿Qué preguntas puedo hacerle a una distribución?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-de-implementacion-hospital-en-tiempo-continuo">Ejercicio de implementación: Hospital en tiempo continuo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas">Preguntas</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#construir-la-matriz-de-de-transicion-y-la-cadena-en-jmarkov">1. Construir la matriz de de transición y la cadena en jmarkov</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-probabilidad-despues-de-6-horas-el-hospital-tenga-1-paciente-tipo-1-y-3-pacientes-tipo-2">2. Cálculo de la probabilidad: después de 6 horas, el hospital tenga 1 paciente tipo 1 y 3 pacientes tipo 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solucion-en-jmarkov">Solución en jmarkov</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-la-distribucion-conjunta-despues-de-6-horas-dado-que-el-sistema-inicio-vacio">3. Visualización de la distribución conjunta después de 6 horas dado que el sistema inició vacío</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidades-marginales-de-pacientes-tipo-1-y-2">4. Probabilidades marginales de pacientes tipo 1 y 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-con-simulacion-en-simpy">5. Comparación con Simulación en SimPy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#opcional-simulacion-modelando-saltos-a-partir-de-la-matriz-q">(Opcional) Simulación modelando saltos a partir de la matriz Q</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proxima-sesion">Próxima sesión</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

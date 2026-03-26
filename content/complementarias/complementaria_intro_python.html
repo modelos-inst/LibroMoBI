@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0361f5db" />
@@ -210,6 +210,7 @@
 
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
 </ul>
 
     </div>
@@ -554,21 +555,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matplotlib in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (3.10.7)
-Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (1.3.1)
-Requirement already satisfied: cycler&gt;=0.10 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (4.57.0)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (1.4.8)
-Requirement already satisfied: numpy&gt;=1.23 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (2.3.4)
-Requirement already satisfied: packaging&gt;=20.0 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (26.0)
-Requirement already satisfied: pillow&gt;=8 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (11.0.0)
-Requirement already satisfied: pyparsing&gt;=3 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (3.2.3)
-Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (2.9.0.post0)
-Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.2 -&gt; 26.0.1
-[notice] To update, run: C:\Users\jpine\AppData\Local\Programs\Python\Python312\python.exe -m pip install --upgrade pip
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matplotlib in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (3.10.8)
+Requirement already satisfied: contourpy&gt;=1.0.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (4.61.1)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.4.9)
+Requirement already satisfied: numpy&gt;=1.23 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (2.4.1)
+Requirement already satisfied: packaging&gt;=20.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (25.0)
+Requirement already satisfied: pillow&gt;=8 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (12.1.0)
+Requirement already satisfied: pyparsing&gt;=3 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (3.3.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
 </pre></div>
 </div>
 </div>
@@ -811,11 +808,7 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (2.3.4)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.2 -&gt; 26.0.1
-[notice] To update, run: C:\Users\jpine\AppData\Local\Programs\Python\Python312\python.exe -m pip install --upgrade pip
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (2.4.1)
 </pre></div>
 </div>
 </div>
@@ -980,12 +973,12 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 6.66965899 34.2954004  27.6432657  20.45586944 25.56695773 13.5853794 ]
- [24.59935014 21.48436837 18.88932111 19.7426724  23.05123045 34.33478369]
- [32.87333342 19.22267505 24.17571676 28.843899   16.46522437 20.66879057]
- [ 1.9584009  20.06426817  8.95712    17.2194572  19.82949854 33.81855712]
- [15.43636499 18.82364664 25.68213054 26.82115708 26.34753431  4.31238716]
- [ 9.74081794 16.79792415 21.53352547 18.3513963   1.96405968 21.90801328]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[19.49919261 23.93237293 15.88828139 32.22347258 13.72490622 27.57710537]
+ [11.09016655 21.56602823 20.4885607   7.6453646  18.59885267 21.30235256]
+ [27.48226246 21.31804327 32.16024016  3.7837148   7.49340797 13.43183691]
+ [23.85047817  9.41825645  2.49556973 13.31950085 22.82315167 12.53644588]
+ [23.41481839 10.41743089 11.72959647 35.81268542 27.9115469   5.75016035]
+ [27.5322988  22.92784783 37.27708553 21.97057489 41.06704951 11.30020305]]
 </pre></div>
 </div>
 </div>
@@ -998,12 +991,12 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[13.04965837  8.07962054 13.78795842 17.11083801 11.41100673 13.1281777 ]
- [ 8.2304545   8.83658964  9.02175836 13.92088052 16.35047402 11.58828233]
- [13.59013488  7.85473482 11.83584819  9.71583726  6.37834796 11.03368488]
- [13.17648174 10.89752608  7.55547605  9.69771572 10.02829994 12.30679815]
- [ 8.95745655  8.55109384  8.64193385 10.23557991  9.62549207 10.72104176]
- [10.99930913 11.79307042 11.37120392  9.41091746 10.03979236  7.03239406]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 5.5120452   9.34083852  7.32867914 17.18203108 10.77294437  6.31278953]
+ [12.29011982  8.0764677   8.60278735  8.09500306  9.32803599 12.21836418]
+ [11.05976841 13.28604969  8.54885853 11.08969208 14.46434117 13.15513132]
+ [10.56633275 10.34534581 10.77479131 11.70942768 16.13635584 12.16757589]
+ [ 4.85781098 12.082007    9.64150332 11.23337037  9.42175755  5.62022022]
+ [11.04025238  9.15285373 11.52597647 14.80597375 11.46889962 13.50758357]]
 </pre></div>
 </div>
 </div>
@@ -1060,12 +1053,12 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[19.71931736 42.37502094 41.43122412 37.56670745 36.97796445 26.71355709]
- [32.82980464 30.320958   27.91107947 33.66355292 39.40170447 45.92306602]
- [46.4634683  27.07740987 36.01156495 38.55973626 22.84357232 31.70247545]
- [15.13488264 30.96179426 16.51259605 26.91717291 29.85779848 46.12535527]
- [24.39382154 27.37474048 34.32406439 37.05673698 35.97302638 15.03342892]
- [20.74012707 28.59099457 32.90472939 27.76231376 12.00385204 28.94040734]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[25.0112378  33.27321145 23.21696053 49.40550366 24.49785059 33.8898949 ]
+ [23.38028637 29.64249593 29.09134805 15.74036766 27.92688866 33.52071674]
+ [38.54203087 34.60409296 40.70909869 14.87340688 21.95774915 26.58696823]
+ [34.41681092 19.76360227 13.27036104 25.02892852 38.95950751 24.70402177]
+ [28.27262937 22.49943788 21.37109979 47.04605579 37.33330445 11.37038057]
+ [38.57255119 32.08070156 48.803062   36.77654864 52.53594913 24.80778662]]
 </pre></div>
 </div>
 </div>
@@ -1077,18 +1070,18 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1392.96030368 1175.83037653 1258.53120096 1448.04182627 1400.79847531
-  1411.38075264]
- [1598.82591065 1354.14461389 1495.37305802 1654.04574151 1517.04459465
-  1511.88840035]
- [1670.63843154 1324.23211832 1508.0683973  1707.7375099  1498.870334
-  1597.92346966]
- [1088.91747681 1019.51665498 1000.0565622  1088.06754787 1110.62110318
-  1019.38536503]
- [1342.2387345  1061.22392025 1166.00544089 1346.06404664 1213.60363707
-  1347.03559771]
- [1058.38524045  871.42102944  945.46763946 1013.97610105  946.04513125
-   961.10188936]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1288.94801148 1338.11693424 1281.99809992 1644.76578857 1628.68048792
+  1466.23977439]
+ [ 959.09383231 1048.7635465   949.18655619 1206.19319719 1159.91271419
+  1088.33969003]
+ [ 993.8420058  1108.78329668  927.56811152 1328.77066046 1245.80187614
+  1126.61843725]
+ [ 664.83119834  860.29454861  785.20914664 1111.67450803  954.63212779
+   758.14255004]
+ [ 964.30262276 1219.04258005 1082.75299119 1434.74440237 1425.89166655
+  1099.69454629]
+ [1402.22266805 1764.51067045 1480.61764192 1957.94795679 1920.71388885
+  1595.10429432]]
 </pre></div>
 </div>
 </div>
@@ -1100,8 +1093,8 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([128.21653164, 142.10172616, 142.24963916, 101.84730192,
-       117.42322073,  90.29573683])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([132.8453311 , 100.6913253 , 105.66950557,  84.44340275,
+       115.03623843, 162.07505962])
 </pre></div>
 </div>
 </div>
@@ -1113,8 +1106,8 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\progr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 91.27792638, 130.68828279, 126.88107958, 131.43445141,
-       113.22450508, 128.62791121])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([132.86921699, 109.5799796 , 120.03933398, 114.75531314,
+       131.61891495,  91.89810411])
 </pre></div>
 </div>
 </div>

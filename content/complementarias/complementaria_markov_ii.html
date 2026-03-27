@@ -365,7 +365,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-de-un-hospital-en-tiempo-continuo-continuacion">Ejercicio de un hospital en tiempo continuo (Continuación)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas">Preguntas</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-probabilidad-de-que-haya-4-pacientes-tipo-2-luego-de-5-horas-partiendo-de-que-el-hospital-tenia-1-paciente-tipo-1-y-1-paciente-tipo-2">1. Cálculo de la probabilidad de que haya 4 pacientes tipo 2 luego de 5 horas, partiendo de que el hospital tenía 1 paciente tipo 1 y 1 paciente tipo 2.</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-horas">2. Cálculo de la varianza del número total de pacientes tras 2 horas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-y-6-horas">2. Cálculo de la varianza del número total de pacientes tras 2 y 6 horas</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-estado-estable-para-la-condicion-x-y">3. Cálculo estado estable para la condición X &gt; Y</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generacion-de-la-grafica-de-la-probabilidad-de-que-haya-mas-pacientes-tipo-1-que-tipo-2-en-funcion-del-tiempo-0-a-24-horas">4. Generación de la gráfica de la probabilidad de que haya más pacientes tipo 1 que tipo 2 en función del tiempo (0 a 24 horas)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-del-costo-operativo-esperado-en-estado-estable">5. Cálculo del costo operativo esperado en estado estable</a></li>
@@ -630,8 +630,8 @@ j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 </div>
 </div>
 </section>
-<section id="calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-horas">
-<h4>2. Cálculo de la varianza del número total de pacientes tras 2 horas<a class="headerlink" href="#calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-horas" title="Link to this heading">#</a></h4>
+<section id="calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-y-6-horas">
+<h4>2. Cálculo de la varianza del número total de pacientes tras 2 y 6 horas<a class="headerlink" href="#calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-y-6-horas" title="Link to this heading">#</a></h4>
 <p>Sea <span class="math notranslate nohighlight">\(T(t) = X(t) + Y(t)\)</span> el número total de pacientes, podemos calcular su varianza como:</p>
 <div class="math notranslate nohighlight">
 \[\text{Var}(T) = E[T^2] - (E[T])^2 = \sum_{(i,j) \in S} (i+j)^2 \pi_{(i,j)}(t) - \left(\sum_{(i,j) \in S} (i+j) \pi_{(i,j)}(t)\right)^2\]</div>
@@ -1065,7 +1065,7 @@ m = \bar Q^{-1}\,\mathbf{1},\quad m_{(0,0)\to(10,3)} = [m]_{(0,0)}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-de-un-hospital-en-tiempo-continuo-continuacion">Ejercicio de un hospital en tiempo continuo (Continuación)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas">Preguntas</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-probabilidad-de-que-haya-4-pacientes-tipo-2-luego-de-5-horas-partiendo-de-que-el-hospital-tenia-1-paciente-tipo-1-y-1-paciente-tipo-2">1. Cálculo de la probabilidad de que haya 4 pacientes tipo 2 luego de 5 horas, partiendo de que el hospital tenía 1 paciente tipo 1 y 1 paciente tipo 2.</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-horas">2. Cálculo de la varianza del número total de pacientes tras 2 horas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-y-6-horas">2. Cálculo de la varianza del número total de pacientes tras 2 y 6 horas</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-estado-estable-para-la-condicion-x-y">3. Cálculo estado estable para la condición X &gt; Y</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generacion-de-la-grafica-de-la-probabilidad-de-que-haya-mas-pacientes-tipo-1-que-tipo-2-en-funcion-del-tiempo-0-a-24-horas">4. Generación de la gráfica de la probabilidad de que haya más pacientes tipo 1 que tipo 2 en función del tiempo (0 a 24 horas)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-del-costo-operativo-esperado-en-estado-estable">5. Cálculo del costo operativo esperado en estado estable</a></li>

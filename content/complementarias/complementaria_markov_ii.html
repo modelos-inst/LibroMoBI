@@ -369,7 +369,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-estado-estable-para-la-condicion-x-y">3. Cálculo estado estable para la condición X &gt; Y</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generacion-de-la-grafica-de-la-probabilidad-de-que-haya-mas-pacientes-tipo-1-que-tipo-2-en-funcion-del-tiempo-0-a-24-horas">4. Generación de la gráfica de la probabilidad de que haya más pacientes tipo 1 que tipo 2 en función del tiempo (0 a 24 horas)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-del-costo-operativo-esperado-en-estado-estable">5. Cálculo del costo operativo esperado en estado estable</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-primera-pasada-al-estado-1-3">6. Tiempo de primera pasada al estado (1, 3)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-primera-pasada-al-estado-10-3">6. Tiempo de primera pasada al estado (10, 3)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-esperado-de-ocupacion">7: Tiempo esperado de ocupación</a></li>
 </ul>
 </li>
@@ -638,7 +638,7 @@ j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 <blockquote>
 <div><p><strong>Nota:</strong> <span class="math notranslate nohighlight">\(T = X + Y\)</span> es una <strong>variable aleatoria nueva</strong> que se construye como función de <span class="math notranslate nohighlight">\((X, Y)\)</span>. Podemos calcular su distribución completa, no solo su varianza.</p>
 </div></blockquote>
-<p>Para implementarlo primero definimos los vectores de probabilidades transitorias para 1 y 6 horas dado que el hospital estaba vacio al inicio.</p>
+<p>Para implementarlo primero definimos los vectores de probabilidades transitorias para 2 y 6 horas dado que el hospital estaba vacio al inicio.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --------------------------------------------------------------------</span>
@@ -682,7 +682,7 @@ j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 </div>
 </div>
 </div>
-<p>Ahora respondemos a la pregunta llamando esa función y utilizando como parámetro los dos vectores de probabilidades pasadas 1 hora y 6 horas:</p>
+<p>Ahora respondemos a la pregunta llamando esa función y utilizando como parámetro los dos vectores de probabilidades pasadas 2 hora y 6 horas:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cálculo de varianza en los distintos momentos</span>
@@ -907,21 +907,21 @@ C(i, j) = 100i + 80j
 </div>
 </div>
 </section>
-<section id="tiempo-de-primera-pasada-al-estado-1-3">
-<h4>6. Tiempo de primera pasada al estado (1, 3)<a class="headerlink" href="#tiempo-de-primera-pasada-al-estado-1-3" title="Link to this heading">#</a></h4>
-<p>El tiempo promedio de primera pasada al estado objetivo (1, 3) se denota <span class="math notranslate nohighlight">\(m_{(0,0)\to(1,3)}\)</span>. Para encontrarlo se debe resolver el sistema lineal:</p>
+<section id="tiempo-de-primera-pasada-al-estado-10-3">
+<h4>6. Tiempo de primera pasada al estado (10, 3)<a class="headerlink" href="#tiempo-de-primera-pasada-al-estado-10-3" title="Link to this heading">#</a></h4>
+<p>El tiempo promedio de primera pasada al estado objetivo (10, 3) se denota <span class="math notranslate nohighlight">\(m_{(0,0)\to(10,3)}\)</span>. Para encontrarlo se debe resolver el sistema lineal:</p>
 <div class="math notranslate nohighlight">
 \[
-r(i,j)\,m_{(i,j)\to(1,3)}
-= 1 + \sum_{(k,\ell)\neq(1,3)} q_{(i,j),(k,\ell)}\, m_{(k,\ell)\to(1,3)}
+r(i,j)\,m_{(i,j)\to(10,3)}
+= 1 + \sum_{(k,\ell)\neq(10,3)} q_{(i,j),(k,\ell)}\, m_{(k,\ell)\to(10,3)}
 \]</div>
 <p>Equivalente a resolver por el método de la matriz recortada <span class="math notranslate nohighlight">\(\bar{Q}\)</span> igual a la matriz <span class="math notranslate nohighlight">\(Q\)</span> sin la fila/columna del estado objetivo.
 <div class="math notranslate nohighlight">
 \[
-m = \bar Q^{-1}\,\mathbf{1},\quad m_{(0,0)\to(1,3)} = [m]_{(0,0)}
+m = \bar Q^{-1}\,\mathbf{1},\quad m_{(0,0)\to(10,3)} = [m]_{(0,0)}
 \]</div>
 </p>
-<p>En <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> utilizamos el método <code class="docutils literal notranslate"><span class="pre">.first_passage_time()</span></code> de la cadena para obtener la matriz de tiempos promedios de primera visita y extraemos el valor correspondiente al viaje desde el estado <span class="math notranslate nohighlight">\((0,0)\)</span> hasta el estado <span class="math notranslate nohighlight">\((1,3)\)</span>.</p>
+<p>En <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> utilizamos el método <code class="docutils literal notranslate"><span class="pre">.first_passage_time()</span></code> de la cadena para obtener la matriz de tiempos promedios de primera visita y extraemos el valor correspondiente al viaje desde el estado <span class="math notranslate nohighlight">\((0,0)\)</span> hasta el estado <span class="math notranslate nohighlight">\((10,3)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --------------------------------------------------------------------</span>
@@ -929,19 +929,19 @@ m = \bar Q^{-1}\,\mathbf{1},\quad m_{(0,0)\to(1,3)} = [m]_{(0,0)}
 <span class="c1">#  en promedio para que por primera vez se tengan 10 pacientes tipo 1 y 3 pacientes tipo 2?</span>
 
 <span class="n">idx_vacio</span> <span class="o">=</span> <span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">idx_objetivo</span> <span class="o">=</span> <span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">idx_objetivo</span> <span class="o">=</span> <span class="n">index</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
 <span class="c1"># La función first_passage_time recibe el estado objetivo (target) como argumento.</span>
 <span class="c1"># Retorna un arreglo con los tiempos desde cada posible estado inicial.</span>
-<span class="n">tiempo_0_a_10_5</span> <span class="o">=</span> <span class="n">hospital_chain</span><span class="o">.</span><span class="n">first_passage_time</span><span class="p">(</span><span class="n">idx_objetivo</span><span class="p">)[</span><span class="n">idx_vacio</span><span class="p">]</span>
+<span class="n">tiempo_0_a_10_3</span> <span class="o">=</span> <span class="n">hospital_chain</span><span class="o">.</span><span class="n">first_passage_time</span><span class="p">(</span><span class="n">idx_objetivo</span><span class="p">)[</span><span class="n">idx_vacio</span><span class="p">]</span>
 
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tiempo esperado hasta tener 10 pacientes tipo 1 y 5 tipo 2: </span><span class="si">{</span><span class="n">tiempo_0_a_10_5</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> horas&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tiempo esperado hasta tener 10 pacientes tipo 1 y 3 tipo 2: </span><span class="si">{</span><span class="n">tiempo_0_a_10_3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> horas&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tiempo esperado hasta tener 10 pacientes tipo 1 y 5 tipo 2: 4.7553 horas
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tiempo esperado hasta tener 10 pacientes tipo 1 y 3 tipo 2: 190.2506 horas
 </pre></div>
 </div>
 </div>
@@ -1069,7 +1069,7 @@ m = \bar Q^{-1}\,\mathbf{1},\quad m_{(0,0)\to(1,3)} = [m]_{(0,0)}
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-estado-estable-para-la-condicion-x-y">3. Cálculo estado estable para la condición X &gt; Y</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generacion-de-la-grafica-de-la-probabilidad-de-que-haya-mas-pacientes-tipo-1-que-tipo-2-en-funcion-del-tiempo-0-a-24-horas">4. Generación de la gráfica de la probabilidad de que haya más pacientes tipo 1 que tipo 2 en función del tiempo (0 a 24 horas)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-del-costo-operativo-esperado-en-estado-estable">5. Cálculo del costo operativo esperado en estado estable</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-primera-pasada-al-estado-1-3">6. Tiempo de primera pasada al estado (1, 3)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-primera-pasada-al-estado-10-3">6. Tiempo de primera pasada al estado (10, 3)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-esperado-de-ocupacion">7: Tiempo esperado de ocupación</a></li>
 </ul>
 </li>

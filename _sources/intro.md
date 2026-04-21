@@ -17,8 +17,8 @@ Despliega el contenido:
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 8: Cadenas de Markov en Python I](content/complementarias/complementaria_markov_i.ipynb)
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 9: Cadenas de Markov en Python II](content/complementarias/complementaria_markov_ii.ipynb)
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 10: Cadenas de Markov en Python III](content/complementarias/complementaria_markov_iii.ipynb)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 12: Ajustes de Distribuciones](content/complementarias/complementaria_vyv.ipynb)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 13: Validación y Verificación](content/complementarias/complementaria_ajustes_distribuciones.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 12: Ajustes de Distribuciones](content/complementarias/complementaria_ajustes_distribuciones.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 13: Validación y Verificación](content/complementarias/complementaria_vyv.ipynb)
 
 
 

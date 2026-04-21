@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Aplicación de metodologías de verificación y validación para simulaciones &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
+    <title>Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
   
   
@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_vyv';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos" href="complementaria_ajustes_distribuciones.html" />
+    <link rel="prev" title="Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos" href="complementaria_ajustes_distribuciones.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -206,8 +206,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Aplicación de metodologías de verificación y validación para simulaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones</a></li>
 </ul>
 
     </div>
@@ -346,7 +346,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Aplicación de metodologías de verificación y validación para simulaciones</h1>
+    <h1>Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -409,8 +409,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="aplicacion-de-metodologias-de-verificacion-y-validacion-para-simulaciones">
-<h1>Aplicación de metodologías de verificación y validación para simulaciones<a class="headerlink" href="#aplicacion-de-metodologias-de-verificacion-y-validacion-para-simulaciones" title="Permalink to this heading">#</a></h1>
+  <section id="complementaria-semana-13-aplicacion-de-metodologias-de-verificacion-y-validacion-para-simulaciones">
+<h1>Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones<a class="headerlink" href="#complementaria-semana-13-aplicacion-de-metodologias-de-verificacion-y-validacion-para-simulaciones" title="Permalink to this heading">#</a></h1>
 <p>Este notebook introduce los fundamentos de <strong>verificación y validación (V&amp;V)</strong> en modelos de simulación, con énfasis en la diferencia entre comprobar que un programa está correctamente implementado y evaluar si el modelo representa razonablemente el sistema real que se desea estudiar.</p>
 <p>Para ello, se construirá y analizará una simulación sencilla de una <strong>cola de un solo servidor</strong>, aplicable a varios servidores. A partir de este ejemplo, se mostrarán procedimientos básicos de verificación computacional, validación estadística y validación conceptual.</p>
 <p>El propósito no es solo obtener resultados numéricos, sino entender <strong>cómo confiar, con cautela y evidencia, en un modelo de simulación</strong>.</p>
@@ -9419,9 +9419,7 @@ Además, se pueden comparar directamente con los resultados obtenidos en la func
 </div>
 </div>
 </div>
-<p>La comparación de resultados es la siguiente.</p>
-<center>
-<table style="margin: 0 auto; border-collapse: collapse;">
+<p>La comparación de resultados es la siguiente:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Métrica</p></th>
@@ -9435,11 +9433,11 @@ Además, se pueden comparar directamente con los resultados obtenidos en la func
 <td><p>clientes_simulados = 19972</p></td>
 </tr>
 <tr class="row-odd"><td><p>Espera promedio cola</p></td>
-<td><p>‘Wq_est’≈ 0.6501</p></td>
+<td><p>‘Wq_est’ ≈ 0.6501</p></td>
 <td><p>espera_promedio_cola ≈ 0.6501</p></td>
 </tr>
 <tr class="row-even"><td><p>Espera promedio total</p></td>
-<td><p>‘W_est’≈ 0.9827</p></td>
+<td><p>‘W_est’ ≈ 0.9827</p></td>
 <td><p>espera_promedio_sistema ≈ 0.9827</p></td>
 </tr>
 <tr class="row-odd"><td><p>Tiempo total</p></td>
@@ -9447,14 +9445,12 @@ Además, se pueden comparar directamente con los resultados obtenidos en la func
 <td><p>tiempo_total_simulado ≈ 9999.23</p></td>
 </tr>
 <tr class="row-even"><td><p>Utilización</p></td>
-<td><p>‘utilizacion_est’≈ 0.6644</p></td>
+<td><p>‘utilizacion_est’ ≈ 0.6644</p></td>
 <td><p>utilizacion_aprox ≈ 0.6644</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</table>
-</center>
 <p>Estos resultados aumentan la confiabilidad del modelo.</p>
 </section>
 <section id="verificacion-computacional-del-modelo">
@@ -10644,7 +10640,7 @@ Aquí se pregunta si el (M/M/1) es una representación razonable del proceso rea
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</p>
+        <p class="prev-next-title">Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</p>
       </div>
     </a>
 </div>

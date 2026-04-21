@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
+    <title>Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
   
   
@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_ajustes_distribuciones';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Aplicación de metodologías de verificación y validación para simulaciones" href="complementaria_vyv.html" />
+    <link rel="next" title="Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones" href="complementaria_vyv.html" />
     <link rel="prev" title="Complementaria Semana 10: Cadenas de Markov en Python III" href="complementaria_markov_iii.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -207,8 +207,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Aplicación de metodologías de verificación y validación para simulaciones</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones</a></li>
 </ul>
 
     </div>
@@ -347,7 +347,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</h1>
+    <h1>Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -413,8 +413,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="complementaria-12-ajuste-de-distribuciones-empiricas-y-uso-en-modelos-estocasticos">
-<h1>Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos<a class="headerlink" href="#complementaria-12-ajuste-de-distribuciones-empiricas-y-uso-en-modelos-estocasticos" title="Permalink to this heading">#</a></h1>
+  <section id="complementaria-semana-12-ajuste-de-distribuciones-empiricas-y-uso-en-modelos-estocasticos">
+<h1>Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos<a class="headerlink" href="#complementaria-semana-12-ajuste-de-distribuciones-empiricas-y-uso-en-modelos-estocasticos" title="Permalink to this heading">#</a></h1>
 <section id="caso-de-estudio-operacion-de-un-aeropuerto">
 <h2>Caso de estudio: operación de un aeropuerto<a class="headerlink" href="#caso-de-estudio-operacion-de-un-aeropuerto" title="Permalink to this heading">#</a></h2>
 </section>
@@ -431,7 +431,7 @@ document.write(`
 <section id="diagrama-del-sistema">
 <h3>Diagrama del sistema<a class="headerlink" href="#diagrama-del-sistema" title="Permalink to this heading">#</a></h3>
 <p>El aeropuerto se modela como un sistema de colas en serie. Los pasajeros llegan según un proceso de Poisson, pasan por el control de seguridad y luego acceden a las puertas de embarque. El diagrama siguiente ilustra los componentes del sistema y las variables estocásticas que caracterizan cada etapa.</p>
-<div style="text-align: center; background-color:  rgba(200, 241, 255, 0.8); border-left: 5px solid rgba(255, 255, 255, 0.95); border-radius: 5px; margin-bottom: 15px; box-sizing: border-box; overflow-wrap: break-word; width: 100%;">
+<div style="text-align: center; margin-bottom: 15px;">
     <img src="grafica.png" width="700" alt="Diagrama del proceso">
 </div>
 <p><strong>Variables de entrada al modelo</strong> (inputs que se ajustan a distribuciones teóricas):</p>
@@ -1074,9 +1074,7 @@ Así, si <span class="math notranslate nohighlight">\(X \sim \text{Lognormal}\)<
   Conclusión: los precios son compatibles con una distribución Normal.
 
 === KS — Ticket price ~ Lognormal (resultado negativo ilustrativo) ===
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estadístico D  = 0.7675
+  Estadístico D  = 0.7675
   p-value        = 0.0000
   p = 0.0000 &lt; α = 0.05 → Se RECHAZA la hipótesis de ajuste Lognormal.
   Conclusión: la distribución Lognormal NO ajusta bien al precio del tiquete.
@@ -1264,8 +1262,6 @@ Así, si <span class="math notranslate nohighlight">\(X \sim \text{Lognormal}\)<
 <div class="math notranslate nohighlight">
 \[W_q^{(M/G/2)} = \frac{1 + 0.29}{2} \times W_q^{(M/M/2)} \approx 0.65 \times W_q^{(M/M/2)}\]</div>
 <p>El tiempo esperado en cola <strong>disminuye</strong> al usar la Weibull en lugar de asumir exponencialidad. Un servicio más regular (menor variabilidad) es más eficiente: los clientes esperan menos aunque la tasa de servicio sea la misma.</p>
-<center>
-<table style="margin: 0 auto; border-collapse: collapse;">
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Métrica</p></th>
@@ -1297,8 +1293,7 @@ Así, si <span class="math notranslate nohighlight">\(X \sim \text{Lognormal}\)<
 </tbody>
 </table>
 </div>
-</table>
-</center></section>
+</section>
 </section>
 <section id="formulacion-como-cadena-de-markov-en-tiempo-continuo-ctmc">
 <h3>Formulación como Cadena de Markov en Tiempo Continuo (CTMC)<a class="headerlink" href="#formulacion-como-cadena-de-markov-en-tiempo-continuo-ctmc" title="Permalink to this heading">#</a></h3>
@@ -1491,7 +1486,7 @@ S_R = S_X \times S_Y \times S_Z \times S_W
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Aplicación de metodologías de verificación y validación para simulaciones</p>
+        <p class="prev-next-title">Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

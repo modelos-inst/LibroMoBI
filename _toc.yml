@@ -23,3 +23,5 @@ parts:
   - file: content/complementarias/complementaria_markov_ii.ipynb
     title: "Complementaria Semana 9: Cadenas de Markov en Python II"
   - file: content/complementarias/complementaria_markov_iii.ipynb
+  - file: content/complementarias/complementaria_ajustes_distribuciones.ipynb
+  - file: content/complementarias/complementaria_vyv.ipynb

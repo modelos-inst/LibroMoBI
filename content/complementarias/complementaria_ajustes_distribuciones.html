@@ -1,0 +1,1611 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_ajustes_distribuciones';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Aplicación de metodologías de verificación y validación para simulaciones" href="complementaria_vyv.html" />
+    <link rel="prev" title="Complementaria Semana 10: Cadenas de Markov en Python III" href="complementaria_markov_iii.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uniandes.png" class="logo__image only-light" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>
+    <script>document.write(`<img src="../../_static/uniandes.png" class="logo__image only-dark" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Bienvenidos al libro del curso Modelado de Sistemas Bajo Incertidumbre
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Instalación Python y Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ambientes_virtuales.html">Ambientes virtuales en Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_python.html">Complementaria Semana 1: Introducción a Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria Semana 3: Teorema del Límite Central y validación empírica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gva.html">Complementaria Semana 5: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Modelado Avanzado en SimPy</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 7: Simulación de un Proceso de Poisson</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Aplicación de metodologías de verificación y validación para simulaciones</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/complementarias/complementaria_ajustes_distribuciones.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-de-estudio-operacion-de-un-aeropuerto">Caso de estudio: operación de un aeropuerto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-del-sistema">Diagrama del sistema</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importar-librerias-y-cargar-datos">Importar librerías y cargar datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-exploratorio-de-variables">Análisis exploratorio de variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-de-parametros-por-maxima-verosimilitud-mle">Estimación de parámetros por máxima verosimilitud (MLE)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interarrival-times-gamma">1. Interarrival times → Gamma</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#security-service-time-lognormal">2. Security service time → Lognormal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boarding-service-time-weibull-h4">3. Boarding service time → Weibull</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ticket-price-normal">4. Ticket price → Normal</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pruebas-de-bondad-de-ajuste">Pruebas de bondad de ajuste</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kolmogorovsmirnov-ks">Kolmogórov–Smirnov (KS)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#andersondarling-ad">Anderson–Darling (AD)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nivel-de-significancia">Nivel de significancia</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-por-variable">Evaluación por variable</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interarrival-times-gamma-prueba-ks">1. Interarrival times — Gamma (prueba KS)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#security-service-time-lognormal-prueba-ad">2. Security service time — Lognormal (prueba AD)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boarding-service-time-weibull-prueba-ks">3. Boarding service time — Weibull (prueba KS)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ticket-price-normal-prueba-ks">4. Ticket price — Normal (prueba KS)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-colas-sistema-de-embarque">Modelo de colas: sistema de embarque</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proceso-de-nacimiento-y-muerte">Proceso de nacimiento y muerte</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-m-g-2-correccion-por-variabilidad-weibull-en-servicio">Modelo M/G/2 — Corrección por variabilidad (Weibull en servicio)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulacion-como-cadena-de-markov-en-tiempo-continuo-ctmc">Formulación como Cadena de Markov en Tiempo Continuo (CTMC)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-de-estado">Variables de estado</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#espacios-de-estado">Espacios de estado</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#formulacion-general-del-generador-mathbb-q">Formulación general del generador <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulacion-extendida-como-cadena-de-markov-en-tiempo-continuo-ctmc">Formulación extendida como Cadena de Markov en Tiempo Continuo (CTMC)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Variables de estado</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Espacios de estado</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros-de-enrutamiento">Parámetros de enrutamiento</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Formulación general del generador <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="complementaria-12-ajuste-de-distribuciones-empiricas-y-uso-en-modelos-estocasticos">
+<h1>Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos<a class="headerlink" href="#complementaria-12-ajuste-de-distribuciones-empiricas-y-uso-en-modelos-estocasticos" title="Permalink to this heading">#</a></h1>
+<section id="caso-de-estudio-operacion-de-un-aeropuerto">
+<h2>Caso de estudio: operación de un aeropuerto<a class="headerlink" href="#caso-de-estudio-operacion-de-un-aeropuerto" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this heading">#</a></h2>
+<p>En el análisis de sistemas bajo incertidumbre reales, como aeropuertos, centros de atención o redes de transporte, es fundamental modelar adecuadamente los procesos de llegada, servicio y espera. Estos procesos suelen representarse mediante variables aleatorias cuya distribución no se conoce <em>a priori</em> y debe ser inferida a partir de datos.</p>
+<p>El objetivo de esta complementaria es mostrar un flujo completo de trabajo, que incluye:</p>
+<ul class="simple">
+<li><p>construcción de variables estocásticas a partir de datos,</p></li>
+<li><p>estimación de parámetros de distribuciones teóricas mediante MLE,</p></li>
+<li><p>evaluación de la bondad de ajuste mediante pruebas estadísticas (KS, AD),</p></li>
+<li><p>incorporación de los resultados en modelos estocásticos clásicos de teoría de colas.</p></li>
+</ul>
+<section id="diagrama-del-sistema">
+<h3>Diagrama del sistema<a class="headerlink" href="#diagrama-del-sistema" title="Permalink to this heading">#</a></h3>
+<p>El aeropuerto se modela como un sistema de colas en serie. Los pasajeros llegan según un proceso de Poisson, pasan por el control de seguridad y luego acceden a las puertas de embarque. El diagrama siguiente ilustra los componentes del sistema y las variables estocásticas que caracterizan cada etapa.</p>
+<div style="text-align: center; background-color:  rgba(200, 241, 255, 0.8); border-left: 5px solid rgba(255, 255, 255, 0.95); border-radius: 5px; margin-bottom: 15px; box-sizing: border-box; overflow-wrap: break-word; width: 100%;">
+    <img src="grafica.png" width="700" alt="Diagrama del proceso">
+</div>
+<p><strong>Variables de entrada al modelo</strong> (inputs que se ajustan a distribuciones teóricas):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">interarrival_min</span></code>: tiempo entre llegadas consecutivas de vuelos → variable continua</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">security_service_time_min</span></code>: tiempo de servicio en seguridad → variable continua</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">boarding_service_time_min</span></code>: tiempo de servicio en embarque → variable continua</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">passengers_per_flight</span></code>: número de pasajeros por vuelo → variable discreta</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ticket_price_net_cop</span></code>: precio del tiquete → se ajusta a <strong>Normal</strong></p></li>
+</ul>
+<p><strong>Variables que son salidas del modelo</strong> (NO se ajustan, sino que se calculan/simulan):</p>
+<ul class="simple">
+<li><p>Los tiempos de espera en cola (<code class="docutils literal notranslate"><span class="pre">waiting_time_min</span></code>) son una <strong>salida</strong> del modelo de colas, no un input. Se calculan analíticamente o por simulación a partir de las distribuciones de llegadas y servicio.</p></li>
+</ul>
+</section>
+<section id="importar-librerias-y-cargar-datos">
+<h3>Importar librerías y cargar datos<a class="headerlink" href="#importar-librerias-y-cargar-datos" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">poisson</span><span class="p">,</span> <span class="n">binom</span><span class="p">,</span> <span class="n">chisquare</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">factorial</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>La base de datos corresponde a registros de un aeropuerto durante un día completo. Cada fila representa un evento asociado a la llegada de un vuelo y el procesamiento de pasajeros.</p>
+<p>Las variables disponibles son:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">arrival_time_min</span></code></strong>: tiempo acumulado de llegada (en minutos desde el inicio del día).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">security_service_time_min</span></code></strong>: tiempo de servicio en el control de seguridad.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">boarding_service_time_min</span></code></strong>: tiempo de servicio en embarque.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">passengers_per_flight</span></code></strong>: número de pasajeros por vuelo.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">crew_members</span></code></strong>: número de tripulantes por vuelo.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">ticket_price_net_cop</span></code></strong>: precio neto del tiquete en COP.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Nota:</strong> <code class="docutils literal notranslate"><span class="pre">waiting_time_min</span></code> se excluye del ajuste de distribuciones porque el tiempo de espera en cola es una <strong>salida</strong> del modelo de colas, no una entrada. Ajustar una distribución a esta variable sería circular: precisamente queremos <em>predecir</em> tiempos de espera a partir de las distribuciones de llegada y servicio.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Nota:</strong> El precio puede ser negativo cuando el boleto es pagado mediante programas de fidelización, reembolsos, compensaciones o redenciones de millas, reflejando un costo contable para la aerolínea en lugar de un ingreso monetario directo.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargar la base de datos del aeropuerto</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Datos_Aeropuerto.xlsx&quot;</span><span class="p">)</span>
+
+<span class="c1"># Calcular interarrival_min directamente desde arrival_time_min</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;interarrival_calc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;arrival_time_min&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;interarrival_calc&quot;</span><span class="p">])</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>arrival_time_min</th>
+      <th>security_service_time_min</th>
+      <th>boarding_service_time_min</th>
+      <th>waiting_time_min</th>
+      <th>passengers_per_flight</th>
+      <th>crew_members</th>
+      <th>ticket_price_net_cop</th>
+      <th>interarrival_calc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>4.820359</td>
+      <td>12.244948</td>
+      <td>2.102177</td>
+      <td>11.617771</td>
+      <td>148</td>
+      <td>6</td>
+      <td>69487</td>
+      <td>1.312942</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11.126747</td>
+      <td>6.360328</td>
+      <td>2.172213</td>
+      <td>0.332360</td>
+      <td>162</td>
+      <td>2</td>
+      <td>211375</td>
+      <td>6.306387</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16.075663</td>
+      <td>11.399622</td>
+      <td>4.249288</td>
+      <td>10.496268</td>
+      <td>152</td>
+      <td>7</td>
+      <td>-35722</td>
+      <td>4.948916</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>29.054235</td>
+      <td>5.213556</td>
+      <td>8.799984</td>
+      <td>1.282438</td>
+      <td>152</td>
+      <td>5</td>
+      <td>132610</td>
+      <td>12.978572</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>35.300152</td>
+      <td>12.500512</td>
+      <td>5.214301</td>
+      <td>6.706093</td>
+      <td>131</td>
+      <td>2</td>
+      <td>359075</td>
+      <td>6.245917</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="analisis-exploratorio-de-variables">
+<h3>Análisis exploratorio de variables<a class="headerlink" href="#analisis-exploratorio-de-variables" title="Permalink to this heading">#</a></h3>
+<p>Antes de ajustar cualquier distribución teórica, se realiza un análisis exploratorio que permite identificar:</p>
+<ul class="simple">
+<li><p>el soporte de las variables (positivas, discretas, continuas),</p></li>
+<li><p>la forma de la distribución (simetría, colas),</p></li>
+<li><p>posibles candidatos para el ajuste probabilístico.</p></li>
+</ul>
+<p>Se presentan primero las estadísticas descriptivas y luego los histogramas. Las conclusiones sobre la forma de cada distribución se discuten después de ver los gráficos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definir variables estocásticas de interés (inputs del modelo)</span>
+<span class="n">x_inter</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;interarrival_calc&quot;</span><span class="p">]</span>          <span class="c1"># Tiempo entre llegadas (calculado)</span>
+<span class="n">x_sec</span>   <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;security_service_time_min&quot;</span><span class="p">]</span>  <span class="c1"># Tiempo de servicio en seguridad</span>
+<span class="n">x_board</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;boarding_service_time_min&quot;</span><span class="p">]</span>  <span class="c1"># Tiempo de servicio en embarque</span>
+<span class="n">x_pass</span>  <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;passengers_per_flight&quot;</span><span class="p">]</span>      <span class="c1"># Pasajeros por vuelo (discreta)</span>
+<span class="n">x_crew</span>  <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;crew_members&quot;</span><span class="p">]</span>               <span class="c1"># Tripulantes por vuelo (discreta)</span>
+<span class="n">x_price</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;ticket_price_net_cop&quot;</span><span class="p">]</span>       <span class="c1"># Precio del tiquete</span>
+
+<span class="c1"># Estadísticas descriptivas de las variables continuas</span>
+<span class="n">variables</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Interarrival (min)&quot;</span><span class="p">:</span>   <span class="n">x_inter</span><span class="p">,</span>
+    <span class="s2">&quot;Security service (min)&quot;</span><span class="p">:</span> <span class="n">x_sec</span><span class="p">,</span>
+    <span class="s2">&quot;Boarding service (min)&quot;</span><span class="p">:</span> <span class="n">x_board</span><span class="p">,</span>
+    <span class="s2">&quot;Ticket price (COP)&quot;</span><span class="p">:</span>   <span class="n">x_price</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">resumen</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="n">nombre</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;n&quot;</span><span class="p">:</span>       <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">),</span>
+        <span class="s2">&quot;media&quot;</span><span class="p">:</span>   <span class="n">v</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="s2">&quot;std&quot;</span><span class="p">:</span>     <span class="n">v</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">:</span>     <span class="n">v</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+        <span class="s2">&quot;p25&quot;</span><span class="p">:</span>     <span class="n">v</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>
+        <span class="s2">&quot;mediana&quot;</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span>
+        <span class="s2">&quot;p75&quot;</span><span class="p">:</span>     <span class="n">v</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">),</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span>     <span class="n">v</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+        <span class="s2">&quot;CV&quot;</span><span class="p">:</span>      <span class="n">v</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">/</span> <span class="n">v</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="s2">&quot;asimetría&quot;</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">skew</span><span class="p">(),</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">variables</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="p">})</span><span class="o">.</span><span class="n">T</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">resumen</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            n          media            std            min           p25        mediana            p75            max        CV  asimetría
+Interarrival (min)      228.0       6.297868       4.547734       0.130257      3.089453       5.085456       8.352401      24.774471  0.722107   1.441815
+Security service (min)  228.0       9.554548       4.632227       2.882069      6.334166       8.512796      11.771274      39.321554  0.484819   1.971294
+Boarding service (min)  228.0       6.259507       3.458893       0.779489      3.790580       5.664584       8.057528      21.826437  0.552582   1.339351
+Ticket price (COP)      228.0  118866.807018  224347.762440 -509291.000000 -23298.500000  105304.000000  276041.500000  657142.000000  1.887388  -0.239792
+</pre></div>
+</div>
+</div>
+</div>
+<p>A partir de las estadísticas descriptivas se observa que:</p>
+<ul class="simple">
+<li><p>Los tiempos entre llegadas y de servicio presentan <strong>asimetría positiva</strong> (cola derecha), lo que sugiere distribuciones como Gamma, Weibull o Lognormal.</p></li>
+<li><p>El coeficiente de variación (CV) de los tiempos entre llegadas es cercano a 1, consistente con un proceso de Poisson (tiempos inter-llegada exponenciales o Gamma).</p></li>
+<li><p>El precio del tiquete tiene menor asimetría, lo que podría ser compatible con una Normal, aunque tiene rango amplio.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Histogramas de exploración de variables continuas</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="n">datos</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">x_inter</span><span class="p">,</span>  <span class="s2">&quot;Tiempos entre llegadas&quot;</span><span class="p">,</span> <span class="s2">&quot;Minutos&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">x_sec</span><span class="p">,</span>    <span class="s2">&quot;Tiempos de servicio en seguridad&quot;</span><span class="p">,</span> <span class="s2">&quot;Minutos&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">x_board</span><span class="p">,</span>  <span class="s2">&quot;Tiempos de servicio en embarque&quot;</span><span class="p">,</span> <span class="s2">&quot;Minutos&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">x_price</span><span class="p">,</span>  <span class="s2">&quot;Precio del tiquete (COP)&quot;</span><span class="p">,</span> <span class="s2">&quot;COP&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">serie</span><span class="p">,</span> <span class="n">titulo</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">datos</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">serie</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ADD8E6&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">titulo</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Frecuencia&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">serie</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Media = </span><span class="si">{</span><span class="n">serie</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d8a37f8755eef3ed5684ad80aac91228933af3f18f352bcbd715f14bd2218096.png" src="../../_images/d8a37f8755eef3ed5684ad80aac91228933af3f18f352bcbd715f14bd2218096.png" />
+</div>
+</div>
+<p><strong>Observaciones tras el análisis exploratorio:</strong></p>
+<ul class="simple">
+<li><p><strong>Interarrival time</strong>: distribución asimétrica positiva, con la mayoría de valores entre 0–10 min. → Candidato: <strong>Gamma</strong> (generaliza la exponencial; apropiada para llegadas).</p></li>
+<li><p><strong>Security service time</strong>: cola derecha pronunciada. → Candidato: <strong>Lognormal</strong> (común en tiempos de servicio con variabilidad alta).</p></li>
+<li><p><strong>Boarding service time</strong>: asimétrica, pero con forma más concentrada. → Candidato: <strong>Weibull</strong> (flexible para modelar servicios con comportamiento de “hazard” variable).</p></li>
+<li><p><strong>Ticket price</strong>: distribución más simétrica. → Candidato: <strong>Normal</strong> (como primera aproximación).</p></li>
+</ul>
+</section>
+<section id="estimacion-de-parametros-por-maxima-verosimilitud-mle">
+<h3>Estimación de parámetros por máxima verosimilitud (MLE)<a class="headerlink" href="#estimacion-de-parametros-por-maxima-verosimilitud-mle" title="Permalink to this heading">#</a></h3>
+<p>El método de máxima verosimilitud (MLE) selecciona los parámetros que maximizan la probabilidad de observar los datos empíricos bajo el modelo propuesto. <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> implementa MLE para una amplia variedad de distribuciones.</p>
+<p>A continuación se estiman e interpretan los parámetros para cada variable, indicando la forma funcional que usa <code class="docutils literal notranslate"><span class="pre">scipy</span></code> (que en algunos casos difiere de la parametrización estándar):</p>
+<p><strong>Importante:</strong> <code class="docutils literal notranslate"><span class="pre">scipy</span></code> usa una parametrización general que incluye un parámetro <code class="docutils literal notranslate"><span class="pre">loc</span></code> (desplazamiento) y <code class="docutils literal notranslate"><span class="pre">scale</span></code> (escala). Para distribuciones de tiempo (soporte positivo), <code class="docutils literal notranslate"><span class="pre">loc</span></code> suele fijarse en 0.</p>
+<section id="interarrival-times-gamma">
+<h4>1. Interarrival times → Gamma<a class="headerlink" href="#interarrival-times-gamma" title="Permalink to this heading">#</a></h4>
+<p>La distribución <strong>Gamma</strong> en <code class="docutils literal notranslate"><span class="pre">scipy</span></code> tiene la forma:</p>
+<div class="math notranslate nohighlight">
+\[f(x; a, \text{loc}, \text{scale}) = \frac{(x - \text{loc})^{a-1} \, e^{-(x-\text{loc})/\text{scale}}}{\text{scale}^a \, \Gamma(a)}, \quad x &gt; \text{loc}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(a\)</span> es el parámetro de forma y <code class="docutils literal notranslate"><span class="pre">scale</span></code> = <span class="math notranslate nohighlight">\(1/\lambda_{\text{Gamma}}\)</span>. La media es <span class="math notranslate nohighlight">\(a \cdot \text{scale}\)</span> y la varianza es <span class="math notranslate nohighlight">\(a \cdot \text{scale}^2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MLE para Gamma (tiempos entre llegadas)</span>
+<span class="n">a_hat</span><span class="p">,</span> <span class="n">loc_hat</span><span class="p">,</span> <span class="n">scale_hat</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_inter</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Ajuste Gamma — Interarrival times ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Parámetro de forma  a     = </span><span class="si">{</span><span class="n">a_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Parámetro loc (des.)      = </span><span class="si">{</span><span class="n">loc_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  (≈0, esperado para tiempos positivos)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Parámetro de escala scale = </span><span class="si">{</span><span class="n">scale_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Media teórica (a·scale)   = </span><span class="si">{</span><span class="n">a_hat</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">scale_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Media empírica            = </span><span class="si">{</span><span class="n">x_inter</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+
+<span class="n">params_inter</span> <span class="o">=</span> <span class="p">(</span><span class="n">a_hat</span><span class="p">,</span> <span class="n">loc_hat</span><span class="p">,</span> <span class="n">scale_hat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Ajuste Gamma — Interarrival times ===
+  Parámetro de forma  a     = 1.9619
+  Parámetro loc (des.)      = -0.0634  (≈0, esperado para tiempos positivos)
+  Parámetro de escala scale = 3.2423
+  Media teórica (a·scale)   = 6.3612 min
+  Media empírica            = 6.2979 min
+</pre></div>
+</div>
+</div>
+</div>
+<p>El parámetro de forma <span class="math notranslate nohighlight">\(a \approx 2\)</span> indica que la distribución es unimodal y moderadamente asimétrica, consistente con lo observado en el histograma. La media teórica coincide con la empírica, confirmando el buen ajuste de los momentos.</p>
+</section>
+<section id="security-service-time-lognormal">
+<h4>2. Security service time → Lognormal<a class="headerlink" href="#security-service-time-lognormal" title="Permalink to this heading">#</a></h4>
+<p>La distribución <strong>Lognormal</strong> en <code class="docutils literal notranslate"><span class="pre">scipy</span></code> parametriza así:</p>
+<div class="math notranslate nohighlight">
+\[f(x; s, \text{loc}, \text{scale}) = \frac{1}{(x-\text{loc})\, s \sqrt{2\pi}} \exp\!\left(-\frac{(\ln(x-\text{loc}) - \ln(\text{scale}))^2}{2s^2}\right)\]</div>
+<p>donde <span class="math notranslate nohighlight">\(s = \sigma\)</span> (desviación estándar del logaritmo) y <span class="math notranslate nohighlight">\(\ln(\text{scale}) = \mu\)</span> (media del logaritmo).
+Así, si <span class="math notranslate nohighlight">\(X \sim \text{Lognormal}\)</span>, entonces <span class="math notranslate nohighlight">\(\ln(X) \sim N(\mu, \sigma^2)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MLE para Lognormal (tiempos de servicio en seguridad)</span>
+<span class="n">s_hat</span><span class="p">,</span> <span class="n">loc_hat_ln</span><span class="p">,</span> <span class="n">scale_hat_ln</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_sec</span><span class="p">)</span>
+<span class="n">mu_ln</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">scale_hat_ln</span><span class="p">)</span>   <span class="c1"># media del logaritmo</span>
+<span class="n">sig_ln</span> <span class="o">=</span> <span class="n">s_hat</span>                  <span class="c1"># std del logaritmo</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Ajuste Lognormal — Security service time ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  σ (std del log)           = </span><span class="si">{</span><span class="n">sig_ln</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  μ (media del log)         = </span><span class="si">{</span><span class="n">mu_ln</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  [ln(scale)]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  loc                       = </span><span class="si">{</span><span class="n">loc_hat_ln</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Media teórica E[X]        = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mu_ln</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sig_ln</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Media empírica            = </span><span class="si">{</span><span class="n">x_sec</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+
+<span class="n">params_sec</span> <span class="o">=</span> <span class="p">(</span><span class="n">s_hat</span><span class="p">,</span> <span class="n">loc_hat_ln</span><span class="p">,</span> <span class="n">scale_hat_ln</span><span class="p">)</span>
+
+<span class="c1"># Resultado negativo: probar también con distribución Normal (se esperaría rechazo)</span>
+<span class="n">mu_norm_sec</span><span class="p">,</span> <span class="n">sig_norm_sec</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_sec</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  [Para comparación] Ajuste Normal: μ=</span><span class="si">{</span><span class="n">mu_norm_sec</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, σ=</span><span class="si">{</span><span class="n">sig_norm_sec</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Ajuste Lognormal — Security service time ===
+  σ (std del log)           = 0.4780
+  μ (media del log)         = 2.0762  [ln(scale)]
+  loc                       = 0.6093
+  Media teórica E[X]        = 8.9387 min
+  Media empírica            = 9.5545 min
+
+  [Para comparación] Ajuste Normal: μ=9.55, σ=4.62
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="boarding-service-time-weibull-h4">
+<h4>3. Boarding service time → Weibull</h4><a class="headerlink" href="#boarding-service-time-weibull-h4" title="Permalink to this heading">#</a></h4>
+<p>La distribución <strong>Weibull mínima</strong> (<code class="docutils literal notranslate"><span class="pre">weibull_min</span></code>) en <code class="docutils literal notranslate"><span class="pre">scipy</span></code> tiene la forma:</p>
+<div class="math notranslate nohighlight">
+\[f(x; c, \text{loc}, \text{scale}) = \frac{c}{\text{scale}} \left(\frac{x-\text{loc}}{\text{scale}}\right)^{c-1} \exp\!\left(-\left(\frac{x-\text{loc}}{\text{scale}}\right)^c\right)\]</div>
+<p>donde <span class="math notranslate nohighlight">\(c\)</span> es el parámetro de forma y <code class="docutils literal notranslate"><span class="pre">scale</span></code> = <span class="math notranslate nohighlight">\(\lambda\)</span> (escala). Si <span class="math notranslate nohighlight">\(c=1\)</span>, se reduce a la Exponencial. Si <span class="math notranslate nohighlight">\(c&gt;1\)</span>, el riesgo (hazard) es creciente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MLE para Weibull (tiempos de servicio en embarque), fijando loc=0</span>
+<span class="n">c_hat</span><span class="p">,</span> <span class="n">loc_hat_wb</span><span class="p">,</span> <span class="n">scale_hat_wb</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">weibull_min</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_board</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Ajuste Weibull — Boarding service time ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Parámetro de forma c      = </span><span class="si">{</span><span class="n">c_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  (&gt;1: hazard creciente)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Parámetro loc             = </span><span class="si">{</span><span class="n">loc_hat_wb</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  (fijado en 0)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Parámetro de escala scale = </span><span class="si">{</span><span class="n">scale_hat_wb</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Media teórica E[X]        = </span><span class="si">{</span><span class="n">stats</span><span class="o">.</span><span class="n">weibull_min</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">c_hat</span><span class="p">,</span><span class="w"> </span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="o">=</span><span class="n">scale_hat_wb</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Media empírica            = </span><span class="si">{</span><span class="n">x_board</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+
+<span class="n">params_board</span> <span class="o">=</span> <span class="p">(</span><span class="n">c_hat</span><span class="p">,</span> <span class="n">loc_hat_wb</span><span class="p">,</span> <span class="n">scale_hat_wb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Ajuste Weibull — Boarding service time ===
+  Parámetro de forma c      = 1.9223  (&gt;1: hazard creciente)
+  Parámetro loc             = 0.0000  (fijado en 0)
+  Parámetro de escala scale = 7.0784
+  Media teórica E[X]        = 6.2789 min
+  Media empírica            = 6.2595 min
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ticket-price-normal">
+<h4>4. Ticket price → Normal<a class="headerlink" href="#ticket-price-normal" title="Permalink to this heading">#</a></h4>
+<p>La distribución <strong>Normal</strong> en <code class="docutils literal notranslate"><span class="pre">scipy</span></code> está parametrizada de forma estándar por <span class="math notranslate nohighlight">\(\mu\)</span> (media) y <span class="math notranslate nohighlight">\(\sigma\)</span> (desviación estándar):</p>
+<div class="math notranslate nohighlight">
+\[f(x; \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} \exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)\]</div>
+<p>El MLE estima directamente <span class="math notranslate nohighlight">\(\mu = \bar{x}\)</span> y <span class="math notranslate nohighlight">\(\sigma = s\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MLE para Normal (precio del tiquete)</span>
+<span class="n">mu_price</span><span class="p">,</span> <span class="n">sigma_price</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_price</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Ajuste Normal — Ticket price ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  μ (media)                 = </span><span class="si">{</span><span class="n">mu_price</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2"> COP&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  σ (desviación estándar)   = </span><span class="si">{</span><span class="n">sigma_price</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2"> COP&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  CV                        = </span><span class="si">{</span><span class="n">sigma_price</span><span class="o">/</span><span class="n">mu_price</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Media empírica            = </span><span class="si">{</span><span class="n">x_price</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2"> COP&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Ajuste Normal — Ticket price ===
+  μ (media)                 = 118,867 COP
+  σ (desviación estándar)   = 223,855 COP
+  CV                        = 1.883
+  Media empírica            = 118,867 COP
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="pruebas-de-bondad-de-ajuste">
+<h3>Pruebas de bondad de ajuste<a class="headerlink" href="#pruebas-de-bondad-de-ajuste" title="Permalink to this heading">#</a></h3>
+<p>Se aplican dos pruebas para evaluar si los datos son consistentes con la distribución ajustada:</p>
+<section id="kolmogorovsmirnov-ks">
+<h4>Kolmogórov–Smirnov (KS)<a class="headerlink" href="#kolmogorovsmirnov-ks" title="Permalink to this heading">#</a></h4>
+<p>Compara la función de distribución empírica (ECDF) con la teórica. La hipótesis nula es que los datos provienen de la distribución especificada. Se usa aquí para distribuciones continuas en general (Gamma, Weibull, Normal).</p>
+<p><strong>¿Por qué KS?</strong> Es no paramétrico y válido para muestras continuas de cualquier distribución. Su limitación es que puede ser poco potente en colas; para eso se complementa con AD.</p>
+</section>
+<section id="andersondarling-ad">
+<h4>Anderson–Darling (AD)<a class="headerlink" href="#andersondarling-ad" title="Permalink to this heading">#</a></h4>
+<p>Es una versión ponderada de KS que da mayor peso a las colas de la distribución. <strong>¿Por qué AD?</strong> Se usa específicamente cuando las colas importan (ej. sistemas de colas donde los extremos tienen gran impacto), y es la prueba estándar para verificar lognormalidad mediante la transformación logarítmica.</p>
+<p>En esta complementaria:</p>
+<ul class="simple">
+<li><p>Se usa <strong>KS</strong> para Gamma, Weibull y Normal (prueba general de ajuste).</p></li>
+<li><p>Se usa <strong>AD</strong> para la <strong>Lognormal</strong>: se aplica sobre <span class="math notranslate nohighlight">\(\ln(X)\)</span> y se prueba normalidad, que es la forma canónica de verificar lognormalidad y la que tiene mayor potencia estadística para este caso.</p></li>
+<li><p>Se usa <strong>KS</strong> adicional en Lognormal como contraste.</p></li>
+</ul>
+</section>
+<section id="nivel-de-significancia">
+<h4>Nivel de significancia<a class="headerlink" href="#nivel-de-significancia" title="Permalink to this heading">#</a></h4>
+<p>Se trabaja con <span class="math notranslate nohighlight">\(\alpha = 0.05\)</span>. No rechazar <span class="math notranslate nohighlight">\(H_0\)</span> indica que los datos son <strong>compatibles</strong> con la distribución ajustada (no que la distribución sea “correcta”).</p>
+</section>
+</section>
+<section id="evaluacion-por-variable">
+<h3>Evaluación por variable<a class="headerlink" href="#evaluacion-por-variable" title="Permalink to this heading">#</a></h3>
+<section id="interarrival-times-gamma-prueba-ks">
+<h4>1. Interarrival times — Gamma (prueba KS)<a class="headerlink" href="#interarrival-times-gamma-prueba-ks" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="c1"># Prueba KS: contrasta los datos contra Gamma con parámetros estimados</span>
+<span class="n">ks_inter</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">x_inter</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">params_inter</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== KS — Interarrival times ~ Gamma(a=</span><span class="si">{:.4f}</span><span class="s2">, loc=</span><span class="si">{:.4f}</span><span class="s2">, scale=</span><span class="si">{:.4f}</span><span class="s2">) ===&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">params_inter</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Estadístico D  = </span><span class="si">{</span><span class="n">ks_inter</span><span class="o">.</span><span class="n">statistic</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p-value        = </span><span class="si">{</span><span class="n">ks_inter</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">ks_inter</span><span class="o">.</span><span class="n">pvalue</span> <span class="o">&gt;=</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p = </span><span class="si">{</span><span class="n">ks_inter</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> ≥ α = </span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2"> → No se rechaza H₀.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Conclusión: los datos son compatibles con una distribución Gamma con los parámetros estimados.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p = </span><span class="si">{</span><span class="n">ks_inter</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &lt; α = </span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2"> → Se rechaza H₀.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Conclusión: los datos NO son compatibles con una Gamma con esos parámetros.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualización: ECDF vs CDF teórica</span>
+<span class="n">x_sorted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">x_inter</span><span class="p">)</span>
+<span class="n">ecdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_sorted</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_sorted</span><span class="p">)</span>
+<span class="n">cdf_teorica</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x_sorted</span><span class="p">,</span> <span class="o">*</span><span class="n">params_inter</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_sorted</span><span class="p">,</span> <span class="n">ecdf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ECDF empírica&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_sorted</span><span class="p">,</span> <span class="n">cdf_teorica</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CDF Gamma ajustada&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Interarrival times: ECDF vs Gamma ajustada&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Minutos&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;F(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== KS — Interarrival times ~ Gamma(a=1.9619, loc=-0.0634, scale=3.2423) ===
+  Estadístico D  = 0.0463
+  p-value        = 0.6947
+
+  p = 0.6947 ≥ α = 0.05 → No se rechaza H₀.
+  Conclusión: los datos son compatibles con una distribución Gamma con los parámetros estimados.
+</pre></div>
+</div>
+<img alt="../../_images/2dc15a85a6a1ea553a2e07fde05aa86ad4cc66fd575c0ea53236f43a93892496.png" src="../../_images/2dc15a85a6a1ea553a2e07fde05aa86ad4cc66fd575c0ea53236f43a93892496.png" />
+</div>
+</div>
+<p>La prueba KS no rechaza la hipótesis de ajuste Gamma. El gráfico ECDF vs CDF teórica muestra un buen alineamiento, especialmente en el centro de la distribución. El estadístico <span class="math notranslate nohighlight">\(D\)</span> pequeño confirma la cercanía entre ambas funciones.</p>
+</section>
+<section id="security-service-time-lognormal-prueba-ad">
+<h4>2. Security service time — Lognormal (prueba AD)<a class="headerlink" href="#security-service-time-lognormal-prueba-ad" title="Permalink to this heading">#</a></h4>
+<p>Para verificar lognormalidad se transforma <span class="math notranslate nohighlight">\(Z = \ln(X)\)</span> y se aplica la prueba <strong>Anderson–Darling de normalidad</strong> sobre <span class="math notranslate nohighlight">\(Z\)</span>. Esta es la forma canónica de evaluar si <span class="math notranslate nohighlight">\(X\)</span> sigue una Lognormal, y tiene mayor potencia estadística en las colas que KS.</p>
+<p>Adicionalmente, se muestra un <strong>resultado negativo</strong>: se prueba si los tiempos de seguridad se ajustan a una distribución <strong>Normal</strong> directamente. Se espera que esta prueba <em>falle</em>, ilustrando que la elección de distribución importa.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># AD sobre log(X) → prueba de lognormalidad</span>
+<span class="n">x_logn_pos</span> <span class="o">=</span> <span class="n">x_sec</span><span class="p">[</span><span class="n">x_sec</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># AD requiere datos estrictamente positivos (condición del log)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x_logn_pos</span><span class="p">)</span>
+
+<span class="n">ad_logn</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">anderson</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="s2">&quot;norm&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ad_logn:&quot;</span><span class="p">,</span> <span class="n">ad_logn</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== AD — Security service time ~ Lognormal ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Estadístico AD = </span><span class="si">{</span><span class="n">ad_logn</span><span class="o">.</span><span class="n">statistic</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Valores críticos (niveles 15%, 10%, 5%, 2.5%, 1%):&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">nivel</span><span class="p">,</span> <span class="n">cv</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ad_logn</span><span class="o">.</span><span class="n">significance_level</span><span class="p">,</span> <span class="n">ad_logn</span><span class="o">.</span><span class="n">critical_values</span><span class="p">):</span>
+    <span class="n">marca</span> <span class="o">=</span> <span class="s2">&quot; ← α=5%&quot;</span> <span class="k">if</span> <span class="n">nivel</span> <span class="o">==</span> <span class="mf">5.0</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">nivel</span><span class="si">}</span><span class="s2">%: </span><span class="si">{</span><span class="n">cv</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}{</span><span class="n">marca</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">ad_logn</span><span class="o">.</span><span class="n">statistic</span> <span class="o">&lt;</span> <span class="n">ad_logn</span><span class="o">.</span><span class="n">critical_values</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>  <span class="c1"># índice 2 = 5%</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  AD = </span><span class="si">{</span><span class="n">ad_logn</span><span class="o">.</span><span class="n">statistic</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &lt; VC al 5% = </span><span class="si">{</span><span class="n">ad_logn</span><span class="o">.</span><span class="n">critical_values</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> → No se rechaza H₀.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Conclusión: log(X) es compatible con una Normal → X compatible con Lognormal.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  AD = </span><span class="si">{</span><span class="n">ad_logn</span><span class="o">.</span><span class="n">statistic</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> ≥ VC al 5% → Se rechaza H₀.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Conclusión: log(X) no es Normal → X no se ajusta a una Lognormal.&quot;</span><span class="p">)</span>
+
+<span class="c1"># ── Resultado negativo: Normal no ajusta ──</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== KS — Security service time ~ Normal (resultado negativo esperado) ===&quot;</span><span class="p">)</span>
+<span class="n">ks_sec_norm</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">x_sec</span><span class="p">,</span> <span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x_sec</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">x_sec</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Estadístico D  = </span><span class="si">{</span><span class="n">ks_sec_norm</span><span class="o">.</span><span class="n">statistic</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p-value        = </span><span class="si">{</span><span class="n">ks_sec_norm</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">ks_sec_norm</span><span class="o">.</span><span class="n">pvalue</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p = </span><span class="si">{</span><span class="n">ks_sec_norm</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &lt; α = </span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2"> → Se RECHAZA la hipótesis de ajuste Normal.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Conclusión: los tiempos de servicio en seguridad NO se ajustan bien a una Normal.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Esto era esperado: la Normal permite valores negativos y es simétrica,&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  mientras que los tiempos de servicio son positivos y asimétricos.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p = </span><span class="si">{</span><span class="n">ks_sec_norm</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> ≥ α → No se rechaza Normal.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ad_logn: AndersonResult(statistic=np.float64(0.20717807251887166), critical_values=array([0.566, 0.645, 0.774, 0.903, 1.074]), significance_level=array([15. , 10. ,  5. ,  2.5,  1. ]), fit_result=  params: FitParams(loc=np.float64(2.1575902631481605), scale=np.float64(0.4420426970037547))
+ success: True
+ message: &#39;`anderson` successfully fit the distribution to the data.&#39;)
+=== AD — Security service time ~ Lognormal ===
+  Estadístico AD = 0.2072
+  Valores críticos (niveles 15%, 10%, 5%, 2.5%, 1%):
+    15.0%: 0.5660
+    10.0%: 0.6450
+    5.0%: 0.7740 ← α=5%
+    2.5%: 0.9030
+    1.0%: 1.0740
+
+  AD = 0.2072 &lt; VC al 5% = 0.7740 → No se rechaza H₀.
+  Conclusión: log(X) es compatible con una Normal → X compatible con Lognormal.
+
+=== KS — Security service time ~ Normal (resultado negativo esperado) ===
+  Estadístico D  = 0.1254
+  p-value        = 0.0014
+  p = 0.0014 &lt; α = 0.05 → Se RECHAZA la hipótesis de ajuste Normal.
+  Conclusión: los tiempos de servicio en seguridad NO se ajustan bien a una Normal.
+  Esto era esperado: la Normal permite valores negativos y es simétrica,
+  mientras que los tiempos de servicio son positivos y asimétricos.
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<ul class="simple">
+<li><p>La prueba AD confirma que <span class="math notranslate nohighlight">\(\ln(X)\)</span> se distribuye normalmente, validando el ajuste Lognormal para los tiempos de seguridad.</p></li>
+<li><p>El resultado negativo con la Normal directa ilustra por qué la elección de distribución es importante: forzar una Normal a datos asimétricos con soporte positivo produce un ajuste estadísticamente rechazable.</p></li>
+</ul>
+</section>
+<section id="boarding-service-time-weibull-prueba-ks">
+<h4>3. Boarding service time — Weibull (prueba KS)<a class="headerlink" href="#boarding-service-time-weibull-prueba-ks" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prueba KS para Weibull</span>
+<span class="n">ks_board</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">x_board</span><span class="p">,</span> <span class="s2">&quot;weibull_min&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">params_board</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== KS — Boarding service time ~ Weibull(c=</span><span class="si">{:.4f}</span><span class="s2">, loc=</span><span class="si">{:.4f}</span><span class="s2">, scale=</span><span class="si">{:.4f}</span><span class="s2">) ===&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">params_board</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Estadístico D  = </span><span class="si">{</span><span class="n">ks_board</span><span class="o">.</span><span class="n">statistic</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p-value        = </span><span class="si">{</span><span class="n">ks_board</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">ks_board</span><span class="o">.</span><span class="n">pvalue</span> <span class="o">&gt;=</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p = </span><span class="si">{</span><span class="n">ks_board</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> ≥ α = </span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2"> → No se rechaza H₀.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Conclusión: los datos son compatibles con una distribución Weibull con los parámetros estimados.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p = </span><span class="si">{</span><span class="n">ks_board</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &lt; α = </span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2"> → Se rechaza H₀.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Conclusión: los datos NO son compatibles con la Weibull ajustada.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualización</span>
+<span class="n">x_sorted_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">x_board</span><span class="p">)</span>
+<span class="n">ecdf_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_sorted_b</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_sorted_b</span><span class="p">)</span>
+<span class="n">cdf_wb</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">weibull_min</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x_sorted_b</span><span class="p">,</span> <span class="o">*</span><span class="n">params_board</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_sorted_b</span><span class="p">,</span> <span class="n">ecdf_b</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ECDF empírica&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_sorted_b</span><span class="p">,</span> <span class="n">cdf_wb</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CDF Weibull ajustada&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Boarding service time: ECDF vs Weibull ajustada&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Minutos&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;F(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== KS — Boarding service time ~ Weibull(c=1.9223, loc=0.0000, scale=7.0784) ===
+  Estadístico D  = 0.0569
+  p-value        = 0.4365
+
+  p = 0.4365 ≥ α = 0.05 → No se rechaza H₀.
+  Conclusión: los datos son compatibles con una distribución Weibull con los parámetros estimados.
+</pre></div>
+</div>
+<img alt="../../_images/2193f24df75805159425c1aaded4d52cecc73ce229bc64f841e35f5b84366ba3.png" src="../../_images/2193f24df75805159425c1aaded4d52cecc73ce229bc64f841e35f5b84366ba3.png" />
+</div>
+</div>
+</section>
+<section id="ticket-price-normal-prueba-ks">
+<h4>4. Ticket price — Normal (prueba KS)<a class="headerlink" href="#ticket-price-normal-prueba-ks" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prueba KS para Normal</span>
+<span class="n">ks_precio</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">x_price</span><span class="p">,</span> <span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">mu_price</span><span class="p">,</span> <span class="n">sigma_price</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== KS — Ticket price ~ Normal(μ=</span><span class="si">{:,.0f}</span><span class="s2">, σ=</span><span class="si">{:,.0f}</span><span class="s2">) ===&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mu_price</span><span class="p">,</span> <span class="n">sigma_price</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Estadístico D  = </span><span class="si">{</span><span class="n">ks_precio</span><span class="o">.</span><span class="n">statistic</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p-value        = </span><span class="si">{</span><span class="n">ks_precio</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">ks_precio</span><span class="o">.</span><span class="n">pvalue</span> <span class="o">&gt;=</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p = </span><span class="si">{</span><span class="n">ks_precio</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> ≥ α = </span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2"> → No se rechaza H₀.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Conclusión: los precios son compatibles con una distribución Normal.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p = </span><span class="si">{</span><span class="n">ks_precio</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &lt; α = </span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2"> → Se rechaza H₀.&quot;</span><span class="p">)</span>
+
+<span class="c1"># ── Resultado negativo: Lognormal no ajusta mejor al precio ──</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== KS — Ticket price ~ Lognormal (resultado negativo ilustrativo) ===&quot;</span><span class="p">)</span>
+<span class="n">params_price_ln</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_price</span><span class="p">)</span>
+<span class="n">ks_precio_ln</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">x_price</span><span class="p">,</span> <span class="s2">&quot;lognorm&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">params_price_ln</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Estadístico D  = </span><span class="si">{</span><span class="n">ks_precio_ln</span><span class="o">.</span><span class="n">statistic</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p-value        = </span><span class="si">{</span><span class="n">ks_precio_ln</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">ks_precio_ln</span><span class="o">.</span><span class="n">pvalue</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p = </span><span class="si">{</span><span class="n">ks_precio_ln</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> &lt; α = </span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2"> → Se RECHAZA la hipótesis de ajuste Lognormal.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Conclusión: la distribución Lognormal NO ajusta bien al precio del tiquete.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  La Normal resulta ser una mejor opción para esta variable.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  p = </span><span class="si">{</span><span class="n">ks_precio_ln</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> ≥ α → No se rechaza Lognormal.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== KS — Ticket price ~ Normal(μ=118,867, σ=223,855) ===
+  Estadístico D  = 0.0412
+  p-value        = 0.8178
+
+  p = 0.8178 ≥ α = 0.05 → No se rechaza H₀.
+  Conclusión: los precios son compatibles con una distribución Normal.
+
+=== KS — Ticket price ~ Lognormal (resultado negativo ilustrativo) ===
+  Estadístico D  = 0.7675
+  p-value        = 0.0000
+  p = 0.0000 &lt; α = 0.05 → Se RECHAZA la hipótesis de ajuste Lognormal.
+  Conclusión: la distribución Lognormal NO ajusta bien al precio del tiquete.
+  La Normal resulta ser una mejor opción para esta variable.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\jpine\AppData\Local\Programs\Python\Python312\Lib\site-packages\scipy\stats\_continuous_distns.py:6902: RuntimeWarning: invalid value encountered in log
+  lndata = np.log(data - loc)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="modelo-de-colas-sistema-de-embarque">
+<h3>Modelo de colas: sistema de embarque<a class="headerlink" href="#modelo-de-colas-sistema-de-embarque" title="Permalink to this heading">#</a></h3>
+<p>Una vez ajustadas las distribuciones de entrada, se usan los parámetros estimados para alimentar modelos de teoría de colas. Se analiza el <strong>sistema de embarque</strong> del aeropuerto, con <strong>2 counters</strong> (servidores).</p>
+<blockquote>
+<div><p><strong>Nota importante:</strong> los <strong>tiempos de espera</strong> (<code class="docutils literal notranslate"><span class="pre">waiting_time_min</span></code>) son una <em>salida</em> del modelo, no una entrada. Los modelos de colas calculan analíticamente (o por simulación) el tiempo esperado en cola a partir de las distribuciones de llegada (<span class="math notranslate nohighlight">\(\lambda\)</span>) y servicio (<span class="math notranslate nohighlight">\(\mu\)</span>). Por eso no se ajusta distribución alguna a <code class="docutils literal notranslate"><span class="pre">waiting_time_min</span></code>: ajustar esa variable sería usar la salida como entrada, lo cual es circular.</p>
+</div></blockquote>
+<section id="proceso-de-nacimiento-y-muerte">
+<h4>Proceso de nacimiento y muerte<a class="headerlink" href="#proceso-de-nacimiento-y-muerte" title="Permalink to this heading">#</a></h4>
+<p>El modelo M/M/2 se resuelve mediante un <strong>proceso de nacimiento y muerte</strong> en tiempo continuo (CTMC). El estado del sistema es el número de clientes <span class="math notranslate nohighlight">\(n\)</span>:</p>
+<ul class="simple">
+<li><p><strong>Tasa de nacimiento</strong> (llegada): <span class="math notranslate nohighlight">\(\lambda_n = \lambda\)</span> para todo <span class="math notranslate nohighlight">\(n \geq 0\)</span></p></li>
+<li><p><strong>Tasa de muerte</strong> (servicio): <span class="math notranslate nohighlight">\(\mu_n = n\mu\)</span> para <span class="math notranslate nohighlight">\(n \leq s\)</span>, y <span class="math notranslate nohighlight">\(\mu_n = s\mu\)</span> para <span class="math notranslate nohighlight">\(n &gt; s\)</span></p></li>
+</ul>
+<p>El balance detallado da la distribución estacionaria <span class="math notranslate nohighlight">\(\{\pi_n\}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\pi_0 = \left[\sum_{j=0}^{s-1} \frac{(\lambda/\mu)^j}{j!} + \frac{(\lambda/\mu)^s}{s!} \cdot \frac{1}{1-\rho_s}\right]^{-1}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\rho_s = \lambda/(s\mu)\)</span> es la <strong>utilización por servidor</strong>. La condición de estabilidad es <span class="math notranslate nohighlight">\(\rho_s &lt; 1\)</span>.</p>
+<p>A partir de <span class="math notranslate nohighlight">\(\pi_0\)</span> se obtienen todas las métricas de desempeño por la Ley de Little (<span class="math notranslate nohighlight">\(L = \lambda W\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">factorial</span>
+
+<span class="c1"># Parámetros del sistema M/M/2 (embarque)</span>
+<span class="n">lam</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_inter</span><span class="p">)</span>   <span class="c1"># tasa de llegadas [llegadas/min]</span>
+<span class="n">ES</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_board</span><span class="p">)</span>        <span class="c1"># E[S] = tiempo medio de servicio en embarque [min]</span>
+<span class="n">mu</span>  <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">ES</span>                  <span class="c1"># tasa de servicio por servidor [servicios/min]</span>
+<span class="n">s</span>   <span class="o">=</span> <span class="mi">2</span>                       <span class="c1"># número de counters</span>
+
+<span class="n">rho_s</span> <span class="o">=</span> <span class="n">lam</span> <span class="o">/</span> <span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">mu</span><span class="p">)</span>        <span class="c1"># utilización por servidor</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Parámetros del sistema M/M/2 ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  λ (llegadas/min)         = </span><span class="si">{</span><span class="n">lam</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  μ (servicios/min/server) = </span><span class="si">{</span><span class="n">mu</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  s (servidores)           = </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  ρ_s = λ/(s·μ)            = </span><span class="si">{</span><span class="n">rho_s</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="s1">&#39;Sistema estable (ρ_s &lt; 1)&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">rho_s</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;Sistema inestable&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">rho_s</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El sistema es inestable. No existe distribución estacionaria.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">lam</span> <span class="o">/</span> <span class="n">mu</span>   <span class="c1"># a = λ/μ (intensidad de tráfico total)</span>
+
+    <span class="c1"># π₀: probabilidad de sistema vacío (proceso de nacimiento y muerte)</span>
+    <span class="n">sum1</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">a</span><span class="o">**</span><span class="n">j</span><span class="p">)</span> <span class="o">/</span> <span class="n">factorial</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+    <span class="n">sum2</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="n">s</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">rho_s</span><span class="p">))</span>
+    <span class="n">pi0</span>  <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">sum1</span> <span class="o">+</span> <span class="n">sum2</span><span class="p">)</span>
+
+    <span class="c1"># P(espera) = P(X ≥ s) = fórmula de Erlang-C</span>
+    <span class="n">P_wait</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="n">s</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">rho_s</span><span class="p">))</span> <span class="o">*</span> <span class="n">pi0</span>
+
+    <span class="c1"># Métricas de desempeño</span>
+    <span class="n">Lq</span> <span class="o">=</span> <span class="n">P_wait</span> <span class="o">*</span> <span class="n">rho_s</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">rho_s</span><span class="p">)</span>   <span class="c1"># clientes en cola</span>
+    <span class="n">Ls</span> <span class="o">=</span> <span class="n">lam</span> <span class="o">/</span> <span class="n">mu</span>                         <span class="c1"># clientes en servicio = a</span>
+    <span class="n">L</span>  <span class="o">=</span> <span class="n">Lq</span> <span class="o">+</span> <span class="n">Ls</span>                          <span class="c1"># clientes en sistema</span>
+
+    <span class="n">Wq_mm2</span> <span class="o">=</span> <span class="n">Lq</span> <span class="o">/</span> <span class="n">lam</span>   <span class="c1"># tiempo en cola (Ley de Little)</span>
+    <span class="n">W_mm2</span>  <span class="o">=</span> <span class="n">L</span>  <span class="o">/</span> <span class="n">lam</span>   <span class="c1"># tiempo en sistema</span>
+
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Resultados M/M/2 (proceso nacimiento y muerte) ===&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  π₀  (P sistema vacío)     = </span><span class="si">{</span><span class="n">pi0</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  C(s,ρ) = P(espera)        = </span><span class="si">{</span><span class="n">P_wait</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  (</span><span class="si">{</span><span class="n">P_wait</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% de clientes esperan)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Lq  (clientes en cola)    = </span><span class="si">{</span><span class="n">Lq</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Ls  (clientes en servicio)= </span><span class="si">{</span><span class="n">Ls</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  L   (clientes en sistema) = </span><span class="si">{</span><span class="n">L</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Wq  (tiempo en cola)      = </span><span class="si">{</span><span class="n">Wq_mm2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> min  ≈ </span><span class="si">{</span><span class="n">Wq_mm2</span><span class="o">*</span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> seg&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  W   (tiempo en sistema)   = </span><span class="si">{</span><span class="n">W_mm2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Parámetros del sistema M/M/2 ===
+  λ (llegadas/min)         = 0.158784
+  μ (servicios/min/server) = 0.159757
+  s (servidores)           = 2
+  ρ_s = λ/(s·μ)            = 0.4970  Sistema estable (ρ_s &lt; 1)
+
+=== Resultados M/M/2 (proceso nacimiento y muerte) ===
+  π₀  (P sistema vacío)     = 0.3360
+  C(s,ρ) = P(espera)        = 0.3300  (33.0% de clientes esperan)
+  Lq  (clientes en cola)    = 0.3260
+  Ls  (clientes en servicio)= 0.9939
+  L   (clientes en sistema) = 1.3199
+  Wq  (tiempo en cola)      = 2.0529 min  ≈ 123.2 seg
+  W   (tiempo en sistema)   = 8.3124 min
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Interpretación del modelo M/M/2 (analítico, aproximado bajo supuesto exponencial):</strong></p>
+<ul class="simple">
+<li><p>La utilización <span class="math notranslate nohighlight">\(\rho_s \approx 0.50\)</span> indica que cada servidor está ocupado el 50% del tiempo en promedio: el sistema opera holgadamente.</p></li>
+<li><p>La probabilidad de espera <span class="math notranslate nohighlight">\(C(s,\rho) \approx 33\%\)</span> significa que 1 de cada 3 pasajeros debe esperar antes de ser atendido.</p></li>
+<li><p>El tiempo medio en cola <span class="math notranslate nohighlight">\(W_q\)</span> es breve (&lt; 3 min), consistente con la baja utilización.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Nota:</strong> este resultado es <em>analítico exacto bajo el supuesto M/M/2</em>. Si el servicio no es exponencial, el resultado es una aproximación.</p>
+</div></blockquote>
+</section>
+<section id="modelo-m-g-2-correccion-por-variabilidad-weibull-en-servicio">
+<h4>Modelo M/G/2 — Corrección por variabilidad (Weibull en servicio)<a class="headerlink" href="#modelo-m-g-2-correccion-por-variabilidad-weibull-en-servicio" title="Permalink to this heading">#</a></h4>
+<p>En la práctica, los tiempos de servicio no son necesariamente exponenciales. El ajuste Weibull (ya verificado por KS) permite obtener el <strong>coeficiente de variación al cuadrado</strong> (<span class="math notranslate nohighlight">\(C_s^2\)</span>) del tiempo de servicio.</p>
+<p>Para M/G/s <strong>no existe solución exacta en forma cerrada</strong> (salvo <span class="math notranslate nohighlight">\(s=1\)</span>). Se usa la <strong>aproximación de corrección por variabilidad</strong> (Kingman generalizado):</p>
+<div class="math notranslate nohighlight">
+\[W_q^{(M/G/2)} \approx \frac{C_a^2 + C_s^2}{2} \cdot W_q^{(M/M/2)}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(C_a^2 = 1\)</span> para llegadas Poisson (tiempos inter-llegada exponenciales implican <span class="math notranslate nohighlight">\(C_a^2 = 1\)</span>).</p>
+<p>Esta aproximación ajusta el tiempo de espera del modelo M/M/2 por la diferencia en variabilidad del servicio respecto al caso exponencial (<span class="math notranslate nohighlight">\(C_s^2 = 1\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Momentos de la Weibull ajustada</span>
+<span class="n">ES_wb</span>  <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">weibull_min</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">c_hat</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale_hat_wb</span><span class="p">)</span>
+<span class="n">ES2_wb</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">weibull_min</span><span class="o">.</span><span class="n">moment</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">c_hat</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale_hat_wb</span><span class="p">)</span>
+<span class="n">VarS</span>   <span class="o">=</span> <span class="n">ES2_wb</span> <span class="o">-</span> <span class="n">ES_wb</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">Cs2</span>    <span class="o">=</span> <span class="n">VarS</span> <span class="o">/</span> <span class="n">ES_wb</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Momentos de la Weibull ajustada (embarque) ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  c (forma)   = </span><span class="si">{</span><span class="n">c_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  (&gt;1: hazard creciente, servicio &#39;mejora&#39; con el tiempo)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  scale       = </span><span class="si">{</span><span class="n">scale_hat_wb</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  E[S]        = </span><span class="si">{</span><span class="n">ES_wb</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  E[S²]       = </span><span class="si">{</span><span class="n">ES2_wb</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Var[S]      = </span><span class="si">{</span><span class="n">VarS</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Cs² = Var/E²= </span><span class="si">{</span><span class="n">Cs2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  (&lt; 1: menos variable que exponencial)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Aproximación M/G/2</span>
+<span class="n">Ca2</span>    <span class="o">=</span> <span class="mf">1.0</span>   <span class="c1"># llegadas Poisson → C_a² = 1</span>
+<span class="n">factor</span> <span class="o">=</span> <span class="p">(</span><span class="n">Ca2</span> <span class="o">+</span> <span class="n">Cs2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Recalcular λ limpiando valores no finitos</span>
+<span class="n">x_inter_clean</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;interarrival_calc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">x_inter_clean</span> <span class="o">=</span> <span class="n">x_inter_clean</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">x_inter_clean</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x_inter_clean</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="n">lam2</span>   <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_inter_clean</span><span class="p">)</span>
+<span class="n">mu2</span>    <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">ES_wb</span>
+<span class="n">rho_s2</span> <span class="o">=</span> <span class="n">lam2</span> <span class="o">/</span> <span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">mu2</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">rho_s2</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">Wq_mg2</span> <span class="o">=</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">Wq_mm2</span>
+    <span class="n">W_mg2</span>  <span class="o">=</span> <span class="n">Wq_mg2</span> <span class="o">+</span> <span class="n">ES_wb</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Aproximación M/G/2 (servicio Weibull) ===&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Ca² (llegadas Poisson)    = </span><span class="si">{</span><span class="n">Ca2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Cs² (Weibull)             = </span><span class="si">{</span><span class="n">Cs2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Factor = (Ca²+Cs²)/2      = </span><span class="si">{</span><span class="n">factor</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Wq M/M/2                  = </span><span class="si">{</span><span class="n">Wq_mm2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Wq M/G/2 ≈ factor × Wq   = </span><span class="si">{</span><span class="n">Wq_mg2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  W  M/G/2 = Wq + E[S]      = </span><span class="si">{</span><span class="n">W_mg2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Momentos de la Weibull ajustada (embarque) ===
+  c (forma)   = 1.9223  (&gt;1: hazard creciente, servicio &#39;mejora&#39; con el tiempo)
+  scale       = 7.0784
+  E[S]        = 6.2789 min
+  E[S²]       = 50.9931
+  Var[S]      = 11.5690
+  Cs² = Var/E²= 0.2934  (&lt; 1: menos variable que exponencial)
+
+=== Aproximación M/G/2 (servicio Weibull) ===
+  Ca² (llegadas Poisson)    = 1.0000
+  Cs² (Weibull)             = 0.2934
+  Factor = (Ca²+Cs²)/2      = 0.6467
+  Wq M/M/2                  = 2.0529 min
+  Wq M/G/2 ≈ factor × Wq   = 1.3276 min
+  W  M/G/2 = Wq + E[S]      = 7.6065 min
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Interpretación comparativa:</strong></p>
+<p>Como <span class="math notranslate nohighlight">\(C_s^2 \approx 0.29 &lt; 1\)</span>, el servicio en embarque es <strong>menos variable</strong> que el supuesto exponencial puro. Esto implica:</p>
+<div class="math notranslate nohighlight">
+\[W_q^{(M/G/2)} = \frac{1 + 0.29}{2} \times W_q^{(M/M/2)} \approx 0.65 \times W_q^{(M/M/2)}\]</div>
+<p>El tiempo esperado en cola <strong>disminuye</strong> al usar la Weibull en lugar de asumir exponencialidad. Un servicio más regular (menor variabilidad) es más eficiente: los clientes esperan menos aunque la tasa de servicio sea la misma.</p>
+<center>
+<table style="margin: 0 auto; border-collapse: collapse;">
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Métrica</p></th>
+<th class="head"><p>M/M/2 (exponencial, exacto)</p></th>
+<th class="head"><p>M/G/2 (Weibull, aproximado)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong><span class="math notranslate nohighlight">\(C_s^2\)</span></strong></p></td>
+<td><p>1.0 (fijo)</p></td>
+<td><p>≈ 0.29 (estimado)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><span class="math notranslate nohighlight">\(W_q\)</span></strong></p></td>
+<td><p>≈ 2.05 min</p></td>
+<td><p>≈ 65% de <span class="math notranslate nohighlight">\(W_q^{M/M/2}\)</span> ≈ 1.33 min</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><span class="math notranslate nohighlight">\(W\)</span></strong></p></td>
+<td><p>≈ 8.31 min</p></td>
+<td><p><span class="math notranslate nohighlight">\(W_q + E[S]\)</span> ≈ 7.61 min</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Supuesto clave</strong></p></td>
+<td><p>Servicio exponencial</p></td>
+<td><p>Servicio Weibull (verificado)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Validez</strong></p></td>
+<td><p>Exacto bajo M/M/2</p></td>
+<td><p>Aproximación; más realista</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</table>
+</center></section>
+</section>
+<section id="formulacion-como-cadena-de-markov-en-tiempo-continuo-ctmc">
+<h3>Formulación como Cadena de Markov en Tiempo Continuo (CTMC)<a class="headerlink" href="#formulacion-como-cadena-de-markov-en-tiempo-continuo-ctmc" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>En esta sección se supone que <strong>todos los tiempos son exponenciales</strong> (llegadas y servicios), formule el sistema como una CTMC.</p>
+</div></blockquote>
+<section id="variables-de-estado">
+<h4>Variables de estado<a class="headerlink" href="#variables-de-estado" title="Permalink to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+X(t): \text{Número de pasajeros en la cola/servicio de seguridad en el instante } t
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y(t): \text{Número de pasajeros en la cola/servicio de embarque en el instante } t
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+R(t) = \{X(t),\, Y(t)\}
+\]</div>
+</section>
+<section id="espacios-de-estado">
+<h4>Espacios de estado<a class="headerlink" href="#espacios-de-estado" title="Permalink to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+S_X = \{0, 1, 2, \ldots, \infty\}, \qquad S_Y = \{0, 1, 2, \ldots, \infty\}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+S_R = S_X \times S_Y
+\]</div>
+</section>
+<section id="formulacion-general-del-generador-mathbb-q">
+<h4>Formulación general del generador <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span><a class="headerlink" href="#formulacion-general-del-generador-mathbb-q" title="Permalink to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbb{Q}_{(i,j)\to(i',j')} = \begin{cases}
+\lambda &amp; i'=i+1,\; j'=j &amp; \text{(llegada externa al sistema)} \\[4pt]
+\mu_1 \cdot \min(s_1,\, i) &amp; i'=i-1,\; j'=j+1 &amp; i&gt;0 \quad \text{(fin de servicio en seguridad → embarque)} \\[4pt]
+\mu_2 \cdot \min(s_2,\, j) &amp; i'=i,\;\;\; j'=j-1 &amp; j&gt;0 \quad \text{(fin de servicio en embarque → salida)} \\[4pt]
+0 &amp; \text{d.l.c.}
+\end{cases}
+\end{split}\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span>: tasa de llegada externa de pasajeros (estimada a partir de <code class="docutils literal notranslate"><span class="pre">interarrival_min</span></code> ~ Gamma, aproximada como Exponencial aquí).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_1\)</span>: tasa de servicio por servidor en seguridad <span class="math notranslate nohighlight">\(= 1/E[\text{security\_service\_time}]\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_2\)</span>: tasa de servicio por servidor en embarque <span class="math notranslate nohighlight">\(= 1/E[\text{boarding\_service\_time}]\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(s_1 = 2\)</span>: número de servidores en seguridad.</p></li>
+<li><p><span class="math notranslate nohighlight">\(s_2 = 2\)</span>: número de servidores en embarque.</p></li>
+<li><p>El término <span class="math notranslate nohighlight">\(\min(s_i, n)\)</span> captura que la tasa de salida de la estación <span class="math notranslate nohighlight">\(i\)</span> con <span class="math notranslate nohighlight">\(n\)</span> clientes es <span class="math notranslate nohighlight">\(\min(s_i, n)\cdot\mu_i\)</span> (proceso de nacimiento y muerte).</p></li>
+</ul>
+</section>
+</section>
+<section id="formulacion-extendida-como-cadena-de-markov-en-tiempo-continuo-ctmc">
+<h3>Formulación extendida como Cadena de Markov en Tiempo Continuo (CTMC)<a class="headerlink" href="#formulacion-extendida-como-cadena-de-markov-en-tiempo-continuo-ctmc" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>En esta sección se supone que <strong>todos los tiempos son exponenciales</strong> (llegadas y servicios), formule el sistema extendido como una CTMC.</p>
+</div></blockquote>
+<p>El sistema incluye cuatro estaciones. Al terminar el control de seguridad, una fracción de pasajeros es derivada a <strong>inspección profunda</strong> (equipaje sospechoso o selección aleatoria). Quienes superan inspección, junto con quienes pasaron seguridad directamente, se dirigen a la sala de embarque. Una fracción de pasajeros en embarque es enviada a <strong>verificación de documentos de viaje</strong> antes de abordar; quienes no requieren verificación salen del sistema directamente.</p>
+<p>Adicionalmente, el sistema contempla dos <strong>eventos de vaciado parcial</strong>:</p>
+<ul class="simple">
+<li><p>Con tasa <span class="math notranslate nohighlight">\(\alpha\)</span>, se anuncia el cierre anticipado de una puerta de embarque: <strong>todos los pasajeros actualmente en embarque y verificación de documentos abandonan el sistema simultáneamente</strong> (vuelo cerrado).</p></li>
+<li><p>Con tasa <span class="math notranslate nohighlight">\(\beta\)</span>, una alerta de seguridad obliga a evacuar el área de inspección: <strong>todos los pasajeros en inspección profunda son devueltos al inicio de seguridad</strong>, incrementando <span class="math notranslate nohighlight">\(X(t)\)</span> en la cantidad que había en <span class="math notranslate nohighlight">\(Y(t)\)</span>.</p></li>
+</ul>
+<section id="id1">
+<h4>Variables de estado<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+X(t): \text{Número de pasajeros en seguridad (cola + servicio) en el instante } t
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y(t): \text{Número de pasajeros en inspección profunda (cola + servicio) en el instante } t
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Z(t): \text{Número de pasajeros en embarque (cola + servicio) en el instante } t
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+W(t): \text{Número de pasajeros en verificación de documentos (cola + servicio) en el instante } t
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+R(t) = \{X(t),\, Y(t),\, Z(t),\, W(t)\}
+\]</div>
+</section>
+<section id="id2">
+<h4>Espacios de estado<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+S_X = \{0,1,2,\ldots,\infty\}, \quad S_Y = \{0,1,2,\ldots,\infty\}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+S_Z = \{0,1,2,\ldots,\infty\}, \quad S_W = \{0,1,2,\ldots,\infty\}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+S_R = S_X \times S_Y \times S_Z \times S_W
+\]</div>
+</section>
+<section id="parametros-de-enrutamiento">
+<h4>Parámetros de enrutamiento<a class="headerlink" href="#parametros-de-enrutamiento" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p\)</span>: probabilidad de ser enviado a inspección profunda al salir de seguridad.</p></li>
+<li><p><span class="math notranslate nohighlight">\(1-p\)</span>: probabilidad de pasar directamente a embarque al salir de seguridad.</p></li>
+<li><p><span class="math notranslate nohighlight">\(q\)</span>: probabilidad de ser enviado a verificación de documentos al salir de embarque.</p></li>
+<li><p><span class="math notranslate nohighlight">\(1-q\)</span>: probabilidad de salir del sistema directamente al terminar embarque.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span>: tasa del evento de cierre de puerta (vacía <span class="math notranslate nohighlight">\(Z\)</span> y <span class="math notranslate nohighlight">\(W\)</span> simultáneamente).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span>: tasa de alerta de seguridad (vacía <span class="math notranslate nohighlight">\(Y\)</span> y lo devuelve a <span class="math notranslate nohighlight">\(X\)</span>).</p></li>
+</ul>
+</section>
+<section id="id3">
+<h4>Formulación general del generador <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}
+\mathbb{Q}_{(i,j,k,l)\to(i',j',k',l')} = \begin{cases}
+\lambda &amp; i'=i+1,\; j'=j,\; k'=k,\; l'=l
+&amp; \text{(llegada externa)} \\[6pt]\end{split}\\\begin{split}p\cdot\mu_1\cdot\min(s_1,i) &amp; i'=i-1,\; j'=j+1,\; k'=k,\; l'=l, \quad i&gt;0
+&amp; \text{(seguridad} \to \text{inspección)} \\[6pt]\end{split}\\\begin{split}(1-p)\cdot\mu_1\cdot\min(s_1,i) &amp; i'=i-1,\; j'=j,\; k'=k+1,\; l'=l, \quad i&gt;0
+&amp; \text{(seguridad} \to \text{embarque)} \\[6pt]\end{split}\\\begin{split}\mu_2\cdot\min(s_2,j) &amp; i'=i,\; j'=j-1,\; k'=k+1,\; l'=l, \quad j&gt;0
+&amp; \text{(inspección} \to \text{embarque)} \\[6pt]\end{split}\\\begin{split}q\cdot\mu_3\cdot\min(s_3,k) &amp; i'=i,\; j'=j,\; k'=k-1,\; l'=l+1, \quad k&gt;0
+&amp; \text{(embarque} \to \text{verificación)} \\[6pt]\end{split}\\\begin{split}(1-q)\cdot\mu_3\cdot\min(s_3,k) &amp; i'=i,\; j'=j,\; k'=k-1,\; l'=l, \quad k&gt;0
+&amp; \text{(embarque} \to \text{salida directa)} \\[6pt]\end{split}\\\begin{split}\mu_4\cdot\min(s_4,l) &amp; i'=i,\; j'=j,\; k'=k,\; l'=l-1, \quad l&gt;0
+&amp; \text{(verificación} \to \text{salida)} \\[6pt]\end{split}\\\begin{split}\alpha &amp; i'=i,\; j'=j,\; k'=0,\; l'=0, \quad k+l&gt;0
+&amp; \text{(cierre de puerta: vacía } Z \text{ y } W\text{)} \\[6pt]\end{split}\\\begin{split}\beta &amp; i'=i+j,\; j'=0,\; k'=k,\; l'=l, \quad j&gt;0
+&amp; \text{(alerta de seguridad: vacía } Y \text{, devuelve a } X\text{)} \\[6pt]\end{split}\\0 &amp; \text{d.l.c.}
+\end{cases}
+\end{aligned}\end{align} \]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span>: tasa de llegada externa de pasajeros.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_1\)</span>: tasa de servicio por servidor en <strong>seguridad</strong>, <span class="math notranslate nohighlight">\(s_1 = 2\)</span> servidores.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_2\)</span>: tasa de servicio por servidor en <strong>inspección profunda</strong>, <span class="math notranslate nohighlight">\(s_2 = 1\)</span> servidor.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_3\)</span>: tasa de servicio por servidor en <strong>embarque</strong>, <span class="math notranslate nohighlight">\(s_3 = 2\)</span> servidores.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_4\)</span>: tasa de servicio por servidor en <strong>verificación de documentos</strong>, <span class="math notranslate nohighlight">\(s_4 = 1\)</span> servidor.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span>: tasa de ocurrencia del cierre de puerta; cuando ocurre, el estado pasa de <span class="math notranslate nohighlight">\((i,j,k,l)\)</span> a <span class="math notranslate nohighlight">\((i,j,0,0)\)</span> independientemente de los valores de <span class="math notranslate nohighlight">\(k\)</span> y <span class="math notranslate nohighlight">\(l\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span>: tasa de ocurrencia de la alerta de seguridad; cuando ocurre, el estado pasa de <span class="math notranslate nohighlight">\((i,j,k,l)\)</span> a <span class="math notranslate nohighlight">\((i+j,\,0,\,k,\,l)\)</span>, reintegrando los <span class="math notranslate nohighlight">\(j\)</span> pasajeros de inspección a seguridad.</p></li>
+<li><p>El término <span class="math notranslate nohighlight">\(\min(s_i, n)\)</span> captura el número efectivo de servidores activos cuando hay <span class="math notranslate nohighlight">\(n\)</span> clientes en la estación <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+</ul>
+<p>Universidad de los Andes | Vigilada Mineducación. Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia. Departamento de Ingeniería Industrial Carrera 1 Este No. 19 A 40 Bogotá, Colombia Tel. (57.1) 3324320 | (57.1) 3394949 Ext. 2880 /2881 http://industrial.uniandes.edu.co</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content\complementarias"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="complementaria_markov_iii.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Complementaria Semana 10: Cadenas de Markov en Python III</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="complementaria_vyv.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Aplicación de metodologías de verificación y validación para simulaciones</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-de-estudio-operacion-de-un-aeropuerto">Caso de estudio: operación de un aeropuerto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-del-sistema">Diagrama del sistema</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importar-librerias-y-cargar-datos">Importar librerías y cargar datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-exploratorio-de-variables">Análisis exploratorio de variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-de-parametros-por-maxima-verosimilitud-mle">Estimación de parámetros por máxima verosimilitud (MLE)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interarrival-times-gamma">1. Interarrival times → Gamma</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#security-service-time-lognormal">2. Security service time → Lognormal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boarding-service-time-weibull-h4">3. Boarding service time → Weibull</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ticket-price-normal">4. Ticket price → Normal</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pruebas-de-bondad-de-ajuste">Pruebas de bondad de ajuste</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kolmogorovsmirnov-ks">Kolmogórov–Smirnov (KS)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#andersondarling-ad">Anderson–Darling (AD)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nivel-de-significancia">Nivel de significancia</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-por-variable">Evaluación por variable</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interarrival-times-gamma-prueba-ks">1. Interarrival times — Gamma (prueba KS)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#security-service-time-lognormal-prueba-ad">2. Security service time — Lognormal (prueba AD)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boarding-service-time-weibull-prueba-ks">3. Boarding service time — Weibull (prueba KS)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ticket-price-normal-prueba-ks">4. Ticket price — Normal (prueba KS)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-colas-sistema-de-embarque">Modelo de colas: sistema de embarque</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proceso-de-nacimiento-y-muerte">Proceso de nacimiento y muerte</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-m-g-2-correccion-por-variabilidad-weibull-en-servicio">Modelo M/G/2 — Corrección por variabilidad (Weibull en servicio)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulacion-como-cadena-de-markov-en-tiempo-continuo-ctmc">Formulación como Cadena de Markov en Tiempo Continuo (CTMC)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-de-estado">Variables de estado</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#espacios-de-estado">Espacios de estado</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#formulacion-general-del-generador-mathbb-q">Formulación general del generador <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulacion-extendida-como-cadena-de-markov-en-tiempo-continuo-ctmc">Formulación extendida como Cadena de Markov en Tiempo Continuo (CTMC)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Variables de estado</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Espacios de estado</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros-de-enrutamiento">Parámetros de enrutamiento</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Formulación general del generador <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Equipo Modelado Bajo Incertidumbre | Uniandes
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

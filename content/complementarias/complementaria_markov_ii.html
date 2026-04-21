@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Complementaria Semana 9: Cadenas de Markov en Python II &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
@@ -28,36 +29,40 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0361f5db" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_markov_ii';</script>
@@ -161,18 +166,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -213,6 +207,8 @@
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Aplicación de metodologías de verificación y validación para simulaciones</a></li>
 </ul>
 
     </div>
@@ -242,9 +238,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -338,9 +334,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -387,9 +383,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="complementaria-semana-9-cadenas-de-markov-en-python-ii">
-<h1>Complementaria Semana 9: Cadenas de Markov en Python II<a class="headerlink" href="#complementaria-semana-9-cadenas-de-markov-en-python-ii" title="Link to this heading">#</a></h1>
+<h1>Complementaria Semana 9: Cadenas de Markov en Python II<a class="headerlink" href="#complementaria-semana-9-cadenas-de-markov-en-python-ii" title="Permalink to this heading">#</a></h1>
 <section id="objetivos-de-aprendizaje">
-<h2>Objetivos de aprendizaje<a class="headerlink" href="#objetivos-de-aprendizaje" title="Link to this heading">#</a></h2>
+<h2>Objetivos de aprendizaje<a class="headerlink" href="#objetivos-de-aprendizaje" title="Permalink to this heading">#</a></h2>
 <p>Al finalizar esta sesión, el estudiante será capaz de:</p>
 <ol class="arabic simple">
 <li><p>Distinguir entre distribución transitoria y distribución en estado estable.</p></li>
@@ -400,7 +396,7 @@ document.write(`
 </ol>
 </section>
 <section id="ejercicio-de-un-hospital-en-tiempo-continuo-continuacion">
-<h2>Ejercicio de un hospital en tiempo continuo (Continuación)<a class="headerlink" href="#ejercicio-de-un-hospital-en-tiempo-continuo-continuacion" title="Link to this heading">#</a></h2>
+<h2>Ejercicio de un hospital en tiempo continuo (Continuación)<a class="headerlink" href="#ejercicio-de-un-hospital-en-tiempo-continuo-continuacion" title="Permalink to this heading">#</a></h2>
 <p>Considere un hospital con <span class="math notranslate nohighlight">\(B = 20\)</span> camas. Hay dos tipos de pacientes que usan este hospital. Los pacientes de tipo <span class="math notranslate nohighlight">\(i\ (i=1,2)\)</span> llegan según un proceso de Poisson con tasa <span class="math notranslate nohighlight">\(\lambda_1 = 6.5\)</span> y <span class="math notranslate nohighlight">\(\lambda_2 = 3\)</span> pacientes por hora y requieren un servicio independiente e idénticamente distribuido (iid) con tiempos de servicio que siguen una distribución exponencial con parámetros <span class="math notranslate nohighlight">\(\mu_1 = 2\)</span> y <span class="math notranslate nohighlight">\(\mu_2 = 1.5\)</span> pacientes por hora. El hospital utiliza la siguiente política: reserva <span class="math notranslate nohighlight">\(b = 5\)</span> camas para pacientes de tipo 1. Así, cuando un paciente de tipo 1 llega, se le admite en el hospital siempre que haya una cama disponible. Sin embargo, un paciente de tipo 2 es admitido solo si el número de pacientes de tipo 2 que actualmente ocupan camas es menor que <span class="math notranslate nohighlight">\(B-b\)</span>.</p>
 <p>Se le ha solicitado modelar la anterior situación definiendo claramente variables de estado, espacios de estado y matriz de transición o generadora según sea el caso.</p>
 <p><strong>Variables de estado:</strong></p>
@@ -534,7 +530,7 @@ j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 </div>
 </div>
 <section id="preguntas">
-<h3>Preguntas<a class="headerlink" href="#preguntas" title="Link to this heading">#</a></h3>
+<h3>Preguntas<a class="headerlink" href="#preguntas" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>¿Cuál es la probabilidad de que haya 4 pacientes tipo 2 luego de 5 horas? Asuma que al inicio había un paciente de tipo 1 y un paciente de tipo 2.</p></li>
 <li><p>Calcule la varianza del número total de pacientes en el hospital tras 2 horas y 6 horas, dado que al inicio el sistema está vacío. Compare los resultados obtenidos.</p></li>
@@ -545,7 +541,7 @@ j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 <li><p>Si se observa el sistema durante una semana, ¿cuánto tiempo esperado pasará el hospital con más de 3 pacientes de tipo 1 y menos de 2 pacientes de tipo 2, dado que había uno solo de cada tipo al inicio.</p></li>
 </ol>
 <section id="calculo-de-la-probabilidad-de-que-haya-4-pacientes-tipo-2-luego-de-5-horas-partiendo-de-que-el-hospital-tenia-1-paciente-tipo-1-y-1-paciente-tipo-2">
-<h4>1. Cálculo de la probabilidad de que haya 4 pacientes tipo 2 luego de 5 horas, partiendo de que el hospital tenía 1 paciente tipo 1 y 1 paciente tipo 2.<a class="headerlink" href="#calculo-de-la-probabilidad-de-que-haya-4-pacientes-tipo-2-luego-de-5-horas-partiendo-de-que-el-hospital-tenia-1-paciente-tipo-1-y-1-paciente-tipo-2" title="Link to this heading">#</a></h4>
+<h4>1. Cálculo de la probabilidad de que haya 4 pacientes tipo 2 luego de 5 horas, partiendo de que el hospital tenía 1 paciente tipo 1 y 1 paciente tipo 2.<a class="headerlink" href="#calculo-de-la-probabilidad-de-que-haya-4-pacientes-tipo-2-luego-de-5-horas-partiendo-de-que-el-hospital-tenia-1-paciente-tipo-1-y-1-paciente-tipo-2" title="Permalink to this heading">#</a></h4>
 <p>En la sesión anterior nos pedían la transición de un estado inicial a un estado final en un lapso de tiempo definido. No obstante, para esta pregunta si bien tenemos el estado inicial y el tiempo que transcurre, el estado final solo nos está indicando el número de pacientes de tipo 2 (4 pacientes), pero no nos dicen nada respecto a los pacientes tipo 1. Dado que no está especificado, debemos tener en cuenta todas las posibilidades en las que tenemos 4 pacientes de tipo 2 y cualquier valor <span class="math notranslate nohighlight">\(S_X=\{0,\ 1,\ 2,\ 3,\ \ldots,B\}\)</span> para los pacientes tipo 1. Esta pregunta se trata de un problema de probabilidades transitorias de la forma:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -626,12 +622,12 @@ j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5d1975006ea89503ac49cf49939ccf92ec37e2b63acb15a5c5f8ab18cd28e31c.png" src="../../_images/5d1975006ea89503ac49cf49939ccf92ec37e2b63acb15a5c5f8ab18cd28e31c.png" />
+<img alt="../../_images/1f076cbdeaf73d0531f6e8344bff464a329afc8955e00e2ec99733a83987fae3.png" src="../../_images/1f076cbdeaf73d0531f6e8344bff464a329afc8955e00e2ec99733a83987fae3.png" />
 </div>
 </div>
 </section>
 <section id="calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-y-6-horas">
-<h4>2. Cálculo de la varianza del número total de pacientes tras 2 y 6 horas<a class="headerlink" href="#calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-y-6-horas" title="Link to this heading">#</a></h4>
+<h4>2. Cálculo de la varianza del número total de pacientes tras 2 y 6 horas<a class="headerlink" href="#calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-y-6-horas" title="Permalink to this heading">#</a></h4>
 <p>Sea <span class="math notranslate nohighlight">\(T(t) = X(t) + Y(t)\)</span> el número total de pacientes, podemos calcular su varianza como:</p>
 <div class="math notranslate nohighlight">
 \[\text{Var}(T) = E[T^2] - (E[T])^2 = \sum_{(i,j) \in S} (i+j)^2 \pi_{(i,j)}(t) - \left(\sum_{(i,j) \in S} (i+j) \pi_{(i,j)}(t)\right)^2\]</div>
@@ -705,7 +701,7 @@ Varianza del número de pacientes tras 6 horas: 5.250
 </div>
 </section>
 <section id="calculo-estado-estable-para-la-condicion-x-y">
-<h4>3. Cálculo estado estable para la condición X &gt; Y<a class="headerlink" href="#calculo-estado-estable-para-la-condicion-x-y" title="Link to this heading">#</a></h4>
+<h4>3. Cálculo estado estable para la condición X &gt; Y<a class="headerlink" href="#calculo-estado-estable-para-la-condicion-x-y" title="Permalink to this heading">#</a></h4>
 <p>Para calcular la probabilidad de que en el largo plazo (estado estable) haya más pacientes tipo 1 que tipo 2, primero definimos <span class="math notranslate nohighlight">\(\pi_{(i,j)}\)</span> como la probabilidad límite de que el sistema se encuentre en el estado con <span class="math notranslate nohighlight">\(i\)</span> pacientes de tipo 1 y <span class="math notranslate nohighlight">\(j\)</span> pacientes de tipo 2.</p>
 <p>Estas probabilidades se obtienen al resolver el sistema de ecuaciones de balance global de la cadena:</p>
 <div class="math notranslate nohighlight">
@@ -781,12 +777,12 @@ Varianza del número de pacientes tras 6 horas: 5.250
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b1a569886574c64bc25652409cc06b7cadefed63807f99f12103350faf112572.png" src="../../_images/b1a569886574c64bc25652409cc06b7cadefed63807f99f12103350faf112572.png" />
+<img alt="../../_images/2bd2e0bee28a97358c0ebe92dd1ac2afb401d26088fc7203daa8dc9d8af71535.png" src="../../_images/2bd2e0bee28a97358c0ebe92dd1ac2afb401d26088fc7203daa8dc9d8af71535.png" />
 </div>
 </div>
 </section>
 <section id="generacion-de-la-grafica-de-la-probabilidad-de-que-haya-mas-pacientes-tipo-1-que-tipo-2-en-funcion-del-tiempo-0-a-24-horas">
-<h4>4. Generación de la gráfica de la probabilidad de que haya más pacientes tipo 1 que tipo 2 en función del tiempo (0 a 24 horas)<a class="headerlink" href="#generacion-de-la-grafica-de-la-probabilidad-de-que-haya-mas-pacientes-tipo-1-que-tipo-2-en-funcion-del-tiempo-0-a-24-horas" title="Link to this heading">#</a></h4>
+<h4>4. Generación de la gráfica de la probabilidad de que haya más pacientes tipo 1 que tipo 2 en función del tiempo (0 a 24 horas)<a class="headerlink" href="#generacion-de-la-grafica-de-la-probabilidad-de-que-haya-mas-pacientes-tipo-1-que-tipo-2-en-funcion-del-tiempo-0-a-24-horas" title="Permalink to this heading">#</a></h4>
 <p>Para este punto calculamos inicialmente la probabilidad para cada punto de tiempo en el intervalo de 0 a 24 horas. Esto lo guardamos en un vector que graficamos de la sigueinte forma utilizando <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -833,7 +829,7 @@ Varianza del número de pacientes tras 6 horas: 5.250
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b3efe641fd92ca0365f737abb323148703297b09cb2045aed92600330bc74fed.png" src="../../_images/b3efe641fd92ca0365f737abb323148703297b09cb2045aed92600330bc74fed.png" />
+<img alt="../../_images/86221ae5b4d2dc90ab38964fcb642b97d88c5b38506d379fe25c28ef226cfc20.png" src="../../_images/86221ae5b4d2dc90ab38964fcb642b97d88c5b38506d379fe25c28ef226cfc20.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -861,12 +857,12 @@ Varianza del número de pacientes tras 6 horas: 5.250
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/95656fd5da65f3125fc1938c6fd828aad89a892f9f41692d49596e03503d699e.png" src="../../_images/95656fd5da65f3125fc1938c6fd828aad89a892f9f41692d49596e03503d699e.png" />
+<img alt="../../_images/27a61fa42cb33b6208042ee8236dab15f199ed9f06bdbd0eb0d23cdabdc4f247.png" src="../../_images/27a61fa42cb33b6208042ee8236dab15f199ed9f06bdbd0eb0d23cdabdc4f247.png" />
 </div>
 </div>
 </section>
 <section id="calculo-del-costo-operativo-esperado-en-estado-estable">
-<h4>5. Cálculo del costo operativo esperado en estado estable<a class="headerlink" href="#calculo-del-costo-operativo-esperado-en-estado-estable" title="Link to this heading">#</a></h4>
+<h4>5. Cálculo del costo operativo esperado en estado estable<a class="headerlink" href="#calculo-del-costo-operativo-esperado-en-estado-estable" title="Permalink to this heading">#</a></h4>
 <p>Para calcular el costo operativo por hora, utilizamos la definición del valor esperado para variables aleatorias discretas, y multiplicamos el costo asociado a cada estado por la probabilidad a largo plazo de estar en dicho estado, y sumamos sobre todo el espacio de estados <span class="math notranslate nohighlight">\(S_X\)</span>.</p>
 <p>Sea <span class="math notranslate nohighlight">\(C\)</span> la función de costo para un estado <span class="math notranslate nohighlight">\((i, j)\)</span> tal que:
 <div class="math notranslate nohighlight">
@@ -908,7 +904,7 @@ C(i, j) = 100i + 80j
 </div>
 </section>
 <section id="tiempo-de-primera-pasada-al-estado-10-3">
-<h4>6. Tiempo de primera pasada al estado (10, 3)<a class="headerlink" href="#tiempo-de-primera-pasada-al-estado-10-3" title="Link to this heading">#</a></h4>
+<h4>6. Tiempo de primera pasada al estado (10, 3)<a class="headerlink" href="#tiempo-de-primera-pasada-al-estado-10-3" title="Permalink to this heading">#</a></h4>
 <p>El tiempo promedio de primera pasada al estado objetivo (10, 3) se denota <span class="math notranslate nohighlight">\(m_{(0,0)\to(10,3)}\)</span>. Para encontrarlo se debe resolver el sistema lineal:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -948,7 +944,7 @@ m = \bar Q^{-1}\,\mathbf{1},\quad m_{(0,0)\to(10,3)} = [m]_{(0,0)}
 </div>
 </section>
 <section id="tiempo-esperado-de-ocupacion">
-<h4>7: Tiempo esperado de ocupación<a class="headerlink" href="#tiempo-esperado-de-ocupacion" title="Link to this heading">#</a></h4>
+<h4>7: Tiempo esperado de ocupación<a class="headerlink" href="#tiempo-esperado-de-ocupacion" title="Permalink to this heading">#</a></h4>
 <p>El tiempo de ocupación se refiere al tiempo total esperado que la cadena pasa visitando un estado particular durante un intervalo de tiempo determinado, dado un estado inicial.</p>
 <p>Cuando nos interesa el tiempo que el sistema pasa en un conjunto de estados que cumplen cierta condición (en este caso, más de 3 pacientes tipo 1 y menos de 2 pacientes tipo 2), debemos sumar los tiempos de ocupación individuales de todos los estados que satisfagan esa regla. Dado que partimos del estado inicial <span class="math notranslate nohighlight">\((1,1)\)</span> y evaluamos el sistema durante una semana (<span class="math notranslate nohighlight">\(24\times7\)</span> horas), la ecuación exacta para calcular este tiempo de ocupación esperado es:</p>
 <div class="math notranslate nohighlight">
@@ -1099,7 +1095,7 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Complementaria Semana 5: Transformada Inversa para Generación de Variables Aleatorias (GVA) &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
@@ -28,36 +29,40 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0361f5db" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_transf_inversa_gva';</script>
@@ -161,18 +166,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -213,6 +207,8 @@
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Aplicación de metodologías de verificación y validación para simulaciones</a></li>
 </ul>
 
     </div>
@@ -242,9 +238,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -338,9 +334,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -400,7 +396,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="complementaria-semana-5-transformada-inversa-para-generacion-de-variables-aleatorias-gva">
-<h1>Complementaria Semana 5: Transformada Inversa para Generación de Variables Aleatorias (GVA)<a class="headerlink" href="#complementaria-semana-5-transformada-inversa-para-generacion-de-variables-aleatorias-gva" title="Link to this heading">#</a></h1>
+<h1>Complementaria Semana 5: Transformada Inversa para Generación de Variables Aleatorias (GVA)<a class="headerlink" href="#complementaria-semana-5-transformada-inversa-para-generacion-de-variables-aleatorias-gva" title="Permalink to this heading">#</a></h1>
 <p>En esta complementaria aprenderemos a <strong>generar variables aleatorias continuas</strong> a partir de una fuente básica de aleatoriedad: una uniforme <code class="docutils literal notranslate"><span class="pre">U</span> <span class="pre">~</span> <span class="pre">Unif(0,1)</span></code>.</p>
 <p>La idea central es:</p>
 <div class="math notranslate nohighlight">
@@ -409,7 +405,7 @@ X = F^{-1}(U) \quad \text{donde } U \sim \text{Unif}(0,1)
 \]</div>
 <p>donde <span class="math notranslate nohighlight">\(F\)</span> es la CDF (función de distribución acumulada) de <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <section id="objetivos">
-<h2>Objetivos<a class="headerlink" href="#objetivos" title="Link to this heading">#</a></h2>
+<h2>Objetivos<a class="headerlink" href="#objetivos" title="Permalink to this heading">#</a></h2>
 <p>Al final de esta guía podrás:</p>
 <ol class="arabic simple">
 <li><p>Entender por qué <span class="math notranslate nohighlight">\(F(X)\sim \text{Unif}(0,1)\)</span> y cómo eso implica <span class="math notranslate nohighlight">\(X=F^{-1}(U)\)</span>.</p></li>
@@ -419,7 +415,7 @@ X = F^{-1}(U) \quad \text{donde } U \sim \text{Unif}(0,1)
 </ol>
 </section>
 <section id="librerias-que-usaremos">
-<h2>Librerías que usaremos<a class="headerlink" href="#librerias-que-usaremos" title="Link to this heading">#</a></h2>
+<h2>Librerías que usaremos<a class="headerlink" href="#librerias-que-usaremos" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> para muestreo y cálculo numérico</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> para visualización</p></li>
@@ -434,19 +430,23 @@ X = F^{-1}(U) \quad \text{donde } U \sim \text{Unif}(0,1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (2.4.1)
-Requirement already satisfied: matplotlib in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (3.10.8)
-Requirement already satisfied: scipy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (1.17.0)
-Requirement already satisfied: contourpy&gt;=1.0.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.3.3)
-Requirement already satisfied: cycler&gt;=0.10 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (4.61.1)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.4.9)
-Requirement already satisfied: packaging&gt;=20.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (25.0)
-Requirement already satisfied: pillow&gt;=8 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (12.1.0)
-Requirement already satisfied: pyparsing&gt;=3 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (3.3.1)
-Requirement already satisfied: python-dateutil&gt;=2.7 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (2.9.0.post0)
-Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (2.3.4)
+Requirement already satisfied: matplotlib in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (3.10.7)
+Requirement already satisfied: scipy in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (1.15.2)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (1.3.1)
+Requirement already satisfied: cycler&gt;=0.10 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (4.57.0)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (1.4.8)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (26.0)
+Requirement already satisfied: pillow&gt;=8 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (11.0.0)
+Requirement already satisfied: pyparsing&gt;=3 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (3.2.3)
+Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
 Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.2 -&gt; 26.0.1
+[notice] To update, run: C:\Users\jpine\AppData\Local\Programs\Python\Python312\python.exe -m pip install --upgrade pip
 </pre></div>
 </div>
 </div>
@@ -465,10 +465,10 @@ Note: you may need to restart the kernel to use updated packages.
 </section>
 </section>
 <section id="como-funciona-la-transformada-inversa">
-<h1>¿Cómo funciona la Transformada Inversa?<a class="headerlink" href="#como-funciona-la-transformada-inversa" title="Link to this heading">#</a></h1>
+<h1>¿Cómo funciona la Transformada Inversa?<a class="headerlink" href="#como-funciona-la-transformada-inversa" title="Permalink to this heading">#</a></h1>
 <p>Antes de programar, es clave entender <strong>qué problema estamos resolviendo</strong>.</p>
 <section id="el-problema-central">
-<h2>El problema central<a class="headerlink" href="#el-problema-central" title="Link to this heading">#</a></h2>
+<h2>El problema central<a class="headerlink" href="#el-problema-central" title="Permalink to this heading">#</a></h2>
 <p>En un computador, el generador básico de números aleatorios produce valores:</p>
 <div class="math notranslate nohighlight">
 \[U \sim \text{Unif}(0,1)\]</div>
@@ -479,7 +479,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div></blockquote>
 </section>
 <section id="idea-clave">
-<h2>Idea clave<a class="headerlink" href="#idea-clave" title="Link to this heading">#</a></h2>
+<h2>Idea clave<a class="headerlink" href="#idea-clave" title="Permalink to this heading">#</a></h2>
 <p>Sea <span class="math notranslate nohighlight">\(X\)</span> una variable aleatoria continua con función de distribución acumulada (CDF) <span class="math notranslate nohighlight">\(F\)</span>.</p>
 <p>Entonces ocurre algo muy importante:</p>
 <div class="math notranslate nohighlight">
@@ -487,7 +487,7 @@ Note: you may need to restart the kernel to use updated packages.
 <p>Es decir, <strong>si evaluamos la CDF de una variable aleatoria en su propio valor, el resultado es uniforme</strong>.</p>
 </section>
 <section id="por-que-pasa-esto-intuicion-argumento-corto">
-<h2>¿Por qué pasa esto? (intuición + argumento corto)<a class="headerlink" href="#por-que-pasa-esto-intuicion-argumento-corto" title="Link to this heading">#</a></h2>
+<h2>¿Por qué pasa esto? (intuición + argumento corto)<a class="headerlink" href="#por-que-pasa-esto-intuicion-argumento-corto" title="Permalink to this heading">#</a></h2>
 <p>La CDF <span class="math notranslate nohighlight">\(F(x)\)</span> nos dice:</p>
 <blockquote>
 <div><p>la probabilidad de que <span class="math notranslate nohighlight">\(X\)</span> sea menor o igual que <span class="math notranslate nohighlight">\(x\)</span>.</p>
@@ -498,7 +498,7 @@ Note: you may need to restart the kernel to use updated packages.
 <p>Esto es exactamente la CDF de una <strong>Uniforme(0,1)</strong>.</p>
 </section>
 <section id="la-idea-se-puede-dar-la-vuelta">
-<h2>La idea se puede “dar la vuelta”<a class="headerlink" href="#la-idea-se-puede-dar-la-vuelta" title="Link to this heading">#</a></h2>
+<h2>La idea se puede “dar la vuelta”<a class="headerlink" href="#la-idea-se-puede-dar-la-vuelta" title="Permalink to this heading">#</a></h2>
 <p>Si:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(F(X)\)</span> es uniforme,</p></li>
@@ -511,7 +511,7 @@ Note: you may need to restart the kernel to use updated packages.
 <p><strong>Este es el método de la transformada inversa.</strong></p>
 </section>
 <section id="que-necesitamos-en-la-practica">
-<h2>¿Qué necesitamos en la práctica?<a class="headerlink" href="#que-necesitamos-en-la-practica" title="Link to this heading">#</a></h2>
+<h2>¿Qué necesitamos en la práctica?<a class="headerlink" href="#que-necesitamos-en-la-practica" title="Permalink to this heading">#</a></h2>
 <p>Para usar la transformada inversa necesitamos:</p>
 <ol class="arabic simple">
 <li><p>Saber la CDF <span class="math notranslate nohighlight">\(F(x)\)</span> de la distribución objetivo.</p></li>
@@ -521,7 +521,7 @@ Note: you may need to restart the kernel to use updated packages.
 </ol>
 </section>
 <section id="fuente-de-aleatoriedad-generador-por-congruencia-lineal-lcg">
-<h2>Fuente de aleatoriedad: generador por congruencia lineal (LCG)<a class="headerlink" href="#fuente-de-aleatoriedad-generador-por-congruencia-lineal-lcg" title="Link to this heading">#</a></h2>
+<h2>Fuente de aleatoriedad: generador por congruencia lineal (LCG)<a class="headerlink" href="#fuente-de-aleatoriedad-generador-por-congruencia-lineal-lcg" title="Permalink to this heading">#</a></h2>
 <p>En la sección anterior asumimos que el computador puede producir directamente valores
 <div class="math notranslate nohighlight">
 \[
@@ -618,13 +618,13 @@ Eso es útil en simulación porque garantiza <strong>reproducibilidad</strong>.<
 Var empírica : 0.08358436772439962  | Teórica: 0.08333333333333333
 </pre></div>
 </div>
-<img alt="../../_images/0745c854ebcd455b260c3ea00de0710426917b7e06d187d92f91d7f3eee51960.png" src="../../_images/0745c854ebcd455b260c3ea00de0710426917b7e06d187d92f91d7f3eee51960.png" />
+<img alt="../../_images/3d2d51ee3692632c1253a8b616e9b22b77e31b1c679490ff0b71612b17c7a1e9.png" src="../../_images/3d2d51ee3692632c1253a8b616e9b22b77e31b1c679490ff0b71612b17c7a1e9.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="ejemplo-guiado-exponencial-lambda">
-<h1>Ejemplo guiado — Exponencial(<span class="math notranslate nohighlight">\(\lambda\)</span>)<a class="headerlink" href="#ejemplo-guiado-exponencial-lambda" title="Link to this heading">#</a></h1>
+<h1>Ejemplo guiado — Exponencial(<span class="math notranslate nohighlight">\(\lambda\)</span>)<a class="headerlink" href="#ejemplo-guiado-exponencial-lambda" title="Permalink to this heading">#</a></h1>
 <p>En este ejemplo aplicaremos el método de la <strong>transformada inversa</strong> para generar variables aleatorias con distribución exponencial, una de las distribuciones continuas más importantes en simulación (por ejemplo, para modelar tiempos entre eventos).</p>
 <p>El objetivo es:</p>
 <ul class="simple">
@@ -639,7 +639,7 @@ Var empírica : 0.08358436772439962  | Teórica: 0.08333333333333333
 F(x) = 1 - e^{-\lambda x}, \quad x \ge 0
 \]</div>
 <section id="calculo-de-la-transformada-inversa">
-<h2>Cálculo de la transformada inversa<a class="headerlink" href="#calculo-de-la-transformada-inversa" title="Link to this heading">#</a></h2>
+<h2>Cálculo de la transformada inversa<a class="headerlink" href="#calculo-de-la-transformada-inversa" title="Permalink to this heading">#</a></h2>
 <p>Para aplicar el método, igualamos la CDF a una variable uniforme <span class="math notranslate nohighlight">\(U \sim \text{Unif}(0,1)\)</span> y despejamos <span class="math notranslate nohighlight">\(x\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -664,7 +664,7 @@ X = -\frac{1}{\lambda} \ln(U)
 \]</div>
 </section>
 <section id="procedimiento-aplicado-al-caso-exponencial">
-<h2>Procedimiento aplicado al caso Exponencial<a class="headerlink" href="#procedimiento-aplicado-al-caso-exponencial" title="Link to this heading">#</a></h2>
+<h2>Procedimiento aplicado al caso Exponencial<a class="headerlink" href="#procedimiento-aplicado-al-caso-exponencial" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Generar <span class="math notranslate nohighlight">\(U_1,\dots,U_n \sim \text{Unif}(0,1)\)</span>.</p></li>
 <li><p>Calcular <span class="math notranslate nohighlight">\(X_i = F^{-1}(U_i)\)</span>, en este caso <span class="math notranslate nohighlight">\(X_i = -\frac{1}{\lambda}\ln(U_i)\)</span>.</p></li>
@@ -749,7 +749,7 @@ X = -\frac{1}{\lambda} \ln(U)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/55e69cd342417b0cef9e11cfb52bcfe400b6f9edbb75d734254d1f932b9ef81f.png" src="../../_images/55e69cd342417b0cef9e11cfb52bcfe400b6f9edbb75d734254d1f932b9ef81f.png" />
+<img alt="../../_images/8702e92a91eccf3bd1ed635ecf42ebd6c673e5761838911511014d78938ea43a.png" src="../../_images/8702e92a91eccf3bd1ed635ecf42ebd6c673e5761838911511014d78938ea43a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -771,7 +771,7 @@ Var empírica : 0.25384200162094983  | Teórica: 0.25
 <p>Adicionalmente, la media y la varianza empíricas son muy cercanas a sus valores teóricos. Estas pequeñas diferencias se deben al error muestral propio de trabajar con un número finito de observaciones y tienden a desaparecer a medida que el tamaño de la muestra aumenta.</p>
 </section>
 <section id="validacion-adicional-ks-test">
-<h2>Validación adicional: KS test<a class="headerlink" href="#validacion-adicional-ks-test" title="Link to this heading">#</a></h2>
+<h2>Validación adicional: KS test<a class="headerlink" href="#validacion-adicional-ks-test" title="Permalink to this heading">#</a></h2>
 <p>El test de Kolmogorov–Smirnov (KS) compara la función de distribución acumulada empírica con la CDF teórica de la distribución exponencial.</p>
 <p>Si el procedimiento de generación es consistente con la distribución teórica, el p-value del test debería ser <strong>mayor que un nivel de significancia <span class="math notranslate nohighlight">\(\alpha\)</span></strong> (por ejemplo, <span class="math notranslate nohighlight">\(\alpha=0.05\)</span>), de modo que no se rechace la hipótesis nula de que los datos provienen de dicha distribución.</p>
 <p><strong>Importante:</strong> el test KS no prueba que la distribución sea exactamente correcta; únicamente detecta discrepancias estadísticamente significativas entre la CDF empírica y la teórica. Además, para tamaños muestrales grandes, el test puede volverse muy sensible.</p>
@@ -798,7 +798,7 @@ p-value     : 0.7155843801748469
 </section>
 </section>
 <section id="ejercicio-aplicado-generacion-weibull-por-transformada-inversa">
-<h1>Ejercicio aplicado — Generación Weibull por Transformada Inversa<a class="headerlink" href="#ejercicio-aplicado-generacion-weibull-por-transformada-inversa" title="Link to this heading">#</a></h1>
+<h1>Ejercicio aplicado — Generación Weibull por Transformada Inversa<a class="headerlink" href="#ejercicio-aplicado-generacion-weibull-por-transformada-inversa" title="Permalink to this heading">#</a></h1>
 <p>En este ejercicio aplicarás el método de la <strong>transformada inversa</strong> para generar variables aleatorias con distribución <strong>Weibull</strong>, una distribución ampliamente usada para modelar tiempos de vida y fallas en sistemas.</p>
 <p>Sea <span class="math notranslate nohighlight">\(X \sim \text{Weibull}(k,\lambda)\)</span>, donde:</p>
 <ul class="simple">
@@ -811,7 +811,7 @@ p-value     : 0.7155843801748469
 F(x) = 1 - \exp\left(-\left(\frac{x}{\lambda}\right)^k\right), \quad x \ge 0
 \]</div>
 <section id="parte-a-derivacion-de-la-transformada-inversa">
-<h2>Parte A — Derivación de la transformada inversa<a class="headerlink" href="#parte-a-derivacion-de-la-transformada-inversa" title="Link to this heading">#</a></h2>
+<h2>Parte A — Derivación de la transformada inversa<a class="headerlink" href="#parte-a-derivacion-de-la-transformada-inversa" title="Permalink to this heading">#</a></h2>
 <p>Partiendo de <span class="math notranslate nohighlight">\(u = F(x)\)</span>, derive una expresión explícita para <span class="math notranslate nohighlight">\(x = F^{-1}(u)\)</span>.</p>
 <p><strong>Solución:</strong></p>
 <p>Partimos de:</p>
@@ -843,7 +843,7 @@ X = \lambda \left(-\ln(U)\right)^{1/k}
 \]</div>
 </section>
 <section id="parte-b-implementacion-en-python">
-<h2>Parte B — Implementación en Python<a class="headerlink" href="#parte-b-implementacion-en-python" title="Link to this heading">#</a></h2>
+<h2>Parte B — Implementación en Python<a class="headerlink" href="#parte-b-implementacion-en-python" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Implemente un generador de variables Weibull usando la transformada inversa.</p></li>
 <li><p>Genere <span class="math notranslate nohighlight">\(n=50\,000\)</span> observaciones para los siguientes parámetros:</p>
@@ -913,7 +913,7 @@ X = \lambda \left(-\ln(U)\right)^{1/k}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7770336aa9e0b67f186b4d12cac7bddf1e98d72c112335db9e4491f6c37dfb7e.png" src="../../_images/7770336aa9e0b67f186b4d12cac7bddf1e98d72c112335db9e4491f6c37dfb7e.png" />
+<img alt="../../_images/97af2a4236c3359649a86521fb3b83aaa0922e957cc579ff57127b74955659bb.png" src="../../_images/97af2a4236c3359649a86521fb3b83aaa0922e957cc579ff57127b74955659bb.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -952,7 +952,7 @@ p-value     : 0.36048169196311963
 </div>
 </section>
 <section id="parte-c-analisis">
-<h2>Parte C — Análisis<a class="headerlink" href="#parte-c-analisis" title="Link to this heading">#</a></h2>
+<h2>Parte C — Análisis<a class="headerlink" href="#parte-c-analisis" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>¿La forma del histograma coincide con la pdf teórica?</p></li>
 <li><p>¿La media empírica es cercana a la media teórica?</p></li>
@@ -1076,7 +1076,7 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Complementaria Semana 8: Cadenas de Markov en Python I &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
   
@@ -28,36 +29,40 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0361f5db" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_markov_i';</script>
@@ -161,18 +166,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -213,6 +207,8 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Aplicación de metodologías de verificación y validación para simulaciones</a></li>
 </ul>
 
     </div>
@@ -242,9 +238,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -338,9 +334,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -398,9 +394,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="complementaria-semana-8-cadenas-de-markov-en-python-i">
-<h1>Complementaria Semana 8: Cadenas de Markov en Python I<a class="headerlink" href="#complementaria-semana-8-cadenas-de-markov-en-python-i" title="Link to this heading">#</a></h1>
+<h1>Complementaria Semana 8: Cadenas de Markov en Python I<a class="headerlink" href="#complementaria-semana-8-cadenas-de-markov-en-python-i" title="Permalink to this heading">#</a></h1>
 <section id="objetivos-de-aprendizaje">
-<h2>Objetivos de aprendizaje<a class="headerlink" href="#objetivos-de-aprendizaje" title="Link to this heading">#</a></h2>
+<h2>Objetivos de aprendizaje<a class="headerlink" href="#objetivos-de-aprendizaje" title="Permalink to this heading">#</a></h2>
 <p>Al finalizar esta sesión, el estudiante será capaz de:</p>
 <ol class="arabic simple">
 <li><p>Construir una CMTC en <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> a partir de una matriz generadora <span class="math notranslate nohighlight">\(Q\)</span>.</p></li>
@@ -411,7 +407,7 @@ document.write(`
 </ol>
 </section>
 <section id="introduccion-a-jmarkov">
-<h2>Introducción a jmarkov<a class="headerlink" href="#introduccion-a-jmarkov" title="Link to this heading">#</a></h2>
+<h2>Introducción a jmarkov<a class="headerlink" href="#introduccion-a-jmarkov" title="Permalink to this heading">#</a></h2>
 <p>En esta sección construiremos una cadena de Markov en tiempo continuo (CMTC) sencilla con 3 estados. La idea de este ejercicio es ilustrar, de manera compacta, los principales cálculos que podemos realizar con <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>, tanto estructurales como probabilísticos.</p>
 <p>Consideremos una cadena con variable <span class="math notranslate nohighlight">\(X\left(t\right)\)</span> y un espacio de estados <span class="math notranslate nohighlight">\(S_x = \{0,1,2\}\)</span>. Las transiciones entre estados están gobernadas por la siguiente matriz generadora:</p>
 <div class="math notranslate nohighlight">
@@ -437,11 +433,15 @@ Q_{(i,j)} = \begin{pmatrix}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jmarkov in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (0.3.9)
-Requirement already satisfied: numpy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from jmarkov) (2.4.1)
-Requirement already satisfied: scipy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from jmarkov) (1.17.0)
-Requirement already satisfied: typing in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from jmarkov) (3.7.4.3)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jmarkov in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (0.3.9)
+Requirement already satisfied: numpy in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from jmarkov) (2.3.4)
+Requirement already satisfied: scipy in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from jmarkov) (1.15.2)
+Requirement already satisfied: typing in c:\users\jpine\appdata\local\programs\python\python312\lib\site-packages (from jmarkov) (3.7.4.3)
 Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.2 -&gt; 26.0.1
+[notice] To update, run: C:\Users\jpine\AppData\Local\Programs\Python\Python312\python.exe -m pip install --upgrade pip
 </pre></div>
 </div>
 </div>
@@ -492,7 +492,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <section id="analisis-transitorio">
-<h3>Análisis transitorio<a class="headerlink" href="#analisis-transitorio" title="Link to this heading">#</a></h3>
+<h3>Análisis transitorio<a class="headerlink" href="#analisis-transitorio" title="Permalink to this heading">#</a></h3>
 <p>Podemos calcular la distribución en un instante <span class="math notranslate nohighlight">\( t \)</span> dado un estado inicial indicado con un vector de estados inciales <span class="math notranslate nohighlight">\( \overrightarrow{\pi}(0) \)</span>, así</p>
 <div class="math notranslate nohighlight">
 \[
@@ -534,7 +534,7 @@ La probabilidad de estar en el estado 1 en t=2 es 0.269
 </div>
 </section>
 <section id="probabilidades-en-estado-estable">
-<h3>Probabilidades en estado estable<a class="headerlink" href="#probabilidades-en-estado-estable" title="Link to this heading">#</a></h3>
+<h3>Probabilidades en estado estable<a class="headerlink" href="#probabilidades-en-estado-estable" title="Permalink to this heading">#</a></h3>
 <p>Si la cadena es ergódica, existe una distribución estacionaria <span class="math notranslate nohighlight">\( \pi \)</span> tal que:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -571,7 +571,7 @@ La probabilidad de estar en el estado 1 en el largo plazo es 0.269
 </div>
 </section>
 <section id="tiempo-de-primera-pasada">
-<h3>Tiempo de primera pasada<a class="headerlink" href="#tiempo-de-primera-pasada" title="Link to this heading">#</a></h3>
+<h3>Tiempo de primera pasada<a class="headerlink" href="#tiempo-de-primera-pasada" title="Permalink to this heading">#</a></h3>
 <p>El tiempo promedio de primera pasada (hitting time) <span class="math notranslate nohighlight">\(m_{i,j}\)</span> desde un estado inicial <span class="math notranslate nohighlight">\(i\)</span> hacia un estado objetivo <span class="math notranslate nohighlight">\(j\)</span> puede calcularse al escribir <span class="math notranslate nohighlight">\(m_{i,j}\)</span> como</p>
 <div class="math notranslate nohighlight">
 \[
@@ -621,7 +621,7 @@ El tiempo de primera pasada desde el estado 1 al estado 2 es: 0.4
 </div>
 </section>
 <section id="tiempo-de-ocupacion">
-<h3>Tiempo de ocupación<a class="headerlink" href="#tiempo-de-ocupacion" title="Link to this heading">#</a></h3>
+<h3>Tiempo de ocupación<a class="headerlink" href="#tiempo-de-ocupacion" title="Permalink to this heading">#</a></h3>
 <p>En una cadena de Markov en tiempo continuo, el <strong>tiempo de ocupación</strong> mide cuánto tiempo, en promedio, el proceso pasa en cada estado durante un intervalo finito <span class="math notranslate nohighlight">\([0,t]\)</span>, y se calcula como</p>
 <div class="math notranslate nohighlight">
 \[
@@ -671,7 +671,7 @@ Tiempo en 2 desde 1: 1.506
 </div>
 </section>
 <section id="que-preguntas-puedo-hacerle-a-una-distribucion">
-<h3>¿Qué preguntas puedo hacerle a una distribución?<a class="headerlink" href="#que-preguntas-puedo-hacerle-a-una-distribucion" title="Link to this heading">#</a></h3>
+<h3>¿Qué preguntas puedo hacerle a una distribución?<a class="headerlink" href="#que-preguntas-puedo-hacerle-a-una-distribucion" title="Permalink to this heading">#</a></h3>
 <p>Una vez que tenemos una distribución de probabilidad discreta (sea transitoria o en estado estable) podemos calcular cualquier medida típica de probabilidad y estadística:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -708,11 +708,11 @@ Tiempo en 2 desde 1: 1.506
 </section>
 </section>
 <section id="ejercicio-de-implementacion-hospital-en-tiempo-continuo">
-<h2>Ejercicio de implementación: Hospital en tiempo continuo<a class="headerlink" href="#ejercicio-de-implementacion-hospital-en-tiempo-continuo" title="Link to this heading">#</a></h2>
+<h2>Ejercicio de implementación: Hospital en tiempo continuo<a class="headerlink" href="#ejercicio-de-implementacion-hospital-en-tiempo-continuo" title="Permalink to this heading">#</a></h2>
 <p>Considere un hospital con <span class="math notranslate nohighlight">\(B = 20\)</span> camas. Hay dos tipos de pacientes que usan este hospital. Los pacientes de tipo <span class="math notranslate nohighlight">\(i\ (i=1,2)\)</span> llegan según un proceso de Poisson con tasa <span class="math notranslate nohighlight">\(\lambda_1 = 6.5\)</span> y <span class="math notranslate nohighlight">\(\lambda_2 = 3\)</span> pacientes por hora, respectivamente, y requieren un servicio independiente e idénticamente distribuido (iid) con tiempos de servicio que siguen una distribución exponencial con parámetros <span class="math notranslate nohighlight">\(\mu_1 = 2\)</span> y <span class="math notranslate nohighlight">\(\mu_2 = 1.5\)</span> pacientes por hora, respectivamente. El hospital utiliza la siguiente política: reserva <span class="math notranslate nohighlight">\(b = 5\)</span> camas para pacientes de tipo 1. Así, cuando un paciente de tipo 1 llega, se le admite en el hospital siempre que haya una cama disponible. Sin embargo, un paciente de tipo 2 es admitido solo si hay una cama disponible y el número de pacientes de tipo 2 que actualmente ocupan camas es menor que <span class="math notranslate nohighlight">\(B-b\)</span>.</p>
 <p>Se le ha solicitado modelar la anterior situación definiendo claramente variables de estado, espacios de estado y matriz de transición o generadora según sea el caso.</p>
 <section id="preguntas">
-<h3>Preguntas<a class="headerlink" href="#preguntas" title="Link to this heading">#</a></h3>
+<h3>Preguntas<a class="headerlink" href="#preguntas" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Construya la matriz de tasas de transición <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span>, luego cree la cadena de Markov utilizando la librería <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>.</p></li>
 </ol>
@@ -724,7 +724,7 @@ Tiempo en 2 desde 1: 1.506
 <li><p>Responda nuevamente la pregunta 2 utilizando simulación en SimPy y compare los resultados.</p></li>
 </ol>
 <section id="construir-la-matriz-de-de-transicion-y-la-cadena-en-jmarkov">
-<h4>1. Construir la matriz de de transición y la cadena en jmarkov<a class="headerlink" href="#construir-la-matriz-de-de-transicion-y-la-cadena-en-jmarkov" title="Link to this heading">#</a></h4>
+<h4>1. Construir la matriz de de transición y la cadena en jmarkov<a class="headerlink" href="#construir-la-matriz-de-de-transicion-y-la-cadena-en-jmarkov" title="Permalink to this heading">#</a></h4>
 <p><strong>Variables de estado:</strong></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(X\left(t\right)\)</span>: El número de pacientes tipo 1 en el tiempo <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
@@ -2524,7 +2524,7 @@ Tamaño de Q: (216, 216)
 </div>
 </section>
 <section id="calculo-de-la-probabilidad-despues-de-6-horas-el-hospital-tenga-1-paciente-tipo-1-y-3-pacientes-tipo-2">
-<h4>2. Cálculo de la probabilidad: después de 6 horas, el hospital tenga 1 paciente tipo 1 y 3 pacientes tipo 2<a class="headerlink" href="#calculo-de-la-probabilidad-despues-de-6-horas-el-hospital-tenga-1-paciente-tipo-1-y-3-pacientes-tipo-2" title="Link to this heading">#</a></h4>
+<h4>2. Cálculo de la probabilidad: después de 6 horas, el hospital tenga 1 paciente tipo 1 y 3 pacientes tipo 2<a class="headerlink" href="#calculo-de-la-probabilidad-despues-de-6-horas-el-hospital-tenga-1-paciente-tipo-1-y-3-pacientes-tipo-2" title="Permalink to this heading">#</a></h4>
 <p>La matriz exponencial <span class="math notranslate nohighlight">\(e^{Qt}\)</span> corresponde a la matriz de probabilidades transitorias al tiempo <span class="math notranslate nohighlight">\(t\)</span>. En esta matriz, las filas representan el estado inicial y las columnas el estado al que se transita. La distribución de probabilidad en el tiempo <span class="math notranslate nohighlight">\(t\)</span> está dada por:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2557,7 +2557,7 @@ Tamaño de Q: (216, 216)
  \big[e^{Q(6)}\big]_{((0,0),(1,3))}
  \]</div>
 <section id="solucion-en-jmarkov">
-<h5>Solución en jmarkov<a class="headerlink" href="#solucion-en-jmarkov" title="Link to this heading">#</a></h5>
+<h5>Solución en jmarkov<a class="headerlink" href="#solucion-en-jmarkov" title="Permalink to this heading">#</a></h5>
 <p>Para resolver esta pregunta primero se debe establecer correctamente el vector de estado inicial (hospital vacío).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2673,7 +2673,7 @@ Tamaño de Q: (216, 216)
 </section>
 </section>
 <section id="visualizacion-de-la-distribucion-conjunta-despues-de-6-horas-dado-que-el-sistema-inicio-vacio">
-<h4>3. Visualización de la distribución conjunta después de 6 horas dado que el sistema inició vacío<a class="headerlink" href="#visualizacion-de-la-distribucion-conjunta-despues-de-6-horas-dado-que-el-sistema-inicio-vacio" title="Link to this heading">#</a></h4>
+<h4>3. Visualización de la distribución conjunta después de 6 horas dado que el sistema inició vacío<a class="headerlink" href="#visualizacion-de-la-distribucion-conjunta-despues-de-6-horas-dado-que-el-sistema-inicio-vacio" title="Permalink to this heading">#</a></h4>
 <p>Dado que el vector calculado en el punto anterior <code class="docutils literal notranslate"><span class="pre">probs_transitorias_6h</span></code> contiene las probabilidades de todas las posibles combinaciones de pacientes de tipo 1 y 2, dado que el hospital estaba vacío al inicio y de que transcurran 6 horas, es posible hacer un mapa de calor que ilustre el posible comportamiento del hospital según el tipo de paciente.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2733,7 +2733,7 @@ Dimensión de la distribución conjunta: (21, 16) (tipo1 × tipo2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1edba4d30fbd2c95cae1250d4220dae4aea2bbc6b321e9ac239c67ed7530d3ab.png" src="../../_images/1edba4d30fbd2c95cae1250d4220dae4aea2bbc6b321e9ac239c67ed7530d3ab.png" />
+<img alt="../../_images/b934af5a6be756c68120468681137c831fd1cf2d59173723aa7ee42bc3831529.png" src="../../_images/b934af5a6be756c68120468681137c831fd1cf2d59173723aa7ee42bc3831529.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estado más probable: (3, 1) con P = 0.0601
 </pre></div>
 </div>
@@ -2741,7 +2741,7 @@ Dimensión de la distribución conjunta: (21, 16) (tipo1 × tipo2)
 </div>
 </section>
 <section id="probabilidades-marginales-de-pacientes-tipo-1-y-2">
-<h4>4. Probabilidades marginales de pacientes tipo 1 y 2<a class="headerlink" href="#probabilidades-marginales-de-pacientes-tipo-1-y-2" title="Link to this heading">#</a></h4>
+<h4>4. Probabilidades marginales de pacientes tipo 1 y 2<a class="headerlink" href="#probabilidades-marginales-de-pacientes-tipo-1-y-2" title="Permalink to this heading">#</a></h4>
 <p>Un resultado interesante del mapa de calor es ver como el comportamiento de los pacientes tipo 1 y 2 está concentrado en un área y a medida que nos alejamos de esta, la probabilidad disminuye drásticamente.
 Otra forma de ver este comportamineto es si realizamos un histograma para la distribución marginal de los pacientes de cada tipo. La distribuciones marginales se pueden calcular de la siguiente manera:</p>
 <p>Olvidamos <span class="math notranslate nohighlight">\(Y\)</span> sumando sobre todos sus valores:
@@ -2812,12 +2812,12 @@ Var[Y(6)] = 2.000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/75a866ac7ed1917eb3bf56c2fdbc1a2a5c424d2c5c96d88975909e0d4883315b.png" src="../../_images/75a866ac7ed1917eb3bf56c2fdbc1a2a5c424d2c5c96d88975909e0d4883315b.png" />
+<img alt="../../_images/b7d7bf6a6d863d1d2cd2ba25e55af75a6e52f931b64346d4e156a5f7c1fac623.png" src="../../_images/b7d7bf6a6d863d1d2cd2ba25e55af75a6e52f931b64346d4e156a5f7c1fac623.png" />
 </div>
 </div>
 </section>
 <section id="comparacion-con-simulacion-en-simpy">
-<h4>5. Comparación con Simulación en SimPy<a class="headerlink" href="#comparacion-con-simulacion-en-simpy" title="Link to this heading">#</a></h4>
+<h4>5. Comparación con Simulación en SimPy<a class="headerlink" href="#comparacion-con-simulacion-en-simpy" title="Permalink to this heading">#</a></h4>
 <p>En las sesiones anteriores utilizamos <strong>SimPy</strong> para simular sistemas de colas. Dado que una Cadena de Markov en Tiempo Continuo (CMTC) se basa en eventos que ocurren en el tiempo (llegadas, salidas, transiciones), podemos usar el entorno de SimPy para simular el comportamiento dinámico de nuestro hospital.</p>
 <p>Para esto, simularemos el hospital múltiples veces, parando el reloj de SimPy exactamente a las 6 horas, para revisar en qué estado se encuentra. Para esto se modelarán las llegadas como procesos de Poisson y los tiempos de servicio como exponenciales.</p>
 <div class="cell docutils container">
@@ -2920,7 +2920,7 @@ Resultado de jmarkov = 0.022737
 <p>Por el teorema de la Ley de los números grandes, a medida que aumentemos el número de réplicas (<code class="docutils literal notranslate"><span class="pre">n_simulaciones</span></code>), nuestra probabilidad estimada convergerá de manera mucho más exacta a la probabilidad teórica calculada por la herramienta analítica.</p>
 </section>
 <section id="opcional-simulacion-modelando-saltos-a-partir-de-la-matriz-q">
-<h4>(Opcional) Simulación modelando saltos a partir de la matriz Q<a class="headerlink" href="#opcional-simulacion-modelando-saltos-a-partir-de-la-matriz-q" title="Link to this heading">#</a></h4>
+<h4>(Opcional) Simulación modelando saltos a partir de la matriz Q<a class="headerlink" href="#opcional-simulacion-modelando-saltos-a-partir-de-la-matriz-q" title="Permalink to this heading">#</a></h4>
 <p>También es posible usar la matriz <span class="math notranslate nohighlight">\(Q\)</span> directamente para generar tiempos de permanencia y transiciones.</p>
 <p><strong>Intuición</strong></p>
 <ol class="arabic simple">
@@ -2995,7 +2995,7 @@ Resultado de jmarkov = 0.022737
 </ul>
 </section>
 <section id="proxima-sesion">
-<h4>Próxima sesión<a class="headerlink" href="#proxima-sesion" title="Link to this heading">#</a></h4>
+<h4>Próxima sesión<a class="headerlink" href="#proxima-sesion" title="Permalink to this heading">#</a></h4>
 <p>En la siguiente sesión profundizaremos en el análisis transitorio vs estado estable, mostraremos cómo la distribución converge al estado estable, y responderemos preguntas más complejas sobre el hospital (costos, tiempos de primera pasada, tiempos de ocupación).</p>
 <p>Universidad de los Andes | Vigilada Mineducación. Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia. Departamento de Ingeniería Industrial Carrera 1 Este No. 19 A 40 Bogotá, Colombia Tel. (57.1) 3324320 | (57.1) 3394949 Ext. 2880 /2881 http://industrial.uniandes.edu.co</p>
 </section>
@@ -3116,7 +3116,7 @@ By Equipo Modelado Bajo Incertidumbre | Uniandes
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

@@ -213,6 +213,8 @@
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones</a></li>
 </ul>
 
     </div>
@@ -365,11 +367,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-de-un-hospital-en-tiempo-continuo-continuacion">Ejercicio de un hospital en tiempo continuo (Continuación)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas">Preguntas</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-probabilidad-de-que-haya-4-pacientes-tipo-2-luego-de-5-horas-partiendo-de-que-el-hospital-tenia-1-paciente-tipo-1-y-1-paciente-tipo-2">1. Cálculo de la probabilidad de que haya 4 pacientes tipo 2 luego de 5 horas, partiendo de que el hospital tenía 1 paciente tipo 1 y 1 paciente tipo 2.</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-y-6-horas">2. Cálculo de la varianza del número total de pacientes tras 2 y 6 horas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-horas">2. Cálculo de la varianza del número total de pacientes tras 2 horas</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-estado-estable-para-la-condicion-x-y">3. Cálculo estado estable para la condición X &gt; Y</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generacion-de-la-grafica-de-la-probabilidad-de-que-haya-mas-pacientes-tipo-1-que-tipo-2-en-funcion-del-tiempo-0-a-24-horas">4. Generación de la gráfica de la probabilidad de que haya más pacientes tipo 1 que tipo 2 en función del tiempo (0 a 24 horas)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-del-costo-operativo-esperado-en-estado-estable">5. Cálculo del costo operativo esperado en estado estable</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-primera-pasada-al-estado-10-3">6. Tiempo de primera pasada al estado (10, 3)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-primera-pasada-al-estado-1-3">6. Tiempo de primera pasada al estado (1, 3)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-esperado-de-ocupacion">7: Tiempo esperado de ocupación</a></li>
 </ul>
 </li>
@@ -420,23 +422,24 @@ S_Y=\{0,\ 1,\ 2,\ 3,\ \ldots,B-b\}
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-S_Z=\{(i,j) : i \ge 0,\ j \ge 0,\ j \le B-b,\ i+j \le B \}
+S_Z=\{(i,j):0\le i\le B,\ 0\le j\le B-b\}
 \]</div>
 <p><strong>Matriz generadora:</strong></p>
 <div class="math notranslate nohighlight">
-\[\begin{split}Q((i,j),(i',j')) = \begin{cases}
-\lambda_1, &amp; \text{si } i' = i + 1,\; j' = j,\; i+j &lt; B, \\[1mm]
-\lambda_2, &amp; \text{si } j' = j + 1,\; i' = i,\; i+j &lt; B,\; j &lt; B - b, \\[1mm]
+\[\begin{split}
+Q((i,j),(i',j')) = \begin{cases}
+\lambda_1, &amp; \text{si } i' = i + 1,\; j' = j,\; i &lt; B, \\[1mm]
+\lambda_2, &amp; \text{si } j' = j + 1,\; i' = i,\; j &lt; B - b, \\[1mm]
 i \cdot \mu_1, &amp; \text{si } i' = i - 1,\; j' = j,\; i &gt; 0, \\[1mm]
 j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 0, &amp; \text{en otro caso (d.l.c.)}.
-\end{cases}\end{split}\]</div>
+\end{cases}
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creacion de la cadena de markov para el hospital</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">jmarkov.ctmc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ctmc</span>
 
@@ -448,71 +451,58 @@ j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 <span class="n">mu_1</span> <span class="o">=</span> <span class="mi">2</span>      <span class="c1"># Tasa de salida de pacientes tipo 1 (por hora)</span>
 <span class="n">mu_2</span> <span class="o">=</span> <span class="mf">1.5</span>    <span class="c1"># Tasa de salida de pacientes tipo 2 (por hora)</span>
 
-<span class="c1"># 2. Generar espacio de estados</span>
-<span class="n">estados</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">B</span><span class="p">:</span>
-            <span class="n">estados</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
-                   
-<span class="c1"># Convertir los estados a formato texto</span>
-<span class="n">etiquetas</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">estado</span><span class="p">)</span> <span class="k">for</span> <span class="n">estado</span> <span class="ow">in</span> <span class="n">estados</span><span class="p">]</span>
+<span class="c1"># Dimensión de la matriz Q</span>
+<span class="n">num_estados</span> <span class="o">=</span> <span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># Inicializar la matriz Q llena de ceros con las etiquetas de texto</span>
-<span class="n">Q</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">etiquetas</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">etiquetas</span><span class="p">)</span>
+<span class="c1"># Inicializamos la matriz Q con ceros</span>
+<span class="n">Q_evaluar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_estados</span><span class="p">,</span> <span class="n">num_estados</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 
-<span class="n">mapa_indices</span> <span class="o">=</span> <span class="p">{</span><span class="n">estado</span><span class="p">:</span> <span class="n">idx</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">estado</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">estados</span><span class="p">)}</span>
-
-<span class="c1"># Función rápida para obtener el índice de cualquier estado</span>
+<span class="c1"># Función para mapear (i, j) a índice en la matriz Q</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">mapa_indices</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">j</span>
 
 <span class="c1"># Llenar la matriz Q</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">estados</span><span class="p">:</span>
-    <span class="n">estado_actual</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span> <span class="c1"># Convertimos la tupla actual a texto</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
 
-    <span class="c1"># Llegada paciente tipo 1</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">B</span><span class="p">:</span>
-        <span class="n">estado_futuro</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
-        <span class="n">Q</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">estado_actual</span><span class="p">,</span> <span class="n">estado_futuro</span><span class="p">]</span> <span class="o">=</span> <span class="n">lambda_1</span>   
-        
-    <span class="c1"># Llegada paciente tipo 2</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">B</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">B</span> <span class="o">-</span> <span class="n">b</span><span class="p">):</span>
-        <span class="n">estado_futuro</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="n">Q</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">estado_actual</span><span class="p">,</span> <span class="n">estado_futuro</span><span class="p">]</span> <span class="o">=</span> <span class="n">lambda_2</span>
-        
-    <span class="c1"># Salida paciente tipo 1</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">estado_futuro</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
-        <span class="n">Q</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">estado_actual</span><span class="p">,</span> <span class="n">estado_futuro</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">mu_1</span>
-        
-    <span class="c1"># Salida paciente tipo 2</span>
-    <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">estado_futuro</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="n">Q</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">estado_actual</span><span class="p">,</span> <span class="n">estado_futuro</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">mu_2</span>
+        <span class="c1"># Llegada de un paciente tipo 1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">B</span><span class="p">:</span>
+            <span class="n">Q_evaluar</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="n">lambda_1</span>
 
-<span class="c1"># 5. Ajustar la diagonal</span>
-<span class="n">filas_suma</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">estado</span> <span class="ow">in</span> <span class="n">estados</span><span class="p">:</span>
-    <span class="n">estado_actual</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">estado</span><span class="p">)</span>
-    <span class="n">Q</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">estado_actual</span><span class="p">,</span> <span class="n">estado_actual</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">filas_suma</span><span class="p">[</span><span class="n">estado_actual</span><span class="p">]</span>
+        <span class="c1"># Llegada de un paciente tipo 2 (si hay espacio disponible)</span>
+        <span class="k">if</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">B</span> <span class="o">-</span> <span class="n">b</span><span class="p">:</span>
+            <span class="n">Q_evaluar</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">lambda_2</span>
+
+        <span class="c1"># Salida de un paciente tipo 1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">Q_evaluar</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">mu_1</span>
+
+        <span class="c1"># Salida de un paciente tipo 2</span>
+        <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">Q_evaluar</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">mu_2</span>
+
+<span class="c1"># Llenar la diagonal con la suma negativa de las filas de la matriz</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_estados</span><span class="p">):</span>
+    <span class="n">Q_evaluar</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Q_evaluar</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:])</span>
+    
+<span class="kn">from</span><span class="w"> </span><span class="nn">jmarkov.ctmc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ctmc</span>
 
 <span class="c1"># Crear la cadena de Markov en tiempo continuo usando jmarkov</span>
-<span class="n">hospital_chain</span> <span class="o">=</span> <span class="n">ctmc</span><span class="p">(</span><span class="n">Q</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+<span class="n">hospital_chain</span> <span class="o">=</span> <span class="n">ctmc</span><span class="p">(</span><span class="n">Q_evaluar</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">vector_a_matriz</span><span class="p">(</span><span class="n">pi_vec</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Funciones auxiliares que usaremos en toda la sesión</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">vector_a_matriz</span><span class="p">(</span><span class="n">pi_vec</span><span class="p">):</span>
     <span class="c1"># Convierte vector de probabilidades a matriz (i, j)</span>
     <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-    
-    <span class="c1"># Llenamos la matriz iterando solo sobre los estados que sí existen</span>
-    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">estados</span><span class="p">):</span>
-        <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">pi_vec</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-        
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">pi_vec</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
     <span class="k">return</span> <span class="n">M</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">plot_heatmap</span><span class="p">(</span><span class="n">pi_mat</span><span class="p">,</span> <span class="n">titulo</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">max_i</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_j</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
@@ -527,7 +517,7 @@ j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
             <span class="n">val</span> <span class="o">=</span> <span class="n">region</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mf">0.004</span><span class="p">:</span>
                 <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-                        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span> <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mf">0.02</span> <span class="k">else</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+                       <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span> <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mf">0.02</span> <span class="k">else</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">im</span>
 </pre></div>
 </div>
@@ -572,7 +562,7 @@ j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --------------------------------------------------------------------</span>
 <span class="c1"># Pregunta 1: ¿Cuál es la probabilidad de que hayan 4 pacientes tipo 2 luego de 5 horas?</span>
 <span class="c1"># Partiendo de que el hospital tenía 1 paciente tipo 1 y 1 paciente tipo 2.</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estados</span><span class="p">))</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_estados</span><span class="p">)</span>
 <span class="n">alpha</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
 </div>
@@ -589,12 +579,10 @@ j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 <p>Para responder a la pregunta debemos calcular las probabilidades marginales:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inicializar un arreglo de ceros para las probabilidades marginales de j</span>
-<span class="n">prob_marg_tipo2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># Sumar la probabilidad de cada estado a su respectiva posición j</span>
-<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">estados</span><span class="p">):</span>
-    <span class="n">prob_marg_tipo2</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">probs_transitorias_5h</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcular la distribución marginal de Y(5) para todos los valores de j</span>
+<span class="n">prob_marg_tipo2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">probs_transitorias_5h</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> 
+                        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
 
 <span class="c1"># Mostrar la probabilidad específica para j = 4</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Probabilidad de que haya 4 pacientes tipo 2 luego de 5 horas: </span><span class="si">{</span><span class="n">prob_marg_tipo2</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -630,15 +618,15 @@ j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 </div>
 </div>
 </section>
-<section id="calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-y-6-horas">
-<h4>2. Cálculo de la varianza del número total de pacientes tras 2 y 6 horas<a class="headerlink" href="#calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-y-6-horas" title="Link to this heading">#</a></h4>
+<section id="calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-horas">
+<h4>2. Cálculo de la varianza del número total de pacientes tras 2 horas<a class="headerlink" href="#calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-horas" title="Link to this heading">#</a></h4>
 <p>Sea <span class="math notranslate nohighlight">\(T(t) = X(t) + Y(t)\)</span> el número total de pacientes, podemos calcular su varianza como:</p>
 <div class="math notranslate nohighlight">
 \[\text{Var}(T) = E[T^2] - (E[T])^2 = \sum_{(i,j) \in S} (i+j)^2 \pi_{(i,j)}(t) - \left(\sum_{(i,j) \in S} (i+j) \pi_{(i,j)}(t)\right)^2\]</div>
 <blockquote>
 <div><p><strong>Nota:</strong> <span class="math notranslate nohighlight">\(T = X + Y\)</span> es una <strong>variable aleatoria nueva</strong> que se construye como función de <span class="math notranslate nohighlight">\((X, Y)\)</span>. Podemos calcular su distribución completa, no solo su varianza.</p>
 </div></blockquote>
-<p>Para implementarlo primero definimos los vectores de probabilidades transitorias para 2 y 6 horas dado que el hospital estaba vacio al inicio.</p>
+<p>Para implementarlo primero definimos los vectores de probabilidades transitorias para 1 y 6 horas dado que el hospital estaba vacio al inicio.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --------------------------------------------------------------------</span>
@@ -646,7 +634,7 @@ j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 <span class="c1"># dado que al inicio está vacío. Compare los resultados obtenidos.</span>
 
 <span class="c1"># vector de estados inciales para hospital vacio (0, 0)</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estados</span><span class="p">))</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_estados</span><span class="p">)</span>
 <span class="n">alpha</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c1"># Probabilidades transitorias en 2 horas</span>
@@ -663,26 +651,20 @@ j \cdot \mu_2, &amp; \text{si } j' = j - 1,\; i' = i,\; j &gt; 0, \\[1mm]
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Función para calcular varianza dada una distribución de probabilidad</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">calcular_varianza</span><span class="p">(</span><span class="n">probs</span><span class="p">):</span>
-    <span class="n">esperanza</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">esperanza_cuadrado</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">esperanza</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span> <span class="o">*</span> <span class="n">probs</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
     
-    <span class="c1"># Iteramos directamente sobre los estados y sus probabilidades</span>
-    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">estados</span><span class="p">):</span>
-        <span class="n">total_pacientes</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span>
-        <span class="n">prob_estado</span> <span class="o">=</span> <span class="n">probs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-        
-        <span class="c1"># Sumatorias para E[X] y E[X^2]</span>
-        <span class="n">esperanza</span> <span class="o">+=</span> <span class="n">total_pacientes</span> <span class="o">*</span> <span class="n">prob_estado</span>
-        <span class="n">esperanza_cuadrado</span> <span class="o">+=</span> <span class="p">(</span><span class="n">total_pacientes</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">prob_estado</span>
-        
-    <span class="c1"># Varianza = E[X^2] - (E[X])^2</span>
-    <span class="n">varianza</span> <span class="o">=</span> <span class="n">esperanza_cuadrado</span> <span class="o">-</span> <span class="p">(</span><span class="n">esperanza</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">esperanza_cuadrado</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">probs</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+                             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">varianza</span> <span class="o">=</span> <span class="n">esperanza_cuadrado</span> <span class="o">-</span> <span class="n">esperanza</span> <span class="o">**</span> <span class="mi">2</span>
     <span class="k">return</span> <span class="n">varianza</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Ahora respondemos a la pregunta llamando esa función y utilizando como parámetro los dos vectores de probabilidades pasadas 2 hora y 6 horas:</p>
+<p>Ahora respondemos a la pregunta llamando esa función y utilizando como parámetro los dos vectores de probabilidades pasadas 1 hora y 6 horas:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cálculo de varianza en los distintos momentos</span>
@@ -731,12 +713,10 @@ Varianza del número de pacientes tras 6 horas: 5.250
 <span class="n">pi_estable</span> <span class="o">=</span> <span class="n">hospital_chain</span><span class="o">.</span><span class="n">steady_state</span><span class="p">()</span>
 
 <span class="c1"># Sumar las probabilidades donde i &gt; j en estado estable</span>
-<span class="n">prob_mas_1_estable</span> <span class="o">=</span> <span class="mf">0.0</span>
-
-<span class="c1"># Iteramos directamente sobre los estados válidos</span>
-<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">estados</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">j</span><span class="p">:</span>
-        <span class="n">prob_mas_1_estable</span> <span class="o">+=</span> <span class="n">pi_estable</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+<span class="n">prob_mas_1_estable</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pi_estable</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
+                         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                         <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">j</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Probabilidad de que haya más pacientes tipo 1 que tipo 2 en estado estable: </span><span class="si">{</span><span class="n">prob_mas_1_estable</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
@@ -791,28 +771,25 @@ Varianza del número de pacientes tras 6 horas: 5.250
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --------------------------------------------------------------------</span>
-<span class="c1"># Pregunta 4: Genere una gráfica de la probabilidad de que haya más pacientes tipo 1 que tipo 2</span>
+<span class="c1">### Pregunta 4: Genere una gráfica de la probabilidad de que haya más pacientes tipo 1 que tipo 2</span>
 <span class="c1">#  en función del tiempo, desde 0 hasta 24 horas. Compare con el valor obtenido en el punto anterior.</span>
 
 <span class="c1"># Definir tiempos de evaluación</span>
 <span class="n">puntos_de_tiempo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
 <span class="c1"># Estado inicial: hospital vacío</span>
-<span class="n">alpha_vacio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estados</span><span class="p">))</span>
-<span class="n">alpha_vacio</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># (0, 0) sí existe, así que este index() es seguro</span>
+<span class="n">alpha_vacio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_estados</span><span class="p">)</span>
+<span class="n">alpha_vacio</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c1"># Calcular la distribución transitoria para cada punto en el tiempo</span>
 <span class="n">probabilidad_mas_tipo_1</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">puntos_de_tiempo</span><span class="p">:</span>
     <span class="n">probs_transitorias_t</span> <span class="o">=</span> <span class="n">hospital_chain</span><span class="o">.</span><span class="n">transient_probabilities</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha_vacio</span><span class="p">)</span>
-    
-    <span class="c1"># Calculamos la suma iterando estrictamente sobre los estados válidos</span>
-    <span class="n">prob_mas_1</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">estados</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">j</span><span class="p">:</span>
-            <span class="n">prob_mas_1</span> <span class="o">+=</span> <span class="n">probs_transitorias_t</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-            
+    <span class="n">prob_mas_1</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">probs_transitorias_t</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
+                     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                     <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">j</span><span class="p">)</span>
     <span class="n">probabilidad_mas_tipo_1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prob_mas_1</span><span class="p">)</span>
 
 
@@ -887,11 +864,10 @@ C(i, j) = 100i + 80j
 <span class="c1">#  tipo 2 un costo de 80 pesos por hora, ¿cuál es el costo operativo total esperado por hora a largo plazo?</span>
 
 <span class="c1"># Construir el vector de costos para cada estado (i pacientes tipo 1, j pacientes tipo 2)</span>
-<span class="n">costos_estados</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estados</span><span class="p">))</span>
-
-<span class="c1"># Iteramos sobre los estados</span>
-<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">estados</span><span class="p">):</span>
-    <span class="n">costos_estados</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">80</span> <span class="o">*</span> <span class="n">j</span><span class="p">)</span>
+<span class="n">costos_estados</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_estados</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">costos_estados</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">80</span> <span class="o">*</span> <span class="n">j</span><span class="p">)</span>
 
 <span class="c1"># El costo esperado es la suma del producto de las probabilidades límite y los costos</span>
 <span class="n">costo_esperado_largo_plazo</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pi_estable</span> <span class="o">*</span> <span class="n">costos_estados</span><span class="p">)</span>
@@ -907,21 +883,21 @@ C(i, j) = 100i + 80j
 </div>
 </div>
 </section>
-<section id="tiempo-de-primera-pasada-al-estado-10-3">
-<h4>6. Tiempo de primera pasada al estado (10, 3)<a class="headerlink" href="#tiempo-de-primera-pasada-al-estado-10-3" title="Link to this heading">#</a></h4>
-<p>El tiempo promedio de primera pasada al estado objetivo (10, 3) se denota <span class="math notranslate nohighlight">\(m_{(0,0)\to(10,3)}\)</span>. Para encontrarlo se debe resolver el sistema lineal:</p>
+<section id="tiempo-de-primera-pasada-al-estado-1-3">
+<h4>6. Tiempo de primera pasada al estado (1, 3)<a class="headerlink" href="#tiempo-de-primera-pasada-al-estado-1-3" title="Link to this heading">#</a></h4>
+<p>El tiempo promedio de primera pasada al estado objetivo (1, 3) se denota <span class="math notranslate nohighlight">\(m_{(0,0)\to(1,3)}\)</span>. Para encontrarlo se debe resolver el sistema lineal:</p>
 <div class="math notranslate nohighlight">
 \[
-r(i,j)\,m_{(i,j)\to(10,3)}
-= 1 + \sum_{(k,\ell)\neq(10,3)} q_{(i,j),(k,\ell)}\, m_{(k,\ell)\to(10,3)}
+r(i,j)\,m_{(i,j)\to(1,3)}
+= 1 + \sum_{(k,\ell)\neq(1,3)} q_{(i,j),(k,\ell)}\, m_{(k,\ell)\to(1,3)}
 \]</div>
 <p>Equivalente a resolver por el método de la matriz recortada <span class="math notranslate nohighlight">\(\bar{Q}\)</span> igual a la matriz <span class="math notranslate nohighlight">\(Q\)</span> sin la fila/columna del estado objetivo.
 <div class="math notranslate nohighlight">
 \[
-m = \bar Q^{-1}\,\mathbf{1},\quad m_{(0,0)\to(10,3)} = [m]_{(0,0)}
+m = \bar Q^{-1}\,\mathbf{1},\quad m_{(0,0)\to(1,3)} = [m]_{(0,0)}
 \]</div>
 </p>
-<p>En <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> utilizamos el método <code class="docutils literal notranslate"><span class="pre">.first_passage_time()</span></code> de la cadena para obtener la matriz de tiempos promedios de primera visita y extraemos el valor correspondiente al viaje desde el estado <span class="math notranslate nohighlight">\((0,0)\)</span> hasta el estado <span class="math notranslate nohighlight">\((10,3)\)</span>.</p>
+<p>En <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> utilizamos el método <code class="docutils literal notranslate"><span class="pre">.first_passage_time()</span></code> de la cadena para obtener la matriz de tiempos promedios de primera visita y extraemos el valor correspondiente al viaje desde el estado <span class="math notranslate nohighlight">\((0,0)\)</span> hasta el estado <span class="math notranslate nohighlight">\((1,3)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --------------------------------------------------------------------</span>
@@ -929,19 +905,19 @@ m = \bar Q^{-1}\,\mathbf{1},\quad m_{(0,0)\to(10,3)} = [m]_{(0,0)}
 <span class="c1">#  en promedio para que por primera vez se tengan 10 pacientes tipo 1 y 3 pacientes tipo 2?</span>
 
 <span class="n">idx_vacio</span> <span class="o">=</span> <span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">idx_objetivo</span> <span class="o">=</span> <span class="n">index</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">idx_objetivo</span> <span class="o">=</span> <span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
 <span class="c1"># La función first_passage_time recibe el estado objetivo (target) como argumento.</span>
 <span class="c1"># Retorna un arreglo con los tiempos desde cada posible estado inicial.</span>
-<span class="n">tiempo_0_a_10_3</span> <span class="o">=</span> <span class="n">hospital_chain</span><span class="o">.</span><span class="n">first_passage_time</span><span class="p">(</span><span class="n">idx_objetivo</span><span class="p">)[</span><span class="n">idx_vacio</span><span class="p">]</span>
+<span class="n">tiempo_0_a_10_5</span> <span class="o">=</span> <span class="n">hospital_chain</span><span class="o">.</span><span class="n">first_passage_time</span><span class="p">(</span><span class="n">idx_objetivo</span><span class="p">)[</span><span class="n">idx_vacio</span><span class="p">]</span>
 
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tiempo esperado hasta tener 10 pacientes tipo 1 y 3 tipo 2: </span><span class="si">{</span><span class="n">tiempo_0_a_10_3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> horas&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tiempo esperado hasta tener 10 pacientes tipo 1 y 5 tipo 2: </span><span class="si">{</span><span class="n">tiempo_0_a_10_5</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> horas&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tiempo esperado hasta tener 10 pacientes tipo 1 y 3 tipo 2: 190.2506 horas
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tiempo esperado hasta tener 10 pacientes tipo 1 y 5 tipo 2: 4.7553 horas
 </pre></div>
 </div>
 </div>
@@ -976,9 +952,11 @@ m = \bar Q^{-1}\,\mathbf{1},\quad m_{(0,0)\to(10,3)} = [m]_{(0,0)}
 <span class="n">tiempo_total_esperado</span> <span class="o">=</span> <span class="mf">0.0</span>
 
 <span class="c1"># Iteramos sobre los posibles valores de x1 y x2</span>
-<span class="k">for</span> <span class="n">idx_destino</span><span class="p">,</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">estados</span><span class="p">):</span>
-    <span class="c1"># Evaluamos la condición directamente sobre los estados existentes</span>
-    <span class="k">if</span> <span class="n">x1</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">x2</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">x1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>   <span class="c1"># x1 desde 4 hasta la capacidad máxima B</span>
+    <span class="k">for</span> <span class="n">x2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>   <span class="c1"># x2 solo puede ser 0 o 1</span>
+        
+        <span class="n">idx_destino</span> <span class="o">=</span> <span class="n">index</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+        <span class="c1"># Extraemos el tiempo de ocupación de ese estado específico y lo sumamos</span>
         <span class="n">tiempo_total_esperado</span> <span class="o">+=</span> <span class="n">matriz_ocupacion</span><span class="p">[</span><span class="n">idx_inicial</span><span class="p">,</span> <span class="n">idx_destino</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tiempo esperado con &gt;3 pacientes tipo 1 y &lt;2 tipo 2 durante 1 semana: </span><span class="si">{</span><span class="n">tiempo_total_esperado</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> horas&quot;</span><span class="p">)</span>
@@ -1065,11 +1043,11 @@ m = \bar Q^{-1}\,\mathbf{1},\quad m_{(0,0)\to(10,3)} = [m]_{(0,0)}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-de-un-hospital-en-tiempo-continuo-continuacion">Ejercicio de un hospital en tiempo continuo (Continuación)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas">Preguntas</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-probabilidad-de-que-haya-4-pacientes-tipo-2-luego-de-5-horas-partiendo-de-que-el-hospital-tenia-1-paciente-tipo-1-y-1-paciente-tipo-2">1. Cálculo de la probabilidad de que haya 4 pacientes tipo 2 luego de 5 horas, partiendo de que el hospital tenía 1 paciente tipo 1 y 1 paciente tipo 2.</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-y-6-horas">2. Cálculo de la varianza del número total de pacientes tras 2 y 6 horas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-varianza-del-numero-total-de-pacientes-tras-2-horas">2. Cálculo de la varianza del número total de pacientes tras 2 horas</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-estado-estable-para-la-condicion-x-y">3. Cálculo estado estable para la condición X &gt; Y</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generacion-de-la-grafica-de-la-probabilidad-de-que-haya-mas-pacientes-tipo-1-que-tipo-2-en-funcion-del-tiempo-0-a-24-horas">4. Generación de la gráfica de la probabilidad de que haya más pacientes tipo 1 que tipo 2 en función del tiempo (0 a 24 horas)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-del-costo-operativo-esperado-en-estado-estable">5. Cálculo del costo operativo esperado en estado estable</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-primera-pasada-al-estado-10-3">6. Tiempo de primera pasada al estado (10, 3)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-primera-pasada-al-estado-1-3">6. Tiempo de primera pasada al estado (1, 3)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-esperado-de-ocupacion">7: Tiempo esperado de ocupación</a></li>
 </ul>
 </li>

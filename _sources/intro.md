@@ -19,7 +19,8 @@ Despliega el contenido:
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 10: Cadenas de Markov en Python III](content/complementarias/complementaria_markov_iii.ipynb)
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 12: Ajustes de Distribuciones](content/complementarias/complementaria_ajustes_distribuciones.ipynb)
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 13: Validación y Verificación](content/complementarias/complementaria_vyv.ipynb)
-
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 15: IC, Long Run, Batch Means](content/complementarias/complementaria_replicas_ic_bm.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 16: Pruebas pareadas y control de error tipo I y II en decisiones](content/complementarias/complementaria_alternativas_incertidumbre.ipynb)
 
 
 ```

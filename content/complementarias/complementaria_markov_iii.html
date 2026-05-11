@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_markov_iii';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos" href="complementaria_ajustes_distribuciones.html" />
+    <link rel="next" title="Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos" href="complementaria_ajustes_distribuciones.html" />
     <link rel="prev" title="Complementaria Semana 9: Cadenas de Markov en Python II" href="complementaria_markov_ii.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -213,8 +213,12 @@
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_replicas_ic_bm.html">Complementaria Semana 15: Réplicas independientes, corrida larga y batch means</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_alternativas_incertidumbre.html">Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones.</a></li>
+
+
 </ul>
 
     </div>
@@ -493,16 +497,16 @@ Q_{(i,j)\to(i',j')}=
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(1, &#39;Alto&#39;),
- (1, &#39;Bajo&#39;),
- (2, &#39;Alto&#39;),
- (2, &#39;Bajo&#39;),
- (3, &#39;Alto&#39;),
- (3, &#39;Bajo&#39;),
- (4, &#39;Alto&#39;),
- (4, &#39;Bajo&#39;),
- (5, &#39;Alto&#39;),
- (5, &#39;Bajo&#39;)]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">jmarkov.ctmc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ctmc</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1">#Tasas a utilizar</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
 </pre></div>
 </div>
 </div>
@@ -1172,7 +1176,7 @@ Tamaño de Q: (10, 10)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.16419361020232173)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.16419361020232148)
 </pre></div>
 </div>
 </div>
@@ -1455,7 +1459,7 @@ r(i,j)\,m_{(i,j)\to(1,\text{bajo})}
         },
         kernelOptions: {
             name: "python3",
-            path: "./content\complementarias"
+            path: "./content/complementarias"
         },
         predefinedOutput: true
     }
@@ -1486,7 +1490,7 @@ r(i,j)\,m_{(i,j)\to(1,\text{bajo})}
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</p>
+        <p class="prev-next-title">Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

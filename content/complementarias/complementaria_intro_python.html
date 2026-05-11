@@ -211,8 +211,12 @@
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_replicas_ic_bm.html">Complementaria Semana 15: Réplicas independientes, corrida larga y batch means</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_alternativas_incertidumbre.html">Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones.</a></li>
+
+
 </ul>
 
     </div>
@@ -557,17 +561,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matplotlib in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (3.10.8)
-Requirement already satisfied: contourpy&gt;=1.0.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.3.3)
-Requirement already satisfied: cycler&gt;=0.10 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (4.61.1)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.4.9)
-Requirement already satisfied: numpy&gt;=1.23 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (2.4.1)
-Requirement already satisfied: packaging&gt;=20.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (25.0)
-Requirement already satisfied: pillow&gt;=8 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (12.1.0)
-Requirement already satisfied: pyparsing&gt;=3 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (3.3.1)
-Requirement already satisfied: python-dateutil&gt;=2.7 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (2.9.0.post0)
-Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matplotlib in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (3.10.8)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: contourpy&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (1.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (4.61.1)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (1.4.9)
+Requirement already satisfied: numpy&gt;=1.23 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (2.4.1)
+Requirement already satisfied: packaging&gt;=20.0 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (25.0)
+Requirement already satisfied: pillow&gt;=8 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (12.1.0)
+Requirement already satisfied: pyparsing&gt;=3 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (3.3.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
 </pre></div>
 </div>
 </div>
@@ -644,7 +650,7 @@ Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\R
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a47a937eb1e2534a6b3185193266d8eb0004a3153a3265d2980a2ae65a8bc5a8.png" src="../../_images/a47a937eb1e2534a6b3185193266d8eb0004a3153a3265d2980a2ae65a8bc5a8.png" />
+<img alt="../../_images/805542c5d0aa23efe8d9cca8b3cece027a1e49442cea8a01bfdde18bf160b5bb.png" src="../../_images/805542c5d0aa23efe8d9cca8b3cece027a1e49442cea8a01bfdde18bf160b5bb.png" />
 </div>
 </div>
 </section>
@@ -794,7 +800,7 @@ Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\R
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6bda6e036696396f38da324886776df8f00ad741f3f7414b7be0cc7af85db2b4.png" src="../../_images/6bda6e036696396f38da324886776df8f00ad741f3f7414b7be0cc7af85db2b4.png" />
+<img alt="../../_images/700c84bb75d0f5ac983514ede7ad5a13f0f380069a4c75d1a5b973ddfe74f02f.png" src="../../_images/700c84bb75d0f5ac983514ede7ad5a13f0f380069a4c75d1a5b973ddfe74f02f.png" />
 </div>
 </div>
 <p>En este link puedes encontrar mas explicaciones y ejemplos de cómo construir todo tipo de graficas con la libreria <strong>Matplotlib</strong>: <a class="reference external" href="https://matplotlib.org/stable/tutorials/pyplot.html">Tutorial Pyplot</a></p>
@@ -810,7 +816,7 @@ Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\R
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (2.4.1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (2.4.1)
 </pre></div>
 </div>
 </div>
@@ -975,12 +981,12 @@ Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\R
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[22.41914923 16.05370008 15.58963819 18.9603338  17.03924772 27.14969239]
- [22.16707939 25.93246603 15.5129753  12.36891655 16.46043354 15.15797154]
- [30.93299363 14.357921   23.00065264 28.7357049  16.15378712 16.29551662]
- [23.49884827 19.48398317 23.10394593 22.40874944 11.46721373 22.41013124]
- [23.69467113 13.03993862 25.8401122  18.05018303 22.706552   28.92906883]
- [-3.7771152  20.0668333  24.41784614 16.72756857 15.71498022  9.47944505]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 3.6323052  21.92406103 21.40586873 15.82502162 12.57507765  8.79460302]
+ [18.89065777  6.93955909 39.49600287 20.72116991 31.48780164 16.26310859]
+ [29.50325163 20.79983617 13.11571856  0.32118618 24.59743906  9.01215588]
+ [14.92369767 13.11651658  4.7003339  27.18863167 13.44274719 20.01991264]
+ [30.40330629 32.24098492 17.51919003 15.63296623  8.86671085  3.68417572]
+ [19.65284488 20.6267912  29.10801028 25.70717616 19.84927624 21.19532811]]
 </pre></div>
 </div>
 </div>
@@ -993,12 +999,12 @@ Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\R
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 9.55561588  8.96929154  4.74392089 14.77868721 10.17418763 13.4021667 ]
- [ 6.7385123  13.6258624   3.85492678  9.54810037 15.45788782 10.37219727]
- [ 4.0850712   7.86450658  8.4733885  10.06779203 12.36508657  9.50099517]
- [12.70099109  7.03431495  7.4566223  12.22138439  7.85914847  6.88748907]
- [ 7.67830176  8.3952851  10.75514872  8.39100132 12.67295447 10.85292956]
- [13.65312099  9.322908    8.16036039  9.03308758 11.8761888   7.46625751]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[13.73189479 12.95772503 11.74751112  7.62347871 11.18332039  8.62887328]
+ [ 7.99618651 10.33206279 10.48743435 13.20436667  7.31459786  9.70777078]
+ [14.80427448  8.40533554  6.34435065  9.50610629 16.31020142 14.09088912]
+ [12.30144946  5.196351   10.58308958 13.24524309  9.93153716  9.29975914]
+ [15.02346875  7.29592705 16.80981976 10.83371322  8.27781212 10.6302308 ]
+ [14.91805605  8.32367099  9.99660057 10.99349145  7.70929821  6.9759463 ]]
 </pre></div>
 </div>
 </div>
@@ -1055,12 +1061,12 @@ Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\R
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[31.9747651  25.02299161 20.33355908 33.73902101 27.21343536 40.5518591 ]
- [28.90559169 39.55832843 19.36790208 21.91701691 31.91832135 25.53016881]
- [35.01806483 22.22242758 31.47404114 38.80349693 28.51887369 25.79651179]
- [36.19983936 26.51829813 30.56056823 34.63013383 19.3263622  29.29762031]
- [31.37297289 21.43522371 36.59526091 26.44118436 35.37950646 39.78199838]
- [ 9.87600579 29.3897413  32.57820653 25.76065615 27.59116903 16.94570256]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[17.36419999 34.88178606 33.15337985 23.44850032 23.75839804 17.4234763 ]
+ [26.88684428 17.27162188 49.98343722 33.92553659 38.8023995  25.97087936]
+ [44.30752611 29.20517171 19.46006921  9.82729247 40.90764048 23.103045  ]
+ [27.22514713 18.31286758 15.28342348 40.43387476 23.37428435 29.31967178]
+ [45.42677504 39.53691196 34.32900978 26.46667944 17.14452296 14.31440651]
+ [34.57090093 28.95046219 39.10461085 36.70066761 27.55857445 28.17127441]]
 </pre></div>
 </div>
 </div>
@@ -1072,18 +1078,18 @@ Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\R
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1128.41716729 1071.97059242  846.52853525 1261.50459539 1356.40471306
-  1133.31583843]
- [ 940.37723975 1040.6903689   729.5333554  1157.59561766 1304.0428662
-  1090.46027212]
- [1197.78438013 1143.64812729  917.97084367 1459.74106861 1445.14928618
-  1276.92070646]
- [1128.85057967 1120.78355126  855.65463267 1338.44290221 1413.52932506
-  1182.65036801]
- [1218.42070945 1180.72625232  996.50433182 1407.28339666 1535.34441362
-  1285.06445443]
- [ 661.42165099  769.55889278  637.44353204  803.54025344 1016.8899134
-   746.04996102]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1056.87604039  700.69329448  875.18257714  963.19504191  879.18209106
+   887.99972855]
+ [1870.17459451 1121.23300665 1456.44694178 1405.47330206 1498.02845324
+  1427.78159813]
+ [1273.55737323  963.58658836 1154.90599226  994.05633724  972.28701298
+   968.64372117]
+ [1214.47224193  774.40386954 1056.53642906 1057.49130171  875.14284743
+   857.74378279]
+ [1315.1364665  1050.9193558  1157.75840212 1167.66382213 1118.64003326
+  1087.53394772]
+ [1796.36304343 1167.26137479 1449.47088902 1487.44042059 1428.43971406
+  1377.91021885]]
 </pre></div>
 </div>
 </div>
@@ -1095,8 +1101,8 @@ Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\R
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([117.21176141, 107.59984233, 129.47657591, 122.37287178,
-       132.2605258 ,  82.62955808])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 84.15693724, 133.79829986,  97.34958748,  93.39183965,
+       108.34733402, 136.13942686])
 </pre></div>
 </div>
 </div>
@@ -1108,8 +1114,8 @@ Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\R
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([118.93562643, 108.93484219, 127.46517039, 117.2514563 ,
-        99.54221433, 119.42182566])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([117.00606344, 115.64774898, 125.34512437, 105.39615176,
+       110.81905262,  78.96928395])
 </pre></div>
 </div>
 </div>
@@ -1127,16 +1133,16 @@ Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\R
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "libromobi"
+            mode: "python"
         },
         kernelOptions: {
-            name: "libromobi",
-            path: "./content\complementarias"
+            name: "python3",
+            path: "./content/complementarias"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'libromobi'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               

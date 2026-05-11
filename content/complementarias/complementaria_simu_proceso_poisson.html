@@ -213,8 +213,12 @@
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_replicas_ic_bm.html">Complementaria Semana 15: Réplicas independientes, corrida larga y batch means</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_alternativas_incertidumbre.html">Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones.</a></li>
+
+
 </ul>
 
     </div>
@@ -428,19 +432,23 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (2.4.1)
-Requirement already satisfied: matplotlib in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (3.10.8)
-Requirement already satisfied: scipy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (1.17.0)
-Requirement already satisfied: contourpy&gt;=1.0.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.3.3)
-Requirement already satisfied: cycler&gt;=0.10 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (4.61.1)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.4.9)
-Requirement already satisfied: packaging&gt;=20.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (25.0)
-Requirement already satisfied: pillow&gt;=8 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (12.1.0)
-Requirement already satisfied: pyparsing&gt;=3 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (3.3.1)
-Requirement already satisfied: python-dateutil&gt;=2.7 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (2.9.0.post0)
-Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
-Note: you may need to restart the kernel to use updated packages.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (2.4.1)
+Requirement already satisfied: matplotlib in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (3.10.8)
+Requirement already satisfied: scipy in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (1.17.0)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (1.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (4.61.1)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (1.4.9)
+Requirement already satisfied: packaging&gt;=20.0 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (25.0)
+Requirement already satisfied: pillow&gt;=8 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (12.1.0)
+Requirement already satisfied: pyparsing&gt;=3 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (3.3.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
@@ -563,7 +571,7 @@ Número de eventos N(T): 13
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/855f9c1bd8ece8756dbcc3806402873f8cf8686915bfd4cb29fb19ddfe843c7b.png" src="../../_images/855f9c1bd8ece8756dbcc3806402873f8cf8686915bfd4cb29fb19ddfe843c7b.png" />
+<img alt="../../_images/41e08f88183321f72ba2659f5504c85004433445292dfdc2f7539edcb9b53087.png" src="../../_images/41e08f88183321f72ba2659f5504c85004433445292dfdc2f7539edcb9b53087.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Número total de eventos N(T): 13
 </pre></div>
 </div>
@@ -608,7 +616,7 @@ T_i \sim \text{Exp}(\lambda)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3148f7973a7f1eb687d2647e89091a22b17ba1270f1b108b141ea13fc332cb27.png" src="../../_images/3148f7973a7f1eb687d2647e89091a22b17ba1270f1b108b141ea13fc332cb27.png" />
+<img alt="../../_images/62853b1007d0104bad28a9c6a80323aa2c76e033eedfac783c9dbb9edc3ca6a7.png" src="../../_images/62853b1007d0104bad28a9c6a80323aa2c76e033eedfac783c9dbb9edc3ca6a7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -685,8 +693,8 @@ y comparando con la distribución de Poisson teórica.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e23948c2dc29dc9fd8bc5cf87492cad52de21a8c687c7d7f8282319265301aad.png" src="../../_images/e23948c2dc29dc9fd8bc5cf87492cad52de21a8c687c7d7f8282319265301aad.png" />
-<img alt="../../_images/78a0f7ad8f011aff75bf6331de2ca6bb1019a3978a75884902f8f3ce674845db.png" src="../../_images/78a0f7ad8f011aff75bf6331de2ca6bb1019a3978a75884902f8f3ce674845db.png" />
+<img alt="../../_images/e8a297580368b480333505a5fbf980ad976ac14425a696c94843ff476d91045a.png" src="../../_images/e8a297580368b480333505a5fbf980ad976ac14425a696c94843ff476d91045a.png" />
+<img alt="../../_images/2fcc0646fe9c6e73b1da4e604a0d5eccbd170e5838731c44f9b4c3f6623b3de1.png" src="../../_images/2fcc0646fe9c6e73b1da4e604a0d5eccbd170e5838731c44f9b4c3f6623b3de1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -763,7 +771,7 @@ N(t) = N_1(t) + N_2(t)
 Var emp: 28.265008410841087 | Teórica: 28.0
 </pre></div>
 </div>
-<img alt="../../_images/a9d6800d17079a2750bdc208c2d6366ee0de5b6436005d1dc0635b1ce1e6e95b.png" src="../../_images/a9d6800d17079a2750bdc208c2d6366ee0de5b6436005d1dc0635b1ce1e6e95b.png" />
+<img alt="../../_images/f3b69577571f855933a0c7f9b6384003faa3287c53a0bc18e1716b6705985cc2.png" src="../../_images/f3b69577571f855933a0c7f9b6384003faa3287c53a0bc18e1716b6705985cc2.png" />
 </div>
 </div>
 </section>
@@ -810,7 +818,10 @@ Var emp: 28.265008410841087 | Teórica: 28.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E[NA] emp: 9.015333333333333 | Teórica: 9.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E[NA] emp:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 9.015333333333333 | Teórica: 9.0
 E[NB] emp: 21.015 | Teórica: 20.999999999999996
 Var[NA] emp: 9.054019390504765 | Teórica: 9.0
 Var[NB] emp: 21.145703808650723 | Teórica: 20.999999999999996
@@ -865,7 +876,7 @@ Var[NB] emp: 21.145703808650723 | Teórica: 20.999999999999996
 E[N(1)] emp: 7.98442 | Teórica: 8.0
 Var emp: 7.929615855917118 | Teórica: 8.0
 P(N(1) &gt;= 12) emp: 0.11018
-P(N(1) &gt;= 12) teo: 0.11192400101851863
+P(N(1) &gt;= 12) teo: 0.11192400101851852
 </pre></div>
 </div>
 </div>
@@ -912,7 +923,7 @@ E[NV] emp: 2.79858 | Teórica: 2.8
 P(NS=0) emp: 0.00524
 P(NV&gt;=5) emp: 0.15254
 P(NS=0) teo: 0.0055165644207607716
-P(NV&gt;=5) teo: 0.1523239430211616
+P(NV&gt;=5) teo: 0.15232394302116148
 </pre></div>
 </div>
 </div>
@@ -955,7 +966,7 @@ P(NV&gt;=5) teo: 0.1523239430211616
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c25a99b76cf253b7b56ef45d7c23526f3fe40309d22ae867ded9e64d23d02a41.png" src="../../_images/c25a99b76cf253b7b56ef45d7c23526f3fe40309d22ae867ded9e64d23d02a41.png" />
+<img alt="../../_images/456bd05ff4f1ad280b491bf42f49b2599b562e3c5565273f16be3a049313c926.png" src="../../_images/456bd05ff4f1ad280b491bf42f49b2599b562e3c5565273f16be3a049313c926.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media empírica interarribos: 0.12238058495292842 | Teórica: 0.125
 </pre></div>
 </div>
@@ -977,7 +988,7 @@ P(NV&gt;=5) teo: 0.1523239430211616
         },
         kernelOptions: {
             name: "python3",
-            path: "./content\complementarias"
+            path: "./content/complementarias"
         },
         predefinedOutput: true
     }

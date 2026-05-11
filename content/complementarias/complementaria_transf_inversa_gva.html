@@ -213,8 +213,12 @@
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_replicas_ic_bm.html">Complementaria Semana 15: Réplicas independientes, corrida larga y batch means</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_alternativas_incertidumbre.html">Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones.</a></li>
+
+
 </ul>
 
     </div>
@@ -436,19 +440,23 @@ X = F^{-1}(U) \quad \text{donde } U \sim \text{Unif}(0,1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (2.4.1)
-Requirement already satisfied: matplotlib in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (3.10.8)
-Requirement already satisfied: scipy in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (1.17.0)
-Requirement already satisfied: contourpy&gt;=1.0.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.3.3)
-Requirement already satisfied: cycler&gt;=0.10 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (4.61.1)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (1.4.9)
-Requirement already satisfied: packaging&gt;=20.0 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (25.0)
-Requirement already satisfied: pillow&gt;=8 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (12.1.0)
-Requirement already satisfied: pyparsing&gt;=3 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (3.3.1)
-Requirement already satisfied: python-dateutil&gt;=2.7 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from matplotlib) (2.9.0.post0)
-Requirement already satisfied: six&gt;=1.5 in C:\Users\jpine\Downloads\Modelos\Repositorio\entorno\Lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
-Note: you may need to restart the kernel to use updated packages.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (2.4.1)
+Requirement already satisfied: matplotlib in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (3.10.8)
+Requirement already satisfied: scipy in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (1.17.0)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (1.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (4.61.1)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (1.4.9)
+Requirement already satisfied: packaging&gt;=20.0 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (25.0)
+Requirement already satisfied: pillow&gt;=8 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (12.1.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pyparsing&gt;=3 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (3.3.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
@@ -620,7 +628,7 @@ Eso es útil en simulación porque garantiza <strong>reproducibilidad</strong>.<
 Var empírica : 0.08358436772439962  | Teórica: 0.08333333333333333
 </pre></div>
 </div>
-<img alt="../../_images/0745c854ebcd455b260c3ea00de0710426917b7e06d187d92f91d7f3eee51960.png" src="../../_images/0745c854ebcd455b260c3ea00de0710426917b7e06d187d92f91d7f3eee51960.png" />
+<img alt="../../_images/c2981a3e23c96bf7b195d273d942a938d22ce64e169ef7ba8fb1ba9cac34666d.png" src="../../_images/c2981a3e23c96bf7b195d273d942a938d22ce64e169ef7ba8fb1ba9cac34666d.png" />
 </div>
 </div>
 </section>
@@ -751,7 +759,7 @@ X = -\frac{1}{\lambda} \ln(U)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/55e69cd342417b0cef9e11cfb52bcfe400b6f9edbb75d734254d1f932b9ef81f.png" src="../../_images/55e69cd342417b0cef9e11cfb52bcfe400b6f9edbb75d734254d1f932b9ef81f.png" />
+<img alt="../../_images/d4c7d3ac74ad7665c56f6aca2ca568df4696bf3871f0b7f28c193a0c4bea32d4.png" src="../../_images/d4c7d3ac74ad7665c56f6aca2ca568df4696bf3871f0b7f28c193a0c4bea32d4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -915,7 +923,7 @@ X = \lambda \left(-\ln(U)\right)^{1/k}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7770336aa9e0b67f186b4d12cac7bddf1e98d72c112335db9e4491f6c37dfb7e.png" src="../../_images/7770336aa9e0b67f186b4d12cac7bddf1e98d72c112335db9e4491f6c37dfb7e.png" />
+<img alt="../../_images/840539df4b264ba1207c4b92682991302011d6a2e9d1260adc1c9f0c69ec34cc.png" src="../../_images/840539df4b264ba1207c4b92682991302011d6a2e9d1260adc1c9f0c69ec34cc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -976,7 +984,7 @@ p-value     : 0.36048169196311963
         },
         kernelOptions: {
             name: "python3",
-            path: "./content\complementarias"
+            path: "./content/complementarias"
         },
         predefinedOutput: true
     }

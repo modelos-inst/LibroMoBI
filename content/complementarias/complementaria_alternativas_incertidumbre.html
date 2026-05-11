@@ -1,0 +1,1492 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones. &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0361f5db" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_alternativas_incertidumbre';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Complementaria Semana 15: Réplicas independientes, corrida larga y batch means" href="complementaria_replicas_ic_bm.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uniandes.png" class="logo__image only-light" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>
+    <script>document.write(`<img src="../../_static/uniandes.png" class="logo__image only-dark" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Bienvenidos al libro del curso Modelado de Sistemas Bajo Incertidumbre
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Instalación Python y Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ambientes_virtuales.html">Ambientes virtuales en Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_python.html">Complementaria Semana 1: Introducción a Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria Semana 3: Teorema del Límite Central y validación empírica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gva.html">Complementaria Semana 5: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Modelado Avanzado en SimPy</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 7: Simulación de un Proceso de Poisson</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_replicas_ic_bm.html">Complementaria Semana 15: Réplicas independientes, corrida larga y batch means</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones.</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/complementarias/complementaria_alternativas_incertidumbre.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones.</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-alternativas-bajo-incertidumbre">Comparación de alternativas bajo incertidumbre</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. Comparación de alternativas bajo incertidumbre</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#muestreo-independiente">1.1. Muestreo independiente</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-la-igualdad-de-varianzas">Evaluación de la igualdad de varianzas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intervalo-de-confianza-con-varianzas-iguales">1.1.1 Intervalo de confianza con varianzas iguales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intervalo-de-confianza-con-varianzas-distintas">1.1.2 Intervalo de confianza con varianzas distintas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pruebas-pareadas">1.2 Pruebas pareadas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intervalo-de-confianza-pareado">1.2.1 Intervalo de confianza (pareado)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criterio-de-decision">1.3. Criterio de decisión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-de-la-comparacion-half-width">1.4. Precisión de la comparación: half-width</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-practico-comparacion-de-alternativas-bajo-incertidumbre">1.5 Ejercicio práctico: comparación de alternativas bajo incertidumbre</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-muestreo-independiente">1.5.1 Análisis de muestreo independiente</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-1-datos">Paso 1: Datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-2-evaluacion-de-igualdad-de-varianzas">Paso 2: Evaluación de igualdad de varianzas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-se-aplica-el-ic-para-diferencia-de-medias-para-varianzas-diferentes">Paso 3: Se aplica el IC para diferencia de medias para varianzas diferentes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-4-visualizacion-del-intervalo-de-confianza">Paso 4: Visualización del intervalo de confianza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-mediante-pruebas-pareadas">1.5.2 Análisis mediante pruebas pareadas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Paso 1: Datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-general">1.5.3  Conclusión general</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#control-de-error-tipo-i-y-ii-en-decisiones">2. Control de error tipo I y II en decisiones</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-tipo-i-y-error-tipo-ii">2.1 Error Tipo I y Error Tipo II</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-empirica-de-alpha-y-beta-monte-carlo">2.2 Estimación empírica de <span class="math notranslate nohighlight">\(\alpha\)</span> y <span class="math notranslate nohighlight">\(\beta\)</span> (Monte Carlo)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regla-de-decision-basada-en-el-intervalo-de-confianza-de-welch">2.3 Regla de decisión basada en el intervalo de confianza de Welch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-empirica-mediante-simulacion-monte-carlo">2.4 Estimación empírica mediante simulación Monte Carlo</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-empirica-del-error-tipo-i-poder-estadistico-y-error-tipo-ii">3. Evaluación empírica del Error Tipo I (α), Poder Estadístico y Error Tipo II (β)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contexto-del-analisis">3.1 Contexto del análisis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-empirica-del-error-tipo-i-alpha">3.1.1 Estimación empírica del Error Tipo I (<span class="math notranslate nohighlight">\(\alpha\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-empirica-del-poder-y-del-error-tipo-ii-beta">3.1.2 Estimación empírica del Poder y del Error Tipo II (<span class="math notranslate nohighlight">\(\beta\)</span>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-los-resultados">3.2 Interpretación de los resultados</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados">3.2.1 Resultados</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="complementaria-semana-16-muestreo-independiente-pruebas-pareadas-y-control-de-error-tipo-i-y-ii-en-decisiones">
+<h1>Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones.<a class="headerlink" href="#complementaria-semana-16-muestreo-independiente-pruebas-pareadas-y-control-de-error-tipo-i-y-ii-en-decisiones" title="Link to this heading">#</a></h1>
+<section id="comparacion-de-alternativas-bajo-incertidumbre">
+<h2>Comparación de alternativas bajo incertidumbre<a class="headerlink" href="#comparacion-de-alternativas-bajo-incertidumbre" title="Link to this heading">#</a></h2>
+<p>En estudios de simulación de eventos discretos, las medidas de desempeño obtenidas
+a partir de un modelo son variables aleatorias, debido a la presencia de entradas
+estocásticas. Por esta razón, la comparación entre distintas alternativas no puede
+realizarse únicamente comparando promedios, sino que debe apoyarse en herramientas
+de inferencia estadística que permitan cuantificar la incertidumbre asociada a los
+resultados.</p>
+<p>En efecto, dos alternativas pueden presentar medias muestrales distintas en una
+simulación, pero esa diferencia podría deberse únicamente a la variabilidad aleatoria
+y no a una mejora real del sistema. Por lo tanto, basarse exclusivamente en promedios
+puede conducir a conclusiones erróneas.</p>
+<p>El siguiente ejemplo ilustra esta situación. Supóngase que se comparan dos alternativas
+y, a partir de un conjunto reducido de réplicas, se obtiene que una de ellas tiene un
+promedio menor. A primera vista, esto sugeriría que dicha alternativa es mejor. Sin embargo,
+al considerar la variabilidad de los datos mediante un intervalo de confianza, puede
+observarse que la diferencia no es estadísticamente significativa, por lo que no es posible
+afirmar que una alternativa supere a la otra.</p>
+<p>En esta primera sección de la complementaria se presenta el procedimiento para comparar dos alternativas
+bajo incertidumbre utilizando:</p>
+<ul class="simple">
+<li><p>muestreo independiente, y</p></li>
+<li><p>muestreo dependiente, también conocido como pruebas pareadas.</p></li>
+</ul>
+<p>Se describen los supuestos, las ecuaciones necesarias para la construcción de
+intervalos de confianza y los criterios de decisión, y finalmente se aplica la
+metodología a un caso práctico.</p>
+</section>
+<section id="id1">
+<h2>1. Comparación de alternativas bajo incertidumbre<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Sea (W) una medida de desempeño del sistema (por ejemplo, tiempo promedio en el sistema).<br />
+Al simular un sistema, se obtienen observaciones aleatorias de (W), por lo que su valor verdadero
+solo puede estimarse a partir de un conjunto de réplicas.</p>
+<p>Cuando se comparan dos alternativas, el objetivo es estimar la diferencia entre sus desempeños promedio:</p>
+<div class="math notranslate nohighlight">
+\[
+\mu_1 - \mu_2
+\]</div>
+<p>y determinar si dicha diferencia es estadísticamente significativa.</p>
+</section>
+<section id="muestreo-independiente">
+<h2>1.1. Muestreo independiente<a class="headerlink" href="#muestreo-independiente" title="Link to this heading">#</a></h2>
+<p>En el muestreo independiente, las réplicas de cada alternativa se generan utilizando secuencias
+de números aleatorios distintas. En este caso, las observaciones de ambos sistemas son independientes.</p>
+<p>Sean:</p>
+<ul class="simple">
+<li><p>(Y_1): desempeño del sistema 1 (actual)</p></li>
+<li><p>(Y_2): desempeño del sistema 2 (alternativa)</p></li>
+<li><p>(R_1, R_2): número de réplicas de cada sistema</p></li>
+</ul>
+<p>Denotemos:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{Y}_1 = \frac{1}{R_1}\sum_{r=1}^{R_1} Y_{1,r}, 
+\qquad
+\bar{Y}_2 = \frac{1}{R_2}\sum_{r=1}^{R_2} Y_{2,r}
+\]</div>
+<p>y las varianzas muestrales:</p>
+<div class="math notranslate nohighlight">
+\[
+S_1^2 = \frac{1}{R_1-1}\sum_{r=1}^{R_1}(Y_{1,r}-\bar{Y}_1)^2,
+\qquad
+S_2^2 = \frac{1}{R_2-1}\sum_{r=1}^{R_2}(Y_{2,r}-\bar{Y}_2)^2
+\]</div>
+<section id="evaluacion-de-la-igualdad-de-varianzas">
+<h3>Evaluación de la igualdad de varianzas<a class="headerlink" href="#evaluacion-de-la-igualdad-de-varianzas" title="Link to this heading">#</a></h3>
+<p>En el caso de muestreo independiente (NO PRUEBAS PAREADAS), antes de construir el intervalo de confianza
+para la diferencia de medias es necesario evaluar si puede asumirse que las varianzas
+poblacionales de ambas alternativas son iguales, es decir,</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_1^2 = \sigma_2^2.
+\]</div>
+<p>Para ello, se construye un intervalo de confianza para
+el cociente de varianzas</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\sigma_1^2}{\sigma_2^2},
+\]</div>
+<p>utilizando la distribución F. A partir de las varianzas muestrales <span class="math notranslate nohighlight">\(S_1^2\)</span> y <span class="math notranslate nohighlight">\(S_2^2\)</span>, el intervalo se obtiene como</p>
+<div class="math notranslate nohighlight">
+\[
+\left[
+\frac{S_1^2}{S_2^2}\frac{1}{F_{1-\alpha/2,\;R_2-1,\;R_1-1}},
+\;
+\frac{S_1^2}{S_2^2}\frac{1}{F_{\alpha/2,\;R_2-1,\;R_1-1}}
+\right].
+\]</div>
+<ul class="simple">
+<li><p>Si (1) está dentro, no hay evidencia para afirmar que son distintas (se puede asumir igualdad).</p></li>
+<li><p>Si (1) no está dentro, se asume varianzas diferentes.</p></li>
+</ul>
+</section>
+</section>
+<section id="intervalo-de-confianza-con-varianzas-iguales">
+<h2>1.1.1 Intervalo de confianza con varianzas iguales<a class="headerlink" href="#intervalo-de-confianza-con-varianzas-iguales" title="Link to this heading">#</a></h2>
+<p>Si se asume</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_1^2 = \sigma_2^2
+\]</div>
+<p>se usa la varianza combinada:</p>
+<div class="math notranslate nohighlight">
+\[
+S_p^2 = \frac{(R_1-1)S_1^2 + (R_2-1)S_2^2}{R_1 + R_2 - 2}
+\]</div>
+<p>El intervalo de confianza para</p>
+<div class="math notranslate nohighlight">
+\[
+\mu_1-\mu_2
+\]</div>
+<p>es:</p>
+<div class="math notranslate nohighlight">
+\[
+(\bar{Y}_1-\bar{Y}_2)\ \pm\ t_{\alpha/2,\ R_1+R_2-2}\ 
+\sqrt{S_p^2\left(\frac{1}{R_1}+\frac{1}{R_2}\right)}
+\]</div>
+</section>
+<section id="intervalo-de-confianza-con-varianzas-distintas">
+<h2>1.1.2 Intervalo de confianza con varianzas distintas<a class="headerlink" href="#intervalo-de-confianza-con-varianzas-distintas" title="Link to this heading">#</a></h2>
+<p>Si no se puede asumir igualdad de varianzas, se usa el intervalo :</p>
+<div class="math notranslate nohighlight">
+\[
+(\bar{Y}_1-\bar{Y}_2)\ \pm\ t_{\alpha/2,\ \nu}\ 
+\sqrt{\frac{S_1^2}{R_1}+\frac{S_2^2}{R_2}}
+\]</div>
+<p>donde los grados de libertad aproximados <span class="math notranslate nohighlight">\(\nu\)</span> son:</p>
+<div class="math notranslate nohighlight">
+\[
+\nu =
+\frac{\left(\frac{S_1^2}{R_1}+\frac{S_2^2}{R_2}\right)^2}
+{\frac{\left(\frac{S_1^2}{R_1}\right)^2}{R_1-1}+\frac{\left(\frac{S_2^2}{R_2}\right)^2}{R_2-1}}
+\]</div>
+</section>
+<section id="pruebas-pareadas">
+<h2>1.2 Pruebas pareadas<a class="headerlink" href="#pruebas-pareadas" title="Link to this heading">#</a></h2>
+<p>En lugar de comparar medias por separado,
+se analiza la diferencia réplica a réplica:</p>
+<div class="math notranslate nohighlight">
+\[
+D_r = W_r^{0} - W_r^{1}
+\]</div>
+<p>y se estima la media de las diferencias:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{D} = \frac{1}{R}\sum_{r=1}^{R}D_r
+\]</div>
+</section>
+<section id="intervalo-de-confianza-pareado">
+<h2>1.2.1 Intervalo de confianza (pareado)<a class="headerlink" href="#intervalo-de-confianza-pareado" title="Link to this heading">#</a></h2>
+<p>Sea (R) el número de réplicas. La desviación estándar muestral de las diferencias es:</p>
+<div class="math notranslate nohighlight">
+\[
+s_D = \sqrt{\frac{1}{R-1}\sum_{r=1}^{R}(D_r-\bar{D})^2}
+\]</div>
+<p>El intervalo de confianza  es:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{D}\ \pm\ t_{\alpha/2,\ R-1}\ \frac{s_D}{\sqrt{R}}
+\]</div>
+</section>
+<section id="criterio-de-decision">
+<h2>1.3. Criterio de decisión<a class="headerlink" href="#criterio-de-decision" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Si el intervalo de confianza contiene el valor cero, no existe evidencia estadística
+suficiente para afirmar que las alternativas difieren en su desempeño promedio.</p></li>
+<li><p>Si el intervalo de confianza no contiene el valor cero, se concluye que existe una
+diferencia estadísticamente significativa entre las alternativas.</p></li>
+<li><p>El signo de la diferencia indica cuál alternativa presenta mejor desempeño.</p></li>
+</ul>
+<p>En métricas de tiempo, menor valor implica mejor desempeño. Por ende, si la medida de desempeño considerada es el tiempo promedio (W), un menor
+valor de (W) implica un mejor desempeño del sistema. En particular, cuando el
+intervalo de confianza para la diferencia de medias</p>
+<div class="math notranslate nohighlight">
+\[
+\mu_{\text{actual}} - \mu_{\text{alternativa}}
+\]</div>
+<p>es completamente positivo, se cumple que</p>
+<div class="math notranslate nohighlight">
+\[
+\mu_{\text{actual}} &gt; \mu_{\text{alternativa}}
+\]</div>
+<p>lo que implica que</p>
+<div class="math notranslate nohighlight">
+\[
+W_{\text{actual}} &gt; W_{\text{alternativa}}.
+\]</div>
+<p>Por lo tanto, la alternativa reduce el tiempo promedio en el sistema y mejora el
+desempeño del proceso.</p>
+</section>
+<section id="precision-de-la-comparacion-half-width">
+<h2>1.4. Precisión de la comparación: half-width<a class="headerlink" href="#precision-de-la-comparacion-half-width" title="Link to this heading">#</a></h2>
+<p>Además del criterio de decisión basado en el intervalo de confianza, es posible
+evaluar la precisión de la comparación entre alternativas mediante el half-width (HW)
+del intervalo.</p>
+<p>El half-width se define como:</p>
+<div class="math notranslate nohighlight">
+\[
+HW = t_{\alpha/2,\ \nu}\cdot \text{Error estándar}
+\]</div>
+<p>y representa la mitad del ancho del intervalo de confianza. Un menor valor de (HW)
+indica una estimación más precisa de la diferencia de medias.</p>
+<p>En particular, el uso de pruebas pareadas suele inducir una correlación positiva entre las observaciones de ambas alternativas,
+lo que reduce la varianza del estimador de la diferencia. Como consecuencia, el
+half-width del intervalo de confianza suele ser menor que en el caso de muestreo
+independiente. Esta reducción en el half-width indica una comparación más eficiente,
+aunque la decisión sobre cuál alternativa es mejor sigue basándose exclusivamente en
+la posición del intervalo de confianza respecto al valor cero.</p>
+</section>
+<section id="ejercicio-practico-comparacion-de-alternativas-bajo-incertidumbre">
+<h2>1.5 Ejercicio práctico: comparación de alternativas bajo incertidumbre<a class="headerlink" href="#ejercicio-practico-comparacion-de-alternativas-bajo-incertidumbre" title="Link to this heading">#</a></h2>
+<p>En este ejercicio se comparan dos alternativas de un sistema de atención migratoria:
+el escenario actual y una alternativa que incorpora lectores automáticos de pasaportes.
+La medida de desempeño considerada es el tiempo promedio en el sistema (W), medido
+en minutos.</p>
+<p>Los valores de (W) corresponden a resultados obtenidos previamente mediante
+simulación, utilizando un número finito de réplicas. El objetivo es determinar,
+mediante herramientas estadísticas, si la alternativa propuesta mejora el desempeño
+del sistema.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="analisis-de-muestreo-independiente">
+<h2>1.5.1 Análisis de muestreo independiente<a class="headerlink" href="#analisis-de-muestreo-independiente" title="Link to this heading">#</a></h2>
+</section>
+<section id="paso-1-datos">
+<h2>Paso 1: Datos<a class="headerlink" href="#paso-1-datos" title="Link to this heading">#</a></h2>
+<p>A continuación se ingresan los tiempos promedio en el sistema (W) (minutos) obtenidos a partir de 100 réplicas para:</p>
+<ul class="simple">
+<li><p><strong>Escenario actual</strong></p></li>
+<li><p><strong>Alternativa con lectores automáticos</strong></p></li>
+</ul>
+<p>En este ejercicio se asume que estos valores ya fueron estimados por simulación (utilizando las semillas y parámetros indicados en el modelo), por lo que el análisis se enfoca en la <strong>comparación estadística</strong> de alternativas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Datos preliminares usados como referencia</span>
+<span class="n">w_actual_base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">12.66473282</span><span class="p">,</span> <span class="mf">7.843314626</span><span class="p">,</span> <span class="mf">9.21198858</span><span class="p">,</span> <span class="mf">8.438766978</span><span class="p">,</span> <span class="mf">12.35851599</span><span class="p">])</span>
+<span class="n">w_alt_base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.356</span><span class="p">,</span> <span class="mf">1.281</span><span class="p">,</span> <span class="mf">1.635</span><span class="p">,</span> <span class="mf">1.130</span><span class="p">,</span> <span class="mf">1.170</span><span class="p">])</span>
+
+<span class="c1"># Estimación de parámetros a partir de las réplicas preliminares</span>
+<span class="n">media_actual_base</span> <span class="o">=</span> <span class="n">w_actual_base</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">media_alt_base</span> <span class="o">=</span> <span class="n">w_alt_base</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">desv_actual_base</span> <span class="o">=</span> <span class="n">w_actual_base</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">desv_alt_base</span> <span class="o">=</span> <span class="n">w_alt_base</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Generación de 100 réplicas</span>
+<span class="n">w_actual</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">media_actual_base</span><span class="p">,</span> <span class="n">desv_actual_base</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">w_alt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">media_alt_base</span><span class="p">,</span> <span class="n">desv_alt_base</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">w_actual</span><span class="p">,</span> <span class="n">w_alt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([11.222989  ,  9.79183513, 11.56326444, 13.53616305,  9.57571438,
+         9.57575139, 13.66279169, 11.83315584,  9.04533328, 11.32631931,
+         9.05898423,  9.05377316, 10.64881339,  5.79119399,  6.21573689,
+         8.83614525,  7.82068214, 10.81173395,  8.05690276,  6.92032603,
+        13.40683399,  9.59459515, 10.25566306,  6.89227788,  8.87650021,
+        10.35346802,  7.50928301, 10.95023532,  8.74970703,  9.44602631,
+         8.74730008, 14.27824337, 10.07304292,  7.71952924, 11.95736659,
+         7.35185058, 10.57421354,  5.6866376 ,  7.10991562, 10.54716187,
+        11.76786563, 10.48970427,  9.84280852,  9.42481759,  6.77107914,
+         8.48103423,  9.06524754, 12.48607151, 10.87793203,  6.12981443,
+        10.83390437,  9.23554145,  8.57777497, 11.4820978 , 12.42719453,
+        12.20244075,  8.21198324,  9.40654175, 10.85008589, 12.30220798,
+         9.02347115,  9.68501407,  7.60993734,  7.40737904, 11.93478495,
+        13.16024178,  9.94116292, 12.36528855, 10.91854153,  8.64945284,
+        10.91799965, 13.56998611, 10.02271685, 13.62995482,  4.19891963,
+        11.95591869, 10.29965589,  9.42954247, 10.31027993,  5.62375758,
+         9.60835366, 10.90834628, 13.43443316,  8.9353542 ,  8.28123072,
+         8.97257262, 12.16665393, 10.84442346,  8.90945736, 11.26029781,
+        10.32226321, 12.28665602,  8.52113295,  9.36495851,  9.2197061 ,
+         6.80490294, 10.77087806, 10.69184638, 10.11498882,  9.57473675]),
+ array([1.03089697, 1.23014347, 1.24575325, 1.15370144, 1.28209398,
+        1.39533261, 1.69220873, 1.34936846, 1.36598812, 1.29948826,
+        0.93006433, 1.30908919, 1.32646429, 1.80779484, 1.27586952,
+        1.37480084, 1.30744713, 1.08031026, 1.54331086, 1.46501446,
+        1.47284609, 1.13224695, 1.59538394, 1.033605  , 1.43194925,
+        1.75315488, 1.11599258, 1.20096885, 1.33436047, 1.21355231,
+        1.00379743, 1.32813337, 1.10161736, 1.40926199, 1.13023655,
+        1.62485654, 1.157512  , 1.24989011, 1.47734996, 1.06785416,
+        1.35996091, 1.57622464, 0.99241625, 1.35138272, 1.36645531,
+        1.47100148, 1.06663504, 1.04990855, 1.41894647, 1.37388693,
+        1.36457447, 1.38379462, 1.17818899, 1.36092112, 1.3731033 ,
+        1.17131325, 1.68812027, 1.40931017, 1.07577831, 1.44590967,
+        1.11916832, 1.47205542, 1.54647019, 1.15001485, 1.50736715,
+        1.39708127, 1.47906113, 1.69433336, 1.26524802, 1.16342437,
+        1.13622757, 1.15099074, 1.29895629, 1.38273377, 1.369822  ,
+        1.4800873 , 1.31700432, 1.60554727, 1.26138844, 1.8592581 ,
+        1.43972306, 1.14270875, 1.099897  , 1.41104068, 1.26963973,
+        1.45741646, 1.40919093, 1.29981215, 1.14478466, 1.01097153,
+        1.22496171, 1.48593927, 1.35728362, 1.06487476, 1.34908866,
+        1.39158023, 1.13736069, 1.3451916 , 1.32605938, 1.0854596 ]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se comienza analizando el caso de muestreo independiente en el cual las réplicas
+de ambas alternativas se asumen generadas con secuencias de números aleatorios
+independientes. En este contexto, antes de construir el intervalo de confianza para
+la diferencia de medias, es necesario evaluar si puede asumirse igualdad de varianzas</p>
+</section>
+<section id="paso-2-evaluacion-de-igualdad-de-varianzas">
+<h2>Paso 2: Evaluación de igualdad de varianzas<a class="headerlink" href="#paso-2-evaluacion-de-igualdad-de-varianzas" title="Link to this heading">#</a></h2>
+<p>Dado que las  varianzas poblacionales (parámetro sigma) son desconocidas, para evaluar si puede asumirse igualdad de varianzas, se construye un intervalo de confianza del 95% para el cociente de varianzas utilizando la distribución F. Si el valor 1 pertenece al intervalo, se puede asumir igualdad de varianzas; de lo contrario, se concluye que las varianzas son diferentes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estadísticos básicos</span>
+<span class="n">R1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">w_actual</span><span class="p">)</span>
+<span class="n">R2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">w_alt</span><span class="p">)</span>
+
+<span class="n">mean1</span> <span class="o">=</span> <span class="n">w_actual</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean2</span> <span class="o">=</span> <span class="n">w_alt</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">S_1_2</span> <span class="o">=</span> <span class="n">w_actual</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">S_2_2</span> <span class="o">=</span> <span class="n">w_alt</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">mean1</span><span class="p">,</span> <span class="n">mean2</span><span class="p">,</span> <span class="n">S_1_2</span><span class="p">,</span> <span class="n">S_2_2</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">R1</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">R2</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="n">ratio</span> <span class="o">=</span> <span class="n">S_1_2</span> <span class="o">/</span> <span class="n">S_2_2</span>
+
+<span class="n">F_low</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df1</span><span class="p">)</span>
+<span class="n">F_high</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df1</span><span class="p">)</span>
+
+<span class="c1"># Intervalo de confianza para sigma1^2 / sigma2^2</span>
+<span class="n">L_var</span> <span class="o">=</span> <span class="n">ratio</span> <span class="o">/</span> <span class="n">F_high</span>
+<span class="n">U_var</span> <span class="o">=</span> <span class="n">ratio</span> <span class="o">/</span> <span class="n">F_low</span>
+
+<span class="n">ratio</span><span class="p">,</span> <span class="p">(</span><span class="n">L_var</span><span class="p">,</span> <span class="n">U_var</span><span class="p">),</span> <span class="p">(</span><span class="n">L_var</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">U_var</span><span class="p">)</span>
+<span class="n">S_1_2</span> <span class="p">,</span> <span class="n">S_2_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(4.189743889344006), np.float64(0.03648970035192347))
+</pre></div>
+</div>
+</div>
+</div>
+<p>El intervalo de confianza para la razón de varianzas no contiene el valor 1, por lo
+que se concluye que las varianzas poblacionales de ambas alternativas son diferentes.
+En consecuencia, se utiliza el intervalo de confianza para varianzas desconocidas pero diferentes, para la diferencia
+de medias.</p>
+</section>
+<section id="paso-3-se-aplica-el-ic-para-diferencia-de-medias-para-varianzas-diferentes">
+<h2>Paso 3: Se aplica el IC para diferencia de medias para varianzas diferentes<a class="headerlink" href="#paso-3-se-aplica-el-ic-para-diferencia-de-medias-para-varianzas-diferentes" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Intervalo de confianza para la diferencia de medias</span>
+
+<span class="c1"># 1) Estimación puntual de (mu1 - mu2)</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">mean1</span> <span class="o">-</span> <span class="n">mean2</span>
+
+<span class="c1"># 2) Error estándar</span>
+<span class="n">se</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">S_1_2</span> <span class="o">/</span> <span class="n">R1</span> <span class="o">+</span> <span class="n">S_2_2</span> <span class="o">/</span> <span class="n">R2</span><span class="p">)</span>
+
+<span class="c1"># 3) Grados de libertad aproximados de Welch-Satterthwaite</span>
+<span class="n">nu_num</span> <span class="o">=</span> <span class="p">(</span><span class="n">S_1_2</span> <span class="o">/</span> <span class="n">R1</span> <span class="o">+</span> <span class="n">S_2_2</span> <span class="o">/</span> <span class="n">R2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">nu_den</span> <span class="o">=</span> <span class="p">((</span><span class="n">S_1_2</span> <span class="o">/</span> <span class="n">R1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">R1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">((</span><span class="n">S_2_2</span> <span class="o">/</span> <span class="n">R2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">R2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">nu_num</span> <span class="o">/</span> <span class="n">nu_den</span><span class="p">)</span>
+
+<span class="c1"># 4) Valor crítico t</span>
+<span class="n">tcrit</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">nu</span><span class="p">)</span>
+
+<span class="c1"># 5) Half-width</span>
+<span class="n">hw_ind</span> <span class="o">=</span> <span class="n">tcrit</span> <span class="o">*</span> <span class="n">se</span>
+
+<span class="c1"># 6) IC final</span>
+<span class="n">L_ind</span> <span class="o">=</span> <span class="n">diff</span> <span class="o">-</span> <span class="n">hw_ind</span>
+<span class="n">U_ind</span> <span class="o">=</span> <span class="n">diff</span> <span class="o">+</span> <span class="n">hw_ind</span>
+
+<span class="n">diff</span><span class="p">,</span> <span class="p">(</span><span class="n">L_ind</span><span class="p">,</span> <span class="n">U_ind</span><span class="p">),</span> <span class="n">hw_ind</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(8.550540394168673),
+ (np.float64(8.142679392078493), np.float64(8.958401396258852)),
+ np.float64(0.4078610020901798))
+</pre></div>
+</div>
+</div>
+</div>
+<p>El intervalo de confianza del 95% para la diferencia de medias</p>
+<div class="math notranslate nohighlight">
+\[
+\mu_{\text{actual}} - \mu_{\text{alternativa}}
+\]</div>
+<p>es completamente positivo y no contiene el valor cero, es decir,</p>
+<div class="math notranslate nohighlight">
+\[
+0 \notin [L,\ U].
+\]</div>
+<p>Por lo tanto, se concluye que existe una diferencia estadísticamente significativa
+entre las alternativas. Además, al cumplirse que</p>
+<div class="math notranslate nohighlight">
+\[
+\mu_{\text{actual}} - \mu_{\text{alternativa}} &gt; 0,
+\]</div>
+<p>se tiene que</p>
+<div class="math notranslate nohighlight">
+\[
+W_{\text{actual}} &gt; W_{\text{alternativa}}.
+\]</div>
+<p>Dado que la métrica considerada es el tiempo promedio en el sistema, un menor valor
+de (W) implica un mejor desempeño. En consecuencia, el escenario con lectores
+automáticos presenta un mejor desempeño que el escenario actual.</p>
+</section>
+<section id="paso-4-visualizacion-del-intervalo-de-confianza">
+<h2>Paso 4: Visualización del intervalo de confianza<a class="headerlink" href="#paso-4-visualizacion-del-intervalo-de-confianza" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="n">L_ind</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="n">U_ind</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Diferencia de medias $(\mu_</span><span class="si">{actual}</span><span class="s2"> - \mu_</span><span class="si">{alternativa}</span><span class="s2">)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Intervalo de confianza del 95% para la diferencia de medias&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1eacd0ece94087f9fbfef537e26f6ffd4e42087cadfc95275766753441f116c0.png" src="../../_images/1eacd0ece94087f9fbfef537e26f6ffd4e42087cadfc95275766753441f116c0.png" />
+</div>
+</div>
+</section>
+<section id="analisis-mediante-pruebas-pareadas">
+<h2>1.5.2 Análisis mediante pruebas pareadas<a class="headerlink" href="#analisis-mediante-pruebas-pareadas" title="Link to this heading">#</a></h2>
+<p>Se analiza ahora el caso en el que las observaciones de ambas alternactivas están emparejadas y la comparación se realiza sobre la variable diferencia</p>
+<div class="math notranslate nohighlight">
+\[
+D_r = W_r^0 - W_r^1
+\]</div>
+<p>En el contexto de pruebas pareadas, es fundamental que las observaciones de ambas alternativas se generen utilizando la misma secuencia de números aleatorios, con el fin de inducir correlación entre las réplicas correspondientes. Esto permite que las diferencias observadas reflejen principalmente el efecto de las alternativas, reduciendo la influencia del ruido aleatorio.</p>
+</section>
+<section id="id2">
+<h2>Paso 1: Datos<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Datos base (réplicas preliminares)</span>
+<span class="n">w_actual_base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mf">12.66473282</span><span class="p">,</span>
+    <span class="mf">7.843314626</span><span class="p">,</span>
+    <span class="mf">9.21198858</span><span class="p">,</span>
+    <span class="mf">8.438766978</span><span class="p">,</span>
+    <span class="mf">12.35851599</span>
+<span class="p">])</span>
+
+<span class="n">w_alt_base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mf">1.554471186</span><span class="p">,</span>
+    <span class="mf">1.453586058</span><span class="p">,</span>
+    <span class="mf">1.346113122</span><span class="p">,</span>
+    <span class="mf">1.5570207</span><span class="p">,</span>
+    <span class="mf">1.497546971</span>
+<span class="p">])</span>
+
+<span class="c1"># Estimación de parámetros</span>
+<span class="n">media_actual</span> <span class="o">=</span> <span class="n">w_actual_base</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">media_alt</span> <span class="o">=</span> <span class="n">w_alt_base</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">std_actual</span> <span class="o">=</span> <span class="n">w_actual_base</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">std_alt</span> <span class="o">=</span> <span class="n">w_alt_base</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="c1">#generación de numeros aleatorios correlacionados</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Generación de réplicas correlacionadas</span>
+<span class="n">w_actual</span> <span class="o">=</span> <span class="n">media_actual</span> <span class="o">+</span> <span class="n">std_actual</span> <span class="o">*</span> <span class="n">z</span>
+<span class="n">w_alt</span> <span class="o">=</span> <span class="n">media_alt</span> <span class="o">+</span> <span class="n">std_alt</span> <span class="o">*</span> <span class="n">z</span>
+
+<span class="n">w_actual</span><span class="p">,</span> <span class="n">w_alt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([11.222989  ,  9.79183513, 11.56326444, 13.53616305,  9.57571438,
+         9.57575139, 13.66279169, 11.83315584,  9.04533328, 11.32631931,
+         9.05898423,  9.05377316, 10.64881339,  5.79119399,  6.21573689,
+         8.83614525,  7.82068214, 10.81173395,  8.05690276,  6.92032603,
+        13.40683399,  9.59459515, 10.25566306,  6.89227788,  8.87650021,
+        10.35346802,  7.50928301, 10.95023532,  8.74970703,  9.44602631,
+         8.74730008, 14.27824337, 10.07304292,  7.71952924, 11.95736659,
+         7.35185058, 10.57421354,  5.6866376 ,  7.10991562, 10.54716187,
+        11.76786563, 10.48970427,  9.84280852,  9.42481759,  6.77107914,
+         8.48103423,  9.06524754, 12.48607151, 10.87793203,  6.12981443,
+        10.83390437,  9.23554145,  8.57777497, 11.4820978 , 12.42719453,
+        12.20244075,  8.21198324,  9.40654175, 10.85008589, 12.30220798,
+         9.02347115,  9.68501407,  7.60993734,  7.40737904, 11.93478495,
+        13.16024178,  9.94116292, 12.36528855, 10.91854153,  8.64945284,
+        10.91799965, 13.56998611, 10.02271685, 13.62995482,  4.19891963,
+        11.95591869, 10.29965589,  9.42954247, 10.31027993,  5.62375758,
+         9.60835366, 10.90834628, 13.43443316,  8.9353542 ,  8.28123072,
+         8.97257262, 12.16665393, 10.84442346,  8.90945736, 11.26029781,
+        10.32226321, 12.28665602,  8.52113295,  9.36495851,  9.2197061 ,
+         6.80490294, 10.77087806, 10.69184638, 10.11498882,  9.57473675]),
+ array([1.52504599, 1.46969516, 1.53820636, 1.61450953, 1.46133655,
+        1.46133798, 1.61940697, 1.54864459, 1.44082371, 1.52904235,
+        1.44135167, 1.44115013, 1.50283936, 1.31496771, 1.33138719,
+        1.43273322, 1.39345951, 1.50914042, 1.4025955 , 1.35863764,
+        1.60950764, 1.46206678, 1.48763401, 1.35755286, 1.43429398,
+        1.49141669, 1.38141595, 1.51449706, 1.42939017, 1.45632078,
+        1.42929708, 1.64320997, 1.48057106, 1.38954736, 1.55344853,
+        1.37532714, 1.49995417, 1.31092393, 1.36597015, 1.49890792,
+        1.54611945, 1.49668571, 1.47166659, 1.45550052, 1.35286542,
+        1.41899907, 1.44159391, 1.57389654, 1.51170068, 1.32806408,
+        1.50999788, 1.44818014, 1.42274058, 1.53506719, 1.57161943,
+        1.56292693, 1.40859334, 1.45479369, 1.51062371, 1.5667855 ,
+        1.43997818, 1.46556379, 1.38530882, 1.37747474, 1.55257517,
+        1.59997052, 1.47547051, 1.56922518, 1.51327128, 1.42551277,
+        1.51325032, 1.61581766, 1.47862467, 1.61813698, 1.25338545,
+        1.55339253, 1.48933547, 1.45568325, 1.48974636, 1.308492  ,
+        1.46259889, 1.51287697, 1.61057506, 1.43657019, 1.41127154,
+        1.43800964, 1.56154285, 1.51040471, 1.43556862, 1.52648893,
+        1.49020982, 1.56618401, 1.42054991, 1.45318543, 1.44756769,
+        1.35417358, 1.5075603 , 1.50450369, 1.48219335, 1.46129874]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se sigue el procedimiento enunciado en pasos anteriores para pruebas pareadas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Diferencias pareadas</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">w_actual</span> <span class="o">-</span> <span class="n">w_alt</span>
+
+<span class="n">R</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+<span class="c1"># 1) Promedio de diferencias</span>
+<span class="n">dbar</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># 2) Desviación estándar de las diferencias</span>
+<span class="n">sd</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 3) Error estándar</span>
+<span class="n">se_d</span> <span class="o">=</span> <span class="n">sd</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+
+<span class="c1"># 4) Grados de libertad</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">R</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="c1"># 5) Valor crítico t</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">tcrit</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># 6) Half-width</span>
+<span class="n">hw_par</span> <span class="o">=</span> <span class="n">tcrit</span> <span class="o">*</span> <span class="n">se_d</span>
+
+<span class="c1"># 7) Intervalo de confianza</span>
+<span class="n">L_par</span> <span class="o">=</span> <span class="n">dbar</span> <span class="o">-</span> <span class="n">hw_par</span>
+<span class="n">U_par</span> <span class="o">=</span> <span class="n">dbar</span> <span class="o">+</span> <span class="n">hw_par</span>
+
+<span class="n">dbar</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El intervalo de confianza IC es:&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">L_par</span><span class="p">,</span> <span class="n">U_par</span><span class="p">),</span> <span class="s2">&quot;con HW:&quot;</span><span class="p">,</span> <span class="n">hw_par</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El intervalo de confianza IC es: (np.float64(8.006274047820435), np.float64(8.787151398903175)) con HW: 0.3904386755413703
+</pre></div>
+</div>
+</div>
+</div>
+<p>El intervalo de confianza del 95% para la media de las diferencias es completamente
+positivo y no contiene el valor cero. En consecuencia, se concluye que la alternativa
+con lectores automáticos reduce significativamente el tiempo promedio en el sistema
+y mejora el desempeño del proceso de migración.</p>
+<p>Adicionalmente, se observa que el half-width del intervalo de confianza bajo pruebas pareadas es
+menor que en el caso de muestreo independiente, lo que indica una mayor precisión en
+la estimación de la diferencia de desempeño.</p>
+</section>
+<section id="conclusion-general">
+<h2>1.5.3  Conclusión general<a class="headerlink" href="#conclusion-general" title="Link to this heading">#</a></h2>
+<p>Tanto bajo muestreo independiente como mediante pruebas pareadas con números
+aleatorios comunes, los intervalos de confianza obtenidos no contienen el valor
+cero y son completamente positivos. Por lo tanto, se concluye que la alternativa
+con lectores automáticos presenta un mejor desempeño que el escenario actual, al
+reducir el tiempo promedio en el sistema.</p>
+</section>
+</section>
+<section id="control-de-error-tipo-i-y-ii-en-decisiones">
+<h1>2. Control de error tipo I y II en decisiones<a class="headerlink" href="#control-de-error-tipo-i-y-ii-en-decisiones" title="Link to this heading">#</a></h1>
+<p>En la comparación de sistemas bajo incertidumbre, la decisión estadística se basa en muestras
+aleatorias, por lo que siempre existe riesgo de error.</p>
+<p>Planteamiento:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H_0: \mu_1 - \mu_2 = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(H_1: \mu_1 - \mu_2 \neq 0\)</span></p></li>
+</ul>
+<p>Regla de decisión utilizada en esta complementaria:</p>
+<ul class="simple">
+<li><p>Rechazar <span class="math notranslate nohighlight">\(H_0\)</span> si el intervalo de confianza para <span class="math notranslate nohighlight">\(\mu_1 - \mu_2\)</span> <strong>no contiene 0</strong>.</p></li>
+<li><p>No rechazar <span class="math notranslate nohighlight">\(H_0\)</span> si el intervalo de confianza <strong>contiene 0</strong>.</p></li>
+</ul>
+<section id="error-tipo-i-y-error-tipo-ii">
+<h2>2.1 Error Tipo I y Error Tipo II<a class="headerlink" href="#error-tipo-i-y-error-tipo-ii" title="Link to this heading">#</a></h2>
+<p><strong>Error Tipo I (<span class="math notranslate nohighlight">\(\alpha\)</span>):</strong><br />
+Rechazar <span class="math notranslate nohighlight">\(H_0\)</span> cuando <span class="math notranslate nohighlight">\(H_0\)</span> es verdadera.</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha = P(\text{rechazar } H_0 \mid H_0 \text{ verdadera})
+\]</div>
+<p><strong>Error Tipo II (<span class="math notranslate nohighlight">\(\beta\)</span>):</strong><br />
+No rechazar <span class="math notranslate nohighlight">\(H_0\)</span> cuando <span class="math notranslate nohighlight">\(H_0\)</span> es falsa.</p>
+<div class="math notranslate nohighlight">
+\[
+\beta = P(\text{no rechazar } H_0 \mid H_0 \text{ falsa})
+\]</div>
+<p><strong>Poder estadístico:</strong>
+<div class="math notranslate nohighlight">
+\[
+\text{Poder} = 1 - \beta
+\]</div>
+</p>
+</section>
+<section id="estimacion-empirica-de-alpha-y-beta-monte-carlo">
+<h2>2.2 Estimación empírica de <span class="math notranslate nohighlight">\(\alpha\)</span> y <span class="math notranslate nohighlight">\(\beta\)</span> (Monte Carlo)<a class="headerlink" href="#estimacion-empirica-de-alpha-y-beta-monte-carlo" title="Link to this heading">#</a></h2>
+<p>Para mantener coherencia con la sección anterior, se utiliza simulación Monte Carlo
+y la misma regla de decisión basada en intervalos de confianza.</p>
+<ul class="simple">
+<li><p>Cuando <span class="math notranslate nohighlight">\(H_0\)</span> es verdadera, la proporción de rechazos estima el error Tipo I (<span class="math notranslate nohighlight">\(\alpha\)</span>).</p></li>
+<li><p>Cuando <span class="math notranslate nohighlight">\(H_0\)</span> es falsa, la proporción de rechazos estima el poder estadístico,
+y por tanto <span class="math notranslate nohighlight">\(\beta = 1 - \text{Poder}\)</span>.</p></li>
+</ul>
+</section>
+<section id="regla-de-decision-basada-en-el-intervalo-de-confianza-de-welch">
+<h2>2.3 Regla de decisión basada en el intervalo de confianza de Welch<a class="headerlink" href="#regla-de-decision-basada-en-el-intervalo-de-confianza-de-welch" title="Link to this heading">#</a></h2>
+<p>En esta complementaria, la decisión estadística se toma usando un <strong>intervalo de confianza bilateral</strong> para la diferencia de medias <span class="math notranslate nohighlight">\((\mu_1 - \mu_2)\)</span> construido con el método de <strong>Welch</strong> (varianzas desconocidas y no necesariamente iguales).</p>
+<p>La regla es:</p>
+<ul class="simple">
+<li><p>Se calcula el intervalo de confianza para <span class="math notranslate nohighlight">\((\mu_1 - \mu_2)\)</span>.</p></li>
+<li><p><strong>Se rechaza <span class="math notranslate nohighlight">\(H_0\)</span></strong> si el intervalo <strong>NO contiene el valor 0</strong>.</p></li>
+<li><p><strong>No se rechaza <span class="math notranslate nohighlight">\(H_0\)</span></strong> si el intervalo <strong>sí contiene 0</strong>.</p></li>
+</ul>
+</section>
+<section id="estimacion-empirica-mediante-simulacion-monte-carlo">
+<h2>2.4 Estimación empírica mediante simulación Monte Carlo<a class="headerlink" href="#estimacion-empirica-mediante-simulacion-monte-carlo" title="Link to this heading">#</a></h2>
+<p>Para estimar empíricamente el <strong>error Tipo I (<span class="math notranslate nohighlight">\(\alpha\)</span>)</strong> y el <strong>poder estadístico</strong>, se utiliza simulación Monte Carlo.</p>
+<p>El procedimiento es:</p>
+<ol class="arabic simple">
+<li><p>Repetir <span class="math notranslate nohighlight">\(N\)</span> experimentos independientes.</p></li>
+<li><p>En cada experimento:</p>
+<ul class="simple">
+<li><p>Generar dos muestras normales de tamaño <span class="math notranslate nohighlight">\(R\)</span>:</p>
+<ul>
+<li><p>Muestra 1 <span class="math notranslate nohighlight">\(\sim \mathcal{N}(\mu_1, \sigma_1)\)</span></p></li>
+<li><p>Muestra 2 <span class="math notranslate nohighlight">\(\sim \mathcal{N}(\mu_2, \sigma_2)\)</span></p></li>
+</ul>
+</li>
+<li><p>Construir el intervalo de confianza de Welch para <span class="math notranslate nohighlight">\((\mu_1 - \mu_2)\)</span>.</p></li>
+<li><p>Aplicar la regla de decisión: rechazar <span class="math notranslate nohighlight">\(H_0\)</span> si el intervalo no contiene 0.</p></li>
+</ul>
+</li>
+<li><p>La proporción de rechazos estimada se calcula como:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\hat{p} = \frac{\#\text{rechazos}}{N}
+\]</div>
+<ul class="simple">
+<li><p>Si se simula el caso <span class="math notranslate nohighlight">\(\mu_1 = \mu_2\)</span>, entonces <span class="math notranslate nohighlight">\(\hat{p}\)</span> estima el <strong>error Tipo I (<span class="math notranslate nohighlight">\(\alpha\)</span>)</strong>.</p></li>
+<li><p>Si se simula el caso <span class="math notranslate nohighlight">\(\mu_1 \neq \mu_2\)</span>, entonces <span class="math notranslate nohighlight">\(\hat{p}\)</span> estima el <strong>poder</strong> y se obtiene:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\beta = 1 - \text{poder}
+\]</div>
+</section>
+</section>
+<section id="evaluacion-empirica-del-error-tipo-i-poder-estadistico-y-error-tipo-ii">
+<h1>3. Evaluación empírica del Error Tipo I (α), Poder Estadístico y Error Tipo II (β)<a class="headerlink" href="#evaluacion-empirica-del-error-tipo-i-poder-estadistico-y-error-tipo-ii" title="Link to this heading">#</a></h1>
+<section id="contexto-del-analisis">
+<h2>3.1 Contexto del análisis<a class="headerlink" href="#contexto-del-analisis" title="Link to this heading">#</a></h2>
+<p>Se analiza la comparación del <strong>tiempo promedio en el sistema (<span class="math notranslate nohighlight">\(W\)</span>)</strong> entre dos configuraciones:</p>
+<ul class="simple">
+<li><p>Sistema actual</p></li>
+<li><p>Sistema alternativo</p></li>
+</ul>
+<p>El objetivo es determinar si existe una diferencia estadísticamente significativa entre ambos desempeños.</p>
+<p>Se plantea el contraste de hipótesis:</p>
+<div class="math notranslate nohighlight">
+\[
+H_0: \mu_1 = \mu_2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+H_1: \mu_1 \neq \mu_2
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mu_1\)</span>: tiempo promedio del sistema actual</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_2\)</span>: tiempo promedio del sistema alternativo</p></li>
+</ul>
+<p>El procedimiento de decisión se basa en un intervalo de confianza  tipo Welch con nivel de significancia:</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha = 0.05
+\]</div>
+<p>Para evaluar el comportamiento del procedimiento estadístico, se realiza una simulación Monte Carlo.</p>
+<section id="estimacion-empirica-del-error-tipo-i-alpha">
+<h3>3.1.1 Estimación empírica del Error Tipo I (<span class="math notranslate nohighlight">\(\alpha\)</span>)<a class="headerlink" href="#estimacion-empirica-del-error-tipo-i-alpha" title="Link to this heading">#</a></h3>
+<p>Para estimar el error Tipo I se simula el caso en que la hipótesis nula es verdadera, es decir:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mu_1 = 10\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_2 = 10\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_1 = \sigma_2 = 1.5\)</span></p></li>
+</ul>
+<p>Se generan muestras de tamaño:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R = 5\)</span> réplicas por experimento</p></li>
+</ul>
+<p>y se repite el experimento:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N = 20000\)</span> veces</p></li>
+</ul>
+<p>La proporción de rechazos obtenida estima la probabilidad de rechazar <span class="math notranslate nohighlight">\(H_0\)</span> cuando esta es verdadera.</p>
+<p>En este contexto, el error Tipo I representa la probabilidad de concluir que el sistema alternativo es diferente del actual cuando en realidad no lo es.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="c1"># Parámetros</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">20000</span>
+<span class="n">mu1</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">mu2</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">semilla</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">semilla</span><span class="p">)</span>
+
+<span class="n">rechazos</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    
+    <span class="c1"># 1) Generar muestras normales independientes</span>
+    <span class="n">muestra_1</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu1</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+    <span class="n">muestra_2</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu2</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+
+    <span class="c1"># 2) Calcular medias y varianzas muestrales</span>
+    <span class="n">media_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">muestra_1</span><span class="p">)</span>
+    <span class="n">media_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">muestra_2</span><span class="p">)</span>
+    <span class="n">var_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">muestra_1</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">var_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">muestra_2</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># 3) Diferencia de medias</span>
+    <span class="n">diferencia</span> <span class="o">=</span> <span class="n">media_1</span> <span class="o">-</span> <span class="n">media_2</span>
+
+    <span class="c1"># 4) Error estándar (Welch)</span>
+    <span class="n">error_estandar</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var_1</span><span class="o">/</span><span class="n">R</span> <span class="o">+</span> <span class="n">var_2</span><span class="o">/</span><span class="n">R</span><span class="p">)</span>
+
+    <span class="c1"># 5) Grados de libertad (Welch–Satterthwaite)</span>
+    <span class="n">gl</span> <span class="o">=</span> <span class="p">(</span><span class="n">var_1</span><span class="o">/</span><span class="n">R</span> <span class="o">+</span> <span class="n">var_2</span><span class="o">/</span><span class="n">R</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">var_1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span>
+        <span class="p">(</span><span class="n">var_2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="p">)</span>
+
+    <span class="c1"># 6) Valor crítico t</span>
+    <span class="n">t_critico</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">gl</span><span class="p">))</span>
+
+    <span class="c1"># 7) Intervalo de confianza</span>
+    <span class="n">LI</span> <span class="o">=</span> <span class="n">diferencia</span> <span class="o">-</span> <span class="n">t_critico</span> <span class="o">*</span> <span class="n">error_estandar</span>
+    <span class="n">LS</span> <span class="o">=</span> <span class="n">diferencia</span> <span class="o">+</span> <span class="n">t_critico</span> <span class="o">*</span> <span class="n">error_estandar</span>
+
+    <span class="c1"># 8) Regla de decisión: rechazar si 0 NO está en el intervalo</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">LI</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">LS</span><span class="p">):</span>
+        <span class="n">rechazos</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">alpha_empirico</span> <span class="o">=</span> <span class="n">rechazos</span> <span class="o">/</span> <span class="n">N</span>
+<span class="n">alpha_empirico</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.03955
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="estimacion-empirica-del-poder-y-del-error-tipo-ii-beta">
+<h3>3.1.2 Estimación empírica del Poder y del Error Tipo II (<span class="math notranslate nohighlight">\(\beta\)</span>)<a class="headerlink" href="#estimacion-empirica-del-poder-y-del-error-tipo-ii-beta" title="Link to this heading">#</a></h3>
+<p>Ahora se simula un escenario donde existe una diferencia real entre los sistemas:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mu_1 = 10\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_2 = 9\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_1 = \sigma_2 = 1.5\)</span></p></li>
+</ul>
+<p>Es decir, el sistema alternativo reduce en 1 unidad el tiempo promedio.</p>
+<p>Se mantiene:</p>
+<ul class="simple">
+<li><p>Tamaño de muestra: <span class="math notranslate nohighlight">\(R = 5\)</span></p></li>
+<li><p>Número de experimentos: <span class="math notranslate nohighlight">\(N = 20000\)</span></p></li>
+<li><p>Nivel de significancia: <span class="math notranslate nohighlight">\(\alpha = 0.05\)</span></p></li>
+<li><p>Semilla: 2027</p></li>
+</ul>
+<p>La proporción de rechazos estima el <strong>poder estadístico</strong>, definido como:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Poder} = P(\text{rechazar } H_0 \mid H_1 \text{ verdadera})
+\]</div>
+<p>Mientras que el error Tipo II es:</p>
+<div class="math notranslate nohighlight">
+\[
+\beta = 1 - \text{Poder}
+\]</div>
+<p>y representa la probabilidad de no detectar una diferencia cuando esta realmente existe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cambiamos solo mu2 (ahora hay diferencia real)</span>
+<span class="n">mu1</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">mu2</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">rechazos</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    
+    <span class="n">muestra_1</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu1</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+    <span class="n">muestra_2</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu2</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+
+    <span class="n">media_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">muestra_1</span><span class="p">)</span>
+    <span class="n">media_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">muestra_2</span><span class="p">)</span>
+    <span class="n">var_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">muestra_1</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">var_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">muestra_2</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">diferencia</span> <span class="o">=</span> <span class="n">media_1</span> <span class="o">-</span> <span class="n">media_2</span>
+    <span class="n">error_estandar</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var_1</span><span class="o">/</span><span class="n">R</span> <span class="o">+</span> <span class="n">var_2</span><span class="o">/</span><span class="n">R</span><span class="p">)</span>
+
+    <span class="n">gl</span> <span class="o">=</span> <span class="p">(</span><span class="n">var_1</span><span class="o">/</span><span class="n">R</span> <span class="o">+</span> <span class="n">var_2</span><span class="o">/</span><span class="n">R</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">var_1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span>
+        <span class="p">(</span><span class="n">var_2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="p">)</span>
+
+    <span class="n">t_critico</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">gl</span><span class="p">))</span>
+
+    <span class="n">LI</span> <span class="o">=</span> <span class="n">diferencia</span> <span class="o">-</span> <span class="n">t_critico</span> <span class="o">*</span> <span class="n">error_estandar</span>
+    <span class="n">LS</span> <span class="o">=</span> <span class="n">diferencia</span> <span class="o">+</span> <span class="n">t_critico</span> <span class="o">*</span> <span class="n">error_estandar</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">LI</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">LS</span><span class="p">):</span>
+        <span class="n">rechazos</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">poder_empirico</span> <span class="o">=</span> <span class="n">rechazos</span> <span class="o">/</span> <span class="n">N</span>
+<span class="n">beta_empirico</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">poder_empirico</span>
+
+<span class="n">poder_empirico</span><span class="p">,</span> <span class="n">beta_empirico</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9971, 0.0029000000000000137)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aunque el procedimiento computacional es el mismo en ambos casos, la diferencia conceptual radica en el escenario simulado:</p>
+<ul class="simple">
+<li><p>Si se simula μ1 = μ2, la proporción de rechazos estima el error Tipo I.</p></li>
+<li><p>Si se simula μ1 ≠ μ2, la proporción de rechazos estima el poder estadístico.</p></li>
+</ul>
+<p>Ambas cantidades se obtienen como una proporción de rechazos, pero bajo condiciones distintas.</p>
+</section>
+</section>
+<section id="interpretacion-de-los-resultados">
+<h2>3.2 Interpretación de los resultados<a class="headerlink" href="#interpretacion-de-los-resultados" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>El error Tipo I (α) representa la probabilidad de detectar una diferencia cuando en realidad no existe.</p></li>
+<li><p>El poder estadístico indica la capacidad del procedimiento para detectar una diferencia real.</p></li>
+<li><p>El error Tipo II (β) representa la probabilidad de no detectar una diferencia cuando sí existe.</p></li>
+</ul>
+<p>Con <span class="math notranslate nohighlight">\(R = 5\)</span> réplicas, el poder puede ser bajo, lo que implica una alta probabilidad de error Tipo II.</p>
+<section id="resultados">
+<h3>3.2.1 Resultados<a class="headerlink" href="#resultados" title="Link to this heading">#</a></h3>
+<p>Se obtuvo:</p>
+<ul class="simple">
+<li><p>Error Tipo I empírico: 0.03955</p></li>
+<li><p>Poder estadístico: 0.1314</p></li>
+<li><p>Error Tipo II: 0.8687</p></li>
+</ul>
+<p>El error Tipo I (0.03955) está bien controlado pero ligeramente por debajo de α = 0.05, lo cual es típico con muestras pequeñas (R=5).</p>
+<p>Sin embargo, el poder estadístico es bajo (13%), lo que implica una alta probabilidad de cometer error Tipo II. Esto ocurre porque el tamaño de muestra es pequeño (R = 5), lo que genera intervalos de confianza amplios y dificulta detectar diferencias reales entre medias.</p>
+<p>A medida que aumenta R, tanto el control de α como el poder estadístico mejoran. Este resultado subraya la importancia crítica de elegir un tamaño de muestra adecuado en el diseño experimental.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/complementarias"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="complementaria_replicas_ic_bm.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Complementaria Semana 15: Réplicas independientes, corrida larga y batch means</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-alternativas-bajo-incertidumbre">Comparación de alternativas bajo incertidumbre</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. Comparación de alternativas bajo incertidumbre</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#muestreo-independiente">1.1. Muestreo independiente</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-la-igualdad-de-varianzas">Evaluación de la igualdad de varianzas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intervalo-de-confianza-con-varianzas-iguales">1.1.1 Intervalo de confianza con varianzas iguales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intervalo-de-confianza-con-varianzas-distintas">1.1.2 Intervalo de confianza con varianzas distintas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pruebas-pareadas">1.2 Pruebas pareadas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intervalo-de-confianza-pareado">1.2.1 Intervalo de confianza (pareado)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criterio-de-decision">1.3. Criterio de decisión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-de-la-comparacion-half-width">1.4. Precisión de la comparación: half-width</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-practico-comparacion-de-alternativas-bajo-incertidumbre">1.5 Ejercicio práctico: comparación de alternativas bajo incertidumbre</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-muestreo-independiente">1.5.1 Análisis de muestreo independiente</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-1-datos">Paso 1: Datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-2-evaluacion-de-igualdad-de-varianzas">Paso 2: Evaluación de igualdad de varianzas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-se-aplica-el-ic-para-diferencia-de-medias-para-varianzas-diferentes">Paso 3: Se aplica el IC para diferencia de medias para varianzas diferentes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-4-visualizacion-del-intervalo-de-confianza">Paso 4: Visualización del intervalo de confianza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-mediante-pruebas-pareadas">1.5.2 Análisis mediante pruebas pareadas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Paso 1: Datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-general">1.5.3  Conclusión general</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#control-de-error-tipo-i-y-ii-en-decisiones">2. Control de error tipo I y II en decisiones</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-tipo-i-y-error-tipo-ii">2.1 Error Tipo I y Error Tipo II</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-empirica-de-alpha-y-beta-monte-carlo">2.2 Estimación empírica de <span class="math notranslate nohighlight">\(\alpha\)</span> y <span class="math notranslate nohighlight">\(\beta\)</span> (Monte Carlo)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regla-de-decision-basada-en-el-intervalo-de-confianza-de-welch">2.3 Regla de decisión basada en el intervalo de confianza de Welch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-empirica-mediante-simulacion-monte-carlo">2.4 Estimación empírica mediante simulación Monte Carlo</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-empirica-del-error-tipo-i-poder-estadistico-y-error-tipo-ii">3. Evaluación empírica del Error Tipo I (α), Poder Estadístico y Error Tipo II (β)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contexto-del-analisis">3.1 Contexto del análisis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-empirica-del-error-tipo-i-alpha">3.1.1 Estimación empírica del Error Tipo I (<span class="math notranslate nohighlight">\(\alpha\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-empirica-del-poder-y-del-error-tipo-ii-beta">3.1.2 Estimación empírica del Poder y del Error Tipo II (<span class="math notranslate nohighlight">\(\beta\)</span>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-los-resultados">3.2 Interpretación de los resultados</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados">3.2.1 Resultados</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Equipo Modelado Bajo Incertidumbre | Uniandes
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

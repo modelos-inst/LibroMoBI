@@ -988,7 +988,7 @@ Así, si <span class="math notranslate nohighlight">\(X \sim \text{Lognormal}\)<
   mientras que los tiempos de servicio son positivos y asimétricos.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2378/776131320.py:5: FutureWarning: As of SciPy 1.17, users must choose a p-value calculation method by providing the `method` parameter. `method=&#39;interpolate&#39;` interpolates the p-value from pre-calculated tables; `method` may also be an instance of `MonteCarloMethod` to approximate the p-value via Monte Carlo simulation. When `method` is specified, the result object will include a `pvalue` attribute and not attributes `critical_value`, `significance_level`, or `fit_result`. Beginning in 1.19.0, these other attributes will no longer be available, and a p-value will always be computed according to one of the available `method` options.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2382/776131320.py:5: FutureWarning: As of SciPy 1.17, users must choose a p-value calculation method by providing the `method` parameter. `method=&#39;interpolate&#39;` interpolates the p-value from pre-calculated tables; `method` may also be an instance of `MonteCarloMethod` to approximate the p-value via Monte Carlo simulation. When `method` is specified, the result object will include a `pvalue` attribute and not attributes `critical_value`, `significance_level`, or `fit_result`. Beginning in 1.19.0, these other attributes will no longer be available, and a p-value will always be computed according to one of the available `method` options.
   ad_logn = stats.anderson(z, dist=&quot;norm&quot;)
 </pre></div>
 </div>
@@ -1092,7 +1092,9 @@ Así, si <span class="math notranslate nohighlight">\(X \sim \text{Lognormal}\)<
   Conclusión: los precios son compatibles con una distribución Normal.
 
 === KS — Ticket price ~ Lognormal (resultado negativo ilustrativo) ===
-  Estadístico D  = 0.7675
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estadístico D  = 0.7675
   p-value        = 0.0000
   p = 0.0000 &lt; α = 0.05 → Se RECHAZA la hipótesis de ajuste Lognormal.
   Conclusión: la distribución Lognormal NO ajusta bien al precio del tiquete.

@@ -25,3 +25,5 @@ parts:
   - file: content/complementarias/complementaria_markov_iii.ipynb
   - file: content/complementarias/complementaria_ajustes_distribuciones.ipynb
   - file: content/complementarias/complementaria_vyv.ipynb
+  - file: content/complementarias/complementaria_replicas_ic_bm.ipynb
+  - file: content/complementarias/complementaria_alternativas_incertidumbre.ipynb

@@ -505,87 +505,93 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/pandas/compat/_optional.py:158,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, min_version, errors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">157</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">158</span>     <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">159</span> <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/importlib/__init__.py:126,</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
-<span class="g g-Whitespace">    </span><span class="mi">125</span>         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="ne">--&gt; </span><span class="mi">126</span> <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1204,</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
-
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1176,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
-
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1140,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;openpyxl&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Cargar la base de datos del aeropuerto</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Datos_Aeropuerto.xlsx&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Calcular interarrival_min directamente desde arrival_time_min</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;interarrival_calc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;arrival_time_min&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/pandas/io/excel/_base.py:481,</span> in <span class="ni">read_excel</span><span class="nt">(io, sheet_name, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_format, thousands, decimal, comment, skipfooter, storage_options, dtype_backend, engine_kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">479</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">ExcelFile</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">480</span>     <span class="n">should_close</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="ne">--&gt; </span><span class="mi">481</span>     <span class="n">io</span> <span class="o">=</span> <span class="n">ExcelFile</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">482</span>         <span class="n">io</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">483</span>         <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">484</span>         <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">485</span>         <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">486</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">487</span> <span class="k">elif</span> <span class="n">engine</span> <span class="ow">and</span> <span class="n">engine</span> <span class="o">!=</span> <span class="n">io</span><span class="o">.</span><span class="n">engine</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">488</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">489</span>         <span class="s2">&quot;Engine should not be specified when passing &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">490</span>         <span class="s2">&quot;an ExcelFile - ExcelFile already has the engine set&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">491</span>     <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/pandas/io/excel/_base.py:1621,</span> in <span class="ni">ExcelFile.__init__</span><span class="nt">(self, path_or_buffer, engine, storage_options, engine_kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1618</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine</span>
-<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span> <span class="o">=</span> <span class="n">storage_options</span>
-<span class="ne">-&gt; </span><span class="mi">1621</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engines</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span>
-<span class="g g-Whitespace">   </span><span class="mi">1622</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_io</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1623</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1624</span>     <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1625</span> <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/pandas/io/excel/_openpyxl.py:559,</span> in <span class="ni">OpenpyxlReader.__init__</span><span class="nt">(self, filepath_or_buffer, storage_options, engine_kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">541</span> <span class="nd">@doc</span><span class="p">(</span><span class="n">storage_options</span><span class="o">=</span><span class="n">_shared_docs</span><span class="p">[</span><span class="s2">&quot;storage_options&quot;</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">542</span> <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">543</span>     <span class="bp">self</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">546</span>     <span class="n">engine_kwargs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">547</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">548</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">549</span><span class="sd">     Reader using openpyxl engine.</span>
-<span class="g g-Whitespace">    </span><span class="mi">550</span><span class="sd"> </span>
-<span class="sd">   (...)    557         Arbitrary keyword arguments passed to excel engine.</span>
-<span class="g g-Whitespace">    </span><span class="mi">558</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">559</span>     <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;openpyxl&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">560</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">561</span>         <span class="n">filepath_or_buffer</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">562</span>         <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">563</span>         <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">564</span>     <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/pandas/compat/_optional.py:161,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, min_version, errors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">159</span> <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">160</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">161</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
-<span class="g g-Whitespace">    </span><span class="mi">162</span>     <span class="k">return</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">164</span> <span class="c1"># Handle submodules: if we have submodule, grab parent module from sys.modules</span>
-
-<span class="ne">ImportError</span>: `Import openpyxl` failed.  Use pip or conda to install the openpyxl package.
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>arrival_time_min</th>
+      <th>security_service_time_min</th>
+      <th>boarding_service_time_min</th>
+      <th>waiting_time_min</th>
+      <th>passengers_per_flight</th>
+      <th>crew_members</th>
+      <th>ticket_price_net_cop</th>
+      <th>interarrival_calc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>4.820359</td>
+      <td>12.244948</td>
+      <td>2.102177</td>
+      <td>11.617771</td>
+      <td>148</td>
+      <td>6</td>
+      <td>69487</td>
+      <td>1.312942</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11.126747</td>
+      <td>6.360328</td>
+      <td>2.172213</td>
+      <td>0.332360</td>
+      <td>162</td>
+      <td>2</td>
+      <td>211375</td>
+      <td>6.306387</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16.075663</td>
+      <td>11.399622</td>
+      <td>4.249288</td>
+      <td>10.496268</td>
+      <td>152</td>
+      <td>7</td>
+      <td>-35722</td>
+      <td>4.948916</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>29.054235</td>
+      <td>5.213556</td>
+      <td>8.799984</td>
+      <td>1.282438</td>
+      <td>152</td>
+      <td>5</td>
+      <td>132610</td>
+      <td>12.978572</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>35.300152</td>
+      <td>12.500512</td>
+      <td>5.214301</td>
+      <td>6.706093</td>
+      <td>131</td>
+      <td>2</td>
+      <td>359075</td>
+      <td>6.245917</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="analisis-exploratorio-de-variables">
@@ -678,7 +684,7 @@ Ticket price (COP)      228.0  118866.807018  224347.762440 -509291.000000 -2329
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d8a37f8755eef3ed5684ad80aac91228933af3f18f352bcbd715f14bd2218096.png" src="../../_images/d8a37f8755eef3ed5684ad80aac91228933af3f18f352bcbd715f14bd2218096.png" />
+<img alt="../../_images/824997c80f2ff343586d8f2528cfbc45bbf1eac13f1ea655d8f52d38dc0093ec.png" src="../../_images/824997c80f2ff343586d8f2528cfbc45bbf1eac13f1ea655d8f52d38dc0093ec.png" />
 </div>
 </div>
 <p><strong>Observaciones tras el análisis exploratorio:</strong></p>
@@ -723,11 +729,6 @@ Ticket price (COP)      228.0  118866.807018  224347.762440 -509291.000000 -2329
   Parámetro de escala scale = 3.2423
   Media teórica (a·scale)   = 6.3612 min
   Media empírica            = 6.2979 min
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(1.9619153316175115),
- np.float64(-0.06336156521792846),
- np.float64(3.242342466229907))
 </pre></div>
 </div>
 </div>
@@ -914,7 +915,7 @@ Así, si <span class="math notranslate nohighlight">\(X \sim \text{Lognormal}\)<
   Conclusión: los datos son compatibles con una distribución Gamma con los parámetros estimados.
 </pre></div>
 </div>
-<img alt="../../_images/2dc15a85a6a1ea553a2e07fde05aa86ad4cc66fd575c0ea53236f43a93892496.png" src="../../_images/2dc15a85a6a1ea553a2e07fde05aa86ad4cc66fd575c0ea53236f43a93892496.png" />
+<img alt="../../_images/8ac172cbd99bb8cfe3792ef1ef92a9568295bb7962c42ff6750cca96f1f48d00.png" src="../../_images/8ac172cbd99bb8cfe3792ef1ef92a9568295bb7962c42ff6750cca96f1f48d00.png" />
 </div>
 </div>
 <p>La prueba KS no rechaza la hipótesis de ajuste Gamma. El gráfico ECDF vs CDF teórica muestra un buen alineamiento, especialmente en el centro de la distribución. El estadístico <span class="math notranslate nohighlight">\(D\)</span> pequeño confirma la cercanía entre ambas funciones.</p>
@@ -963,19 +964,19 @@ Así, si <span class="math notranslate nohighlight">\(X \sim \text{Lognormal}\)<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ad_logn: AndersonResult(statistic=np.float64(0.20717807251887166), critical_values=array([0.566, 0.645, 0.774, 0.903, 1.074]), significance_level=array([15. , 10. ,  5. ,  2.5,  1. ]), fit_result=  params: FitParams(loc=np.float64(2.1575902631481605), scale=np.float64(0.4420426970037547))
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ad_logn: AndersonResult(statistic=np.float64(0.20717807251890008), critical_values=array([0.559, 0.629, 0.75 , 0.87 , 1.032]), significance_level=array([15. , 10. ,  5. ,  2.5,  1. ]), fit_result=  params: FitParams(loc=np.float64(2.1575902631481605), scale=np.float64(0.4420426970037547))
  success: True
  message: &#39;`anderson` successfully fit the distribution to the data.&#39;)
 === AD — Security service time ~ Lognormal ===
   Estadístico AD = 0.2072
   Valores críticos (niveles 15%, 10%, 5%, 2.5%, 1%):
-    15.0%: 0.5660
-    10.0%: 0.6450
-    5.0%: 0.7740 ← α=5%
-    2.5%: 0.9030
-    1.0%: 1.0740
+    15.0%: 0.5590
+    10.0%: 0.6290
+    5.0%: 0.7500 ← α=5%
+    2.5%: 0.8700
+    1.0%: 1.0320
 
-  AD = 0.2072 &lt; VC al 5% = 0.7740 → No se rechaza H₀.
+  AD = 0.2072 &lt; VC al 5% = 0.7500 → No se rechaza H₀.
   Conclusión: log(X) es compatible con una Normal → X compatible con Lognormal.
 
 === KS — Security service time ~ Normal (resultado negativo esperado) ===
@@ -985,6 +986,10 @@ Así, si <span class="math notranslate nohighlight">\(X \sim \text{Lognormal}\)<
   Conclusión: los tiempos de servicio en seguridad NO se ajustan bien a una Normal.
   Esto era esperado: la Normal permite valores negativos y es simétrica,
   mientras que los tiempos de servicio son positivos y asimétricos.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2374/776131320.py:5: FutureWarning: As of SciPy 1.17, users must choose a p-value calculation method by providing the `method` parameter. `method=&#39;interpolate&#39;` interpolates the p-value from pre-calculated tables; `method` may also be an instance of `MonteCarloMethod` to approximate the p-value via Monte Carlo simulation. When `method` is specified, the result object will include a `pvalue` attribute and not attributes `critical_value`, `significance_level`, or `fit_result`. Beginning in 1.19.0, these other attributes will no longer be available, and a p-value will always be computed according to one of the available `method` options.
+  ad_logn = stats.anderson(z, dist=&quot;norm&quot;)
 </pre></div>
 </div>
 </div>
@@ -1040,7 +1045,7 @@ Así, si <span class="math notranslate nohighlight">\(X \sim \text{Lognormal}\)<
   Conclusión: los datos son compatibles con una distribución Weibull con los parámetros estimados.
 </pre></div>
 </div>
-<img alt="../../_images/2193f24df75805159425c1aaded4d52cecc73ce229bc64f841e35f5b84366ba3.png" src="../../_images/2193f24df75805159425c1aaded4d52cecc73ce229bc64f841e35f5b84366ba3.png" />
+<img alt="../../_images/83f7714474c5f2d6f2ef8f7f863dae799cbd35e8ba960b9d2602431c4bccf921.png" src="../../_images/83f7714474c5f2d6f2ef8f7f863dae799cbd35e8ba960b9d2602431c4bccf921.png" />
 </div>
 </div>
 </section>
@@ -1094,7 +1099,7 @@ Así, si <span class="math notranslate nohighlight">\(X \sim \text{Lognormal}\)<
   La Normal resulta ser una mejor opción para esta variable.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\jpine\AppData\Local\Programs\Python\Python312\Lib\site-packages\scipy\stats\_continuous_distns.py:6902: RuntimeWarning: invalid value encountered in log
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/scipy/stats/_continuous_distns.py:6931: RuntimeWarning: invalid value encountered in log
   lndata = np.log(data - loc)
 </pre></div>
 </div>

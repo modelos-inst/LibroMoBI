@@ -2262,59 +2262,7 @@ Tamaño de Q: (216, 216)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Exportar a Excel</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">nombre_archivo</span> <span class="o">=</span> <span class="s2">&quot;matriz_Q_hospital.xlsx&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">Q</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matriz exportada exitosamente a &#39;</span><span class="si">{</span><span class="n">nombre_archivo</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/pandas/core/generic.py:2312,</span> in <span class="ni">NDFrame.to_excel</span><span class="nt">(self, excel_writer, sheet_name, na_rep, float_format, columns, header, index, index_label, startrow, startcol, engine, merge_cells, inf_rep, freeze_panes, storage_options, engine_kwargs, autofilter)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2298</span> <span class="kn">from</span><span class="w"> </span><span class="nn">pandas.io.formats.excel</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExcelFormatter</span>
-<span class="g g-Whitespace">   </span><span class="mi">2300</span> <span class="n">formatter</span> <span class="o">=</span> <span class="n">ExcelFormatter</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">2301</span>     <span class="n">df</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2302</span>     <span class="n">na_rep</span><span class="o">=</span><span class="n">na_rep</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>   <span class="mi">2310</span>     <span class="n">autofilter</span><span class="o">=</span><span class="n">autofilter</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2311</span> <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2312</span> <span class="n">formatter</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">2313</span>     <span class="n">excel_writer</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2314</span>     <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2315</span>     <span class="n">startrow</span><span class="o">=</span><span class="n">startrow</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2316</span>     <span class="n">startcol</span><span class="o">=</span><span class="n">startcol</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2317</span>     <span class="n">freeze_panes</span><span class="o">=</span><span class="n">freeze_panes</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2318</span>     <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2319</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2320</span>     <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2321</span> <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/pandas/io/formats/excel.py:1003,</span> in <span class="ni">ExcelFormatter.write</span><span class="nt">(self, writer, sheet_name, startrow, startcol, freeze_panes, engine, storage_options, engine_kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1001</span>     <span class="n">need_save</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="g g-Whitespace">   </span><span class="mi">1002</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1003</span>     <span class="n">writer</span> <span class="o">=</span> <span class="n">ExcelWriter</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1004</span>         <span class="n">writer</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1005</span>         <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1006</span>         <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1007</span>         <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1008</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1009</span>     <span class="n">need_save</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">   </span><span class="mi">1011</span> <span class="k">try</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/pandas/io/excel/_openpyxl.py:58,</span> in <span class="ni">OpenpyxlWriter.__init__</span><span class="nt">(self, path, engine, date_format, datetime_format, mode, storage_options, if_sheet_exists, engine_kwargs, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>  <span class="c1"># pyright: ignore[reportInconsistentConstructor]</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span>     <span class="n">path</span><span class="p">:</span> <span class="n">FilePath</span> <span class="o">|</span> <span class="n">WriteExcelBuffer</span> <span class="o">|</span> <span class="n">ExcelWriter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">56</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="c1"># Use the openpyxl module as the Excel writer.</span>
-<span class="ne">---&gt; </span><span class="mi">58</span>     <span class="kn">from</span><span class="w"> </span><span class="nn">openpyxl.workbook</span><span class="w"> </span><span class="kn">import</span> <span class="n">Workbook</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span>     <span class="n">engine_kwargs</span> <span class="o">=</span> <span class="n">combine_kwargs</span><span class="p">(</span><span class="n">engine_kwargs</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span>         <span class="n">path</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span>         <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">67</span>         <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span>     <span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;openpyxl&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz exportada exitosamente a &#39;matriz_Q_hospital.xlsx&#39;.
 </pre></div>
 </div>
 </div>
@@ -2793,7 +2741,7 @@ Dimensión de la distribución conjunta: (21, 16) (tipo1 × tipo2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1edba4d30fbd2c95cae1250d4220dae4aea2bbc6b321e9ac239c67ed7530d3ab.png" src="../../_images/1edba4d30fbd2c95cae1250d4220dae4aea2bbc6b321e9ac239c67ed7530d3ab.png" />
+<img alt="../../_images/f43cb4fdb62651b4a443a4a1c0567b69c73c3c68b39eb26a5c1edffa5c156463.png" src="../../_images/f43cb4fdb62651b4a443a4a1c0567b69c73c3c68b39eb26a5c1edffa5c156463.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estado más probable: (3, 1) con P = 0.0601
 </pre></div>
 </div>
@@ -2872,7 +2820,7 @@ Var[Y(6)] = 2.000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/75a866ac7ed1917eb3bf56c2fdbc1a2a5c424d2c5c96d88975909e0d4883315b.png" src="../../_images/75a866ac7ed1917eb3bf56c2fdbc1a2a5c424d2c5c96d88975909e0d4883315b.png" />
+<img alt="../../_images/de4a3fa803d1f07a713a81163355fa12fcc70e334355fc2ce0551ce0041a0769.png" src="../../_images/de4a3fa803d1f07a713a81163355fa12fcc70e334355fc2ce0551ce0041a0769.png" />
 </div>
 </div>
 </section>

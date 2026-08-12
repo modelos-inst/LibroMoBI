@@ -13,9 +13,9 @@ parts:
   chapters:
   - file: content/complementarias/complementaria_intro_python.ipynb
   - file: content/complementarias/complementaria_intro_montecarlo.ipynb
+  - file: content/complementarias/complementaria_transf_inversa_gva.ipynb
   - file: content/complementarias/complementaria_tlc.ipynb
   - file: content/complementarias/complementaria_intro_simpy.ipynb
-  - file: content/complementarias/complementaria_transf_inversa_gva.ipynb
   - file: content/complementarias/complementaria_simu_cola_simpy.ipynb
   - file: content/complementarias/complementaria_simu_proceso_poisson.ipynb
   - file: content/complementarias/complementaria_markov_i.ipynb

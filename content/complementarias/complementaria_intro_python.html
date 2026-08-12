@@ -61,7 +61,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_intro_python';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Complementaria Semana 2: Introducción a la simulación de Montecarlo" href="complementaria_intro_montecarlo.html" />
+    <link rel="next" title="Complementaria Semana 2: Introducción a la simulación de Monte Carlo" href="complementaria_intro_montecarlo.html" />
     <link rel="prev" title="Ambientes virtuales en Python" href="ambientes_virtuales.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,26 +188,17 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 1: Introducción a Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria Semana 3: Teorema del Límite Central y validación empírica</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gva.html">Complementaria Semana 5: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Monte Carlo</a></li>
 
-
-
-<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Modelado Avanzado en SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gva.html">Complementaria Semana 2: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
 
 
 
 
-
-<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 7: Simulación de un Proceso de Poisson</a></li>
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria Semana 3: Teorema del Límite Central</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 4: Introducción a SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 5: Simulación de colas M/M/1 y M/M/s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 6: Simulación de un Proceso de Poisson</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
@@ -551,12 +542,14 @@ document.write(`
 </section>
 <section id="paquetes-o-librerias-en-python">
 <h2>Paquetes o librerias en Python<a class="headerlink" href="#paquetes-o-librerias-en-python" title="Link to this heading">#</a></h2>
-<p>En Python los paquetes deben ser instalados cuando estos no están presentes en el computador, y también se deben importar en cada sesión. Por ejemplo, vamos a instalar la librería matplotlib, que sirve para generar gráficas. Para instalar la librería en la terminal puede emitir el comando:</p>
-<p>pip install matplotlib</p>
-<p>O desde una celda de un cuaderno puede hacer con el siguiente comando, para eso se debe utilizar el siguiente comando:</p>
+<p>En Python los paquetes deben ser instalados cuando estos no están presentes en el computador, y también se deben importar en cada sesión. Por ejemplo, vamos a instalar la librería <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, que sirve para generar gráficas. Para instalarla desde la terminal se usa el comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
+</pre></div>
+</div>
+<p>Y desde una celda de un cuaderno se hace con <code class="docutils literal notranslate"><span class="pre">%pip</span></code> (con <code class="docutils literal notranslate"><span class="pre">%</span></code>, no con <code class="docutils literal notranslate"><span class="pre">!</span></code>), que instala en el <strong>ambiente virtual que está usando el kernel del notebook</strong> y no en el Python global del computador:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install matplotlib
 </pre></div>
 </div>
 </div>
@@ -571,7 +564,12 @@ Requirement already satisfied: packaging&gt;=20.0 in /opt/hostedtoolcache/Python
 Requirement already satisfied: pillow&gt;=8 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (12.1.0)
 Requirement already satisfied: pyparsing&gt;=3 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (3.3.1)
 Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from matplotlib) (2.9.0.post0)
-Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
@@ -809,12 +807,15 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.1
 <p>Si no la tienen instalada en su computador, deben usar el mismo comando que utilizamos anteriormente:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>numpy
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install numpy
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (2.4.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
@@ -979,12 +980,12 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[12.86813064 23.74006735 23.81054675 16.58789508 13.10290757 14.13913978]
- [10.74481806 33.7540755  13.81542734 14.21266414 11.66899845 37.21602843]
- [26.67307388 15.62161928  9.78768359 27.29056218 28.23866542 31.56146178]
- [18.72905386 21.42808211 28.33772636 17.22362892 26.44587454 19.15274216]
- [17.96996661 14.04621504 19.48823299 15.09281047  9.84624491 15.57038569]
- [23.74398353 17.21584718 24.04107995 21.35757022 10.42746697 32.74716829]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[14.05212829  9.45859445 19.99455841 14.82617244 20.94653603 32.22440262]
+ [15.92248488 19.73822989 10.64927684 30.26847895 36.35024204 28.17839087]
+ [21.45200912 12.91542883 24.25318813 17.20720797 15.60524751 20.35246708]
+ [29.12405127 10.07980583 37.04411679 16.07455098  2.67143213 14.98910481]
+ [15.98959833 24.22095162 24.26499207 20.49366292  8.30403528 13.65333719]
+ [17.4782151  24.30604641  6.37333687 17.96779134 23.49111017 14.3619551 ]]
 </pre></div>
 </div>
 </div>
@@ -997,12 +998,12 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[14.00213704 12.61347604  8.26623816  9.03756959  9.16882193  8.56179818]
- [12.93005814  9.21809486 15.99109704 12.32206545  7.11882322  7.47144134]
- [12.11801886  6.29986995  9.64529329 11.427728    9.57741792  8.94586431]
- [ 7.07660413  9.49847619  8.39591497  3.00044779  7.41863271 13.59534012]
- [ 9.85777817 13.30826397 12.55257866 16.44940286 13.48942649 13.7678351 ]
- [ 8.59528493 11.13635839 11.37329966  9.14214056  5.90454073 10.32548805]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 8.06049057  9.36498408 10.38767607 16.37228542 10.72705317 11.45596339]
+ [10.88921509  9.15657358  6.12405043 16.02930864  4.84168926  9.23515645]
+ [ 9.13046062  1.43132578  9.02381046 10.32677192  8.8425568  16.1737691 ]
+ [11.878211   11.14260703  6.38596197  9.76325757 16.36405324  9.48978346]
+ [12.18594116 11.32239865  7.08137831 15.40948168 13.83419116 11.00448644]
+ [11.56339093  4.48613311 13.28773164  9.59478643  4.42059191 10.1604029 ]]
 </pre></div>
 </div>
 </div>
@@ -1059,12 +1060,12 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[26.87026768 36.35354339 32.07678491 25.62546466 22.2717295  22.70093796]
- [23.6748762  42.97217037 29.80652438 26.53472959 18.78782167 44.68746977]
- [38.79109274 21.92148923 19.43297687 38.71829018 37.81608334 40.5073261 ]
- [25.80565799 30.9265583  36.73364132 20.22407671 33.86450726 32.74808228]
- [27.82774478 27.35447902 32.04081165 31.54221333 23.3356714  29.33822079]
- [32.33926846 28.35220558 35.41437961 30.49971078 16.33200771 43.07265634]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[22.11261886 18.82357854 30.38223447 31.19845786 31.67358921 43.68036601]
+ [26.81169997 28.89480347 16.77332727 46.29778759 41.19193131 37.41354731]
+ [30.58246973 14.34675462 33.2769986  27.5339799  24.44780431 36.52623619]
+ [41.00226227 21.22241286 43.43007876 25.83780854 19.03548537 24.47888827]
+ [28.17553949 35.54335026 31.34637039 35.90314459 22.13822644 24.65782363]
+ [29.04160603 28.79217952 19.6610685  27.56257777 27.91170208 24.52235801]]
 </pre></div>
 </div>
 </div>
@@ -1076,18 +1077,18 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1143.75989246 1020.54860538 1180.21496808 1075.49186316  898.32583462
-  1052.46304355]
- [1289.79834724 1238.45696501 1450.91115468 1245.73249046  953.71292924
-  1205.93400365]
- [1436.85057713 1528.60899901 1507.25316082 1380.33377273 1219.24694265
-  1518.34203723]
- [1429.91587323 1341.12726597 1465.20496211 1418.93369135 1193.27194055
-  1369.98343614]
- [1007.09493186  926.70894208  988.52851384  907.78612426  788.12708878
-   934.6649867 ]
- [1381.80064471 1315.96721468 1386.10827371 1236.4447165  1062.97390717
-  1319.04419865]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1202.80827019  793.75520481 1055.51990501 1364.87269353 1048.18211309
+  1270.33558942]
+ [1568.84471248 1220.34466617 1207.50265304 1813.07328606 1483.2909178
+  1510.49285062]
+ [1164.89438717  813.59887811 1011.61678979 1412.44570724 1094.54512502
+  1299.10457976]
+ [1079.56086559  694.6675034  1019.27963324 1362.86836907 1055.04586716
+  1360.11273124]
+ [1116.68112591  789.87948649  904.48543419 1359.65705871 1013.95099782
+  1223.90238346]
+ [1129.50766105  925.97902428  859.85014992 1416.79334041 1044.02340514
+  1102.72211516]]
 </pre></div>
 </div>
 </div>
@@ -1099,8 +1100,8 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([104.24868716, 121.41201193, 139.17306613, 131.31710795,
-        92.01385572, 129.53311615])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([111.50239224, 141.10710348, 111.78554866, 109.98306181,
+       106.92657741, 103.97845499])
 </pre></div>
 </div>
 </div>
@@ -1112,8 +1113,8 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([110.72902658, 125.80590647, 119.28069698, 111.76513101,
-        99.73015787, 150.38692613])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([114.01848699, 100.71905704, 122.57946911, 116.8378646 ,
+       107.36860317, 123.75965768])
 </pre></div>
 </div>
 </div>
@@ -1166,7 +1167,7 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.1
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Complementaria Semana 2: Introducción a la simulación de Montecarlo</p>
+        <p class="prev-next-title">Complementaria Semana 2: Introducción a la simulación de Monte Carlo</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -190,26 +190,17 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="complementaria_intro_python.html">Complementaria Semana 1: Introducción a Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Montecarlo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria Semana 3: Teorema del Límite Central y validación empírica</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 5: Introducción a la Simulación con SimPy con Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gva.html">Complementaria Semana 5: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Monte Carlo</a></li>
 
-
-
-<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 6: Modelado Avanzado en SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gva.html">Complementaria Semana 2: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
 
 
 
 
-
-<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 7: Simulación de un Proceso de Poisson</a></li>
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria Semana 3: Teorema del Límite Central</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 4: Introducción a SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 5: Simulación de colas M/M/1 y M/M/s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 6: Simulación de un Proceso de Poisson</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
@@ -988,7 +979,7 @@ Así, si <span class="math notranslate nohighlight">\(X \sim \text{Lognormal}\)<
   mientras que los tiempos de servicio son positivos y asimétricos.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2382/776131320.py:5: FutureWarning: As of SciPy 1.17, users must choose a p-value calculation method by providing the `method` parameter. `method=&#39;interpolate&#39;` interpolates the p-value from pre-calculated tables; `method` may also be an instance of `MonteCarloMethod` to approximate the p-value via Monte Carlo simulation. When `method` is specified, the result object will include a `pvalue` attribute and not attributes `critical_value`, `significance_level`, or `fit_result`. Beginning in 1.19.0, these other attributes will no longer be available, and a p-value will always be computed according to one of the available `method` options.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2202/776131320.py:5: FutureWarning: As of SciPy 1.17, users must choose a p-value calculation method by providing the `method` parameter. `method=&#39;interpolate&#39;` interpolates the p-value from pre-calculated tables; `method` may also be an instance of `MonteCarloMethod` to approximate the p-value via Monte Carlo simulation. When `method` is specified, the result object will include a `pvalue` attribute and not attributes `critical_value`, `significance_level`, or `fit_result`. Beginning in 1.19.0, these other attributes will no longer be available, and a p-value will always be computed according to one of the available `method` options.
   ad_logn = stats.anderson(z, dist=&quot;norm&quot;)
 </pre></div>
 </div>
@@ -1092,9 +1083,7 @@ Así, si <span class="math notranslate nohighlight">\(X \sim \text{Lognormal}\)<
   Conclusión: los precios son compatibles con una distribución Normal.
 
 === KS — Ticket price ~ Lognormal (resultado negativo ilustrativo) ===
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estadístico D  = 0.7675
+  Estadístico D  = 0.7675
   p-value        = 0.0000
   p = 0.0000 &lt; α = 0.05 → Se RECHAZA la hipótesis de ajuste Lognormal.
   Conclusión: la distribución Lognormal NO ajusta bien al precio del tiquete.

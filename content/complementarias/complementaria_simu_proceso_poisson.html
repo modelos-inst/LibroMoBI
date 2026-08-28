@@ -64,7 +64,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Complementaria Semana 8: Cadenas de Markov en Python I" href="complementaria_markov_i.html" />
-    <link rel="prev" title="Complementaria Semana 5: Simulación de colas M/M/1 y M/M/s" href="complementaria_simu_cola_simpy.html" />
+    <link rel="prev" title="Complementaria Semana 5: Medir y comparar sistemas de colas con SimPy" href="complementaria_simu_cola_simpy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -199,12 +199,12 @@
 
 <li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria Semana 3: Teorema del Límite Central</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 4: Introducción a SimPy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 5: Simulación de colas M/M/1 y M/M/s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 5: Medir y comparar sistemas de colas con SimPy</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 6: Simulación de un Proceso de Poisson</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria Semana 12: Ajuste de distribuciones y uso en modelos estocásticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_replicas_ic_bm.html">Complementaria Semana 15: Réplicas independientes, corrida larga y batch means</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_alternativas_incertidumbre.html">Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones.</a></li>
@@ -392,7 +392,7 @@ document.write(`
   <section id="complementaria-semana-6-simulacion-de-un-proceso-de-poisson">
 <h1>Complementaria Semana 6: Simulación de un Proceso de Poisson<a class="headerlink" href="#complementaria-semana-6-simulacion-de-un-proceso-de-poisson" title="Link to this heading">#</a></h1>
 <p>Llevas dos semanas escribiendo esta línea sin detenerte a pensar qué es:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="n">lam</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">lam</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Ese generador de llegadas que usaste para la cola M/M/1 <strong>es un proceso de Poisson</strong>. Hoy le ponemos nombre, estudiamos sus propiedades y verificamos —simulando— que efectivamente se comporta como dice la teoría.</p>
@@ -440,7 +440,6 @@ document.write(`
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">simpy</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
 </pre></div>
@@ -804,7 +803,7 @@ Independencia:
 <p>Volvamos al comienzo. En las semanas 4 y 5 el generador de llegadas era este:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">generador</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="n">lam</span><span class="p">))</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">lam</span><span class="p">))</span>
         <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">cliente</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="o">...</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -812,14 +811,14 @@ Independencia:
 <p>Compruébalo: dejamos correr el generador de SimPy y le aplicamos las mismas verificaciones de hoy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng_simpy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">lam_s</span><span class="p">,</span> <span class="n">T_s</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">5_000.0</span>
 
 <span class="n">llegadas_simpy</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">generador_llegadas</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="n">lam_s</span><span class="p">))</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng_simpy</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">lam_s</span><span class="p">))</span>
         <span class="n">llegadas_simpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
 
 <span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
@@ -842,13 +841,13 @@ Independencia:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Eventos generados por SimPy: 15,036
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Eventos generados por SimPy: 15,061
 
-E[N(1)]   = 3.0072    teórica: 3.0
-Var[N(1)] = 3.0930    teórica: 3.0
-P(N(1)=0) = 0.0510    teórica: 0.0498
+E[N(1)]   = 3.0122    teórica: 3.0
+Var[N(1)] = 3.0019    teórica: 3.0
+P(N(1)=0) = 0.0472    teórica: 0.0498
 
-KS de los interarribos vs Exp(3.0): p-valor = 0.6573
+KS de los interarribos vs Exp(3.0): p-valor = 0.9508
 </pre></div>
 </div>
 </div>
@@ -995,7 +994,7 @@ KS de los interarribos vs Exp(3.0): p-valor = 0.6573
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Complementaria Semana 5: Simulación de colas M/M/1 y M/M/s</p>
+        <p class="prev-next-title">Complementaria Semana 5: Medir y comparar sistemas de colas con SimPy</p>
       </div>
     </a>
     <a class="right-next"

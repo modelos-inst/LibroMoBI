@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_intro_simpy';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Complementaria Semana 5: Simulación de colas M/M/1 y M/M/s" href="complementaria_simu_cola_simpy.html" />
+    <link rel="next" title="Complementaria Semana 5: Medir y comparar sistemas de colas con SimPy" href="complementaria_simu_cola_simpy.html" />
     <link rel="prev" title="Complementaria Semana 3: Teorema del Límite Central" href="complementaria_tlc.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -199,12 +199,12 @@
 
 <li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria Semana 3: Teorema del Límite Central</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 4: Introducción a SimPy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 5: Simulación de colas M/M/1 y M/M/s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 5: Medir y comparar sistemas de colas con SimPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 6: Simulación de un Proceso de Poisson</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria Semana 12: Ajuste de distribuciones empíricas y uso en modelos estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria Semana 12: Ajuste de distribuciones y uso en modelos estocásticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_replicas_ic_bm.html">Complementaria Semana 15: Réplicas independientes, corrida larga y batch means</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_alternativas_incertidumbre.html">Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones.</a></li>
@@ -440,7 +440,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: simpy in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (4.1.1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: simpy in /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages (4.1.1)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
@@ -451,7 +451,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">simpy</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">statistics</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
@@ -625,15 +625,15 @@ t =   0.00 | paso 2: hago una cuenta, pero el reloj NO avanza
 <section id="llegadas-aleatorias-interarribos-exponenciales">
 <h2>3. Llegadas aleatorias: interarribos exponenciales<a class="headerlink" href="#llegadas-aleatorias-interarribos-exponenciales" title="Link to this heading">#</a></h2>
 <p>Hasta ahora los tiempos eran fijos. En un sistema real las llegadas son aleatorias.</p>
-<p>De la magistral sabemos que si los clientes llegan según un <strong>proceso de Poisson con tasa <span class="math notranslate nohighlight">\(\lambda\)</span></strong>, entonces los <strong>tiempos entre llegadas (interarribos)</strong> son exponenciales con media <span class="math notranslate nohighlight">\(1/\lambda\)</span>. En Python, <code class="docutils literal notranslate"><span class="pre">random.expovariate(lam)</span></code> genera exactamente eso.</p>
+<p>De la magistral sabemos que si los clientes llegan según un <strong>proceso de Poisson con tasa <span class="math notranslate nohighlight">\(\lambda\)</span></strong>, entonces los <strong>tiempos entre llegadas (interarribos)</strong> son exponenciales con media <span class="math notranslate nohighlight">\(1/\lambda\)</span>. En Python, <code class="docutils literal notranslate"><span class="pre">rng.exponential(1</span> <span class="pre">/</span> <span class="pre">lam)</span></code> genera exactamente eso: <code class="docutils literal notranslate"><span class="pre">rng.exponential</span></code> recibe la <strong>escala</strong> de la distribución, que es su media <span class="math notranslate nohighlight">\(1/\lambda\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">generador_llegadas</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">n_max</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="n">lam</span><span class="p">))</span>   <span class="c1"># interarribo ~ Exp(lam) -&gt; espera a que llegue el siguiente cliente</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">lam</span><span class="p">))</span>   <span class="c1"># interarribo ~ Exp(lam) -&gt; espera a que llegue el siguiente cliente</span>
         <span class="n">log</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;llega el cliente </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>            <span class="c1"># registramos la llegada del cliente</span>
 
-<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>                                       <span class="c1"># semilla: resultados reproducibles</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>                                       <span class="c1"># semilla: resultados reproducibles</span>
 <span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
 <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">generador_llegadas</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="mi">7</span><span class="p">))</span>  <span class="c1"># registramos el proceso de llegadas</span>
 <span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -641,13 +641,13 @@ t =   0.00 | paso 2: hago una cuenta, pero el reloj NO avanza
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t =   0.54 | llega el cliente 1
-t =   0.76 | llega el cliente 2
-t =   1.76 | llega el cliente 3
-t =   2.10 | llega el cliente 4
-t =   2.24 | llega el cliente 5
-t =   3.27 | llega el cliente 6
-t =   8.27 | llega el cliente 7
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t =   7.60 | llega el cliente 1
+t =   8.46 | llega el cliente 2
+t =  14.94 | llega el cliente 3
+t =  15.22 | llega el cliente 4
+t =  17.10 | llega el cliente 5
+t =  18.69 | llega el cliente 6
+t =  19.92 | llega el cliente 7
 </pre></div>
 </div>
 </div>
@@ -657,8 +657,8 @@ t =   8.27 | llega el cliente 7
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lam</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">interarribos</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="n">lam</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100_000</span><span class="p">)]</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">interarribos</span> <span class="o">=</span> <span class="p">[</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">lam</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100_000</span><span class="p">)]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Media simulada : </span><span class="si">{</span><span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">interarribos</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Media teórica  : </span><span class="si">{</span><span class="mi">1</span><span class="o">/</span><span class="n">lam</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -666,7 +666,7 @@ t =   8.27 | llega el cliente 7
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media simulada : 1.9980
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Media simulada : 1.9945
 Media teórica  : 2.0000
 </pre></div>
 </div>
@@ -699,18 +699,18 @@ Media teórica  : 2.0000
         <span class="k">yield</span> <span class="n">turno</span>                                     <span class="c1"># &lt;- espera en la cola</span>
         <span class="n">log</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nombre</span><span class="si">}</span><span class="s2"> EMPIEZA a ser atendido (quedan </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">barista</span><span class="o">.</span><span class="n">queue</span><span class="p">)</span><span class="si">}</span><span class="s2"> esperando)&quot;</span><span class="p">)</span>
 
-        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">2.0</span><span class="p">))</span>    <span class="c1"># servicio ~ Exp(media 2 min) -&gt; espera a que termine el servicio</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span>    <span class="c1"># servicio ~ Exp(media 2 min) -&gt; espera a que termine el servicio</span>
         <span class="n">log</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nombre</span><span class="si">}</span><span class="s2"> se va&quot;</span><span class="p">)</span>
 
 <span class="c1"># Creamos un proceso que genera clientes y los envía a la cola del barista</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">llegadas</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">barista</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">n_max</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="n">lam</span><span class="p">))</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">lam</span><span class="p">))</span>
         <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">cliente</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Cliente </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">barista</span><span class="p">))</span>  <span class="c1"># registramos el proceso del cliente que llega</span>
 
 
 <span class="c1"># Simulamos la cafetería con un solo barista y llegadas ~ Exp(0.8) hasta 6 clientes</span>
-<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
 <span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
 <span class="n">barista</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Resource</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>               <span class="c1"># un solo servidor</span>
 <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">llegadas</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">barista</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="mi">6</span><span class="p">))</span>   <span class="c1"># registramos el proceso de llegadas (que a su vez registra los procesos de los clientes atendidos)</span>
@@ -719,24 +719,24 @@ Media teórica  : 2.0000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t =   0.49 | Cliente 1 llega y se pone en la cola
-t =   0.49 | Cliente 1 EMPIEZA a ser atendido (quedan 0 esperando)
-t =   0.69 | Cliente 2 llega y se pone en la cola
-t =   0.79 | Cliente 3 llega y se pone en la cola
-t =   1.75 | Cliente 4 llega y se pone en la cola
-t =   2.32 | Cliente 5 llega y se pone en la cola
-t =   2.39 | Cliente 6 llega y se pone en la cola
-t =   2.59 | Cliente 1 se va
-t =   2.59 | Cliente 2 EMPIEZA a ser atendido (quedan 4 esperando)
-t =   4.01 | Cliente 2 se va
-t =   4.01 | Cliente 3 EMPIEZA a ser atendido (quedan 3 esperando)
-t =   4.09 | Cliente 3 se va
-t =   4.09 | Cliente 4 EMPIEZA a ser atendido (quedan 2 esperando)
-t =   5.22 | Cliente 4 se va
-t =   5.22 | Cliente 5 EMPIEZA a ser atendido (quedan 1 esperando)
-t =   5.37 | Cliente 5 se va
-t =   5.37 | Cliente 6 EMPIEZA a ser atendido (quedan 0 esperando)
-t =   5.56 | Cliente 6 se va
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t =   0.88 | Cliente 1 llega y se pone en la cola
+t =   0.88 | Cliente 1 EMPIEZA a ser atendido (quedan 0 esperando)
+t =   2.02 | Cliente 1 se va
+t =   2.17 | Cliente 2 llega y se pone en la cola
+t =   2.17 | Cliente 2 EMPIEZA a ser atendido (quedan 0 esperando)
+t =   2.58 | Cliente 2 se va
+t =   3.28 | Cliente 3 llega y se pone en la cola
+t =   3.28 | Cliente 3 EMPIEZA a ser atendido (quedan 0 esperando)
+t =   3.30 | Cliente 3 se va
+t =   7.51 | Cliente 4 llega y se pone en la cola
+t =   7.51 | Cliente 4 EMPIEZA a ser atendido (quedan 0 esperando)
+t =   8.67 | Cliente 4 se va
+t =  11.03 | Cliente 5 llega y se pone en la cola
+t =  11.03 | Cliente 5 EMPIEZA a ser atendido (quedan 0 esperando)
+t =  11.40 | Cliente 6 llega y se pone en la cola
+t =  12.11 | Cliente 5 se va
+t =  12.11 | Cliente 6 EMPIEZA a ser atendido (quedan 0 esperando)
+t =  12.73 | Cliente 6 se va
 </pre></div>
 </div>
 </div>
@@ -831,13 +831,13 @@ t =   5.56 | Cliente 6 se va
         <span class="k">yield</span> <span class="n">leche</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CONSUMO</span><span class="p">)</span>                      <span class="c1"># aquí intenta retirar leche, y se bloquea si no alcanza</span>
         <span class="n">log</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nombre</span><span class="si">}</span><span class="s2">: toma </span><span class="si">{</span><span class="n">CONSUMO</span><span class="si">}</span><span class="s2"> ml (quedan </span><span class="si">{</span><span class="n">leche</span><span class="o">.</span><span class="n">level</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> ml) y empieza la bebida&quot;</span><span class="p">)</span>
 
-        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span>    <span class="c1"># prepara la bebida</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">))</span>    <span class="c1"># prepara la bebida</span>
         <span class="n">log</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nombre</span><span class="si">}</span><span class="s2">: bebida lista, se va&quot;</span><span class="p">)</span>
 
 <span class="c1"># Proceso que genera clientes y los envía a la cola del barista</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">llegadas_cafeteria</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">baristas</span><span class="p">,</span> <span class="n">leche</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">n_max</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="n">lam</span><span class="p">))</span>
+        <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">lam</span><span class="p">))</span>
         <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">cliente_cafeteria</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Cliente </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">baristas</span><span class="p">,</span> <span class="n">leche</span><span class="p">))</span>  <span class="c1"># registramos el proceso del cliente que llega</span>
 
 <span class="c1"># Proceso que repone leche cada R minutos</span>
@@ -849,7 +849,7 @@ t =   5.56 | Cliente 6 se va
 
 
 <span class="c1"># Simulamos la cafetería con un solo barista, llegadas ~ Exp(0.9) hasta 8 clientes, y reposición de leche cada 8 minutos con lotes de 1500 ml</span>
-<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
 <span class="n">baristas</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Resource</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">leche</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>   <span class="c1"># arrancamos con leche para solo 3 bebidas</span>
@@ -861,24 +861,24 @@ t =   5.56 | Cliente 6 se va
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t =   0.30 | Cliente 1: toma 200 ml (quedan 400 ml) y empieza la bebida
-t =   0.53 | Cliente 1: bebida lista, se va
-t =   1.18 | Cliente 2: toma 200 ml (quedan 200 ml) y empieza la bebida
-t =   1.67 | Cliente 2: bebida lista, se va
-t =   2.20 | Cliente 3: toma 200 ml (quedan 0 ml) y empieza la bebida
-t =   2.21 | Cliente 3: bebida lista, se va
-t =   2.28 | Cliente 4: el barista está libre pero NO HAY LECHE (0 ml). Se bloquea.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t =   0.12 | Cliente 1: toma 200 ml (quedan 400 ml) y empieza la bebida
+t =   0.82 | Cliente 1: bebida lista, se va
+t =   0.82 | Cliente 2: toma 200 ml (quedan 200 ml) y empieza la bebida
+t =   0.99 | Cliente 2: bebida lista, se va
+t =   3.00 | Cliente 3: toma 200 ml (quedan 0 ml) y empieza la bebida
+t =   3.22 | Cliente 3: bebida lista, se va
+t =   3.29 | Cliente 4: el barista está libre pero NO HAY LECHE (0 ml). Se bloquea.
 t =   8.00 | &gt;&gt;&gt; LLEGA REPOSICIÓN de 1500 ml (nevera queda en 1300 ml)
 t =   8.00 | Cliente 4: toma 200 ml (quedan 1300 ml) y empieza la bebida
-t =   8.32 | Cliente 4: bebida lista, se va
-t =   8.32 | Cliente 5: toma 200 ml (quedan 1100 ml) y empieza la bebida
-t =   9.22 | Cliente 5: bebida lista, se va
-t =   9.22 | Cliente 6: toma 200 ml (quedan 900 ml) y empieza la bebida
-t =   9.55 | Cliente 6: bebida lista, se va
-t =   9.55 | Cliente 7: toma 200 ml (quedan 700 ml) y empieza la bebida
-t =  10.06 | Cliente 7: bebida lista, se va
-t =  10.97 | Cliente 8: toma 200 ml (quedan 500 ml) y empieza la bebida
-t =  11.05 | Cliente 8: bebida lista, se va
+t =   9.67 | Cliente 4: bebida lista, se va
+t =   9.67 | Cliente 5: toma 200 ml (quedan 1100 ml) y empieza la bebida
+t =   9.81 | Cliente 5: bebida lista, se va
+t =   9.81 | Cliente 6: toma 200 ml (quedan 900 ml) y empieza la bebida
+t =  10.45 | Cliente 6: bebida lista, se va
+t =  10.45 | Cliente 7: toma 200 ml (quedan 700 ml) y empieza la bebida
+t =  10.71 | Cliente 7: bebida lista, se va
+t =  10.71 | Cliente 8: toma 200 ml (quedan 500 ml) y empieza la bebida
+t =  11.72 | Cliente 8: bebida lista, se va
 t =  16.00 | &gt;&gt;&gt; LLEGA REPOSICIÓN de 1500 ml (nevera queda en 2000 ml)
 </pre></div>
 </div>
@@ -911,7 +911,7 @@ t =  16.00 | &gt;&gt;&gt; LLEGA REPOSICIÓN de 1500 ml (nevera queda en 2000 ml)
                       <span class="n">lote</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">nevera</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 
     <span class="c1"># Semilla fija para resultados reproducibles</span>
-    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">semilla</span><span class="p">)</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">semilla</span><span class="p">)</span>
 
     <span class="c1"># Diccionario para almacenar los indicadores</span>
     <span class="n">m</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;salidas&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>          <span class="c1"># número de clientes atendidos</span>
@@ -928,7 +928,7 @@ t =  16.00 | &gt;&gt;&gt; LLEGA REPOSICIÓN de 1500 ml (nevera queda en 2000 ml)
             <span class="k">yield</span> <span class="n">leche</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">consumo</span><span class="p">)</span>                  <span class="c1"># puede bloquearse</span>
             <span class="n">m</span><span class="p">[</span><span class="s2">&quot;t_sin_leche&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span> <span class="o">-</span> <span class="n">t0</span>          <span class="c1"># tiempo de barista desperdiciado</span>
 
-            <span class="n">t_serv</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
+            <span class="n">t_serv</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">mu</span><span class="p">)</span>
             <span class="n">m</span><span class="p">[</span><span class="s2">&quot;t_sirviendo&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">t_serv</span>
             <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">t_serv</span><span class="p">)</span>
         <span class="n">m</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">now</span> <span class="o">-</span> <span class="n">t_llegada</span><span class="p">)</span>
@@ -937,7 +937,7 @@ t =  16.00 | &gt;&gt;&gt; LLEGA REPOSICIÓN de 1500 ml (nevera queda en 2000 ml)
     <span class="c1"># Proceso que genera clientes y los envía a la cola del barista</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">llegadas</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">baristas</span><span class="p">,</span> <span class="n">leche</span><span class="p">):</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="n">lam</span><span class="p">))</span>
+            <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">lam</span><span class="p">))</span>
             <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">cliente</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">baristas</span><span class="p">,</span> <span class="n">leche</span><span class="p">))</span>
 
     <span class="c1"># Proceso que repone leche cada R minutos</span>
@@ -969,10 +969,13 @@ t =  16.00 | &gt;&gt;&gt; LLEGA REPOSICIÓN de 1500 ml (nevera queda en 2000 ml)
 <p>(El tratamiento formal de cuántas réplicas necesito y qué tan precisa es mi estimación es el tema de la semana 14. Por ahora quédate con la idea de que <strong>una corrida no basta</strong>.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">promedio_replicas</span><span class="p">(</span><span class="n">n_replicas</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">parametros</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">promedio_replicas</span><span class="p">(</span><span class="n">n_replicas</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="o">**</span><span class="n">parametros</span><span class="p">):</span>
     <span class="n">corridas</span> <span class="o">=</span> <span class="p">[</span><span class="n">simular_cafeteria</span><span class="p">(</span><span class="n">semilla</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="o">**</span><span class="n">parametros</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_replicas</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
     <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">corridas</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">corridas</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span>
 
+<span class="c1"># Ojo con el numero de replicas: la variabilidad de W entre corridas es enorme</span>
+<span class="c1"># (desviacion del mismo orden que la media), asi que con 10 replicas las diferencias</span>
+<span class="c1"># pequenas entre escenarios son ruido. Por eso aqui usamos 50.</span>
 <span class="n">escenarios</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;Base&quot;</span><span class="p">:</span>                     <span class="nb">dict</span><span class="p">(),</span>
     <span class="s2">&quot;A) barista 2x más rápido&quot;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="mf">4.0</span><span class="p">),</span>
@@ -1027,47 +1030,47 @@ t =  16.00 | &gt;&gt;&gt; LLEGA REPOSICIÓN de 1500 ml (nevera queda en 2000 ml)
     <tr>
       <th>0</th>
       <td>Base</td>
-      <td>5.564</td>
-      <td>0.904</td>
-      <td>0.450</td>
-      <td>0.216</td>
+      <td>5.213</td>
+      <td>0.900</td>
+      <td>0.449</td>
+      <td>0.194</td>
       <td>0.000</td>
     </tr>
     <tr>
       <th>1</th>
       <td>A) barista 2x más rápido</td>
-      <td>5.369</td>
-      <td>0.902</td>
-      <td>0.224</td>
-      <td>0.297</td>
-      <td>3.495</td>
+      <td>4.369</td>
+      <td>0.900</td>
+      <td>0.225</td>
+      <td>0.253</td>
+      <td>16.187</td>
     </tr>
     <tr>
       <th>2</th>
       <td>B) dos baristas</td>
-      <td>6.330</td>
-      <td>0.903</td>
-      <td>0.225</td>
-      <td>0.296</td>
-      <td>-13.768</td>
+      <td>3.642</td>
+      <td>0.898</td>
+      <td>0.224</td>
+      <td>0.222</td>
+      <td>30.139</td>
     </tr>
     <tr>
       <th>3</th>
       <td>C) reponer cada 4 min</td>
-      <td>0.913</td>
       <td>0.906</td>
-      <td>0.453</td>
+      <td>0.901</td>
+      <td>0.451</td>
       <td>0.000</td>
-      <td>83.595</td>
+      <td>82.613</td>
     </tr>
     <tr>
       <th>4</th>
       <td>D) lote de 2000 ml</td>
-      <td>0.913</td>
       <td>0.906</td>
-      <td>0.453</td>
+      <td>0.901</td>
+      <td>0.450</td>
       <td>0.000</td>
-      <td>83.595</td>
+      <td>82.614</td>
     </tr>
   </tbody>
 </table>
@@ -1078,11 +1081,12 @@ t =  16.00 | &gt;&gt;&gt; LLEGA REPOSICIÓN de 1500 ml (nevera queda en 2000 ml)
 <h3>Discusión<a class="headerlink" href="#discusion" title="Link to this heading">#</a></h3>
 <p>Mira la columna <code class="docutils literal notranslate"><span class="pre">mejora_en_W_%</span></code>:</p>
 <ul class="simple">
-<li><p><strong>Duplicar la velocidad del barista (A) no sirve de nada.</strong> La mejora es de un par de puntos porcentuales, dentro del ruido de la simulación.</p></li>
-<li><p><strong>Poner un segundo barista (B) tampoco.</strong> De hecho sale peor. Con dos baristas hay <strong>dos</strong> clientes bloqueados esperando leche al mismo tiempo, así que se desperdicia el doble de capacidad.</p></li>
+<li><p><strong>Duplicar la velocidad del barista (A) mejora poco:</strong> alrededor de un 16%, y el tiempo bloqueado sin leche <em>sube</em>.</p></li>
+<li><p><strong>Poner un segundo barista (B) mejora algo más</strong>, cerca de un 30%, pero sigue sin resolver el problema: los dos baristas se quedan esperando leche igual que antes.</p></li>
 <li><p><strong>Modificar la reposición o el lote de la leche (C o D) reduce el tiempo en el sistema en más del 80%</strong>, y hace desaparecer por completo el tiempo bloqueado.</p></li>
 </ul>
-<p>La explicación está en las dos últimas columnas. En el escenario base el barista pasa <strong>~45% del tiempo preparando bebidas y ~20% del tiempo bloqueado sin leche</strong>. Es decir: <em>ya estaba desocupado más de la mitad del tiempo</em>. Darle más velocidad o un compañero es agregar capacidad donde no falta. Peor aún: en el escenario A el barista sirve más rápido, así que llega antes al <code class="docutils literal notranslate"><span class="pre">get</span></code> de la leche y su tiempo bloqueado <strong>sube</strong> del 20% al 30%.</p>
+<p>Es decir: <strong>agregar capacidad de barista compra mejoras de un dígito o dos; destrabar la leche las compra de casi un orden de magnitud.</strong> Esa asimetría es el punto del ejercicio.</p>
+<p>La explicación está en las dos últimas columnas. En el escenario base el barista pasa <strong>~45% del tiempo preparando bebidas y ~19% del tiempo bloqueado sin leche</strong>. Es decir: <em>ya estaba desocupado más de la mitad del tiempo</em>. Darle más velocidad o un compañero es agregar capacidad donde no falta. Peor aún: en el escenario A el barista sirve más rápido, así que llega antes al <code class="docutils literal notranslate"><span class="pre">get</span></code> de la leche y su tiempo bloqueado <strong>sube</strong> del 19% al 25%.</p>
 <blockquote>
 <div><p><strong>La moraleja.</strong> La capacidad efectiva del sistema no la pone el recurso más visible, sino el <strong>más restrictivo</strong>. Aquí la leche entrega <span class="math notranslate nohighlight">\(1500 / (8 \times 200) = 0.94\)</span> bebidas por minuto, mientras que llegan <span class="math notranslate nohighlight">\(\lambda = 0.9\)</span> clientes por minuto: el margen es de apenas 4%. El barista, en cambio, podría con 2.0 bebidas por minuto. <strong>El cuello de botella es el inventario, no el servidor.</strong></p>
 </div></blockquote>
@@ -1120,7 +1124,7 @@ t =  16.00 | &gt;&gt;&gt; LLEGA REPOSICIÓN de 1500 ml (nevera queda en 2000 ml)
     <span class="c1">#         (todo lo que sigue debe quedar DENTRO del bloque &#39;with&#39;)</span>
     <span class="c1"># TODO 2: retirar AGUA_POR_LAVADO litros del tanque &#39;agua&#39;</span>
     <span class="c1"># TODO 3: el lavado tarda Exp con media MEDIA_LAVADO</span>
-    <span class="c1">#         Ojo: random.expovariate recibe la TASA, no la media.</span>
+    <span class="c1">#         Ojo: rng.exponential recibe la ESCALA (la media), no la tasa.</span>
 
     <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># &lt;-- placeholder: bórralo al completar los TODO</span>
 
@@ -1143,7 +1147,7 @@ t =  16.00 | &gt;&gt;&gt; LLEGA REPOSICIÓN de 1500 ml (nevera queda en 2000 ml)
             <span class="n">log</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;&gt;&gt;&gt; Se rellena el tanque (queda en </span><span class="si">{</span><span class="n">agua</span><span class="o">.</span><span class="n">level</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> L)&quot;</span><span class="p">)</span>
 
 
-<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
 <span class="n">bahias</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Resource</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">agua</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="n">TANQUE</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="n">TANQUE</span><span class="p">)</span>
@@ -1194,7 +1198,7 @@ t =  48.00 | Carro 12 sale limpio
 <br>
 <p><strong>Casi ;)</strong></p>
 <p>Sabemos que abriste esto de una. No pasa nada, pero de verdad inténtalo primero. Son cuatro líneas y ya las viste en la cafetería.</p>
-<p>Pista: todo lo que necesitas está en la sección 5. El <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">...</span> <span class="pre">request()</span></code>, el <code class="docutils literal notranslate"><span class="pre">get</span></code> del contenedor y el <code class="docutils literal notranslate"><span class="pre">expovariate</span></code> ya los usaste hoy. Lo único nuevo es que <code class="docutils literal notranslate"><span class="pre">random.expovariate</span></code> recibe la <strong>tasa</strong>, y a ti te dieron la <strong>media</strong>.</p>
+<p>Pista: todo lo que necesitas está en la sección 5. El <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">...</span> <span class="pre">request()</span></code>, el <code class="docutils literal notranslate"><span class="pre">get</span></code> del contenedor y el <code class="docutils literal notranslate"><span class="pre">rng.exponential</span></code> ya los usaste hoy. Lo único a lo que hay que ponerle cuidado es que <code class="docutils literal notranslate"><span class="pre">rng.exponential</span></code> recibe la <strong>escala</strong>, es decir la media: del lavado te dan la media (va directo) y de las llegadas te dan la tasa (va <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">LAM_LAVADERO</span></code>).</p>
 <p>Cuando tengas tu versión corriendo, compárala con tus compañeros y muéstrasela a tu asistente graduado para revisar.</p>
 </section>
 <section id="resumen">
@@ -1203,7 +1207,7 @@ t =  48.00 | Carro 12 sale limpio
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>                       <span class="c1"># el reloj y el planificador</span>
 <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">mi_proceso</span><span class="p">(</span><span class="n">env</span><span class="p">))</span>                    <span class="c1"># registrar una entidad</span>
 <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>                            <span class="c1"># dejar pasar t unidades de tiempo</span>
-<span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">expovariate</span><span class="p">(</span><span class="n">lam</span><span class="p">))</span>      <span class="c1"># ... un tiempo aleatorio Exp(lam)</span>
+<span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">lam</span><span class="p">))</span>     <span class="c1"># ... un tiempo aleatorio Exp(lam)</span>
 <span class="k">with</span> <span class="n">recurso</span><span class="o">.</span><span class="n">request</span><span class="p">()</span> <span class="k">as</span> <span class="n">turno</span><span class="p">:</span> <span class="k">yield</span> <span class="n">turno</span>    <span class="c1"># pedir un servidor y hacer cola</span>
 <span class="k">yield</span> <span class="n">contenedor</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cantidad</span><span class="p">)</span>                  <span class="c1"># consumir de un inventario</span>
 </pre></div>
@@ -1261,7 +1265,7 @@ t =  48.00 | Carro 12 sale limpio
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Complementaria Semana 5: Simulación de colas M/M/1 y M/M/s</p>
+        <p class="prev-next-title">Complementaria Semana 5: Medir y comparar sistemas de colas con SimPy</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

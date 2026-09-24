@@ -359,38 +359,48 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura">Estructura</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion">0. Preparación</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmtc-sencilla-de-q-al-comportamiento-del-proceso">1. CMTC sencilla: de <span class="math notranslate nohighlight">\(Q\)</span> al comportamiento del proceso</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmtc-sencilla-la-matriz-q-y-las-propiedades-de-la-cadena">1. CMTC sencilla: la matriz <span class="math notranslate nohighlight">\(Q\)</span> y las propiedades de la cadena</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#como-leer-q">¿Cómo leer <span class="math notranslate nohighlight">\(Q\)</span>?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propiedades-de-la-cadena">Propiedades de la cadena</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-transitorio">1.1 Análisis transitorio</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evolucion-de-las-probabilidades-en-el-tiempo">Evolución de las probabilidades en el tiempo</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidades-en-estado-estable">1.2 Probabilidades en estado estable</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-primera-pasada">1.3 Tiempo de primera pasada</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-ocupacion">1.4 Tiempo de ocupación</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-preguntas-podemos-hacerle-a-una-distribucion">1.5 ¿Qué preguntas podemos hacerle a una distribución?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-con-una-variable-taller-de-mantenimiento">2. Ejercicio con una variable: taller de mantenimiento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enunciado">Enunciado</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas">Preguntas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo">2.1 Modelo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estado-transitorio">2.2 Estado transitorio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estado-estable">2.3 Estado estable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transitorio-vs-estable-resumen">2.4 Transitorio vs. estable: resumen</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-hospital-en-tiempo-continuo">2. Aplicación: hospital en tiempo continuo</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-hospital-en-tiempo-continuo">3. Aplicación: hospital en tiempo continuo</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enunciado-hospital-con-dos-tipos-de-pacientes">Enunciado: Hospital con dos tipos de pacientes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas">Preguntas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Preguntas</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-q-y-la-cadena-en-jmarkov">1. Construcción de <span class="math notranslate nohighlight">\(Q\)</span> y la cadena en <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspeccion-de-la-matriz-q">Inspección de la matriz <span class="math notranslate nohighlight">\(Q\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapeo-entre-estados-del-modelo-e-indices-de-python">Mapeo entre estados del modelo e índices de Python</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidad-transitoria-a-las-6-horas">2.1 Probabilidad transitoria a las 6 horas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-conjunta-y-mapa-de-calor">2.2 Distribución conjunta y mapa de calor</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones-marginales-esperanza-y-varianza">2.3 Distribuciones marginales, esperanza y varianza</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-lo-transitorio-a-lo-estable-en-el-hospital">3.1 De lo transitorio a lo estable en el hospital</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-mediante-simulacion">3. Validación mediante simulación</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulacion-directamente-desde-q">3.1 Simulación directamente desde <span class="math notranslate nohighlight">\(Q\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-para-pensar">4. Preguntas para pensar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">5. Resumen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guia-de-referencia-cadenas-de-markov-en-python">6. Guía de referencia: cadenas de Markov en Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapa-general-preguntas-de-interes-y-como-responderlas">6.1 Mapa general: preguntas de interés y cómo responderlas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidad-de-un-estado-y-de-un-evento">6.2 Probabilidad de un estado y de un evento</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones-marginales-valor-esperado-y-varianza">6.3 Distribuciones marginales, valor esperado y varianza</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-primera-pasada">6.4 Tiempo de primera pasada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-ocupacion">6.5 Tiempo de ocupación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-mediante-simulacion">6.6 Validación mediante simulación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-para-cualquier-problema-de-cmtc">6.7 Checklist para cualquier problema de CMTC</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-profundizacion">4. Preguntas de profundización</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
 </ul>
             </nav>
         </div>
@@ -404,59 +414,98 @@ document.write(`
                   
   <section id="complementaria-semana-8-cadenas-de-markov-en-python-i">
 <h1>Complementaria Semana 8: Cadenas de Markov en Python I<a class="headerlink" href="#complementaria-semana-8-cadenas-de-markov-en-python-i" title="Link to this heading">#</a></h1>
-<p>Esta semana das el salto de los modelos discretos a los modelos en <strong>tiempo continuo</strong>. Hasta ahora simulabas sistemas donde el tiempo avanzaba en pasos discretos; aquí el tiempo fluye sin interrupciones y los cambios de estado ocurren a tasas, no con probabilidades de paso.</p>
-<p>La herramienta central es la <strong>matriz generadora <span class="math notranslate nohighlight">\(Q\)</span></strong>: una sola estructura que codifica toda la dinámica del proceso. De ella se obtienen probabilidades transitorias, distribuciones de largo plazo, tiempos de primera pasada y tiempos de ocupación. Al final verificarás los resultados analíticos contra dos estrategias de simulación distintas.</p>
+<p>Esta semana das el salto de los modelos discretos a los modelos en <strong>tiempo continuo</strong>. Hasta ahora simulabas sistemas donde el tiempo avanzaba en pasos discretos; aquí el tiempo fluye sin interrupciones y los cambios de estado ocurren a <strong>tasas</strong>, no con probabilidades de paso.</p>
+<p>La herramienta central es la <strong>matriz generadora <span class="math notranslate nohighlight">\(Q\)</span></strong>: una sola estructura que codifica toda la dinámica del proceso. En esta complementaria el foco está en <strong>construir bien <span class="math notranslate nohighlight">\(Q\)</span></strong> y en entender, a nivel introductorio, dos formas de mirar el comportamiento del proceso: el <strong>estado transitorio</strong> y el <strong>estado estable</strong>.</p>
 <section id="objetivos">
 <h2>Objetivos<a class="headerlink" href="#objetivos" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Construir e interpretar una <strong>matriz generadora <span class="math notranslate nohighlight">\(Q\)</span></strong> de una CMTC.</p></li>
-<li><p>Calcular probabilidades <strong>transitorias</strong> y de <strong>estado estable</strong>.</p></li>
-<li><p>Relacionar <span class="math notranslate nohighlight">\(Q\)</span> con las <strong>ecuaciones de Kolmogorov</strong>:
-<div class="math notranslate nohighlight">
-\[
-\frac{d\pi(t)}{dt}=\pi(t)Q, \qquad \pi(t)=\pi(0)\,e^{Qt}.
-\]</div>
-</p></li>
-<li><p>Analizar <strong>tiempos de primera pasada</strong> y <strong>tiempos de ocupación</strong>.</p></li>
-<li><p>Construir un modelo aplicado de CMTC y estudiar su comportamiento transitorio.</p></li>
-<li><p>Comparar resultados analíticos con <strong>simulación</strong> mediante <code class="docutils literal notranslate"><span class="pre">SimPy</span></code> y mediante saltos directamente a partir de <span class="math notranslate nohighlight">\(Q\)</span>.</p></li>
+<li><p>Crear la cadena en <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> y verificar sus <strong>propiedades</strong> (irreducibilidad y ergodicidad).</p></li>
+<li><p>Construir <span class="math notranslate nohighlight">\(Q\)</span> <strong>programáticamente</strong> a partir de las reglas de un sistema (primero con una variable de estado, luego con dos).</p></li>
+<li><p>Entender la diferencia entre <strong>comportamiento transitorio</strong> y <strong>estado estable</strong>, y cómo el primero converge al segundo.</p></li>
 </ol>
+</section>
+<section id="estructura">
+<h2>Estructura<a class="headerlink" href="#estructura" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sección</p></th>
+<th class="head"><p>Contenido</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>CMTC sencilla: matriz <span class="math notranslate nohighlight">\(Q\)</span>, creación de la cadena y propiedades</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Ejercicio con una variable: taller de mantenimiento. Introducción a estado transitorio y estable</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Aplicación: hospital con dos tipos de pacientes (construcción del modelo y visualización)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4–5</p></td>
+<td><p>Preguntas para pensar y resumen</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p><strong>Guía de referencia</strong> con todos los análisis de cadenas de Markov en Python que usarás más adelante en el curso</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="preparacion">
 <h2>0. Preparación<a class="headerlink" href="#preparacion" title="Link to this heading">#</a></h2>
 <p>Instala <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> si aún no está en tu ambiente virtual. El resto de librerías (NumPy, pandas, matplotlib, SimPy) ya las tienes de semanas anteriores.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install jmarkov</span>
-<span class="c1"># %pip install simpy</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install jmarkov
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jmarkov in /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages (0.3.9)
+Requirement already satisfied: numpy in /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages (from jmarkov) (2.4.1)
+Requirement already satisfied: scipy in /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages (from jmarkov) (1.17.0)
+Requirement already satisfied: typing in /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages (from jmarkov) (3.7.4.3)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">simpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jmarkov.ctmc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ctmc</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="cmtc-sencilla-de-q-al-comportamiento-del-proceso">
-<h2>1. CMTC sencilla: de <span class="math notranslate nohighlight">\(Q\)</span> al comportamiento del proceso<a class="headerlink" href="#cmtc-sencilla-de-q-al-comportamiento-del-proceso" title="Link to this heading">#</a></h2>
-<p>Comenzamos con una CMTC de <strong>tres estados</strong> para introducir la matriz generadora y las herramientas de <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> antes de pasar al modelo hospitalario. La idea es siempre la misma:</p>
-<div class="math notranslate nohighlight">
-\[
-Q \xrightarrow{\text{exponencial de matriz}} \pi(t) \xrightarrow{\text{resumir}} \text{métricas de interés.}
-\]</div>
-<p>La matriz <span class="math notranslate nohighlight">\(Q\)</span> que usaremos es:</p>
+<section id="cmtc-sencilla-la-matriz-q-y-las-propiedades-de-la-cadena">
+<h2>1. CMTC sencilla: la matriz <span class="math notranslate nohighlight">\(Q\)</span> y las propiedades de la cadena<a class="headerlink" href="#cmtc-sencilla-la-matriz-q-y-las-propiedades-de-la-cadena" title="Link to this heading">#</a></h2>
+<p>Comenzamos con una CMTC de <strong>tres estados</strong> para introducir la matriz generadora y las herramientas básicas de <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>. La matriz <span class="math notranslate nohighlight">\(Q\)</span> que usaremos es:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 Q = \begin{pmatrix} -3 &amp; 2 &amp; 1 \\ 1 &amp; -4 &amp; 3 \\ 2 &amp; 1 &amp; -3 \end{pmatrix}
 \end{split}\]</div>
-<p>Cada fila debe sumar cero: la tasa de salida de un estado (<span class="math notranslate nohighlight">\(|q_{ii}|\)</span>) es exactamente la suma de las tasas de llegada a los demás estados.</p>
+<p>Cada fila debe sumar cero: la tasa de salida de un estado (<span class="math notranslate nohighlight">\(|q_{ii}|\)</span>) es exactamente la suma de las tasas hacia los demás estados.</p>
+<section id="como-leer-q">
+<h3>¿Cómo leer <span class="math notranslate nohighlight">\(Q\)</span>?<a class="headerlink" href="#como-leer-q" title="Link to this heading">#</a></h3>
+<p>Cada entrada tiene una interpretación concreta:</p>
+<ul class="simple">
+<li><p><strong>Fuera de la diagonal</strong>, <span class="math notranslate nohighlight">\(q_{ij}\)</span> (<span class="math notranslate nohighlight">\(i \neq j\)</span>) es la <strong>tasa</strong> a la que el proceso salta de <span class="math notranslate nohighlight">\(i\)</span> a <span class="math notranslate nohighlight">\(j\)</span>. Por ejemplo, <span class="math notranslate nohighlight">\(q_{01}=2\)</span> significa que, estando en el estado 0, los saltos hacia el estado 1 ocurren a razón de 2 por unidad de tiempo.</p></li>
+<li><p><strong>En la diagonal</strong>, <span class="math notranslate nohighlight">\(-q_{ii}\)</span> es la <strong>tasa total de salida</strong> del estado <span class="math notranslate nohighlight">\(i\)</span>. El tiempo que el proceso permanece en <span class="math notranslate nohighlight">\(i\)</span> antes de saltar sigue una distribución <span class="math notranslate nohighlight">\(\text{Exp}(-q_{ii})\)</span>, con media <span class="math notranslate nohighlight">\(1/(-q_{ii})\)</span>.</p></li>
+<li><p>Cuando el proceso sale de <span class="math notranslate nohighlight">\(i\)</span>, va al estado <span class="math notranslate nohighlight">\(j\)</span> con probabilidad <span class="math notranslate nohighlight">\(q_{ij}/(-q_{ii})\)</span>.</p></li>
+</ul>
+<p>Por ejemplo, en el estado 0 la tasa de salida es 3: el proceso permanece en promedio <span class="math notranslate nohighlight">\(1/3\)</span> de unidad de tiempo y, al salir, va al estado 1 con probabilidad <span class="math notranslate nohighlight">\(2/3\)</span> y al estado 2 con probabilidad <span class="math notranslate nohighlight">\(1/3\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">jmarkov.ctmc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ctmc</span>
-
-<span class="c1"># Definimos la matriz generadora</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definimos la matriz generadora</span>
 <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
     <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
@@ -477,6 +526,7 @@ Q = \begin{pmatrix} -3 &amp; 2 &amp; 1 \\ 1 &amp; -4 &amp; 3 \\ 2 &amp; 1 &amp; 
 </div>
 </div>
 </div>
+</section>
 <section id="propiedades-de-la-cadena">
 <h3>Propiedades de la cadena<a class="headerlink" href="#propiedades-de-la-cadena" title="Link to this heading">#</a></h3>
 <p>Antes de estudiar su evolución verificamos dos propiedades clave:</p>
@@ -500,212 +550,509 @@ Q = \begin{pmatrix} -3 &amp; 2 &amp; 1 \\ 1 &amp; -4 &amp; 3 \\ 2 &amp; 1 &amp; 
 </div>
 </div>
 </div>
+<blockquote>
+<div><p><strong>Para pensar:</strong> en esta <span class="math notranslate nohighlight">\(Q\)</span> todas las entradas fuera de la diagonal son positivas, así que desde cualquier estado se salta directamente a cualquier otro. ¿Seguiría siendo irreducible la cadena si <span class="math notranslate nohighlight">\(q_{02} = 0\)</span>? ¿Y si además <span class="math notranslate nohighlight">\(q_{12}=0\)</span>? Pruébalo modificando <span class="math notranslate nohighlight">\(Q\)</span> en la celda anterior.</p>
+</div></blockquote>
 </section>
-<section id="analisis-transitorio">
-<h3>1.1 Análisis transitorio<a class="headerlink" href="#analisis-transitorio" title="Link to this heading">#</a></h3>
-<p>Dado un vector inicial <span class="math notranslate nohighlight">\(\pi(0)\)</span>, la distribución en el tiempo <span class="math notranslate nohighlight">\(t\)</span> satisface la <strong>ecuación de Kolmogorov hacia adelante</strong>:</p>
+</section>
+<section id="ejercicio-con-una-variable-taller-de-mantenimiento">
+<h2>2. Ejercicio con una variable: taller de mantenimiento<a class="headerlink" href="#ejercicio-con-una-variable-taller-de-mantenimiento" title="Link to this heading">#</a></h2>
+<p>En la sección anterior escribimos <span class="math notranslate nohighlight">\(Q\)</span> a mano. En problemas reales eso es inviable: <span class="math notranslate nohighlight">\(Q\)</span> se <strong>construye a partir de las reglas del sistema</strong>, normalmente con un ciclo. Este ejercicio tiene una sola variable de estado, pero las tasas <strong>dependen del estado</strong>, lo que lo hace más cercano a lo que verás en el modelo del hospital.</p>
+<section id="enunciado">
+<h3>Enunciado<a class="headerlink" href="#enunciado" title="Link to this heading">#</a></h3>
+<p>Una planta tiene <span class="math notranslate nohighlight">\(N = 6\)</span> máquinas idénticas y <span class="math notranslate nohighlight">\(c = 2\)</span> técnicos de mantenimiento.</p>
+<ul class="simple">
+<li><p>Cada máquina que está <strong>funcionando</strong> falla de forma independiente con tasa <span class="math notranslate nohighlight">\(\lambda = 0.3\)</span> fallas/hora.</p></li>
+<li><p>Cada técnico repara una máquina a la vez, con tiempos de reparación exponenciales de tasa <span class="math notranslate nohighlight">\(\mu = 1\)</span> máquina/hora.</p></li>
+<li><p>Si hay más máquinas dañadas que técnicos, las máquinas restantes esperan su turno.</p></li>
+</ul>
+</section>
+<section id="preguntas">
+<h3>Preguntas<a class="headerlink" href="#preguntas" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Define la variable de estado, el espacio de estados y las tasas de transición. Construye <span class="math notranslate nohighlight">\(Q\)</span> con un ciclo y crea la cadena en <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>.</p></li>
+<li><p>Verifica las propiedades de la cadena.</p></li>
+<li><p>Si al inicio del turno todas las máquinas funcionan, ¿cuál es la distribución del número de máquinas dañadas después de 1 hora? ¿Cómo evoluciona esa distribución en el tiempo?</p></li>
+<li><p>¿Qué distribución se alcanza en el largo plazo? ¿Depende de cómo empezó el turno?</p></li>
+</ol>
+</section>
+<section id="modelo">
+<h3>2.1 Modelo<a class="headerlink" href="#modelo" title="Link to this heading">#</a></h3>
+<p><strong>Variable de estado:</strong> <span class="math notranslate nohighlight">\(X(t)\)</span> = número de máquinas dañadas al tiempo <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p><strong>Espacio de estados:</strong> <span class="math notranslate nohighlight">\(S = \{0, 1, \ldots, N\} = \{0, 1, \ldots, 6\}\)</span>.</p>
+<p><strong>Transiciones:</strong> desde el estado <span class="math notranslate nohighlight">\(i\)</span> solo puede ocurrir una falla (<span class="math notranslate nohighlight">\(i \to i+1\)</span>) o una reparación (<span class="math notranslate nohighlight">\(i \to i-1\)</span>).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Evento</p></th>
+<th class="head"><p>Transición</p></th>
+<th class="head"><p>Tasa</p></th>
+<th class="head"><p>¿Por qué?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Falla</p></td>
+<td><p><span class="math notranslate nohighlight">\(i \to i+1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((N-i)\,\lambda\)</span></p></td>
+<td><p>hay <span class="math notranslate nohighlight">\(N-i\)</span> máquinas funcionando, cada una falla con tasa <span class="math notranslate nohighlight">\(\lambda\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Reparación</p></td>
+<td><p><span class="math notranslate nohighlight">\(i \to i-1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\min(i, c)\,\mu\)</span></p></td>
+<td><p>trabajan <span class="math notranslate nohighlight">\(\min(i,c)\)</span> técnicos: no puede haber más técnicos ocupados que máquinas dañadas</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Con esto:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{d\pi(t)}{dt}=\pi(t)Q.
+q_{i,i+1} = (N-i)\lambda, \qquad q_{i,i-1} = \min(i,c)\,\mu, \qquad q_{ii} = -\bigl(q_{i,i+1} + q_{i,i-1}\bigr).
 \]</div>
-<p>Su solución exacta es la exponencial de matriz:</p>
+<p><strong>Matriz generadora:</strong></p>
 <div class="math notranslate nohighlight">
-\[
-\boxed{\pi(t)=\pi(0)\,e^{Qt}.}
-\]</div>
-<p>El método <code class="docutils literal notranslate"><span class="pre">transient_probabilities</span></code> de <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> evalúa esta expresión en cualquier instante <span class="math notranslate nohighlight">\(t\)</span>. Partimos del estado 0 con certeza (<span class="math notranslate nohighlight">\(\pi(0) = [1, 0, 0]\)</span>) y calculamos la distribución en <span class="math notranslate nohighlight">\(t=2\)</span>.</p>
+\[\begin{split}
+Q(i, i') = \begin{cases}
+(N-i)\,\lambda, &amp; \text{si } i' = i+1,\; i &lt; N, \\[1mm]
+\min(i, c)\,\mu, &amp; \text{si } i' = i-1,\; i &gt; 0, \\[1mm]
+-\bigl[(N-i)\,\lambda + \min(i,c)\,\mu\bigr], &amp; \text{si } i' = i, \\[1mm]
+0, &amp; \text{en otro caso.}
+\end{cases}
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>   <span class="c1"># el proceso empieza en el estado 0 con probabilidad 1</span>
-<span class="n">t</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parámetros del taller</span>
+<span class="n">N_maq</span>  <span class="o">=</span> <span class="mi">6</span>     <span class="c1"># número de máquinas</span>
+<span class="n">c_tec</span>  <span class="o">=</span> <span class="mi">2</span>     <span class="c1"># número de técnicos</span>
+<span class="n">lam</span>    <span class="o">=</span> <span class="mf">0.3</span>   <span class="c1"># tasa de falla por máquina funcionando (fallas/hora)</span>
+<span class="n">mu</span>     <span class="o">=</span> <span class="mf">1.0</span>   <span class="c1"># tasa de reparación por técnico (máquinas/hora)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">construir_Q_taller</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+    <span class="c1"># Construye la matriz generadora del taller de mantenimiento.</span>
+    <span class="c1"># Estado i = número de máquinas dañadas, i = 0, ..., N.</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">:</span>                        <span class="c1"># puede fallar una máquina más</span>
+            <span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">lam</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>                        <span class="c1"># puede terminar una reparación</span>
+            <span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="n">mu</span>
+        <span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>            <span class="c1"># diagonal: la fila debe sumar cero</span>
+    <span class="k">return</span> <span class="n">Q</span>
 
-<span class="n">p_t</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">transient_probabilities</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">pi_0</span><span class="p">)</span>
+<span class="n">Q_taller</span> <span class="o">=</span> <span class="n">construir_Q_taller</span><span class="p">(</span><span class="n">N_maq</span><span class="p">,</span> <span class="n">c_tec</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distribución en t=</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">p_t</span><span class="p">)</span>
-
-<span class="c1"># Por ejemplo, la probabilidad de estar en el estado 1 luego de t=2 unidades es:</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">P(X(2)=1 | X(0)=0) = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">p_t</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Mostrarla como DataFrame para leerla con etiquetas</span>
+<span class="n">estados_taller</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N_maq</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Q_taller</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">estados_taller</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">estados_taller</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribución en t=2:
-[0.34615261 0.26926285 0.38458454]
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-P(X(2)=1 | X(0)=0) = 0.269
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-1.8</td>
+      <td>1.8</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>-2.5</td>
+      <td>1.5</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>-3.2</td>
+      <td>1.2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>-2.9</td>
+      <td>0.9</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>-2.6</td>
+      <td>0.6</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>-2.3</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>-2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¿Todas las filas suman cero?:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">Q_taller</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">taller</span> <span class="o">=</span> <span class="n">ctmc</span><span class="p">(</span><span class="n">Q_taller</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Número de estados:&quot;</span><span class="p">,</span> <span class="n">taller</span><span class="o">.</span><span class="n">n_states</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¿Es irreducible?:&quot;</span><span class="p">,</span> <span class="n">taller</span><span class="o">.</span><span class="n">is_irreducible</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¿Es ergódica?:&quot;</span><span class="p">,</span> <span class="n">taller</span><span class="o">.</span><span class="n">is_ergodic</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>¿Todas las filas suman cero?: True
+Número de estados: 7
+¿Es irreducible?: True
+¿Es ergódica?: True
 </pre></div>
 </div>
 </div>
 </div>
-<section id="evolucion-de-las-probabilidades-en-el-tiempo">
-<h4>Evolución de las probabilidades en el tiempo<a class="headerlink" href="#evolucion-de-las-probabilidades-en-el-tiempo" title="Link to this heading">#</a></h4>
-<p>El cálculo anterior responde qué ocurre en un instante puntual. Para entender el <strong>comportamiento transitorio completo</strong>, evaluamos la distribución en una malla de tiempos y graficamos <span class="math notranslate nohighlight">\(P(X(t)=j)\)</span> para cada estado.</p>
-<p>Fíjate cómo las tres curvas convergen hacia los mismos valores sin importar el estado inicial: eso es exactamente la ergodicidad en acción.</p>
+<p>Fíjate en la estructura de <span class="math notranslate nohighlight">\(Q\)</span>: solo tiene entradas distintas de cero en la diagonal y en las dos diagonales vecinas. Este tipo de cadena, donde el estado solo sube o baja de a uno, se llama <strong>proceso de nacimiento y muerte</strong>. La cadena es irreducible porque desde cualquier estado se puede subir o bajar paso a paso hasta cualquier otro.</p>
+</section>
+<section id="estado-transitorio">
+<h3>2.2 Estado transitorio<a class="headerlink" href="#estado-transitorio" title="Link to this heading">#</a></h3>
+<p>La primera pregunta que le hacemos a la cadena es: <strong>si sé cómo empezó el sistema, ¿qué tan probable es cada estado en un instante <span class="math notranslate nohighlight">\(t\)</span> concreto?</strong></p>
+<p>La respuesta es un vector <span class="math notranslate nohighlight">\(\pi(t)\)</span> cuya entrada <span class="math notranslate nohighlight">\(j\)</span> es <span class="math notranslate nohighlight">\(P(X(t)=j)\)</span>. Se obtiene a partir de la distribución inicial <span class="math notranslate nohighlight">\(\pi(0)\)</span> y de <span class="math notranslate nohighlight">\(Q\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\pi(t) = \pi(0)\,e^{Qt}.
+\]</div>
+<p>Esta expresión es la solución de las <strong>ecuaciones de Kolmogorov</strong>, <span class="math notranslate nohighlight">\(\frac{d\pi(t)}{dt} = \pi(t)Q\)</span>, que profundizarás en clase. Por ahora basta con la idea: <strong><span class="math notranslate nohighlight">\(Q\)</span> más el punto de partida determinan toda la distribución en cualquier instante</strong>, y <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> hace el cálculo con <code class="docutils literal notranslate"><span class="pre">transient_probabilities</span></code>.</p>
+<p>A esta distribución se le llama <strong>transitoria</strong> porque depende de dos cosas: del <strong>tiempo transcurrido</strong> <span class="math notranslate nohighlight">\(t\)</span> y del <strong>estado inicial</strong> <span class="math notranslate nohighlight">\(\pi(0)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tiempos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
-<span class="n">probs_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="n">cadena</span><span class="o">.</span><span class="n">transient_probabilities</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">pi_0</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tiempos</span>
-<span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Al inicio del turno todas las máquinas funcionan: X(0) = 0 con probabilidad 1</span>
+<span class="n">pi0_taller</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_maq</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">pi0_taller</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cadena</span><span class="o">.</span><span class="n">n_states</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tiempos</span><span class="p">,</span> <span class="n">probs_t</span><span class="p">[:,</span> <span class="n">j</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Estado </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tiempo&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probabilidad&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Comportamiento transitorio de la CMTC&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">pi_1h</span> <span class="o">=</span> <span class="n">taller</span><span class="o">.</span><span class="n">transient_probabilities</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">pi0_taller</span><span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Máquinas dañadas&quot;</span><span class="p">:</span> <span class="n">estados_taller</span><span class="p">,</span>
+              <span class="s2">&quot;P(X(1) = j)&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pi_1h</span><span class="p">,</span> <span class="mi">4</span><span class="p">)})</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Máquinas dañadas&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>P(X(1) = j)</th>
+    </tr>
+    <tr>
+      <th>Máquinas dañadas</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.3313</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.3982</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.1938</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0624</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0127</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.0015</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.0001</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Cada entrada del vector es la probabilidad de un estado, y el vector completo suma 1. Una sola evaluación es una “foto” del sistema en <span class="math notranslate nohighlight">\(t=1\)</span>. Para ver la <strong>película completa</strong>, evaluamos <span class="math notranslate nohighlight">\(\pi(t)\)</span> en muchos instantes y graficamos cada estado.</p>
+<p>Además lo hacemos desde <strong>dos puntos de partida distintos</strong>: un turno que empieza con todas las máquinas funcionando y uno que empieza con todas dañadas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tiempos_taller</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">121</span><span class="p">)</span>
+
+<span class="n">pi0_todas_bien</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_maq</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="n">pi0_todas_bien</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>        <span class="c1"># X(0) = 0</span>
+<span class="n">pi0_todas_mal</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_maq</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="n">pi0_todas_mal</span><span class="p">[</span><span class="n">N_maq</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>     <span class="c1"># X(0) = N</span>
+
+<span class="n">evol_bien</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">taller</span><span class="o">.</span><span class="n">transient_probabilities</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">pi0_todas_bien</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tiempos_taller</span><span class="p">])</span>
+<span class="n">evol_mal</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">taller</span><span class="o">.</span><span class="n">transient_probabilities</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">pi0_todas_mal</span><span class="p">)</span>  <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tiempos_taller</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">evol</span><span class="p">,</span> <span class="n">titulo</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="p">[</span><span class="n">evol_bien</span><span class="p">,</span> <span class="n">evol_mal</span><span class="p">],</span>
+                            <span class="p">[</span><span class="s2">&quot;Inicio: todas funcionando  ($X(0)=0$)&quot;</span><span class="p">,</span>
+                             <span class="sa">f</span><span class="s2">&quot;Inicio: todas dañadas  ($X(0)=</span><span class="si">{</span><span class="n">N_maq</span><span class="si">}</span><span class="s2">$)&quot;</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">estados_taller</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tiempos_taller</span><span class="p">,</span> <span class="n">evol</span><span class="p">[:,</span> <span class="n">j</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2"> dañadas&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">titulo</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Tiempo (horas)&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$P(X(t) = j)$&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Comportamiento transitorio del taller&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/96751cb68dc6de55446f40bbea85754ee7b4e1eac5506ef64c7905709b3b2c22.png" src="../../_images/96751cb68dc6de55446f40bbea85754ee7b4e1eac5506ef64c7905709b3b2c22.png" />
+<img alt="../../_images/03caeca7d994e34d34f892441cf90941bd0df52127455100d13e7cfebffaec47.png" src="../../_images/03caeca7d994e34d34f892441cf90941bd0df52127455100d13e7cfebffaec47.png" />
 </div>
 </div>
-<p><strong>Idea clave:</strong> la velocidad a la que cada curva se acerca a su valor de largo plazo está controlada por los valores propios de <span class="math notranslate nohighlight">\(Q\)</span>. Un valor propio muy negativo implica convergencia rápida; uno cercano a cero implica convergencia lenta.</p>
+<p><strong>¿Qué observar?</strong></p>
+<ul class="simple">
+<li><p>Al principio las dos gráficas son muy distintas: el punto de partida domina el comportamiento.</p></li>
+<li><p>Con el paso del tiempo las curvas se <strong>estabilizan</strong> y, en ambos casos, se acercan a los <strong>mismos valores</strong>. El sistema “olvida” cómo empezó.</p></li>
+<li><p>La convergencia no es igual de rápida desde cualquier punto de partida: desde “todas dañadas” el sistema tarda más en acercarse a esos valores, porque tiene que reparar muchas máquinas con solo dos técnicos.</p></li>
+</ul>
+<p>Esos valores a los que convergen las curvas son justamente el <strong>estado estable</strong>.</p>
 </section>
-</section>
-<section id="probabilidades-en-estado-estable">
-<h3>1.2 Probabilidades en estado estable<a class="headerlink" href="#probabilidades-en-estado-estable" title="Link to this heading">#</a></h3>
-<p>El análisis transitorio muestra cómo evoluciona el sistema; el <strong>estado estable</strong> responde qué distribución emerge en el largo plazo. Si la cadena es ergódica, existe un único vector <span class="math notranslate nohighlight">\(\pi\)</span> tal que:</p>
+<section id="estado-estable">
+<h3>2.3 Estado estable<a class="headerlink" href="#estado-estable" title="Link to this heading">#</a></h3>
+<p>Si la cadena es <strong>ergódica</strong>, cuando <span class="math notranslate nohighlight">\(t \to \infty\)</span> la distribución transitoria converge a un único vector <span class="math notranslate nohighlight">\(\pi\)</span> que <strong>ya no depende ni del tiempo ni del estado inicial</strong>. Ese vector es la solución de:</p>
 <div class="math notranslate nohighlight">
 \[
 \pi Q = 0, \qquad \sum_i \pi_i = 1.
 \]</div>
-<p>Este sistema de ecuaciones reemplaza la columna diagonal de ceros por la condición de normalización antes de resolverlo.</p>
+<p>La primera ecuación dice que, en equilibrio, el flujo de probabilidad que entra a cada estado es igual al que sale; la segunda asegura que <span class="math notranslate nohighlight">\(\pi\)</span> sea una distribución de probabilidad. Por eso la <strong>ergodicidad</strong> que verificamos en la sección 1 es importante: garantiza que este vector existe, es único y es a donde llega el sistema.</p>
+<p>Interpretación: <span class="math notranslate nohighlight">\(\pi_j\)</span> es la <strong>fracción del tiempo, en el largo plazo,</strong> que el sistema pasa en el estado <span class="math notranslate nohighlight">\(j\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">steady_state</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi_taller</span> <span class="o">=</span> <span class="n">taller</span><span class="o">.</span><span class="n">steady_state</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribución estacionaria:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
-
-<span class="c1"># Por ejemplo, la fracción del tiempo que el proceso pasa en el estado 1 es:</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">P(X=1) en el largo plazo = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">pi</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Máquinas dañadas&quot;</span><span class="p">:</span> <span class="n">estados_taller</span><span class="p">,</span>
+              <span class="s2">&quot;π_j&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pi_taller</span><span class="p">,</span> <span class="mi">4</span><span class="p">)})</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Máquinas dañadas&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribución estacionaria:
-[0.34615385 0.26923077 0.38461538]
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-P(X=1) en el largo plazo = 0.269
-</pre></div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>π_j</th>
+    </tr>
+    <tr>
+      <th>Máquinas dañadas</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.1835</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.3303</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.2477</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.1486</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0669</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.0201</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.0030</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</div>
-</div>
-</section>
-<section id="tiempo-de-primera-pasada">
-<h3>1.3 Tiempo de primera pasada<a class="headerlink" href="#tiempo-de-primera-pasada" title="Link to this heading">#</a></h3>
-<p>Hasta ahora preguntamos <em>¿dónde está el proceso en el instante <span class="math notranslate nohighlight">\(t\)</span>?</em> Ahora preguntamos algo distinto: <em>¿cuánto tiempo tarda en llegar por primera vez a un estado objetivo?</em></p>
-<p>El <strong>tiempo promedio de primera pasada</strong> <span class="math notranslate nohighlight">\(m_{ij}\)</span> cuantifica esa espera. A diferencia de la distribución transitoria, que da probabilidades, <span class="math notranslate nohighlight">\(m_{ij}\)</span> da una duración esperada.</p>
+<p>Por último, comparamos la distribución transitoria en varios instantes con el estado estable. Así se ve de forma directa cómo <span class="math notranslate nohighlight">\(\pi(t) \to \pi\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nombres de los estados para indexar</span>
-<span class="n">nombres_estados</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ancho</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N_maq</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="n">estado_inicial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">nombres_estados</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
-<span class="n">estado_futuro</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">nombres_estados</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]):</span>
+    <span class="n">pi_t</span> <span class="o">=</span> <span class="n">taller</span><span class="o">.</span><span class="n">transient_probabilities</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">pi0_todas_bien</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">ancho</span><span class="p">,</span> <span class="n">pi_t</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">ancho</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Transitoria, t = </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2"> h&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">ancho</span><span class="p">,</span> <span class="n">pi_taller</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">ancho</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Estado estable&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 
-<span class="c1"># Calcular el vector de tiempos de primera pasada hacia el estado 2</span>
-<span class="n">fpts</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">first_passage_time</span><span class="p">(</span><span class="n">estado_futuro</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tiempos de primera pasada al estado 2 (desde cada estado):&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">fpts</span><span class="p">)</span>
-
-<span class="c1"># Extraer el tiempo desde el estado 1 al estado 2</span>
-<span class="n">tiempo_1_2</span> <span class="o">=</span> <span class="n">fpts</span><span class="p">[</span><span class="n">estado_inicial</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">E[tiempo de primera pasada de 1 → 2] = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">tiempo_1_2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Máquinas dañadas ($j$)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probabilidad&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;De la distribución transitoria al estado estable (inicio: todas funcionando)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tiempos de primera pasada al estado 2 (desde cada estado):
-[[0.6]
- [0.4]]
-
-E[tiempo de primera pasada de 1 → 2] = 0.4
-</pre></div>
-</div>
+<img alt="../../_images/eb71a0fbeea524f3e9f39df5255a6bf66ce778209bbe8810cf1f121118a448ee.png" src="../../_images/eb71a0fbeea524f3e9f39df5255a6bf66ce778209bbe8810cf1f121118a448ee.png" />
 </div>
 </div>
 </section>
-<section id="tiempo-de-ocupacion">
-<h3>1.4 Tiempo de ocupación<a class="headerlink" href="#tiempo-de-ocupacion" title="Link to this heading">#</a></h3>
-<p>Otra pregunta natural es: durante un horizonte <span class="math notranslate nohighlight">\([0, T]\)</span>, ¿cuánto tiempo pasa el proceso en cada estado en promedio? Esto convierte las probabilidades puntuales en una medida acumulada de permanencia.</p>
-<p>Formalmente, el tiempo de ocupación del estado <span class="math notranslate nohighlight">\(j\)</span> partiendo de <span class="math notranslate nohighlight">\(i\)</span> es:</p>
-<div class="math notranslate nohighlight">
-\[
-\int_0^T P(X(t)=j \mid X(0)=i)\,dt.
-\]</div>
-<p>La suma de todos los tiempos de ocupación de una fila debe ser exactamente <span class="math notranslate nohighlight">\(T\)</span>, lo cual sirve como verificación.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tiempo_ocupacion</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">occupation_time</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tiempo esperado en cada estado durante T=4 unidades:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tiempo_ocupacion</span><span class="p">)</span>
-
-<span class="c1"># Verificación: la suma por filas debe ser T=4</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Suma por filas (debe ser 4): </span><span class="si">{</span><span class="n">tiempo_ocupacion</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Ejemplo puntual: tiempo en el estado 2 partiendo del estado 1</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Tiempo en estado 2 partiendo de estado 1: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">tiempo_ocupacion</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tiempo esperado en cada estado durante T=4 unidades:
-[[1.52070832 1.0502945  1.42899215]
- [1.28993909 1.20414066 1.50591523]
- [1.32840063 1.01183297 1.65976138]]
-
-Suma por filas (debe ser 4): [3.99999497 3.99999497 3.99999497]
-
-Tiempo en estado 2 partiendo de estado 1: 1.506
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="que-preguntas-podemos-hacerle-a-una-distribucion">
-<h3>1.5 ¿Qué preguntas podemos hacerle a una distribución?<a class="headerlink" href="#que-preguntas-podemos-hacerle-a-una-distribucion" title="Link to this heading">#</a></h3>
-<p>Una vez obtenida una distribución transitoria o estacionaria, las preguntas más frecuentes son:</p>
+<section id="transitorio-vs-estable-resumen">
+<h3>2.4 Transitorio vs. estable: resumen<a class="headerlink" href="#transitorio-vs-estable-resumen" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Pregunta</p></th>
-<th class="head"><p>Cómo se calcula</p></th>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Estado transitorio <span class="math notranslate nohighlight">\(\pi(t)\)</span></p></th>
+<th class="head"><p>Estado estable <span class="math notranslate nohighlight">\(\pi\)</span></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(X(t) = j)\)</span></p></td>
-<td><p>entrada directa del vector <span class="math notranslate nohighlight">\(\pi(t)\)</span></p></td>
+<tr class="row-even"><td><p>Pregunta que responde</p></td>
+<td><p>¿Qué tan probable es cada estado <strong>en el instante <span class="math notranslate nohighlight">\(t\)</span></strong>?</p></td>
+<td><p>¿Qué fracción del tiempo pasa el sistema en cada estado <strong>en el largo plazo</strong>?</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(P(X(t) \in A)\)</span></p></td>
-<td><p>suma de las entradas de <span class="math notranslate nohighlight">\(\pi(t)\)</span> en el conjunto <span class="math notranslate nohighlight">\(A\)</span></p></td>
+<tr class="row-odd"><td><p>¿Depende de <span class="math notranslate nohighlight">\(t\)</span>?</p></td>
+<td><p>Sí</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(E[X(t)]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\sum_j j\,\pi_j(t)\)</span></p></td>
+<tr class="row-even"><td><p>¿Depende del estado inicial?</p></td>
+<td><p>Sí</p></td>
+<td><p>No (si la cadena es ergódica)</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{Var}[X(t)]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(E[X(t)^2] - E[X(t)]^2\)</span></p></td>
+<tr class="row-odd"><td><p>Cómo se obtiene</p></td>
+<td><p><span class="math notranslate nohighlight">\(\pi(t) = \pi(0)\,e^{Qt}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\pi Q = 0,\ \sum_i \pi_i = 1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>En <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cadena.transient_probabilities(t,</span> <span class="pre">alpha)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cadena.steady_state()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Uso típico</p></td>
+<td><p>Planear un turno, un horizonte corto, el arranque de un sistema</p></td>
+<td><p>Dimensionar recursos para la operación “normal” del sistema</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>En el modelo hospitalario de la siguiente sección la distribución será <strong>conjunta</strong> sobre dos variables, y usaremos estas mismas herramientas para obtener marginales y momentos.</p>
+<section id="id1">
+<h4><a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<blockquote>
+<div><p><strong>Ahora</strong> cambia el número de técnicos a <code class="docutils literal notranslate"><span class="pre">c_tec</span> <span class="pre">=</span> <span class="pre">3</span></code> y vuelve a correr la sección 2. ¿Cómo cambia la distribución de estado estable? ¿El sistema converge más rápido o más lento? ¿Y si la tasa de falla sube a <code class="docutils literal notranslate"><span class="pre">lam</span> <span class="pre">=</span> <span class="pre">0.6</span></code>?</p>
+</div></blockquote>
+</section>
 </section>
 </section>
 <section id="aplicacion-hospital-en-tiempo-continuo">
-<h2>2. Aplicación: hospital en tiempo continuo<a class="headerlink" href="#aplicacion-hospital-en-tiempo-continuo" title="Link to this heading">#</a></h2>
-<p>Ahora trasladamos todas las herramientas anteriores a un sistema con interpretación operativa real. El ciclo que seguiremos es:</p>
-<div class="math notranslate nohighlight">
-\[
-\text{modelo físico} \;\rightarrow\; Q \;\rightarrow\; \pi(t) \;\rightarrow\; \text{medidas de interés} \;\rightarrow\; \text{simulación.}
-\]</div>
+<h2>3. Aplicación: hospital en tiempo continuo<a class="headerlink" href="#aplicacion-hospital-en-tiempo-continuo" title="Link to this heading">#</a></h2>
+<p>Ahora aplicamos lo anterior a un sistema con <strong>dos variables de estado</strong>. El procedimiento es el mismo que en el taller (reglas del sistema <span class="math notranslate nohighlight">\(\rightarrow\)</span> <span class="math notranslate nohighlight">\(Q\)</span> <span class="math notranslate nohighlight">\(\rightarrow\)</span> cadena <span class="math notranslate nohighlight">\(\rightarrow\)</span> propiedades <span class="math notranslate nohighlight">\(\rightarrow\)</span> transitorio y estable), pero el estado pasa a ser un <strong>par</strong> de números, lo que obliga a organizar mejor el código.</p>
 <section id="enunciado-hospital-con-dos-tipos-de-pacientes">
 <h3>Enunciado: Hospital con dos tipos de pacientes<a class="headerlink" href="#enunciado-hospital-con-dos-tipos-de-pacientes" title="Link to this heading">#</a></h3>
 <p>Considera un hospital con <span class="math notranslate nohighlight">\(B = 20\)</span> camas y dos tipos de pacientes:</p>
@@ -715,17 +1062,12 @@ Tiempo en estado 2 partiendo de estado 1: 1.506
 </ul>
 <p><strong>Política de admisión:</strong> el hospital reserva <span class="math notranslate nohighlight">\(b = 5\)</span> camas exclusivamente para pacientes de tipo 1. Un paciente de tipo 1 se admite siempre que haya al menos una cama libre. Un paciente de tipo 2 se admite solo si hay cama disponible <em>y</em> el número de pacientes de tipo 2 ya hospitalizados es menor que <span class="math notranslate nohighlight">\(B - b = 15\)</span>.</p>
 </section>
-<section id="preguntas">
-<h3>Preguntas<a class="headerlink" href="#preguntas" title="Link to this heading">#</a></h3>
+<section id="id2">
+<h3>Preguntas<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Construye la matriz de tasas de transición <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> y crea la cadena de Markov en <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>.</p></li>
-</ol>
-<p>Para las preguntas 2–5, asume que el hospital inició vacío y transcurrieron 6 horas:</p>
-<ol class="arabic simple" start="2">
-<li><p>Calcula <span class="math notranslate nohighlight">\(P(X(6)=1,\, Y(6)=3)\)</span> con <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>.</p></li>
-<li><p>Visualiza la distribución conjunta de <span class="math notranslate nohighlight">\((X(6), Y(6))\)</span> en un mapa de calor.</p></li>
-<li><p>Calcula las distribuciones marginales, valor esperado, varianza y desviación estándar de ambos tipos. Muéstralas en histogramas.</p></li>
-<li><p>Responde la pregunta 2 usando simulación en SimPy y compara los resultados.</p></li>
+<li><p>Construye la matriz de tasas de transición <span class="math notranslate nohighlight">\(Q\)</span> y crea la cadena de Markov en <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code>.</p></li>
+<li><p>Verifica las propiedades de la cadena.</p></li>
+<li><p>Si el hospital inicia vacío, visualiza cómo evoluciona la distribución conjunta de <span class="math notranslate nohighlight">\((X(t), Y(t))\)</span> y compárala con la distribución de estado estable.</p></li>
 </ol>
 <section id="construccion-de-q-y-la-cadena-en-jmarkov">
 <h4>1. Construcción de <span class="math notranslate nohighlight">\(Q\)</span> y la cadena en <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code><a class="headerlink" href="#construccion-de-q-y-la-cadena-en-jmarkov" title="Link to this heading">#</a></h4>
@@ -758,9 +1100,6 @@ j\cdot\mu_2, &amp; \text{si } j' = j-1,\; i' = i,\; j &gt; 0, \\[1mm]
 0, &amp; \text{en otro caso.}
 \end{cases}
 \end{split}\]</div>
-<blockquote>
-<div><p><strong>¿Por qué la tasa de salida es <span class="math notranslate nohighlight">\(i \cdot \mu_1\)</span>?</strong> Porque cada uno de los <span class="math notranslate nohighlight">\(i\)</span> pacientes de tipo 1 se va de forma independiente con tasa <span class="math notranslate nohighlight">\(\mu_1\)</span>. Por la propiedad de suma de exponenciales independientes, la tasa total de la primera salida de tipo 1 es <span class="math notranslate nohighlight">\(i \cdot \mu_1\)</span>. Lo mismo aplica para tipo 2.</p>
-</div></blockquote>
 <p>A continuación se implementa este modelo paso a paso.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -858,6 +1197,22 @@ Dimensión de Q: (216, 216)
 <p>En modelos con muchos estados es conveniente exportar <span class="math notranslate nohighlight">\(Q\)</span> para revisar la estructura de tasas fuera del notebook. Esta es una herramienta auxiliar de verificación: lo importante es que cada transición del modelo hospitalario quede correctamente representada.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install openpyxl
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: openpyxl in /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages (3.1.5)
+Requirement already satisfied: et-xmlfile in /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages (from openpyxl) (2.0.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exportar Q a Excel para inspección manual</span>
 <span class="n">nombre_archivo</span> <span class="o">=</span> <span class="s2">&quot;matriz_Q_hospital.xlsx&quot;</span>
 <span class="n">Q_hospital</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">)</span>
@@ -874,9 +1229,7 @@ Dimensión de Q: (216, 216)
 <p>Una vez verificada <span class="math notranslate nohighlight">\(Q\)</span>, creamos la cadena de Markov en tiempo continuo con <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> y confirmamos sus propiedades básicas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">jmarkov.ctmc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ctmc</span>
-
-<span class="c1"># Crear la cadena en tiempo continuo</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear la cadena en tiempo continuo</span>
 <span class="n">hospital_chain</span> <span class="o">=</span> <span class="n">ctmc</span><span class="p">(</span><span class="n">Q_hospital</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Número de estados: </span><span class="si">{</span><span class="n">hospital_chain</span><span class="o">.</span><span class="n">n_states</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -920,135 +1273,266 @@ Dimensión de Q: (216, 216)
 </div>
 </div>
 </section>
-<section id="probabilidad-transitoria-a-las-6-horas">
-<h3>2.1 Probabilidad transitoria a las 6 horas<a class="headerlink" href="#probabilidad-transitoria-a-las-6-horas" title="Link to this heading">#</a></h3>
-<p>Queremos calcular</p>
+<section id="de-lo-transitorio-a-lo-estable-en-el-hospital">
+<h3>3.1 De lo transitorio a lo estable en el hospital<a class="headerlink" href="#de-lo-transitorio-a-lo-estable-en-el-hospital" title="Link to this heading">#</a></h3>
+<p>Igual que en el taller, calculamos la distribución transitoria partiendo del hospital vacío,</p>
 <div class="math notranslate nohighlight">
 \[
-P(X(6)=1,\, Y(6)=3 \mid Z(0)=(0,0)),
+\pi(t) = \alpha\, e^{Qt}, \qquad \alpha = \text{vector indicador del estado } (0,0),
 \]</div>
-<p>es decir, la probabilidad de que el hospital tenga exactamente 1 paciente de tipo 1 y 3 de tipo 2 luego de 6 horas, partiendo de vacío.</p>
-<p>La distribución conjunta en <span class="math notranslate nohighlight">\(t=6\)</span> es:</p>
-<div class="math notranslate nohighlight">
-\[
-\pi(6) = \alpha\, e^{6Q},
-\]</div>
-<p>donde <span class="math notranslate nohighlight">\(\alpha\)</span> es el vector indicador del estado inicial <span class="math notranslate nohighlight">\((0,0)\)</span>. <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> calcula directamente esta distribución.</p>
+<p>y la comparamos con la distribución de estado estable. La diferencia es que ahora cada distribución vive sobre <strong>pares</strong> <span class="math notranslate nohighlight">\((i,j)\)</span>: es una <strong>distribución conjunta</strong> de dos variables. Por eso, en lugar de un gráfico de barras, la visualizamos como un <strong>mapa de calor</strong>, donde cada celda <span class="math notranslate nohighlight">\((i,j)\)</span> es un estado y su color es su probabilidad.</p>
+<p>Primero una función auxiliar que reorganiza el vector de probabilidades (un número por estado) en una matriz de <span class="math notranslate nohighlight">\((B+1)\times(B-b+1)\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vector de estado inicial: el hospital comienza vacío con probabilidad 1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">a_matriz</span><span class="p">(</span><span class="n">vector_probs</span><span class="p">):</span>
+    <span class="c1"># Reorganiza un vector de probabilidades (indexado por estado) en una matriz tipo1 × tipo2.</span>
+    <span class="n">matriz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">estados</span><span class="p">:</span>
+        <span class="n">matriz</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">vector_probs</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">matriz</span>
+
+<span class="c1"># Estado inicial: hospital vacío con probabilidad 1</span>
 <span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estados</span><span class="p">))</span>
 <span class="n">alpha</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1"># Distribución transitoria en t = 6 horas</span>
-<span class="n">t_eval</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="n">probs_transitorias_6h</span> <span class="o">=</span> <span class="n">hospital_chain</span><span class="o">.</span><span class="n">transient_probabilities</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+<span class="c1"># Distribuciones transitorias en algunos instantes y distribución de estado estable</span>
+<span class="n">tiempos_hosp</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">dist_transitorias</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="p">:</span> <span class="n">hospital_chain</span><span class="o">.</span><span class="n">transient_probabilities</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tiempos_hosp</span><span class="p">}</span>
+<span class="n">pi_hospital</span> <span class="o">=</span> <span class="n">hospital_chain</span><span class="o">.</span><span class="n">steady_state</span><span class="p">()</span>
 
-<span class="c1"># Probabilidad de interés</span>
-<span class="n">prob_1_3</span> <span class="o">=</span> <span class="n">probs_transitorias_6h</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(X(6)=1, Y(6)=3) = </span><span class="si">{</span><span class="n">prob_1_3</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">vec</span> <span class="ow">in</span> <span class="n">dist_transitorias</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;t = </span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">&gt;3</span><span class="si">}</span><span class="s2"> h  -&gt;  suma de probabilidades = </span><span class="si">{</span><span class="n">vec</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estable    -&gt;  suma de probabilidades = </span><span class="si">{</span><span class="n">pi_hospital</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(X(6)=1, Y(6)=3) = 0.022737
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="distribucion-conjunta-y-mapa-de-calor">
-<h3>2.2 Distribución conjunta y mapa de calor<a class="headerlink" href="#distribucion-conjunta-y-mapa-de-calor" title="Link to this heading">#</a></h3>
-<p>La probabilidad anterior corresponde a un único estado. Para ver <em>dónde se concentra la probabilidad</em> conviene visualizar la distribución completa <span class="math notranslate nohighlight">\((X(6), Y(6))\)</span> en un mapa de calor: los colores más intensos indican mayor masa de probabilidad.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reorganizar el vector lineal en una matriz 2D (tipo1 × tipo2)</span>
-<span class="n">pi_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">B</span><span class="p">:</span>
-            <span class="n">pi_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">probs_transitorias_6h</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Suma total de probabilidades: </span><span class="si">{</span><span class="n">pi_matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">  (debe ser ≈ 1)&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dimensión de la distribución conjunta: </span><span class="si">{</span><span class="n">pi_matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">  (tipo1 × tipo2)&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Suma total de probabilidades: 1.000000  (debe ser ≈ 1)
-Dimensión de la distribución conjunta: (21, 16)  (tipo1 × tipo2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t = 0.5 h  -&gt;  suma de probabilidades = 1.000000
+t =   1 h  -&gt;  suma de probabilidades = 1.000000
+t =   3 h  -&gt;  suma de probabilidades = 1.000000
+Estable    -&gt;  suma de probabilidades = 1.000000
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapa de calor de la distribución conjunta</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_i_show</span><span class="p">,</span> <span class="n">max_j_show</span> <span class="o">=</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">10</span>   <span class="c1"># región con probabilidad no despreciable</span>
 
-<span class="n">max_i_show</span> <span class="o">=</span> <span class="mi">13</span>   <span class="c1"># limitar la visualización a la región con probabilidad no despreciable</span>
-<span class="n">max_j_show</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">paneles</span> <span class="o">=</span> <span class="p">[(</span><span class="sa">f</span><span class="s2">&quot;Transitoria, t = </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2"> h&quot;</span><span class="p">,</span> <span class="n">a_matriz</span><span class="p">(</span><span class="n">dist_transitorias</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tiempos_hosp</span><span class="p">]</span>
+<span class="n">paneles</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;Estado estable&quot;</span><span class="p">,</span> <span class="n">a_matriz</span><span class="p">(</span><span class="n">pi_hospital</span><span class="p">)))</span>
+<span class="n">vmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">m</span><span class="p">[:</span><span class="n">max_i_show</span><span class="p">,</span> <span class="p">:</span><span class="n">max_j_show</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">paneles</span><span class="p">)</span>
 
-<span class="n">region</span> <span class="o">=</span> <span class="n">pi_matrix</span><span class="p">[:</span><span class="n">max_i_show</span><span class="p">,</span> <span class="p">:</span><span class="n">max_j_show</span><span class="p">]</span>
-<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrRd&#39;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pacientes Tipo 1 ($i$)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pacientes Tipo 2 ($j$)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución conjunta $P(X(</span><span class="si">{</span><span class="n">t_eval</span><span class="si">}</span><span class="s1">)=i,\, Y(</span><span class="si">{</span><span class="n">t_eval</span><span class="si">}</span><span class="s1">)=j)$ — hospital vacío al inicio&#39;</span><span class="p">,</span>
-             <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Probabilidad&#39;</span><span class="p">)</span>
-
-<span class="c1"># Anotar celdas con probabilidad significativa</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_i_show</span><span class="p">)):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_j_show</span><span class="p">)):</span>
-        <span class="n">val</span> <span class="o">=</span> <span class="n">region</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mf">0.005</span><span class="p">:</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-                    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span> <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mf">0.02</span> <span class="k">else</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">titulo</span><span class="p">,</span> <span class="n">matriz</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">paneles</span><span class="p">):</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">matriz</span><span class="p">[:</span><span class="n">max_i_show</span><span class="p">,</span> <span class="p">:</span><span class="n">max_j_show</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+                   <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlOrRd&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">titulo</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Pacientes Tipo 1 ($i$)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Pacientes Tipo 2 ($j$)&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Probabilidad&quot;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Distribución conjunta $P(X(t)=i,</span><span class="se">\\</span><span class="s2"> Y(t)=j)$ partiendo del hospital vacío&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="n">i_max</span><span class="p">,</span> <span class="n">j_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">pi_matrix</span><span class="o">.</span><span class="n">argmax</span><span class="p">(),</span> <span class="n">pi_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estado más probable: (</span><span class="si">{</span><span class="n">i_max</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">j_max</span><span class="si">}</span><span class="s2">) con P = </span><span class="si">{</span><span class="n">pi_matrix</span><span class="p">[</span><span class="n">i_max</span><span class="p">,</span><span class="w"> </span><span class="n">j_max</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">titulo</span><span class="p">,</span> <span class="n">matriz</span> <span class="ow">in</span> <span class="n">paneles</span><span class="p">:</span>
+    <span class="n">i_max</span><span class="p">,</span> <span class="n">j_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">matriz</span><span class="o">.</span><span class="n">argmax</span><span class="p">(),</span> <span class="n">matriz</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">titulo</span><span class="si">:</span><span class="s2">&lt;22</span><span class="si">}</span><span class="s2">: estado más probable = (</span><span class="si">{</span><span class="n">i_max</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">j_max</span><span class="si">}</span><span class="s2">) con P = </span><span class="si">{</span><span class="n">matriz</span><span class="p">[</span><span class="n">i_max</span><span class="p">,</span><span class="w"> </span><span class="n">j_max</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3353662f8cabab6c79deaad1a6a199ab794f59a23bffb5871da7e0c6f82c8d6c.png" src="../../_images/3353662f8cabab6c79deaad1a6a199ab794f59a23bffb5871da7e0c6f82c8d6c.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estado más probable: (3, 1) con P = 0.0601
+<img alt="../../_images/f996b8ea594c461672d86c50e8b6038c7601ac9c882df92bc904730ce345e422.png" src="../../_images/f996b8ea594c461672d86c50e8b6038c7601ac9c882df92bc904730ce345e422.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Transitoria, t = 0.5 h: estado más probable = (2, 1) con P = 0.0994
+Transitoria, t = 1 h  : estado más probable = (2, 1) con P = 0.0781
+Transitoria, t = 3 h  : estado más probable = (3, 1) con P = 0.0607
+Estado estable        : estado más probable = (3, 1) con P = 0.0600
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>¿Cómo leer el mapa de calor?</strong> Cada celda <span class="math notranslate nohighlight">\((i,j)\)</span> es un estado del sistema y su color representa la probabilidad de que el hospital tenga exactamente <span class="math notranslate nohighlight">\(i\)</span> pacientes de tipo 1 y <span class="math notranslate nohighlight">\(j\)</span> de tipo 2 a las 6 horas. La masa se concentra lejos de cero, el hospital ya está llenándose, pero aún lejos del tope de 20 camas, lo que refleja que 6 horas no es suficiente para que el sistema alcance su régimen estacionario.</p>
+<p><strong>¿Cómo leer los mapas de calor?</strong> Cada celda <span class="math notranslate nohighlight">\((i,j)\)</span> es un estado del sistema, y su color es la probabilidad de que el hospital tenga exactamente <span class="math notranslate nohighlight">\(i\)</span> pacientes de tipo 1 y <span class="math notranslate nohighlight">\(j\)</span> de tipo 2. Todos los paneles usan la misma escala de color para poder compararlos.</p>
+<ul class="simple">
+<li><p>En <span class="math notranslate nohighlight">\(t = 0.5\)</span> h la masa de probabilidad todavía está cerca de la esquina <span class="math notranslate nohighlight">\((0,0)\)</span>: el hospital acaba de abrir y se está llenando.</p></li>
+<li><p>A medida que pasa el tiempo la masa se desplaza y se dispersa, y hacia <span class="math notranslate nohighlight">\(t = 3\)</span> h el mapa ya es prácticamente indistinguible del de estado estable.</p></li>
+<li><p>En el largo plazo la probabilidad se concentra muy lejos del tope de 20 camas: con estas tasas, el hospital rara vez se llena.</p></li>
+</ul>
 </section>
-<section id="distribuciones-marginales-esperanza-y-varianza">
-<h3>2.3 Distribuciones marginales, esperanza y varianza<a class="headerlink" href="#distribuciones-marginales-esperanza-y-varianza" title="Link to this heading">#</a></h3>
-<p>A partir de la distribución conjunta obtenemos las distribuciones de cada tipo de paciente por separado, sumando sobre la otra variable:</p>
+</section>
+<section id="preguntas-para-pensar">
+<h2>4. Preguntas para pensar<a class="headerlink" href="#preguntas-para-pensar" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>¿Qué significa que <span class="math notranslate nohighlight">\(q_{ii}\)</span> sea negativo? ¿Qué relación hay entre <span class="math notranslate nohighlight">\(-q_{ii}\)</span> y el tiempo que el proceso permanece en el estado <span class="math notranslate nohighlight">\(i\)</span>?</p></li>
+<li><p>En el taller, ¿por qué la tasa de reparación es <span class="math notranslate nohighlight">\(\min(i, c)\,\mu\)</span> y no simplemente <span class="math notranslate nohighlight">\(c\,\mu\)</span>? ¿Qué pasaría con el modelo si usaras <span class="math notranslate nohighlight">\(c\,\mu\)</span> en todos los estados con <span class="math notranslate nohighlight">\(i&gt;0\)</span>?</p></li>
+<li><p>En el hospital, ¿por qué la tasa de salida de pacientes tipo 1 es <span class="math notranslate nohighlight">\(i\cdot\mu_1\)</span> y no <span class="math notranslate nohighlight">\(\mu_1\)</span>?</p></li>
+<li><p>¿Por qué la distribución transitoria depende del estado inicial y la de estado estable no? ¿Qué propiedad de la cadena se necesita para que esto último sea cierto?</p></li>
+<li><p>Da un ejemplo operativo (en el taller o en el hospital) de una decisión que tomarías con la distribución <strong>transitoria</strong> y otra que tomarías con la de <strong>estado estable</strong>.</p></li>
+<li><p>¿Qué cambia al pasar de una variable de estado (taller) a dos (hospital)? Piensa en el tamaño del espacio de estados, en cómo se indexan los estados en Python y en cómo se visualiza la distribución.</p></li>
+</ol>
+</section>
+<section id="resumen">
+<h2>5. Resumen<a class="headerlink" href="#resumen" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>La <strong>matriz generadora <span class="math notranslate nohighlight">\(Q\)</span></strong> codifica toda la dinámica de una CMTC: tasas de transición fuera de la diagonal y tasas de salida (con signo negativo) en la diagonal. Cada fila suma cero.</p></li>
+<li><p>En la práctica, <span class="math notranslate nohighlight">\(Q\)</span> se <strong>construye con un ciclo</strong> a partir de las reglas del sistema; las tasas pueden depender del estado (por ejemplo, <span class="math notranslate nohighlight">\((N-i)\lambda\)</span> o <span class="math notranslate nohighlight">\(\min(i,c)\mu\)</span>).</p></li>
+<li><p>Antes de analizar una cadena se verifican sus <strong>propiedades</strong>: irreducibilidad y ergodicidad.</p></li>
+<li><p>La <strong>distribución transitoria</strong> <span class="math notranslate nohighlight">\(\pi(t) = \pi(0)\,e^{Qt}\)</span> describe el sistema en un instante concreto y depende del punto de partida.</p></li>
+<li><p>Si la cadena es ergódica, <span class="math notranslate nohighlight">\(\pi(t)\)</span> <strong>converge</strong> a una única <strong>distribución de estado estable</strong> <span class="math notranslate nohighlight">\(\pi\)</span> que resuelve <span class="math notranslate nohighlight">\(\pi Q = 0\)</span>, <span class="math notranslate nohighlight">\(\sum_i \pi_i = 1\)</span>, y no depende del estado inicial.</p></li>
+<li><p>Con un estado de dos variables la distribución es <strong>conjunta</strong>; se necesita un mapeo entre estados <span class="math notranslate nohighlight">\((i,j)\)</span> e índices enteros para trabajar en Python.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="guia-de-referencia-cadenas-de-markov-en-python">
+<h2>6. Guía de referencia: cadenas de Markov en Python<a class="headerlink" href="#guia-de-referencia-cadenas-de-markov-en-python" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p><strong>Lee esto primero.</strong> Esta sección <strong>no</strong> es parte de lo que debes dominar esta semana. Es una <strong>guía de consulta</strong> que reúne, en un solo lugar, todo lo que vas a necesitar sobre cadenas de Markov en Python a lo largo del curso: qué preguntas se le hacen a una cadena, con qué objeto o método se responden y un ejemplo de código funcionando.</p>
+<p>Varios de estos análisis (probabilidades de eventos, esperanzas y varianzas, tiempos de primera pasada, tiempos de ocupación, validación por simulación) los verás en clase en las próximas semanas. <strong>No tienes que entenderlo todo ahora.</strong> Vuelve aquí cuando el tema aparezca y usa los ejemplos como plantilla.</p>
+<p>Los ejemplos reutilizan los objetos creados arriba (<code class="docutils literal notranslate"><span class="pre">cadena</span></code>, <code class="docutils literal notranslate"><span class="pre">taller</span></code>, <code class="docutils literal notranslate"><span class="pre">hospital_chain</span></code>, <code class="docutils literal notranslate"><span class="pre">estados</span></code>, <code class="docutils literal notranslate"><span class="pre">index</span></code>, <code class="docutils literal notranslate"><span class="pre">a_matriz</span></code>), así que ejecuta primero las secciones 1 a 3.</p>
+</div></blockquote>
+<section id="mapa-general-preguntas-de-interes-y-como-responderlas">
+<h3>6.1 Mapa general: preguntas de interés y cómo responderlas<a class="headerlink" href="#mapa-general-preguntas-de-interes-y-como-responderlas" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pregunta de interés</p></th>
+<th class="head"><p>Notación</p></th>
+<th class="head"><p>Cómo se obtiene en Python</p></th>
+<th class="head"><p>Devuelve</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>¿Es válida la matriz?</p></td>
+<td><p>filas de <span class="math notranslate nohighlight">\(Q\)</span> suman 0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.allclose(Q.sum(axis=1),</span> <span class="pre">0)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Crear la cadena</p></td>
+<td><p>—</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ctmc(Q)</span></code></p></td>
+<td><p>objeto cadena</p></td>
+</tr>
+<tr class="row-even"><td><p>¿Se puede ir de cualquier estado a cualquier otro?</p></td>
+<td><p>irreducibilidad</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cadena.is_irreducible()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>¿Existe una única distribución de largo plazo?</p></td>
+<td><p>ergodicidad</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cadena.is_ergodic()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Distribución en el instante <span class="math notranslate nohighlight">\(t\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\pi(t)=\pi(0)e^{Qt}\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cadena.transient_probabilities(t=t,</span> <span class="pre">alpha=pi0)</span></code></p></td>
+<td><p>vector de tamaño <span class="math notranslate nohighlight">\(n\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Distribución de largo plazo</p></td>
+<td><p><span class="math notranslate nohighlight">\(\pi Q = 0\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cadena.steady_state()</span></code></p></td>
+<td><p>vector de tamaño <span class="math notranslate nohighlight">\(n\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Probabilidad de un estado</p></td>
+<td><p><span class="math notranslate nohighlight">\(P(X(t)=j)\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pi_t[j]</span></code></p></td>
+<td><p>número</p></td>
+</tr>
+<tr class="row-odd"><td><p>Probabilidad de un evento</p></td>
+<td><p><span class="math notranslate nohighlight">\(P(X(t)\in A)\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sum(pi_t[k]</span> <span class="pre">for</span> <span class="pre">k</span> <span class="pre">in</span> <span class="pre">A)</span></code></p></td>
+<td><p>número</p></td>
+</tr>
+<tr class="row-even"><td><p>Valor esperado</p></td>
+<td><p><span class="math notranslate nohighlight">\(E[X(t)] = \sum_j j\,\pi_j(t)\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.sum(valores</span> <span class="pre">*</span> <span class="pre">pi_t)</span></code></p></td>
+<td><p>número</p></td>
+</tr>
+<tr class="row-odd"><td><p>Varianza</p></td>
+<td><p><span class="math notranslate nohighlight">\(E[X^2]-E[X]^2\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.sum(valores**2</span> <span class="pre">*</span> <span class="pre">pi_t)</span> <span class="pre">-</span> <span class="pre">E**2</span></code></p></td>
+<td><p>número</p></td>
+</tr>
+<tr class="row-even"><td><p>Marginales (estado de dos variables)</p></td>
+<td><p><span class="math notranslate nohighlight">\(P(X=i)=\sum_j P(X=i,Y=j)\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">matriz.sum(axis=1)</span></code>, <code class="docutils literal notranslate"><span class="pre">matriz.sum(axis=0)</span></code></p></td>
+<td><p>vectores</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tiempo esperado hasta llegar a un estado</p></td>
+<td><p><span class="math notranslate nohighlight">\(m_{ij}\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cadena.first_passage_time(destino)</span></code></p></td>
+<td><p>vector (uno por estado de origen)</p></td>
+</tr>
+<tr class="row-even"><td><p>Tiempo esperado en cada estado durante <span class="math notranslate nohighlight">\([0,T]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\int_0^T P(X(t)=j\mid X(0)=i)\,dt\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cadena.occupation_time(T=T)</span></code></p></td>
+<td><p>matriz <span class="math notranslate nohighlight">\(n \times n\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Validar resultados analíticos</p></td>
+<td><p>frecuencias relativas</p></td>
+<td><p>simulación (SimPy o saltos desde <span class="math notranslate nohighlight">\(Q\)</span>)</p></td>
+<td><p>estimaciones</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Las subsecciones siguientes muestran cada fila de la tabla con un ejemplo.</p>
+</section>
+<section id="probabilidad-de-un-estado-y-de-un-evento">
+<h3>6.2 Probabilidad de un estado y de un evento<a class="headerlink" href="#probabilidad-de-un-estado-y-de-un-evento" title="Link to this heading">#</a></h3>
+<p>Una vez tienes el vector <span class="math notranslate nohighlight">\(\pi(t)\)</span> (o <span class="math notranslate nohighlight">\(\pi\)</span>), la probabilidad de un estado es <strong>una entrada del vector</strong>, y la probabilidad de un evento (un conjunto de estados <span class="math notranslate nohighlight">\(A\)</span>) es la <strong>suma</strong> de las entradas de los estados de <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p><strong>Ejemplo (hospital, vacío al inicio, <span class="math notranslate nohighlight">\(t = 6\)</span> h):</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(X(6)=1,\ Y(6)=3)\)</span>: exactamente 1 paciente tipo 1 y 3 tipo 2.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(X(6)+Y(6) = B)\)</span>: el hospital está lleno.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(X(6)+Y(6) \geq 10)\)</span>: hay al menos 10 camas ocupadas.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_eval</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">probs_transitorias_6h</span> <span class="o">=</span> <span class="n">hospital_chain</span><span class="o">.</span><span class="n">transient_probabilities</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+
+<span class="c1"># Probabilidad de un estado: una entrada del vector</span>
+<span class="n">prob_1_3</span> <span class="o">=</span> <span class="n">probs_transitorias_6h</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(X(6)=1, Y(6)=3)      = </span><span class="si">{</span><span class="n">prob_1_3</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Probabilidad de un evento: suma sobre los estados que lo cumplen</span>
+<span class="n">prob_lleno</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">probs_transitorias_6h</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">estados</span> <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">==</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">prob_10_mas</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">probs_transitorias_6h</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">estados</span> <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(hospital lleno)      = </span><span class="si">{</span><span class="n">prob_lleno</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(al menos 10 camas)   = </span><span class="si">{</span><span class="n">prob_10_mas</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(X(6)=1, Y(6)=3)      = 0.022737
+P(hospital lleno)      = 0.000001
+P(al menos 10 camas)   = 0.041814
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="distribuciones-marginales-valor-esperado-y-varianza">
+<h3>6.3 Distribuciones marginales, valor esperado y varianza<a class="headerlink" href="#distribuciones-marginales-valor-esperado-y-varianza" title="Link to this heading">#</a></h3>
+<p>Cuando el estado tiene dos variables, la distribución de cada una por separado (<strong>marginal</strong>) se obtiene sumando sobre la otra:</p>
 <div class="math notranslate nohighlight">
 \[
 P(X(t)=i) = \sum_j P(X(t)=i,\, Y(t)=j), \qquad
 P(Y(t)=j) = \sum_i P(X(t)=i,\, Y(t)=j).
 \]</div>
-<p>Con las marginales calculamos el valor esperado y la varianza de cada variable de la forma habitual.</p>
+<p>Con cada marginal, el valor esperado y la varianza se calculan de la forma habitual.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Marginales: sumar sobre la otra variable</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi_matrix</span> <span class="o">=</span> <span class="n">a_matriz</span><span class="p">(</span><span class="n">probs_transitorias_6h</span><span class="p">)</span>
+
+<span class="c1"># Marginales: sumar sobre la otra variable</span>
 <span class="n">marginal_X</span> <span class="o">=</span> <span class="n">pi_matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># suma sobre j -&gt; distribución de X</span>
 <span class="n">marginal_Y</span> <span class="o">=</span> <span class="n">pi_matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># suma sobre i -&gt; distribución de Y</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Momentos de cada marginal</span>
-<span class="n">E_X</span>   <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">marginal_X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">E_Y</span>   <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">j</span> <span class="o">*</span> <span class="n">marginal_Y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">Var_X</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">marginal_X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="n">E_X</span><span class="o">**</span><span class="mi">2</span>
-<span class="n">Var_Y</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">j</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">marginal_Y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="n">E_Y</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">valores_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">valores_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">E_X</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">valores_X</span> <span class="o">*</span> <span class="n">marginal_X</span><span class="p">)</span>
+<span class="n">E_Y</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">valores_Y</span> <span class="o">*</span> <span class="n">marginal_Y</span><span class="p">)</span>
+<span class="n">Var_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">valores_X</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">marginal_X</span><span class="p">)</span> <span class="o">-</span> <span class="n">E_X</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">Var_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">valores_Y</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">marginal_Y</span><span class="p">)</span> <span class="o">-</span> <span class="n">E_Y</span><span class="o">**</span><span class="mi">2</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;E[X(6)]   = </span><span class="si">{</span><span class="n">E_X</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  pacientes tipo 1 en promedio&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;E[Y(6)]   = </span><span class="si">{</span><span class="n">E_Y</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  pacientes tipo 2 en promedio&quot;</span><span class="p">)</span>
@@ -1071,16 +1555,14 @@ Var[Y(6)] = 2.000    σ_Y = 1.414
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Histogramas de las distribuciones marginales</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
-<span class="c1"># Marginal de X (tipo 1)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">marginal_X</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3498db&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">valores_X</span><span class="p">,</span> <span class="n">marginal_X</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3498db&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pacientes Tipo 1 ($i$)&#39;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$P(X(6) = i)$&#39;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribución marginal de $X(6)$</span><span class="se">\n</span><span class="s1">(Pacientes Tipo 1)&#39;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 
-<span class="c1"># Marginal de Y (tipo 2)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">marginal_Y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#e74c3c&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">valores_Y</span><span class="p">,</span> <span class="n">marginal_Y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#e74c3c&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pacientes Tipo 2 ($j$)&#39;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$P(Y(6) = j)$&#39;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribución marginal de $Y(6)$</span><span class="se">\n</span><span class="s1">(Pacientes Tipo 2)&#39;</span><span class="p">)</span>
@@ -1096,13 +1578,101 @@ Var[Y(6)] = 2.000    σ_Y = 1.414
 <img alt="../../_images/cad2b3fb28972a27fcdf3dfac02c33fb4a4122959334d5aaf243d4ac7a388c93.png" src="../../_images/cad2b3fb28972a27fcdf3dfac02c33fb4a4122959334d5aaf243d4ac7a388c93.png" />
 </div>
 </div>
-<p><strong>Para pensar:</strong> los valores esperados te dicen cuántos pacientes de cada tipo hay en promedio a las 6 horas. Pero la distribución marginal te dice mucho más: qué tan concentrada o dispersa está esa ocupación. Una varianza alta significa que la ocupación real puede desviarse bastante del promedio, lo que tiene implicaciones directas para la gestión del hospital.</p>
+<p>Con una sola variable de estado (como el taller) no hace falta el paso de marginales: el vector <span class="math notranslate nohighlight">\(\pi(t)\)</span> ya es la distribución de <span class="math notranslate nohighlight">\(X(t)\)</span>. Por ejemplo, el número esperado de máquinas dañadas en el largo plazo es simplemente:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E_danadas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N_maq</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi_taller</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;E[máquinas dañadas] en estado estable = </span><span class="si">{</span><span class="n">E_danadas</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(al menos una máquina esperando técnico) = P(X &gt; c) = </span><span class="si">{</span><span class="n">pi_taller</span><span class="p">[</span><span class="n">c_tec</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E[máquinas dañadas] en estado estable = 1.657
+P(al menos una máquina esperando técnico) = P(X &gt; c) = 0.2386
+</pre></div>
+</div>
+</div>
+</div>
 </section>
+<section id="tiempo-de-primera-pasada">
+<h3>6.4 Tiempo de primera pasada<a class="headerlink" href="#tiempo-de-primera-pasada" title="Link to this heading">#</a></h3>
+<p>Pregunta: <em>¿cuánto tiempo tarda el proceso, en promedio, en llegar <strong>por primera vez</strong> a un estado objetivo?</em> A diferencia de la distribución transitoria, que da probabilidades, el tiempo promedio de primera pasada <span class="math notranslate nohighlight">\(m_{ij}\)</span> da una <strong>duración esperada</strong>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">first_passage_time</span></code> recibe el estado (o conjunto de estados) destino y devuelve un vector con el tiempo esperado para llegar allí desde cada estado de origen.</p>
+<p><strong>Ejemplo (cadena de la sección 1):</strong> tiempo esperado para ir del estado 1 al estado 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nombres de los estados para indexar</span>
+<span class="n">nombres_estados</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">])</span>
+
+<span class="n">estado_inicial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">nombres_estados</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<span class="n">estado_futuro</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">nombres_estados</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calcular el vector de tiempos de primera pasada hacia el estado 2</span>
+<span class="n">fpts</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">first_passage_time</span><span class="p">(</span><span class="n">estado_futuro</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tiempos de primera pasada al estado 2 (desde cada estado):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fpts</span><span class="p">)</span>
+
+<span class="c1"># Extraer el tiempo desde el estado 1 al estado 2</span>
+<span class="n">tiempo_1_2</span> <span class="o">=</span> <span class="n">fpts</span><span class="p">[</span><span class="n">estado_inicial</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">E[tiempo de primera pasada de 1 → 2] = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">tiempo_1_2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tiempos de primera pasada al estado 2 (desde cada estado):
+[[0.6]
+ [0.4]]
+
+E[tiempo de primera pasada de 1 → 2] = 0.4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tiempo-de-ocupacion">
+<h3>6.5 Tiempo de ocupación<a class="headerlink" href="#tiempo-de-ocupacion" title="Link to this heading">#</a></h3>
+<p>Pregunta: <em>durante un horizonte <span class="math notranslate nohighlight">\([0, T]\)</span>, ¿cuánto tiempo pasa el proceso en cada estado en promedio?</em> Esto convierte las probabilidades puntuales en una medida acumulada de permanencia:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^T P(X(t)=j \mid X(0)=i)\,dt.
+\]</div>
+<p><code class="docutils literal notranslate"><span class="pre">occupation_time</span></code> devuelve una matriz: la fila <span class="math notranslate nohighlight">\(i\)</span> es el estado de origen y la columna <span class="math notranslate nohighlight">\(j\)</span> el estado en el que se mide el tiempo. La suma de cada fila debe ser exactamente <span class="math notranslate nohighlight">\(T\)</span>, lo cual sirve como verificación.</p>
+<p><strong>Ejemplo (cadena de la sección 1, <span class="math notranslate nohighlight">\(T = 4\)</span>):</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tiempo_ocupacion</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">occupation_time</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tiempo esperado en cada estado durante T=4 unidades:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tiempo_ocupacion</span><span class="p">)</span>
+
+<span class="c1"># Verificación: la suma por filas debe ser T=4</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Suma por filas (debe ser 4): </span><span class="si">{</span><span class="n">tiempo_ocupacion</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ejemplo puntual: tiempo en el estado 2 partiendo del estado 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Tiempo en estado 2 partiendo de estado 1: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">tiempo_ocupacion</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tiempo esperado en cada estado durante T=4 unidades:
+[[1.52070832 1.0502945  1.42899215]
+ [1.28993909 1.20414066 1.50591523]
+ [1.32840063 1.01183297 1.65976138]]
+
+Suma por filas (debe ser 4): [3.99999497 3.99999497 3.99999497]
+
+Tiempo en estado 2 partiendo de estado 1: 1.506
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="validacion-mediante-simulacion">
-<h2>3. Validación mediante simulación<a class="headerlink" href="#validacion-mediante-simulacion" title="Link to this heading">#</a></h2>
-<p>Hasta aquí obtuvimos todos los resultados resolviendo ecuaciones exactas a partir de <span class="math notranslate nohighlight">\(Q\)</span>. Ahora construimos el <em>mismo</em> sistema usando simulación y verificamos si las frecuencias empíricas reproducen las probabilidades teóricas.</p>
-<p>Esto cumple dos funciones: (1) <strong>verificar</strong> que el modelo analítico está bien construido y (2) ilustrar cómo la simulación puede usarse cuando la solución exacta es difícil o imposible de obtener.</p>
+<h3>6.6 Validación mediante simulación<a class="headerlink" href="#validacion-mediante-simulacion" title="Link to this heading">#</a></h3>
+<p>Todo lo anterior se obtiene resolviendo ecuaciones exactas a partir de <span class="math notranslate nohighlight">\(Q\)</span>. La simulación sirve para (1) <strong>verificar</strong> que el modelo analítico está bien construido y (2) estimar medidas cuando la solución exacta es difícil de obtener. La idea es simular muchas réplicas, registrar el estado final de cada una y usar las <strong>frecuencias relativas</strong> como estimación de las probabilidades.</p>
+<p>Hay dos estrategias:</p>
+<p><strong>(a) Simular los procesos físicos con SimPy:</strong> se modelan por separado las llegadas y los servicios de cada tipo de paciente.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">simular_hospital_procesos</span><span class="p">(</span><span class="n">n_simulaciones</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
@@ -1154,7 +1724,7 @@ Var[Y(6)] = 2.000    σ_Y = 1.414
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ejecutar la simulación con 50 000 réplicas independientes</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ejecutar la simulación con 50 000 réplicas independientes (puede tardar un poco)</span>
 <span class="n">n_sim</span> <span class="o">=</span> <span class="mi">50_000</span>
 <span class="n">resultados_sim</span> <span class="o">=</span> <span class="n">simular_hospital_procesos</span><span class="p">(</span><span class="n">n_sim</span><span class="p">,</span> <span class="n">t_final</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulación completada: </span><span class="si">{</span><span class="n">n_sim</span><span class="si">}</span><span class="s2"> réplicas&quot;</span><span class="p">)</span>
@@ -1164,9 +1734,7 @@ Var[Y(6)] = 2.000    σ_Y = 1.414
 <span class="n">conteos_estados</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">estados_simulados</span><span class="p">,</span> <span class="n">minlength</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">estados</span><span class="p">))</span>
 <span class="n">probs_simuladas_6h</span> <span class="o">=</span> <span class="n">conteos_estados</span> <span class="o">/</span> <span class="n">n_sim</span>
 
-<span class="c1"># Comparar con el resultado analítico</span>
-<span class="n">idx_1_3</span>     <span class="o">=</span> <span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">prob_1_3_sim</span> <span class="o">=</span> <span class="n">probs_simuladas_6h</span><span class="p">[</span><span class="n">idx_1_3</span><span class="p">]</span>
+<span class="n">prob_1_3_sim</span> <span class="o">=</span> <span class="n">probs_simuladas_6h</span><span class="p">[</span><span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">P(X(6)=1, Y(6)=3):&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  jmarkov (exacto)   = </span><span class="si">{</span><span class="n">prob_1_3</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1184,17 +1752,12 @@ P(X(6)=1, Y(6)=3):
 </div>
 </div>
 </div>
-<p>La simulación logra una buena aproximación al resultado exacto. La diferencia residual refleja la <strong>variabilidad estadística</strong> del estimador de Monte Carlo, no un error de modelado.</p>
-<p>Por la Ley de los Grandes Números, a medida que <span class="math notranslate nohighlight">\(n_{\text{sim}} \to \infty\)</span> la frecuencia relativa converge a la probabilidad teórica. Con 50 000 réplicas el error típico es del orden de <span class="math notranslate nohighlight">\(1/\sqrt{50\,000} \approx 0.4\%\)</span>, que es consistente con la diferencia que observas arriba.</p>
-<section id="simulacion-directamente-desde-q">
-<h3>3.1 Simulación directamente desde <span class="math notranslate nohighlight">\(Q\)</span><a class="headerlink" href="#simulacion-directamente-desde-q" title="Link to this heading">#</a></h3>
-<p>Existe una segunda estrategia de simulación que no modela cada proceso de llegada y servicio por separado: en cambio, usa directamente los elementos de <span class="math notranslate nohighlight">\(Q\)</span> para generar trayectorias de la CMTC.</p>
-<p>La idea es la propiedad fundamental de las cadenas de Markov en tiempo continuo: si el proceso está en el estado <span class="math notranslate nohighlight">\(i\)</span>,</p>
+<p><strong>(b) Simular directamente desde <span class="math notranslate nohighlight">\(Q\)</span>:</strong> no se modela cada proceso por separado; se usa la interpretación de <span class="math notranslate nohighlight">\(Q\)</span> vista en la sección 1. Si el proceso está en el estado <span class="math notranslate nohighlight">\(i\)</span>:</p>
 <ul class="simple">
 <li><p>el tiempo hasta el próximo salto sigue una <span class="math notranslate nohighlight">\(\text{Exp}(-q_{ii})\)</span>,</p></li>
 <li><p>el próximo estado es <span class="math notranslate nohighlight">\(j\)</span> con probabilidad <span class="math notranslate nohighlight">\(q_{ij}/(-q_{ii})\)</span>.</p></li>
 </ul>
-<p>Esta estrategia es más compacta y hace explícita la interpretación probabilística de cada elemento de <span class="math notranslate nohighlight">\(Q\)</span>.</p>
+<p>Esta estrategia funciona para <strong>cualquier</strong> CMTC de la que tengas <span class="math notranslate nohighlight">\(Q\)</span> (sirve igual para el taller o para la cadena de la sección 1).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">simular_saltos_Q</span><span class="p">(</span><span class="n">Q_mat</span><span class="p">,</span> <span class="n">estado_inicial</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="n">n_simulaciones</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
@@ -1257,35 +1820,27 @@ P(X(6)=1, Y(6)=3):
 </div>
 </div>
 </div>
-<p>Las tres estimaciones convergen al mismo valor. Esto es la misma lección de variabilidad que vimos en la semana 5 con las colas M/M/1: <strong>dos simulaciones con la misma semilla pero estructuras distintas producen resultados distintos</strong>, aunque ambas modelen el mismo proceso. La aleatoriedad se consume de maneras diferentes en cada implementación.</p>
-<blockquote>
-<div><p><strong>Una sola réplica no es un resultado.</strong> Con 50 000 réplicas el error es manejable, pero si redujeras a 500, la variabilidad sería enorme. La convergencia al valor teórico es garantizada por la Ley de los Grandes Números, pero la velocidad de convergencia depende del número de réplicas.</p>
-</div></blockquote>
+<p><strong>Qué tener en cuenta al comparar:</strong></p>
+<ul class="simple">
+<li><p>La diferencia entre el valor exacto y los simulados refleja la <strong>variabilidad estadística</strong> del estimador de Monte Carlo, no un error de modelado. Por la Ley de los Grandes Números, cuando <span class="math notranslate nohighlight">\(n_{\text{sim}} \to \infty\)</span> la frecuencia relativa converge a la probabilidad teórica; con 50 000 réplicas el error típico es del orden de <span class="math notranslate nohighlight">\(1/\sqrt{50\,000} \approx 0.4\%\)</span>.</p></li>
+<li><p>Las dos simulaciones usan la misma semilla pero dan resultados distintos: cada implementación <strong>consume la aleatoriedad de manera diferente</strong>, aunque ambas modelen el mismo proceso.</p></li>
+<li><p><strong>Una sola réplica no es un resultado.</strong> Si redujeras a 500 réplicas, la variabilidad sería enorme.</p></li>
+</ul>
 </section>
-</section>
-<section id="preguntas-de-profundizacion">
-<h2>4. Preguntas de profundización<a class="headerlink" href="#preguntas-de-profundizacion" title="Link to this heading">#</a></h2>
+<section id="checklist-para-cualquier-problema-de-cmtc">
+<h3>6.7 Checklist para cualquier problema de CMTC<a class="headerlink" href="#checklist-para-cualquier-problema-de-cmtc" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>¿Por qué la simulación con SimPy y la simulación por saltos desde <span class="math notranslate nohighlight">\(Q\)</span> dan resultados distintos aunque usaron la misma semilla?</p></li>
-<li><p>¿Cómo estimarías una probabilidad transitoria a partir de un vector de estados finales simulados?</p></li>
-<li><p>¿Por qué la frecuencia relativa simulada se aproxima a la probabilidad teórica? ¿Qué teorema garantiza esto?</p></li>
-<li><p>¿Qué relación hay entre <span class="math notranslate nohighlight">\(-q_{ii}\)</span> y el tiempo de permanencia del proceso en el estado <span class="math notranslate nohighlight">\(i\)</span>?</p></li>
-<li><p>¿Qué sucede con la precisión de la estimación si reduces el número de réplicas de 50 000 a 500? ¿Y si lo aumentas a 500 000?</p></li>
-<li><p>¿Cuál es la diferencia conceptual entre una probabilidad transitoria, una probabilidad de estado estable, un tiempo de primera pasada y un tiempo de ocupación? Da un ejemplo operativo de cuándo usarías cada una.</p></li>
-</ol>
-</section>
-<section id="resumen">
-<h2>Resumen<a class="headerlink" href="#resumen" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>La <strong>matriz generadora <span class="math notranslate nohighlight">\(Q\)</span></strong> codifica toda la dinámica de una CMTC: las tasas de salida en la diagonal y las tasas de transición fuera de ella.</p></li>
-<li><p>La distribución transitoria se obtiene como <span class="math notranslate nohighlight">\(\pi(t) = \pi(0)\,e^{Qt}\)</span>, que <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code> calcula directamente.</p></li>
-<li><p>Cuando la cadena es <strong>ergódica</strong>, existe una única distribución estacionaria <span class="math notranslate nohighlight">\(\pi\)</span> que satisface <span class="math notranslate nohighlight">\(\pi Q = 0\)</span>.</p></li>
-<li><p>El <strong>tiempo de primera pasada</strong> y el <strong>tiempo de ocupación</strong> son cantidades distintas a la distribución transitoria: cada una responde una pregunta diferente sobre el comportamiento del proceso.</p></li>
-<li><p>Un estado bidimensional produce una <strong>distribución conjunta</strong>; las marginales se obtienen sumando sobre la otra variable.</p></li>
-<li><p>La simulación (por procesos o por saltos desde <span class="math notranslate nohighlight">\(Q\)</span>) <strong>converge</strong> al resultado exacto cuando el número de réplicas crece, pero <strong>una sola corrida no es un resultado</strong>.</p></li>
+<li><p>Definir la(s) <strong>variable(s) de estado</strong> y el <strong>espacio de estados</strong> (incluyendo restricciones).</p></li>
+<li><p>Listar los <strong>eventos</strong> posibles, la transición que produce cada uno y su <strong>tasa</strong> (¿depende del estado?).</p></li>
+<li><p>Construir <span class="math notranslate nohighlight">\(Q\)</span> con un ciclo; si el estado tiene varias variables, crear un <strong>mapeo</strong> estado <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> índice.</p></li>
+<li><p>Verificar que las filas sumen cero y crear la cadena con <code class="docutils literal notranslate"><span class="pre">ctmc(Q)</span></code>.</p></li>
+<li><p>Verificar <strong>irreducibilidad</strong> y <strong>ergodicidad</strong>.</p></li>
+<li><p>Traducir la pregunta del enunciado a una fila de la tabla 6.1 (¿transitorio o estable?, ¿un estado o un evento?, ¿probabilidad, esperanza o tiempo?).</p></li>
+<li><p>Si es posible, <strong>validar</strong> con simulación.</p></li>
 </ol>
 <hr class="docutils" />
 <p><em>Universidad de los Andes | Vigilada Mineducación. Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia. Departamento de Ingeniería Industrial — Carrera 1 Este No. 19A-40, Bogotá, Colombia. Tel. (57.1) 3324320 / 3394949 Ext. 2880-2881. http://industrial.uniandes.edu.co</em></p>
+</section>
 </section>
 </section>
 
@@ -1354,38 +1909,48 @@ P(X(6)=1, Y(6)=3):
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura">Estructura</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion">0. Preparación</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmtc-sencilla-de-q-al-comportamiento-del-proceso">1. CMTC sencilla: de <span class="math notranslate nohighlight">\(Q\)</span> al comportamiento del proceso</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmtc-sencilla-la-matriz-q-y-las-propiedades-de-la-cadena">1. CMTC sencilla: la matriz <span class="math notranslate nohighlight">\(Q\)</span> y las propiedades de la cadena</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#como-leer-q">¿Cómo leer <span class="math notranslate nohighlight">\(Q\)</span>?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propiedades-de-la-cadena">Propiedades de la cadena</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-transitorio">1.1 Análisis transitorio</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evolucion-de-las-probabilidades-en-el-tiempo">Evolución de las probabilidades en el tiempo</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidades-en-estado-estable">1.2 Probabilidades en estado estable</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-primera-pasada">1.3 Tiempo de primera pasada</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-ocupacion">1.4 Tiempo de ocupación</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-preguntas-podemos-hacerle-a-una-distribucion">1.5 ¿Qué preguntas podemos hacerle a una distribución?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-con-una-variable-taller-de-mantenimiento">2. Ejercicio con una variable: taller de mantenimiento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enunciado">Enunciado</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas">Preguntas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo">2.1 Modelo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estado-transitorio">2.2 Estado transitorio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estado-estable">2.3 Estado estable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transitorio-vs-estable-resumen">2.4 Transitorio vs. estable: resumen</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-hospital-en-tiempo-continuo">2. Aplicación: hospital en tiempo continuo</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-hospital-en-tiempo-continuo">3. Aplicación: hospital en tiempo continuo</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enunciado-hospital-con-dos-tipos-de-pacientes">Enunciado: Hospital con dos tipos de pacientes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas">Preguntas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Preguntas</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-q-y-la-cadena-en-jmarkov">1. Construcción de <span class="math notranslate nohighlight">\(Q\)</span> y la cadena en <code class="docutils literal notranslate"><span class="pre">jmarkov</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspeccion-de-la-matriz-q">Inspección de la matriz <span class="math notranslate nohighlight">\(Q\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapeo-entre-estados-del-modelo-e-indices-de-python">Mapeo entre estados del modelo e índices de Python</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidad-transitoria-a-las-6-horas">2.1 Probabilidad transitoria a las 6 horas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-conjunta-y-mapa-de-calor">2.2 Distribución conjunta y mapa de calor</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones-marginales-esperanza-y-varianza">2.3 Distribuciones marginales, esperanza y varianza</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-lo-transitorio-a-lo-estable-en-el-hospital">3.1 De lo transitorio a lo estable en el hospital</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-mediante-simulacion">3. Validación mediante simulación</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulacion-directamente-desde-q">3.1 Simulación directamente desde <span class="math notranslate nohighlight">\(Q\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-para-pensar">4. Preguntas para pensar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">5. Resumen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guia-de-referencia-cadenas-de-markov-en-python">6. Guía de referencia: cadenas de Markov en Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapa-general-preguntas-de-interes-y-como-responderlas">6.1 Mapa general: preguntas de interés y cómo responderlas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidad-de-un-estado-y-de-un-evento">6.2 Probabilidad de un estado y de un evento</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones-marginales-valor-esperado-y-varianza">6.3 Distribuciones marginales, valor esperado y varianza</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-primera-pasada">6.4 Tiempo de primera pasada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-ocupacion">6.5 Tiempo de ocupación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-mediante-simulacion">6.6 Validación mediante simulación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-para-cualquier-problema-de-cmtc">6.7 Checklist para cualquier problema de CMTC</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-profundizacion">4. Preguntas de profundización</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
 </ul>
   </nav></div>
 

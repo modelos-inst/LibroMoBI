@@ -18,8 +18,9 @@ Despliega el contenido:
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 9: Cadenas de Markov en Python II](content/complementarias/complementaria_markov_ii.ipynb)
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 10: Cadenas de Markov en Python III](content/complementarias/complementaria_markov_iii.ipynb)
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 12: Ajuste de distribuciones y uso en modelos estocásticos](content/complementarias/complementaria_ajustes_distribuciones.ipynb)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 13: Validación y Verificación](content/complementarias/complementaria_vyv.ipynb)
-- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 15: IC, Long Run, Batch Means](content/complementarias/complementaria_replicas_ic_bm.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 13: Verificación y validación de modelos de simulación](content/complementarias/complementaria_vyv.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 14: Réplicas independientes e intervalos de confianza](content/complementarias/complementaria_replicas_ic.ipynb)
+- <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 15: Corrida larga, período de calentamiento y batch means](content/complementarias/complementaria_warmup_batch_means.ipynb)
 - <i class="fa-solid fa-check" style="color:#ADD8E6"></i> [Complementaria Semana 16: Pruebas pareadas y control de error tipo I y II en decisiones](content/complementarias/complementaria_alternativas_incertidumbre.ipynb)
 
 

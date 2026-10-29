@@ -4,3 +4,9 @@ venv/
 __pycache__/
 _build/
 **/.ipynb_checkpoints/
+
+# Material docente local (no se publica)
+talleres_clase/
+respuestas_comples/
+respaldos_locales/
+laboratorio_final/

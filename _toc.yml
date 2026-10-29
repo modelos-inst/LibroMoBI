@@ -25,5 +25,9 @@ parts:
   - file: content/complementarias/complementaria_markov_iii.ipynb
   - file: content/complementarias/complementaria_ajustes_distribuciones.ipynb
   - file: content/complementarias/complementaria_vyv.ipynb
-  - file: content/complementarias/complementaria_replicas_ic_bm.ipynb
+    title: "Complementaria Semana 13: Verificación y validación de modelos de simulación"
+  - file: content/complementarias/complementaria_replicas_ic.ipynb
+    title: "Complementaria Semana 14: Réplicas independientes e intervalos de confianza"
+  - file: content/complementarias/complementaria_warmup_batch_means.ipynb
+    title: "Complementaria Semana 15: Corrida larga, período de calentamiento y batch means"
   - file: content/complementarias/complementaria_alternativas_incertidumbre.ipynb

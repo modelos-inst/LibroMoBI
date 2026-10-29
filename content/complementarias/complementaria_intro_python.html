@@ -203,8 +203,12 @@
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria Semana 12: Ajuste de distribuciones y uso en modelos estocásticos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_replicas_ic_bm.html">Complementaria Semana 15: Réplicas independientes, corrida larga y batch means</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Complementaria Semana 13: Verificación y validación de modelos de simulación</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_replicas_ic.html">Complementaria Semana 14: Réplicas independientes e intervalos de confianza</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_warmup_batch_means.html">Complementaria Semana 15: Corrida larga, período de calentamiento y <em>batch means</em></a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="complementaria_alternativas_incertidumbre.html">Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones.</a></li>
 
 
@@ -978,12 +982,12 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[14.80037298  3.40525926 12.44486294 23.57582627 24.1718859  26.79865302]
- [25.57804986 20.3325068  12.76939829 26.50384165 19.89025169  8.91049946]
- [15.7025532  37.72455076 20.38197257 24.15155956 22.46221322 20.45506964]
- [22.40020847 24.50157256 24.28810726 25.99348238  8.23366579 31.16775696]
- [15.35106583 18.04286026 10.76180945 39.12340661 18.13450288 18.75430683]
- [20.72154855 14.55765266 26.38002285 20.88370871 22.06459425 14.40299581]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 4.3194378  10.46942296 28.19958996 24.10660983 10.71122114 35.92071129]
+ [23.08548289 21.74428878 19.68323265 31.60667688 25.68404037  6.27425245]
+ [14.33080353 25.63604429 21.72042163 32.27261914 18.58899281  9.80535283]
+ [21.44240013  9.80805218  3.18434054 31.38759969 26.15725241 25.32039024]
+ [29.28972863 32.09671825 22.63991786 25.78024315 24.07203923 26.21656675]
+ [21.42614864 31.9040849  35.52201238 21.39060159 18.66821568 16.66715187]]
 </pre></div>
 </div>
 </div>
@@ -996,12 +1000,12 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 7.00732931  7.69320478 10.43740979 12.36361453  8.33582345 13.29401333]
- [12.05038315  3.76765759 12.21033673 14.57111595  9.23650318  8.03869491]
- [11.70011338 13.02303061  5.25948837  1.96026324  7.92968475 10.58097071]
- [ 7.99366191 11.6558653  14.85187477  8.49093452 10.33351054  9.66080972]
- [17.78175198  9.91772828 10.7585221  10.14666054  6.19808233 18.73302649]
- [13.01745019  9.00705203  8.97033804 17.88087011 13.58669368  8.44100835]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[11.10617163 11.72636074  7.66217395 12.65199606 11.69281673 13.32506114]
+ [ 8.99084547 10.60952941  9.76810067 13.49169369  7.74648744  7.16570155]
+ [ 5.53474424 11.25262206 13.39695946 10.5708298  12.61753084 11.54527645]
+ [12.20678843 13.55284743 11.80777232  3.96233183  9.39041758  7.7203319 ]
+ [11.84692306  9.16272094  8.41326179 10.68412724 11.55942881  9.17101043]
+ [ 8.88309433 12.18043065 11.976057   13.15791199  5.16813806 11.06778242]]
 </pre></div>
 </div>
 </div>
@@ -1058,12 +1062,12 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[21.80770228 11.09846404 22.88227274 35.93944081 32.50770935 40.09266635]
- [37.62843301 24.10016439 24.97973502 41.0749576  29.12675487 16.94919438]
- [27.40266658 50.74758137 25.64146094 26.1118228  30.39189797 31.03604035]
- [30.39387038 36.15743785 39.13998203 34.4844169  18.56717633 40.82856668]
- [33.13281781 27.96058854 21.52033156 49.27006714 24.33258522 37.48733331]
- [33.73899874 23.56470469 35.35036089 38.76457882 35.65128792 22.84400416]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[15.42560943 22.19578371 35.86176391 36.75860589 22.40403787 49.24577244]
+ [32.07632837 32.35381819 29.45133332 45.09837057 33.43052781 13.439954  ]
+ [19.86554776 36.88866636 35.11738109 42.84344894 31.20652365 21.35062927]
+ [33.64918856 23.3608996  14.99211286 35.34993152 35.54766999 33.04072214]
+ [41.1366517  41.25943918 31.05317966 36.46437038 35.63146805 35.38757719]
+ [30.30924297 44.08451555 47.49806938 34.54851357 23.83635374 27.73493429]]
 </pre></div>
 </div>
 </div>
@@ -1075,18 +1079,18 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1257.47786886 1044.66569573 1112.10249676 1181.62769328 1011.05530171
-  1262.59073058]
- [1255.18997816 1026.12801592 1269.94748633 1223.72534474 1020.49604579
-  1342.46116719]
- [1661.84939821 1216.89252875 1515.5672427  1582.52335658 1307.66906896
-  1554.4374308 ]
- [1496.30941978 1246.31308883 1414.93496054 1543.13366416 1348.73369871
-  1420.18795154]
- [1330.24351617 1131.02083315 1381.5252333  1325.33750205 1151.44476536
-  1338.97188351]
- [1376.05199481 1149.78809051 1209.52295067 1178.76852113 1064.62752831
-  1408.28929252]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1038.42526521 1341.43313288 1318.10157855 1176.59281841 1023.24677033
+  1140.05596161]
+ [1306.66017815 1463.01261039 1317.41266225 1275.71658298 1312.84890862
+  1239.68161597]
+ [1211.13633038 1411.59129045 1306.09944533 1212.28976679 1208.82177024
+  1153.58603735]
+ [1261.89832851 1364.80852905 1196.6858017  1174.27648379 1094.84336029
+  1155.21865105]
+ [1571.93734806 1828.04159266 1662.1557398  1747.22922655 1532.61322422
+  1591.62325209]
+ [1351.73977986 1653.42215353 1560.94285086 1580.53600659 1448.67544219
+  1445.04869912]]
 </pre></div>
 </div>
 </div>
@@ -1098,8 +1102,8 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([105.19686038, 113.98454775, 140.87791895, 136.58479342,
-       120.16795186, 119.01052282])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([113.726993  , 128.07797402, 122.35423422, 117.30003519,
+       160.09521388, 145.57821506])
 </pre></div>
 </div>
 </div>
@@ -1111,8 +1115,8 @@ Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.11.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([114.55379888, 118.5644023 , 107.02617336, 160.23182518,
-       114.95711373, 120.48928172])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([113.89400162, 131.65861135, 130.94951502, 166.54435028,
+       123.88176165, 120.20442544])
 </pre></div>
 </div>
 </div>

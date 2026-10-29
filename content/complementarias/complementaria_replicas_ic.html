@@ -1,0 +1,1534 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Complementaria Semana 14: Réplicas independientes e intervalos de confianza &#8212; Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0361f5db" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area|tex2jax_ignore|mathjax_ignore"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/complementarias/complementaria_replicas_ic';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Complementaria Semana 15: Corrida larga, período de calentamiento y batch means" href="complementaria_warmup_batch_means.html" />
+    <link rel="prev" title="Complementaria Semana 13: Verificación y validación de modelos de simulación" href="complementaria_vyv.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uniandes.png" class="logo__image only-light" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>
+    <script>document.write(`<img src="../../_static/uniandes.png" class="logo__image only-dark" alt="Libro Modelado de Sistemas Bajo Incertidumbre - IIND 2504 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Bienvenidos al libro del curso Modelado de Sistemas Bajo Incertidumbre
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial: Instalación Python y Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ambientes_virtuales.html">Ambientes virtuales en Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Complementarias</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_python.html">Complementaria Semana 1: Introducción a Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_montecarlo.html">Complementaria Semana 2: Introducción a la simulación de Monte Carlo</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_transf_inversa_gva.html">Complementaria Semana 2: Transformada Inversa para Generación de Variables Aleatorias (GVA)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_tlc.html">Complementaria Semana 3: Teorema del Límite Central</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_intro_simpy.html">Complementaria Semana 4: Introducción a SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_cola_simpy.html">Complementaria Semana 5: Medir y comparar sistemas de colas con SimPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_simu_proceso_poisson.html">Complementaria Semana 6: Simulación de un Proceso de Poisson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_markov_i.html">Complementaria Semana 8: Cadenas de Markov en Python I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria Semana 12: Ajuste de distribuciones y uso en modelos estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Complementaria Semana 13: Verificación y validación de modelos de simulación</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complementaria Semana 14: Réplicas independientes e intervalos de confianza</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_warmup_batch_means.html">Complementaria Semana 15: Corrida larga, período de calentamiento y <em>batch means</em></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_alternativas_incertidumbre.html">Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones.</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/complementarias/complementaria_replicas_ic.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Complementaria Semana 14: Réplicas independientes e intervalos de confianza</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complementaria Semana 14: Réplicas independientes e intervalos de confianza</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo-de-hoy">Objetivo de hoy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convenciones-utilizadas">Convenciones utilizadas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion">0. Preparación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repaso-lo-que-ya-sabes-de-intervalos">1. Repaso: lo que ya sabes de intervalos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-cuenta-como-una-observacion">2. ¿Qué cuenta como una observación?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-tentacion">2.1 La tentación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#las-esperas-de-clientes-consecutivos-no-son-independientes">2.2 Las esperas de clientes consecutivos no son independientes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-experimento-de-cobertura">2.3 El experimento de cobertura</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replicas-independientes-el-intervalo-de-una-simulacion">3. Réplicas independientes: el intervalo de una simulación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cuantas-replicas">4. ¿Cuántas réplicas?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-idea">La idea</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-horizonte-t-y-el-presupuesto-de-simulacion">5. El horizonte <span class="math notranslate nohighlight">\(T\)</span> y el presupuesto de simulación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dos-tipos-de-sistemas">Dos tipos de sistemas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-experimento">El experimento</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#un-intervalo-por-configuracion">6. Un intervalo por configuración</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-aplicado-el-centro-de-impresion-una-manana-cualquiera">Ejercicio aplicado: el Centro de Impresión, una mañana cualquiera</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#para-la-proxima-semana">Para la próxima semana</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="complementaria-semana-14-replicas-independientes-e-intervalos-de-confianza">
+<h1>Complementaria Semana 14: Réplicas independientes e intervalos de confianza<a class="headerlink" href="#complementaria-semana-14-replicas-independientes-e-intervalos-de-confianza" title="Link to this heading">#</a></h1>
+<p>En la semana 13, para comparar el simulador contra Erlang C, hicimos 10 réplicas y usamos un intervalo de confianza “prestado” de la semana 3. Funcionó, pero quedaron preguntas abiertas: ¿por qué la observación es la <strong>réplica</strong> y no cada <strong>cliente</strong>? ¿Por qué 10 réplicas y no 3 o 300? ¿Qué tan larga debe ser cada una?</p>
+<p>Hoy respondemos esas preguntas. No vamos a repetir la teoría de intervalos (ya la tienes de la semana 3); vamos a ver <strong>qué cambia cuando los datos salen de una simulación</strong>.</p>
+<section id="objetivo-de-hoy">
+<h2>Objetivo de hoy<a class="headerlink" href="#objetivo-de-hoy" title="Link to this heading">#</a></h2>
+<p>Al final de la sesión deberías poder reportar una métrica de simulación como <strong>estimación ± semiancho</strong>, justificar <strong>cuántas réplicas</strong> usaste y explicar <strong>por qué no se puede</strong> construir el intervalo con los clientes de una sola corrida.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Bloque</p></th>
+<th class="head"><p>Tema</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Repaso: lo que ya sabes de intervalos</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>¿Qué cuenta como una observación?</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Réplicas independientes: el intervalo de una simulación</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>¿Cuántas réplicas?</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>El horizonte <span class="math notranslate nohighlight">\(T\)</span> y el presupuesto de simulación</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Un intervalo por configuración</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Ejercicio aplicado: el Centro de Impresión</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="convenciones-utilizadas">
+<h2>Convenciones utilizadas<a class="headerlink" href="#convenciones-utilizadas" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Y_j\)</span>: valor de la métrica de interés en la <strong>réplica</strong> <span class="math notranslate nohighlight">\(j\)</span> (por ejemplo, la espera promedio de los clientes de esa corrida).</p></li>
+<li><p><span class="math notranslate nohighlight">\(R\)</span>: número de réplicas; <span class="math notranslate nohighlight">\(T\)</span>: horizonte (duración simulada) de cada réplica.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar Y\)</span> y <span class="math notranslate nohighlight">\(S\)</span>: media y desviación estándar muestral de <span class="math notranslate nohighlight">\(Y_1,\dots,Y_R\)</span>.</p></li>
+<li><p>HW: semiancho (<em>half-width</em>) del intervalo, <span class="math notranslate nohighlight">\(\text{HW} = t_{0.975,\,R-1}\,S/\sqrt{R}\)</span>. Es el mismo término que usa la semana 16.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\varepsilon\)</span>: precisión absoluta deseada (HW <span class="math notranslate nohighlight">\(\le \varepsilon\)</span>); <span class="math notranslate nohighlight">\(\gamma\)</span>: precisión relativa (HW <span class="math notranslate nohighlight">\(\le \gamma\,\bar Y\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda,\ \mu,\ s,\ \rho,\ W_q\)</span>: como en las semanas 5 y 13.</p></li>
+</ul>
+</section>
+<section id="preparacion">
+<h2>0. Preparación<a class="headerlink" href="#preparacion" title="Link to this heading">#</a></h2>
+<p>Este notebook se trabaja en <strong>VS Code</strong>, sobre el ambiente virtual de los tutoriales de la semana 1. Si te falta alguna librería, descomenta la primera línea.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install numpy pandas matplotlib scipy simpy</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statistics</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">simpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Usamos el simulador M/M/s de la semana 5. La única novedad es que el resultado incluye también <code class="docutils literal notranslate"><span class="pre">esperas</span></code>, la espera de <strong>cada</strong> cliente en orden de llegada; la necesitamos en la sección 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">simular_mms</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="c1"># Cola M/M/s de la semana 5 (la misma que verificamos en la semana 13).</span>
+    <span class="c1">#   lam: tasa de llegadas    mu: tasa de servicio por servidor</span>
+    <span class="c1">#   s:   número de servidores    T: horizonte de simulación</span>
+    <span class="c1"># NUEVO: el resultado incluye también &quot;esperas&quot;, la espera de CADA cliente atendido,</span>
+    <span class="c1">#        en orden de llegada. La usamos en la sección 2.</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">semilla</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;salidas&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Wq&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;W&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;area_L&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;area_Lq&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+         <span class="s2">&quot;n_sist&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;n_cola&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;t_ult&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">actualizar_areas</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span> <span class="o">-</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;t_ult&quot;</span><span class="p">]</span>
+        <span class="n">m</span><span class="p">[</span><span class="s2">&quot;area_L&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;n_sist&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">m</span><span class="p">[</span><span class="s2">&quot;area_Lq&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;n_cola&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">m</span><span class="p">[</span><span class="s2">&quot;t_ult&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">cliente</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">cid</span><span class="p">,</span> <span class="n">servidores</span><span class="p">):</span>            <span class="c1"># CAMBIO: recibe cid, el número del cliente</span>
+        <span class="n">t_llegada</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span>
+        <span class="n">actualizar_areas</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>                     <span class="c1"># cerrar el rectángulo anterior...</span>
+        <span class="n">m</span><span class="p">[</span><span class="s2">&quot;n_sist&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;n_cola&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>        <span class="c1"># ...y recién ahí actualizar</span>
+        <span class="k">with</span> <span class="n">servidores</span><span class="o">.</span><span class="n">request</span><span class="p">()</span> <span class="k">as</span> <span class="n">turno</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">turno</span>                           <span class="c1"># espera en la cola</span>
+            <span class="n">actualizar_areas</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+            <span class="n">m</span><span class="p">[</span><span class="s2">&quot;n_cola&quot;</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>                      <span class="c1"># sale de la cola, entra a servicio</span>
+            <span class="n">espera</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">now</span> <span class="o">-</span> <span class="n">t_llegada</span>
+            <span class="n">t_serv</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">mu</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">t_serv</span><span class="p">)</span>
+        <span class="n">actualizar_areas</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+        <span class="n">m</span><span class="p">[</span><span class="s2">&quot;n_sist&quot;</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>                          <span class="c1"># abandona el sistema</span>
+        <span class="n">m</span><span class="p">[</span><span class="s2">&quot;Wq&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cid</span><span class="p">,</span> <span class="n">espera</span><span class="p">))</span>             
+        <span class="n">m</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">espera</span> <span class="o">+</span> <span class="n">t_serv</span><span class="p">)</span>
+        <span class="n">m</span><span class="p">[</span><span class="s2">&quot;salidas&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">generador</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">servidores</span><span class="p">):</span>
+        <span class="n">cid</span> <span class="o">=</span> <span class="mi">0</span>                                  
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">lam</span><span class="p">))</span>
+            <span class="n">cid</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">cliente</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">cid</span><span class="p">,</span> <span class="n">servidores</span><span class="p">))</span>
+
+    <span class="n">env</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
+    <span class="n">servidores</span> <span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Resource</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">generador</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">servidores</span><span class="p">))</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">actualizar_areas</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>                         <span class="c1"># cerrar el último rectángulo</span>
+
+    
+    <span class="c1"># Ordenamos las esperas por número de cliente para tenerlas en orden de llegada.</span>
+    <span class="n">esperas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">w</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s2">&quot;Wq&quot;</span><span class="p">])])</span>
+    <span class="n">L</span><span class="p">,</span> <span class="n">Lq</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;area_L&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">T</span><span class="p">,</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;area_Lq&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">T</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Wq&quot;</span><span class="p">:</span> <span class="n">esperas</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">&quot;W&quot;</span><span class="p">:</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">]),</span> <span class="s2">&quot;Lq&quot;</span><span class="p">:</span> <span class="n">Lq</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">:</span> <span class="n">L</span><span class="p">,</span>
+           <span class="s2">&quot;utilizacion&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">L</span> <span class="o">-</span> <span class="n">Lq</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span><span class="p">,</span>
+           <span class="s2">&quot;P_espera&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">esperas</span> <span class="o">&gt;</span> <span class="mf">1e-12</span><span class="p">)),</span>   <span class="c1"># fracción que tuvo que esperar</span>
+           <span class="s2">&quot;salidas&quot;</span><span class="p">:</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;salidas&quot;</span><span class="p">],</span>
+           <span class="s2">&quot;esperas&quot;</span><span class="p">:</span> <span class="n">esperas</span><span class="p">}</span>                     
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">teoria_mms</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="c1"># Fórmulas de Erlang C (semana 13)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">lam</span> <span class="o">/</span> <span class="n">mu</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">s</span>
+    <span class="n">suma</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="n">n</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+    <span class="n">termino_cola</span> <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="n">s</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">rho</span><span class="p">))</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">termino_cola</span> <span class="o">/</span> <span class="p">(</span><span class="n">suma</span> <span class="o">+</span> <span class="n">termino_cola</span><span class="p">)</span>
+    <span class="n">Lq</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">rho</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;rho&quot;</span><span class="p">:</span> <span class="n">rho</span><span class="p">,</span> <span class="s2">&quot;P_espera&quot;</span><span class="p">:</span> <span class="n">C</span><span class="p">,</span> <span class="s2">&quot;Lq&quot;</span><span class="p">:</span> <span class="n">Lq</span><span class="p">,</span> <span class="s2">&quot;Wq&quot;</span><span class="p">:</span> <span class="n">Lq</span> <span class="o">/</span> <span class="n">lam</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">:</span> <span class="n">Lq</span> <span class="o">/</span> <span class="n">lam</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">mu</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">:</span> <span class="n">Lq</span> <span class="o">+</span> <span class="n">a</span><span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ic_t</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="n">confianza</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
+    <span class="c1"># Intervalo t de la semana 3: devuelve (media, semiancho HW)</span>
+    <span class="n">datos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
+    <span class="n">hw</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">confianza</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">R</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">datos</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">datos</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">hw</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="repaso-lo-que-ya-sabes-de-intervalos">
+<h2>1. Repaso: lo que ya sabes de intervalos<a class="headerlink" href="#repaso-lo-que-ya-sabes-de-intervalos" title="Link to this heading">#</a></h2>
+<p>De la <strong>semana 3</strong> (Teorema del Límite Central) ya tienes todo lo estadístico:</p>
+<ul class="simple">
+<li><p>Si <span class="math notranslate nohighlight">\(Y_1,\dots,Y_R\)</span> son <strong>independientes e idénticamente distribuidas</strong>, el intervalo
+<div class="math notranslate nohighlight">
+\[\bar Y \pm t_{0.975,\,R-1}\,\frac{S}{\sqrt R}\]</div>
+
+contiene la media verdadera con confianza del 95%.</p></li>
+<li><p>“95% de confianza” es una propiedad del <strong>procedimiento</strong>: si se repite el experimento muchas veces, el 95% de los intervalos contienen el valor real. Allá lo comprobaste construyendo 20 000 intervalos y contando.</p></li>
+<li><p>Se usa <span class="math notranslate nohighlight">\(t\)</span> y no <span class="math notranslate nohighlight">\(z\)</span> porque <span class="math notranslate nohighlight">\(S\)</span> se estima con los datos; el semiancho cae como <span class="math notranslate nohighlight">\(1/\sqrt R\)</span>.</p></li>
+</ul>
+<p>De la <strong>semana 5</strong>: una sola corrida de simulación es <strong>una sola observación</strong>; con semillas distintas los resultados cambian mucho.</p>
+<p>Hay una palabra clave en el primer punto: <strong>independientes</strong>. En los ejemplos de la semana 3 (dados, lotes de piezas) la independencia venía de regalo. En una cola no. Ese es todo el problema de hoy.</p>
+</section>
+<section id="que-cuenta-como-una-observacion">
+<h2>2. ¿Qué cuenta como una observación?<a class="headerlink" href="#que-cuenta-como-una-observacion" title="Link to this heading">#</a></h2>
+<section id="la-tentacion">
+<h3>2.1 La tentación<a class="headerlink" href="#la-tentacion" title="Link to this heading">#</a></h3>
+<p>Trabajamos con la M/M/2 de la semana 13: <span class="math notranslate nohighlight">\(\lambda = 1.6\)</span>, <span class="math notranslate nohighlight">\(\mu = 1\)</span>, <span class="math notranslate nohighlight">\(s = 2\)</span> (<span class="math notranslate nohighlight">\(\rho = 0.8\)</span>), cuyo valor exacto es <span class="math notranslate nohighlight">\(W_q = 1.778\)</span> min. Una corrida de <span class="math notranslate nohighlight">\(T = 1000\)</span> minutos atiende a unos 1600 clientes. Es tentador tratar sus 1600 esperas como una muestra y aplicar la fórmula de la semana 3 con <span class="math notranslate nohighlight">\(n = 1600\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">2</span>
+<span class="n">Wq_teo</span> <span class="o">=</span> <span class="n">teoria_mms</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">)[</span><span class="s2">&quot;Wq&quot;</span><span class="p">]</span>
+
+<span class="n">corrida</span> <span class="o">=</span> <span class="n">simular_mms</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">esperas</span> <span class="o">=</span> <span class="n">corrida</span><span class="p">[</span><span class="s2">&quot;esperas&quot;</span><span class="p">]</span>
+
+<span class="n">media</span><span class="p">,</span> <span class="n">hw</span> <span class="o">=</span> <span class="n">ic_t</span><span class="p">(</span><span class="n">esperas</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Clientes en la corrida : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">esperas</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IC &#39;ingenuo&#39; para Wq   : </span><span class="si">{</span><span class="n">media</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">hw</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  -&gt;  [</span><span class="si">{</span><span class="n">media</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">hw</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">media</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">hw</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Valor exacto (Erlang C): </span><span class="si">{</span><span class="n">Wq_teo</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Clientes en la corrida : 1585
+IC &#39;ingenuo&#39; para Wq   : 1.659 ± 0.108  -&gt;  [1.551, 1.767]
+Valor exacto (Erlang C): 1.778
+</pre></div>
+</div>
+</div>
+</div>
+<p>El intervalo es muy angosto (un semiancho de alrededor de 0.1 min) y <strong>no contiene</strong> el valor exacto. ¿Mala suerte de esta semilla, o algo sistemático?</p>
+</section>
+<section id="las-esperas-de-clientes-consecutivos-no-son-independientes">
+<h3>2.2 Las esperas de clientes consecutivos no son independientes<a class="headerlink" href="#las-esperas-de-clientes-consecutivos-no-son-independientes" title="Link to this heading">#</a></h3>
+<p>Graficamos las esperas en el orden en que llegaron los clientes, y la espera de cada cliente contra la del siguiente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">esperas</span><span class="p">[:</span><span class="mi">400</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;cliente (orden de llegada)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;espera en cola (min)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Esperas de los primeros 400 clientes de UNA corrida&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">esperas</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">esperas</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">s</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;espera del cliente i&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;espera del cliente i + 1&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Cada cliente contra el siguiente&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">):</span>
+    <span class="n">r_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">esperas</span><span class="p">[:</span><span class="o">-</span><span class="n">k</span><span class="p">],</span> <span class="n">esperas</span><span class="p">[</span><span class="n">k</span><span class="p">:])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Correlación entre la espera del cliente i y la del cliente i + </span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">&gt;2</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r_k</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/0fe7c79e11dca407d96cda1a16802809ac147ec2456b4946c0f8479058e4b135.png" src="../../_images/0fe7c79e11dca407d96cda1a16802809ac147ec2456b4946c0f8479058e4b135.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correlación entre la espera del cliente i y la del cliente i +  1: 0.96
+Correlación entre la espera del cliente i y la del cliente i + 10: 0.69
+Correlación entre la espera del cliente i y la del cliente i + 50: 0.38
+</pre></div>
+</div>
+</div>
+</div>
+<p>La serie no se ve como ruido independiente: hay <strong>rachas</strong> largas de esperas altas (cuando se formó una fila) y de esperas en cero (cuando el sistema se vació). En el diagrama de la derecha los puntos se alinean en la diagonal: si el cliente <span class="math notranslate nohighlight">\(i\)</span> esperó mucho, el <span class="math notranslate nohighlight">\(i+1\)</span> <strong>casi seguro</strong> también, porque está en la misma fila. Incluso clientes separados por 50 posiciones siguen correlacionados.</p>
+<p>Eso rompe la fórmula de la semana 3: <span class="math notranslate nohighlight">\(S/\sqrt n\)</span> supone que cada dato aporta información nueva, pero 1600 esperas correlacionadas contienen la información de <strong>muchas menos</strong> observaciones independientes. El resultado es un intervalo <strong>demasiado angosto</strong>: aparenta una precisión que no tenemos.</p>
+</section>
+<section id="el-experimento-de-cobertura">
+<h3>2.3 El experimento de cobertura<a class="headerlink" href="#el-experimento-de-cobertura" title="Link to this heading">#</a></h3>
+<p>Hagamos lo mismo que en la semana 3: repetir el procedimiento muchas veces y contar cuántos intervalos contienen el valor real. Comparamos dos procedimientos con <strong>el mismo tiempo simulado por intervalo</strong>:</p>
+<ul class="simple">
+<li><p><strong>Ingenuo:</strong> una corrida de <span class="math notranslate nohighlight">\(T = 1000\)</span>; IC con las esperas de todos sus clientes.</p></li>
+<li><p><strong>Réplicas:</strong> 10 corridas de <span class="math notranslate nohighlight">\(T = 1000\)</span> con semillas distintas; IC con los 10 promedios <span class="math notranslate nohighlight">\(Y_1,\dots,Y_{10}\)</span>.</p></li>
+</ul>
+<p>Esta celda tarda unos segundos: son 1000 simulaciones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_experimentos</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">intervalos</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ingenuo&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;réplicas&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_experimentos</span><span class="p">):</span>
+    <span class="n">semillas</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span> <span class="o">*</span> <span class="n">e</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="p">)]</span>
+    <span class="n">corridas</span> <span class="o">=</span> <span class="p">[</span><span class="n">simular_mms</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">semillas</span><span class="p">]</span>
+    <span class="n">intervalos</span><span class="p">[</span><span class="s2">&quot;ingenuo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ic_t</span><span class="p">(</span><span class="n">corridas</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;esperas&quot;</span><span class="p">]))</span>      <span class="c1"># 1 corrida, n = clientes</span>
+    <span class="n">intervalos</span><span class="p">[</span><span class="s2">&quot;réplicas&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ic_t</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;Wq&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">corridas</span><span class="p">]))</span>  <span class="c1"># R = 10 promedios</span>
+
+<span class="n">filas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">lista</span> <span class="ow">in</span> <span class="n">intervalos</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">cubre</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">Wq_teo</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">h</span> <span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">]</span>
+    <span class="n">filas</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;procedimiento&quot;</span><span class="p">:</span> <span class="n">nombre</span><span class="p">,</span> <span class="s2">&quot;cobertura&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cubre</span><span class="p">),</span>
+                  <span class="s2">&quot;HW promedio&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">h</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">])})</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>procedimiento</th>
+      <th>cobertura</th>
+      <th>HW promedio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ingenuo</td>
+      <td>0.16</td>
+      <td>0.106</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>réplicas</td>
+      <td>0.91</td>
+      <td>0.361</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">lista</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">intervalos</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lista</span><span class="p">[:</span><span class="mi">40</span><span class="p">]):</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;tab:blue&quot;</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">Wq_teo</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">h</span> <span class="k">else</span> <span class="s2">&quot;tab:red&quot;</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="n">h</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="n">h</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Wq_teo</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Wq exacto = </span><span class="si">{</span><span class="n">Wq_teo</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Procedimiento: </span><span class="si">{</span><span class="n">nombre</span><span class="si">}</span><span class="s2"> (40 de los </span><span class="si">{</span><span class="n">n_experimentos</span><span class="si">}</span><span class="s2"> intervalos)&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;experimento&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;IC 95% para $W_q$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3520469584daec246b207c41759fad143834233421c991b1d999cfb2750f9fa9.png" src="../../_images/3520469584daec246b207c41759fad143834233421c991b1d999cfb2750f9fa9.png" />
+</div>
+</div>
+<p>El contraste es enorme. El intervalo “ingenuo” dice ser del 95%, pero contiene el valor real en <strong>muy pocos</strong> experimentos (en rojo los que fallan). Sus centros varían mucho de un experimento a otro, como varía cualquier corrida, pero cada intervalo es tan angosto que no alcanza a cubrir esa variación. El de réplicas cubre cerca del 95%, con un semiancho más ancho y <strong>honesto</strong>.</p>
+<p>La cobertura de las réplicas queda un poco por debajo de 0.95. Hay dos razones que veremos: con <span class="math notranslate nohighlight">\(R = 10\)</span> el TLC todavía no es perfecto (semana 3), y cada réplica arranca con el sistema vacío, lo que sesga un poco su promedio hacia abajo (sección 5 y semana 15).</p>
+<div style="background-color:#fff4e5; border-left:4px solid #f5a623; padding:10px; margin:10px 0;">
+<p><strong>Observación importante</strong></p>
+<p>En una simulación, <strong>la unidad de observación es la réplica, no el cliente</strong>. Los clientes de una misma corrida comparten la misma historia de la fila y están correlacionados. Los promedios de corridas con semillas distintas sí son independientes, y sobre ellos aplica todo lo de la semana 3.</p>
+</div></section>
+</section>
+<section id="replicas-independientes-el-intervalo-de-una-simulacion">
+<h2>3. Réplicas independientes: el intervalo de una simulación<a class="headerlink" href="#replicas-independientes-el-intervalo-de-una-simulacion" title="Link to this heading">#</a></h2>
+<p>El procedimiento completo:</p>
+<ol class="arabic simple">
+<li><p>Correr el modelo <span class="math notranslate nohighlight">\(R\)</span> veces, con la misma configuración y <strong>semillas distintas</strong>.</p></li>
+<li><p>De cada réplica <span class="math notranslate nohighlight">\(j\)</span> sacar <strong>un número</strong> <span class="math notranslate nohighlight">\(Y_j\)</span> (la métrica resumida dentro de la corrida: <span class="math notranslate nohighlight">\(W_q\)</span>, <span class="math notranslate nohighlight">\(P(\text{espera})\)</span>, utilización…).</p></li>
+<li><p>Construir el intervalo de la semana 3 sobre <span class="math notranslate nohighlight">\(Y_1,\dots,Y_R\)</span>, con <span class="math notranslate nohighlight">\(R - 1\)</span> grados de libertad.</p></li>
+</ol>
+<p>La fórmula es exactamente la misma de siempre. Lo que cambió es <strong>qué es cada dato</strong>: ahora cada dato es una corrida completa.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span>
+<span class="n">replicas</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">simular_mms</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">R</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)],</span>
+                        <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">RangeIndex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">R</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;réplica&quot;</span><span class="p">))</span>
+<span class="n">replicas</span><span class="p">[[</span><span class="s2">&quot;Wq&quot;</span><span class="p">,</span> <span class="s2">&quot;P_espera&quot;</span><span class="p">,</span> <span class="s2">&quot;utilizacion&quot;</span><span class="p">,</span> <span class="s2">&quot;salidas&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Wq</th>
+      <th>P_espera</th>
+      <th>utilizacion</th>
+      <th>salidas</th>
+    </tr>
+    <tr>
+      <th>réplica</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1.659</td>
+      <td>0.668</td>
+      <td>0.760</td>
+      <td>1585</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.548</td>
+      <td>0.697</td>
+      <td>0.804</td>
+      <td>1633</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.774</td>
+      <td>0.705</td>
+      <td>0.798</td>
+      <td>1609</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.495</td>
+      <td>0.678</td>
+      <td>0.796</td>
+      <td>1598</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.192</td>
+      <td>0.648</td>
+      <td>0.762</td>
+      <td>1594</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.862</td>
+      <td>0.612</td>
+      <td>0.733</td>
+      <td>1569</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2.265</td>
+      <td>0.732</td>
+      <td>0.804</td>
+      <td>1591</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1.511</td>
+      <td>0.718</td>
+      <td>0.803</td>
+      <td>1595</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2.935</td>
+      <td>0.737</td>
+      <td>0.829</td>
+      <td>1602</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1.571</td>
+      <td>0.707</td>
+      <td>0.799</td>
+      <td>1576</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">teo</span> <span class="o">=</span> <span class="n">teoria_mms</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">filas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">metrica</span><span class="p">,</span> <span class="n">referencia</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">&quot;Wq&quot;</span><span class="p">,</span> <span class="n">teo</span><span class="p">[</span><span class="s2">&quot;Wq&quot;</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;P_espera&quot;</span><span class="p">,</span> <span class="n">teo</span><span class="p">[</span><span class="s2">&quot;P_espera&quot;</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;utilizacion&quot;</span><span class="p">,</span> <span class="n">teo</span><span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">])]:</span>
+    <span class="n">media</span><span class="p">,</span> <span class="n">hw</span> <span class="o">=</span> <span class="n">ic_t</span><span class="p">(</span><span class="n">replicas</span><span class="p">[</span><span class="n">metrica</span><span class="p">])</span>
+    <span class="n">filas</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;métrica&quot;</span><span class="p">:</span> <span class="n">metrica</span><span class="p">,</span> <span class="s2">&quot;media&quot;</span><span class="p">:</span> <span class="n">media</span><span class="p">,</span> <span class="s2">&quot;HW&quot;</span><span class="p">:</span> <span class="n">hw</span><span class="p">,</span>
+                  <span class="s2">&quot;HW relativo (%)&quot;</span><span class="p">:</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">hw</span> <span class="o">/</span> <span class="n">media</span><span class="p">,</span> <span class="s2">&quot;valor exacto&quot;</span><span class="p">:</span> <span class="n">referencia</span><span class="p">})</span>
+<span class="n">tabla_ic</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;métrica&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">tabla_ic</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="n">m</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">tabla_ic</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Wq&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;media&quot;</span><span class="p">,</span> <span class="s2">&quot;HW&quot;</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reporte: Wq = </span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">h</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> min (IC 95%, R = </span><span class="si">{</span><span class="n">R</span><span class="si">}</span><span class="s2"> réplicas de T = </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2"> min, semillas 1 a </span><span class="si">{</span><span class="n">R</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>media</th>
+      <th>HW</th>
+      <th>HW relativo (%)</th>
+      <th>valor exacto</th>
+    </tr>
+    <tr>
+      <th>métrica</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Wq</th>
+      <td>1.681</td>
+      <td>0.408</td>
+      <td>24.265</td>
+      <td>1.778</td>
+    </tr>
+    <tr>
+      <th>P_espera</th>
+      <td>0.690</td>
+      <td>0.028</td>
+      <td>4.048</td>
+      <td>0.711</td>
+    </tr>
+    <tr>
+      <th>utilizacion</th>
+      <td>0.789</td>
+      <td>0.020</td>
+      <td>2.581</td>
+      <td>0.800</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reporte: Wq = 1.68 ± 0.41 min (IC 95%, R = 10 réplicas de T = 1000 min, semillas 1 a 10)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fíjate en dos cosas de la tabla:</p>
+<ul class="simple">
+<li><p>Las tres métricas salen de <strong>las mismas 10 réplicas</strong>, pero su precisión relativa es muy distinta: la utilización se estima muy bien con pocas réplicas y <span class="math notranslate nohighlight">\(W_q\)</span> no. <strong>La precisión depende de la métrica</strong>, por eso el número de réplicas se decide pensando en la métrica más difícil que importe.</p></li>
+<li><p>La última línea es la forma de reportar un resultado de simulación. Un número solo (”<span class="math notranslate nohighlight">\(W_q = 1.8\)</span>”) no dice nada sobre su confiabilidad. El reporte mínimo incluye <strong>estimación ± HW, nivel de confianza, <span class="math notranslate nohighlight">\(R\)</span>, <span class="math notranslate nohighlight">\(T\)</span> y semillas</strong>. La semana que viene se agrega el período de calentamiento.</p></li>
+</ul>
+</section>
+<section id="cuantas-replicas">
+<h2>4. ¿Cuántas réplicas?<a class="headerlink" href="#cuantas-replicas" title="Link to this heading">#</a></h2>
+<section id="la-idea">
+<h3>La idea<a class="headerlink" href="#la-idea" title="Link to this heading">#</a></h3>
+<p>Queremos que el semiancho no pase de un valor tolerable. Se puede pedir de dos formas:</p>
+<ul class="simple">
+<li><p><strong>Precisión absoluta:</strong> <span class="math notranslate nohighlight">\(\text{HW} \le \varepsilon\)</span> (por ejemplo, “<span class="math notranslate nohighlight">\(W_q\)</span> con un error de máximo 0.1 min”).</p></li>
+<li><p><strong>Precisión relativa:</strong> <span class="math notranslate nohighlight">\(\text{HW} \le \gamma\,\bar Y\)</span> (por ejemplo, “con un error de máximo el 5% de su valor”).</p></li>
+</ul>
+<p>Como <span class="math notranslate nohighlight">\(\text{HW} = t_{0.975,\,R-1}\, S/\sqrt R\)</span>, despejando:</p>
+<div class="math notranslate nohighlight">
+\[
+R \;\ge\; \left\lceil \left(\frac{t_{0.975,\,R-1}\; S}{\varepsilon}\right)^2 \right\rceil
+\]</div>
+<p>Dos detalles prácticos:</p>
+<ol class="arabic simple">
+<li><p><strong><span class="math notranslate nohighlight">\(S\)</span> no se conoce</strong> antes de simular. Se estima con unas <strong>réplicas piloto</strong> (aquí, las 10 de la sección 3). Un piloto muy pequeño (2 o 3 réplicas) da un <span class="math notranslate nohighlight">\(S\)</span> poco confiable; 10 es un buen mínimo.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(R\)</span> aparece a los dos lados</strong> (a través de <span class="math notranslate nohighlight">\(t_{R-1}\)</span>). Se arranca con <span class="math notranslate nohighlight">\(z = 1.96\)</span> y se itera hasta que <span class="math notranslate nohighlight">\(R\)</span> deje de cambiar.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">replicas_necesarias</span><span class="p">(</span><span class="n">piloto</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">confianza</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
+    <span class="c1"># Número de réplicas para que HW &lt;= epsilon (absoluto) o HW &lt;= gamma * media (relativo)</span>
+    <span class="n">piloto</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">piloto</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">piloto</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">epsilon</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">epsilon</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="n">piloto</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">confianza</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">S</span> <span class="o">/</span> <span class="n">epsilon</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># arranque con z</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">R_nuevo</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">confianza</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">R</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">S</span> <span class="o">/</span> <span class="n">epsilon</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">R_nuevo</span> <span class="o">&lt;=</span> <span class="n">R</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">R</span><span class="p">,</span> <span class="n">epsilon</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="n">R_nuevo</span>
+
+
+<span class="n">piloto</span> <span class="o">=</span> <span class="n">replicas</span><span class="p">[</span><span class="s2">&quot;Wq&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Piloto: R0 = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">piloto</span><span class="p">)</span><span class="si">}</span><span class="s2">, media = </span><span class="si">{</span><span class="n">piloto</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, S = </span><span class="si">{</span><span class="n">piloto</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">filas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="p">(</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">):</span>
+    <span class="n">R_nec</span><span class="p">,</span> <span class="n">eps</span> <span class="o">=</span> <span class="n">replicas_necesarias</span><span class="p">(</span><span class="n">piloto</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">g</span><span class="p">)</span>
+    <span class="n">filas</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;precisión relativa γ&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">g</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">,</span> <span class="s2">&quot;ε (min)&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="s2">&quot;R necesario&quot;</span><span class="p">:</span> <span class="n">R_nec</span><span class="p">})</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Piloto: R0 = 10, media = 1.681, S = 0.570
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precisión relativa γ</th>
+      <th>ε (min)</th>
+      <th>R necesario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10.0%</td>
+      <td>0.168</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5.0%</td>
+      <td>0.084</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.5%</td>
+      <td>0.042</td>
+      <td>710</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Pasar de 10% a 5% (la mitad del error) cuesta unas <strong>cuatro veces</strong> más réplicas, y de 5% a 2.5% otra vez cuatro veces. Es la misma ley de la semana 2: el error cae como <span class="math notranslate nohighlight">\(1/\sqrt R\)</span>, así que <strong>dividir el error entre 2 multiplica el costo por 4</strong>.</p>
+<p>El número calculado es una <strong>estimación</strong>: depende del <span class="math notranslate nohighlight">\(S\)</span> del piloto. Por eso, después de correr las réplicas hay que <strong>comprobar</strong> el semiancho que se obtuvo de verdad. Lo hacemos para <span class="math notranslate nohighlight">\(\gamma = 5\%\)</span>, reutilizando las 10 réplicas piloto y agregando las que faltan con semillas nuevas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R_obj</span><span class="p">,</span> <span class="n">eps</span> <span class="o">=</span> <span class="n">replicas_necesarias</span><span class="p">(</span><span class="n">piloto</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">extra</span> <span class="o">=</span> <span class="p">[</span><span class="n">simular_mms</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="n">j</span><span class="p">)[</span><span class="s2">&quot;Wq&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">piloto</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">R_obj</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">todas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">piloto</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">extra</span><span class="p">])</span>
+
+<span class="n">media</span><span class="p">,</span> <span class="n">hw</span> <span class="o">=</span> <span class="n">ic_t</span><span class="p">(</span><span class="n">todas</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Réplicas totales: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">todas</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wq = </span><span class="si">{</span><span class="n">media</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">hw</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">   -&gt;   HW relativo = </span><span class="si">{</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">hw</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">media</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%  (objetivo: 5%)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Valor exacto: </span><span class="si">{</span><span class="n">Wq_teo</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Réplicas totales: 180
+Wq = 1.704 ± 0.073   -&gt;   HW relativo = 4.3%  (objetivo: 5%)
+Valor exacto: 1.778
+</pre></div>
+</div>
+</div>
+</div>
+<p>Si el semiancho obtenido quedara un poco por encima del objetivo (porque el <span class="math notranslate nohighlight">\(S\)</span> del piloto subestimó la variabilidad), se recalcula <span class="math notranslate nohighlight">\(R\)</span> con todas las réplicas disponibles y se agregan más. Ese ciclo “piloto → calcular <span class="math notranslate nohighlight">\(R\)</span> → simular → comprobar” es el procedimiento práctico.</p>
+</section>
+</section>
+<section id="el-horizonte-t-y-el-presupuesto-de-simulacion">
+<h2>5. El horizonte <span class="math notranslate nohighlight">\(T\)</span> y el presupuesto de simulación<a class="headerlink" href="#el-horizonte-t-y-el-presupuesto-de-simulacion" title="Link to this heading">#</a></h2>
+<section id="dos-tipos-de-sistemas">
+<h3>Dos tipos de sistemas<a class="headerlink" href="#dos-tipos-de-sistemas" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Con horizonte natural (<em>terminante</em>)</p></th>
+<th class="head"><p>En régimen estacionario</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ejemplo</p></td>
+<td><p>la sucursal de la semana 13: abre a las 8:00 vacía y cierra a las 16:00</p></td>
+<td><p>un centro de llamadas 24/7, una planta que nunca para</p></td>
+</tr>
+<tr class="row-odd"><td><p>Qué interesa</p></td>
+<td><p>lo que pasa <strong>en una jornada</strong></p></td>
+<td><p>el comportamiento <strong>de largo plazo</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>¿Quién fija <span class="math notranslate nohighlight">\(T\)</span>?</p></td>
+<td><p><strong>la realidad</strong>: <span class="math notranslate nohighlight">\(T\)</span> = la jornada</p></td>
+<td><p><strong>nosotros</strong>: <span class="math notranslate nohighlight">\(T\)</span> es una decisión de diseño del experimento</p></td>
+</tr>
+<tr class="row-odd"><td><p>Arranque vacío</p></td>
+<td><p>es parte del sistema real</p></td>
+<td><p>es un artificio del modelo que hay que manejar</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>En un sistema terminante no hay nada que discutir: cada réplica es una jornada y lo único que se decide es <span class="math notranslate nohighlight">\(R\)</span>. En régimen estacionario (como la comparación con Erlang C) hay que decidir <strong>también</strong> <span class="math notranslate nohighlight">\(T\)</span>. ¿Qué conviene con un presupuesto fijo de tiempo simulado: pocas réplicas largas o muchas cortas?</p>
+</section>
+<section id="el-experimento">
+<h3>El experimento<a class="headerlink" href="#el-experimento" title="Link to this heading">#</a></h3>
+<p>Fijamos un presupuesto de <span class="math notranslate nohighlight">\(R \times T = 10\,000\)</span> minutos simulados y lo repartimos de cinco formas. Para que el resultado no dependa de una semilla, repetimos cada reparto 50 veces y promediamos. Esta celda tarda alrededor de medio minuto.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">repartos</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2000</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">20</span><span class="p">)]</span>
+<span class="n">filas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">R_k</span><span class="p">,</span> <span class="n">T_k</span> <span class="ow">in</span> <span class="n">repartos</span><span class="p">:</span>
+    <span class="n">medias</span><span class="p">,</span> <span class="n">hws</span><span class="p">,</span> <span class="n">cubre</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">rep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">simular_mms</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">T_k</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="mi">100_000</span> <span class="o">*</span> <span class="n">rep</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[</span><span class="s2">&quot;Wq&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R_k</span><span class="p">)]</span>
+        <span class="n">m</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">ic_t</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">medias</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">);</span> <span class="n">hws</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">h</span><span class="p">);</span> <span class="n">cubre</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">Wq_teo</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">filas</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="n">R_k</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="n">T_k</span><span class="p">,</span> <span class="s2">&quot;estimación promedio de Wq&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">medias</span><span class="p">),</span>
+                  <span class="s2">&quot;HW promedio&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hws</span><span class="p">),</span> <span class="s2">&quot;cobertura (de 50)&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cubre</span><span class="p">)})</span>
+
+<span class="n">presupuesto</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Valor exacto: Wq = </span><span class="si">{</span><span class="n">Wq_teo</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">presupuesto</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Valor exacto: Wq = 1.778
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>R</th>
+      <th>T</th>
+      <th>estimación promedio de Wq</th>
+      <th>HW promedio</th>
+      <th>cobertura (de 50)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5</td>
+      <td>2000</td>
+      <td>1.751</td>
+      <td>0.423</td>
+      <td>0.98</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10</td>
+      <td>1000</td>
+      <td>1.712</td>
+      <td>0.346</td>
+      <td>0.86</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>25</td>
+      <td>400</td>
+      <td>1.701</td>
+      <td>0.315</td>
+      <td>0.80</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>100</td>
+      <td>100</td>
+      <td>1.430</td>
+      <td>0.206</td>
+      <td>0.12</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>500</td>
+      <td>20</td>
+      <td>0.744</td>
+      <td>0.065</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Lectura de la tabla:</p>
+<ul class="simple">
+<li><p><strong>El semiancho cambia poco</strong> mientras las réplicas son razonablemente largas (<span class="math notranslate nohighlight">\(T \ge 400\)</span>), y lo que cambia se explica sobre todo por el cuantil: con <span class="math notranslate nohighlight">\(R = 5\)</span> sale algo más ancho porque <span class="math notranslate nohighlight">\(t_{0.975,4} = 2.78\)</span> es bastante mayor que <span class="math notranslate nohighlight">\(t_{0.975,24} = 2.06\)</span>.</p></li>
+<li><p><strong>Pero el semiancho no lo es todo.</strong> Mira la estimación promedio y la cobertura: a medida que las réplicas se acortan, la estimación queda más <strong>por debajo</strong> de 1.778 y la cobertura cae (98% con <span class="math notranslate nohighlight">\(T = 2000\)</span>, 86% con <span class="math notranslate nohighlight">\(T = 1000\)</span> y 80% con <span class="math notranslate nohighlight">\(T = 400\)</span>), aunque el semiancho se vea igual o incluso mejor. Cada réplica arranca vacía y paga su propio arranque, así que en régimen estacionario, con un presupuesto fijo, <strong>conviene hacer pocas réplicas largas</strong>, sin llegar a tan pocas que el cuantil <span class="math notranslate nohighlight">\(t\)</span> castigue el intervalo.</p></li>
+<li><p><strong>Con réplicas muy cortas</strong> el problema no es la precisión, es el <strong>sesgo</strong>. Cada réplica arranca con el sistema vacío y, si dura poco, buena parte de ella transcurre antes de que se forme la fila típica: su promedio subestima <span class="math notranslate nohighlight">\(W_q\)</span>. Con <span class="math notranslate nohighlight">\(T = 20\)</span> la estimación queda en menos de la mitad del valor real y, peor aún, con un semiancho <strong>pequeño</strong>: el intervalo es angosto y está <strong>equivocado</strong>. Ningún número de réplicas corrige eso, porque todas tienen el mismo sesgo.</p></li>
+</ul>
+<br>
+<div style="background-color: rgba(173, 216, 230, 0.25); padding: 15px; border-left: 5px solid #ADD8E6; border-radius: 5px; margin-bottom: 15px; box-sizing: border-box; overflow-wrap: break-word; width: 100%;">
+<p><strong>Pregunta de control.</strong> Con <span class="math notranslate nohighlight">\(T = 20\)</span> y <span class="math notranslate nohighlight">\(R = 500\)</span>, el intervalo es muy estrecho. ¿Por qué no deberíamos confiar en él? ¿Qué le pasaría al intervalo si subimos a <span class="math notranslate nohighlight">\(R = 5000\)</span> réplicas de <span class="math notranslate nohighlight">\(T = 20\)</span>?</p>
+</div>
+<p>Cómo manejar el arranque vacío en régimen estacionario (descartar un período de calentamiento, o hacer una sola corrida larga) es el tema de la <strong>semana 15</strong>.</p>
+</section>
+</section>
+<section id="un-intervalo-por-configuracion">
+<h2>6. Un intervalo por configuración<a class="headerlink" href="#un-intervalo-por-configuracion" title="Link to this heading">#</a></h2>
+<p>Supongamos que la gerencia quiere conocer la espera con <span class="math notranslate nohighlight">\(s = 2, 3\)</span> y <span class="math notranslate nohighlight">\(4\)</span> servidores, para la misma demanda <span class="math notranslate nohighlight">\(\lambda = 1.6\)</span>. El procedimiento no cambia: <strong>cada configuración tiene sus propias réplicas, su propio intervalo y su propio <span class="math notranslate nohighlight">\(R\)</span> necesario</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">s_k</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">simular_mms</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">s_k</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">semilla</span><span class="o">=</span><span class="n">j</span><span class="p">)[</span><span class="s2">&quot;Wq&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
+    <span class="n">media</span><span class="p">,</span> <span class="n">hw</span> <span class="o">=</span> <span class="n">ic_t</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">R_rel</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">replicas_necesarias</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="n">R_abs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">replicas_necesarias</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="n">filas</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="n">s_k</span><span class="p">,</span> <span class="s2">&quot;Wq (media)&quot;</span><span class="p">:</span> <span class="n">media</span><span class="p">,</span> <span class="s2">&quot;HW&quot;</span><span class="p">:</span> <span class="n">hw</span><span class="p">,</span> <span class="s2">&quot;HW relativo (%)&quot;</span><span class="p">:</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">hw</span> <span class="o">/</span> <span class="n">media</span><span class="p">,</span>
+                  <span class="s2">&quot;Wq exacto&quot;</span><span class="p">:</span> <span class="n">teoria_mms</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">s_k</span><span class="p">)[</span><span class="s2">&quot;Wq&quot;</span><span class="p">],</span>
+                  <span class="s2">&quot;R para HW ≤ 5</span><span class="si">% d</span><span class="s2">e la media&quot;</span><span class="p">:</span> <span class="n">R_rel</span><span class="p">,</span> <span class="s2">&quot;R para HW ≤ 0.05 min&quot;</span><span class="p">:</span> <span class="n">R_abs</span><span class="p">})</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filas</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Wq (media)</th>
+      <th>HW</th>
+      <th>HW relativo (%)</th>
+      <th>Wq exacto</th>
+      <th>R para HW ≤ 5% de la media</th>
+      <th>R para HW ≤ 0.05 min</th>
+    </tr>
+    <tr>
+      <th>s</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>1.681</td>
+      <td>0.408</td>
+      <td>24.265</td>
+      <td>1.778</td>
+      <td>180</td>
+      <td>503</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.194</td>
+      <td>0.035</td>
+      <td>17.985</td>
+      <td>0.196</td>
+      <td>100</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.038</td>
+      <td>0.009</td>
+      <td>23.764</td>
+      <td>0.038</td>
+      <td>173</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Lo que hay que notar:</p>
+<ul class="simple">
+<li><p>El número de réplicas necesario <strong>cambia con la configuración</strong>; no se puede calcular una vez y usarlo para todas.</p></li>
+<li><p><strong>El criterio de precisión debe tener sentido para la decisión.</strong> Con <span class="math notranslate nohighlight">\(s = 4\)</span> la espera es de unas centésimas de minuto: exigir un error relativo del 5% significa estimarla con una precisión de milésimas de minuto, lo cual no le importa a nadie. Ahí es más sensato un criterio <strong>absoluto</strong> (“con un error de máximo 3 segundos”), y entonces bastan pocas réplicas.</p></li>
+</ul>
+<div style="background-color:#fff4e5; border-left:4px solid #f5a623; padding:10px; margin:10px 0;">
+<p><strong>Hasta dónde llegamos hoy</strong></p>
+<p>La tabla muestra un intervalo <strong>por configuración</strong>, no una comparación entre configuraciones. Que dos intervalos no se traslapen sugiere una diferencia, pero que <strong>se traslapen no demuestra que no la haya</strong>. Decidir formalmente si una alternativa es mejor que otra (intervalos para la <strong>diferencia</strong>, muestreo independiente o pareado, errores tipo I y II) es el tema de la <strong>semana 16</strong>.</p>
+</div></section>
+<section id="resumen">
+<h2>Resumen<a class="headerlink" href="#resumen" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>La observación es la réplica, no el cliente.</strong> Las esperas de una misma corrida están correlacionadas; un intervalo construido con ellas es demasiado angosto (en nuestro experimento cubrió el valor real en muy pocos casos, frente a cerca del 95% con réplicas).</p></li>
+<li><p><strong>Réplicas independientes</strong> = misma configuración, semillas distintas, un número <span class="math notranslate nohighlight">\(Y_j\)</span> por réplica, y el intervalo <span class="math notranslate nohighlight">\(t\)</span> de la semana 3 con <span class="math notranslate nohighlight">\(R - 1\)</span> grados de libertad.</p></li>
+<li><p><strong>Se reporta estimación ± HW</strong>, con nivel de confianza, <span class="math notranslate nohighlight">\(R\)</span>, <span class="math notranslate nohighlight">\(T\)</span> y semillas.</p></li>
+<li><p><strong>Número de réplicas:</strong> piloto → <span class="math notranslate nohighlight">\(R \ge \lceil (t\,S/\varepsilon)^2 \rceil\)</span> → simular → comprobar el HW obtenido. Dividir el error entre 2 cuesta 4 veces más réplicas.</p></li>
+<li><p><strong>La precisión depende de la métrica y de la configuración</strong>, y el criterio (absoluto o relativo) debe tener sentido para la decisión.</p></li>
+<li><p><strong>El horizonte:</strong> en sistemas terminantes lo fija la realidad. En régimen estacionario, con presupuesto fijo, repartir entre <span class="math notranslate nohighlight">\(R\)</span> y <span class="math notranslate nohighlight">\(T\)</span> cambia poco el semiancho, pero las réplicas cortas introducen <strong>sesgo</strong>, que más réplicas no corrigen: conviene hacer pocas réplicas largas.</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ejercicio-aplicado-el-centro-de-impresion-una-manana-cualquiera">
+<h1>Ejercicio aplicado: el Centro de Impresión, una mañana cualquiera<a class="headerlink" href="#ejercicio-aplicado-el-centro-de-impresion-una-manana-cualquiera" title="Link to this heading">#</a></h1>
+<p>Volvemos al Centro de Impresión de la semana 5: llegadas Poisson con <span class="math notranslate nohighlight">\(\lambda = 0.75\)</span> estudiantes por minuto, <strong>una</strong> impresora con servicio exponencial de tasa <span class="math notranslate nohighlight">\(\mu = 1\)</span> por minuto, cola FIFO.</p>
+<p>Lo nuevo: el centro <strong>abre a las 8:00 vacío y cierra a las 12:00</strong> (<span class="math notranslate nohighlight">\(T = 240\)</span> min). Es un sistema <strong>terminante</strong>: lo que interesa es lo que pasa en una mañana, y cada réplica es una mañana.</p>
+<ol class="arabic simple">
+<li><p>Con <span class="math notranslate nohighlight">\(R = 10\)</span> réplicas (semillas 1 a 10), construye el IC 95% para <span class="math notranslate nohighlight">\(W_q\)</span> de una mañana.</p></li>
+<li><p><strong>Métrica nueva:</strong> la directora quiere saber qué <strong>fracción de estudiantes espera más de 5 minutos</strong> en una mañana. En cada réplica calcula esa fracción con la lista <code class="docutils literal notranslate"><span class="pre">esperas</span></code> que devuelve el simulador, y construye su IC 95%. Es el mismo procedimiento: cada réplica da <strong>un</strong> número.</p></li>
+<li><p>¿Cuántas réplicas necesitas para que el HW de <span class="math notranslate nohighlight">\(W_q\)</span> sea como máximo el <strong>10% de su media</strong>? Córrelas (reutilizando las 10 primeras) y comprueba el HW que obtuviste.</p></li>
+<li><p>Escribe el reporte de <span class="math notranslate nohighlight">\(W_q\)</span> en una línea, como en la sección 3.</p></li>
+<li><p>La fórmula de la M/M/1 da <span class="math notranslate nohighlight">\(W_q = \lambda/(\mu(\mu - \lambda)) = 3\)</span> min. ¿Por qué tu intervalo <strong>no</strong> tiene por qué contenerla? ¿Eso indica un error del simulador?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lam_ci</span><span class="p">,</span> <span class="n">mu_ci</span><span class="p">,</span> <span class="n">s_ci</span><span class="p">,</span> <span class="n">T_ci</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">240</span>
+
+<span class="c1"># TODO 1: 10 réplicas (semillas 1..10) e IC 95% para Wq de una mañana</span>
+
+<span class="c1"># TODO 2: en cada réplica, fracción de estudiantes con espera &gt; 5 min, y su IC 95%</span>
+<span class="c1">#         (pista: r = simular_mms(...);  np.mean(r[&quot;esperas&quot;] &gt; 5))</span>
+
+<span class="c1"># TODO 3: R necesario para HW &lt;= 10% de la media de Wq; corre las que faltan y comprueba el HW</span>
+
+<span class="c1"># TODO 4: reporte de Wq en una línea</span>
+</pre></div>
+</div>
+</div>
+</div>
+<details>
+<summary><b>Pista 1</b> (si no sabes por dónde empezar)</summary>
+<br>
+<p>Las partes 1 y 3 son las celdas de las secciones 3 y 4 cambiando los parámetros. Guarda los resultados de las 10 réplicas en una lista de diccionarios o en un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, como en la sección 3.</p>
+</details>
+<details>
+<summary><b>Pista 2</b> (para la métrica nueva)</summary>
+<br>
+<p>No mezcles los estudiantes de todas las mañanas en una sola lista: eso sería volver al error de la sección 2. Calcula <strong>una fracción por mañana</strong> y construye el intervalo sobre esas 10 fracciones.</p>
+</details>
+<details>
+<summary><b>Pista 3</b> (para la pregunta 5)</summary>
+<br>
+<p>¿En qué condiciones vale la fórmula de la M/M/1? Piensa en cómo empieza cada mañana y en cuánto dura.</p>
+</details>
+<details>
+<summary><b>Criterios de revisión</b> (ábrelos solo después de terminar)</summary>
+<br>
+<p>Tu trabajo está bien encaminado si:</p>
+<ul class="simple">
+<li><p>El IC de <span class="math notranslate nohighlight">\(W_q\)</span> con 10 réplicas es <strong>ancho</strong> (un HW de una fracción importante de la media): de una mañana a otra la espera cambia mucho.</p></li>
+<li><p>El IC de la fracción de estudiantes con espera &gt; 5 min está construido sobre <strong>10 números</strong>, uno por mañana, y queda entre 0 y 1.</p></li>
+<li><p>El <span class="math notranslate nohighlight">\(R\)</span> necesario para el 10% es del orden de <strong>decenas</strong> de réplicas. Es muy posible que, al correrlas, el HW relativo quede <strong>por encima</strong> del 10% porque el piloto de 10 mañanas subestimó la variabilidad. En ese caso recalculaste <span class="math notranslate nohighlight">\(R\)</span> con todas las réplicas disponibles y agregaste las que faltaban (o, al menos, explicaste por qué no se cumplió).</p></li>
+<li><p>El reporte incluye estimación ± HW, nivel de confianza, <span class="math notranslate nohighlight">\(R\)</span>, <span class="math notranslate nohighlight">\(T\)</span> y semillas.</p></li>
+<li><p>En la pregunta 5 explicas que la fórmula describe el <strong>largo plazo</strong> de un sistema que nunca cierra, mientras que cada mañana <strong>arranca vacía</strong> y dura solo 4 horas, así que la espera promedio de una mañana es <strong>menor</strong> que 3 min. No es un error del simulador: es otra pregunta.</p></li>
+</ul>
+<p>Compara tus números con un compañero y revísalos con tu asistente graduado.</p>
+</details><section id="para-la-proxima-semana">
+<h2>Para la próxima semana<a class="headerlink" href="#para-la-proxima-semana" title="Link to this heading">#</a></h2>
+<p>En la sección 5 vimos que, si interesa el <strong>largo plazo</strong>, el arranque vacío sesga las réplicas cortas. La semana 15 trata cómo manejarlo: identificar y descartar un <strong>período de calentamiento</strong> (<em>warm-up</em>) y la alternativa de hacer <strong>una sola corrida larga</strong> dividida en lotes (<em>batch means</em>).</p>
+<hr class="docutils" />
+<p><em>Universidad de los Andes | Vigilada Mineducación. Reconocimiento como Universidad: Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica: Resolución 28 del 23 de febrero de 1949 Minjusticia. Departamento de Ingeniería Industrial — Carrera 1 Este No. 19 A 40, Bogotá, Colombia. Tel. (57.1) 3324320 | (57.1) 3394949 Ext. 2880/2881 — http://industrial.uniandes.edu.co</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/complementarias"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="complementaria_vyv.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Complementaria Semana 13: Verificación y validación de modelos de simulación</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="complementaria_warmup_batch_means.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Complementaria Semana 15: Corrida larga, período de calentamiento y <em>batch means</em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Complementaria Semana 14: Réplicas independientes e intervalos de confianza</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo-de-hoy">Objetivo de hoy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convenciones-utilizadas">Convenciones utilizadas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion">0. Preparación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repaso-lo-que-ya-sabes-de-intervalos">1. Repaso: lo que ya sabes de intervalos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-cuenta-como-una-observacion">2. ¿Qué cuenta como una observación?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-tentacion">2.1 La tentación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#las-esperas-de-clientes-consecutivos-no-son-independientes">2.2 Las esperas de clientes consecutivos no son independientes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-experimento-de-cobertura">2.3 El experimento de cobertura</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replicas-independientes-el-intervalo-de-una-simulacion">3. Réplicas independientes: el intervalo de una simulación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cuantas-replicas">4. ¿Cuántas réplicas?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-idea">La idea</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-horizonte-t-y-el-presupuesto-de-simulacion">5. El horizonte <span class="math notranslate nohighlight">\(T\)</span> y el presupuesto de simulación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dos-tipos-de-sistemas">Dos tipos de sistemas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-experimento">El experimento</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#un-intervalo-por-configuracion">6. Un intervalo por configuración</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-aplicado-el-centro-de-impresion-una-manana-cualquiera">Ejercicio aplicado: el Centro de Impresión, una mañana cualquiera</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#para-la-proxima-semana">Para la próxima semana</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Equipo Modelado Bajo Incertidumbre | Uniandes
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -205,8 +205,12 @@
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_ii.html">Complementaria Semana 9: Cadenas de Markov en Python II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_markov_iii.html">Complementaria Semana 10: Cadenas de Markov en Python III</a></li>
 <li class="toctree-l1"><a class="reference internal" href="complementaria_ajustes_distribuciones.html">Complementaria Semana 12: Ajuste de distribuciones y uso en modelos estocásticos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Complementaria Semana 13: Aplicación de metodologías de verificación y validación para simulaciones</a></li>
-<li class="toctree-l1"><a class="reference internal" href="complementaria_replicas_ic_bm.html">Complementaria Semana 15: Réplicas independientes, corrida larga y batch means</a></li>
+<li class="toctree-l1"><a class="reference internal" href="complementaria_vyv.html">Complementaria Semana 13: Verificación y validación de modelos de simulación</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_replicas_ic.html">Complementaria Semana 14: Réplicas independientes e intervalos de confianza</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="complementaria_warmup_batch_means.html">Complementaria Semana 15: Corrida larga, período de calentamiento y <em>batch means</em></a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="complementaria_alternativas_incertidumbre.html">Complementaria Semana 16: Muestreo independiente, pruebas pareadas y control de error tipo I y II en decisiones.</a></li>
 
 
@@ -888,7 +892,7 @@ L = área / T         : 1.3750 clientes en promedio
 </div></div></div>
 </div>
 <p>Con 10 réplicas el ajuste es mucho mejor. <strong>De aquí en adelante todas las comparaciones de esta complementaria usan réplicas.</strong></p>
-<p>Las preguntas que quedan abiertas son <em>¿cuántas réplicas necesito? ¿qué tan precisa es mi estimación? ¿debería descartar el arranque de la simulación?</em>, que son el tema de las <strong>semanas 13 y 14</strong>. Por ahora quédate con la regla práctica: <strong>nunca saques una conclusión de una sola corrida.</strong></p>
+<p>Las preguntas que quedan abiertas son <em>¿cuántas réplicas necesito? ¿qué tan precisa es mi estimación? ¿debería descartar el arranque de la simulación?</em>, que son el tema de las <strong>semanas 14 y 15</strong>. Por ahora quédate con la regla práctica: <strong>nunca saques una conclusión de una sola corrida.</strong></p>
 </section>
 </section>
 <section id="verificacion-esta-bien-instrumentado-el-modelo">
@@ -1060,7 +1064,7 @@ lambda_efectiva * Wq             : 2.2704
 <li><p>Consecuencia de ingeniería: <strong>un sistema operado al 95% de utilización no está “bien aprovechado”, está al borde del colapso.</strong> Un aumento pequeño de demanda, o cualquier variabilidad no prevista, lo tumba.</p></li>
 </ul>
 <blockquote>
-<div><p><strong>Ojo con el último punto de la tabla.</strong> En utilizaciones muy altas la simulación se vuelve poco confiable: entre más cargado está el sistema, más lento converge al comportamiento de largo plazo, y un horizonte de 10.000 minutos ya no alcanza. Además, los clientes que quedan haciendo fila cuando el reloj llega a <span class="math notranslate nohighlight">\(T\)</span> nunca se cuentan, y esos son justamente los que más esperaron. Es un anticipo de por qué las semanas 13 y 14 se dedican a decidir <strong>cuánto</strong> hay que simular y <strong>desde dónde</strong> empezar a medir.</p>
+<div><p><strong>Ojo con el último punto de la tabla.</strong> En utilizaciones muy altas la simulación se vuelve poco confiable: entre más cargado está el sistema, más lento converge al comportamiento de largo plazo, y un horizonte de 10.000 minutos ya no alcanza. Además, los clientes que quedan haciendo fila cuando el reloj llega a <span class="math notranslate nohighlight">\(T\)</span> nunca se cuentan, y esos son justamente los que más esperaron. Es un anticipo de por qué las semanas 14 y 15 se dedican a decidir <strong>cuánto</strong> hay que simular y <strong>desde dónde</strong> empezar a medir.</p>
 </div></blockquote>
 <p><strong>Para pensar:</strong> si te dijeran que una impresora está ociosa el 25% del tiempo, ¿dirías que está sobredimensionada? Mira la fila de utilización 0.75 antes de responder.</p>
 </section>
